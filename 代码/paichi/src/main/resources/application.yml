@@ -1,0 +1,53 @@
+#服务器配置
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    session:
+      timeout: 3000
+      cookie:
+        name: paichi
+
+#spring配置
+spring:
+  application:
+    name: paichi
+#  redis:
+#    host: 39.99.177.49
+#    port: 6379
+#    timeout: 60000
+#配置Oracle数据源
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//39.98.198.83:1521/helowin
+    username: PAICHI
+    password: paichi
+#thymeleaf配置
+  thymeleaf:
+    cache: true
+    encoding: utf-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+#配置静态资源
+  mvc:
+    static-path-pattern: /**
+    resources:
+      static-locations=classpath: /static/
+#热加载
+  devtools:
+    restart:
+      enabled: true
+#mybatis-plus配置
+mybatis-plus:
+  type-aliases-package: com.baomidou.springboot.entity
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+#  二级缓存
+  configuration:
+    cache-enabled: true
+#    配置驼峰命名
+    map-underscore-to-camel-case: true
+#    允许返回字段值为null
+    call-setters-on-nulls: true
+
