@@ -1,0 +1,266 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://www.meishij.net/%E8%8C%84%E5%AD%90",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://st-cn.meishij.net/p2/20190606/20190606113304_957.png",
+                    "path": "images/20190606113304_957.png"
+                },
+                {
+                    "url": "https://st-cn.meishij.net/p2/20160909/20160909164810_443.png",
+                    "path": "images/20160909164810_443.png"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20110706/46ff26140cddcba66a59ef101bb7a4a0_180x180.jpg",
+                    "path": "images/46ff26140cddcba66a59ef101bb7a4a0_180x180.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20141224/6fbc87716d1fd43831c4f8e5875662a5_150x150.jpg",
+                    "path": "images/6fbc87716d1fd43831c4f8e5875662a5_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20130106/c3cbaae904805753c26ed6358795160b_150x150.jpg",
+                    "path": "images/c3cbaae904805753c26ed6358795160b_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20120320/f992f9f94219d500f6321ed977a8e3fe_150x150.jpg",
+                    "path": "images/f992f9f94219d500f6321ed977a8e3fe_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20140904/ad823d20bebc55af455a352af117cbe8_150x150.jpg",
+                    "path": "images/ad823d20bebc55af455a352af117cbe8_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20110401/4d37976340bcba693f7d39aaff8346f7_150x150.jpg",
+                    "path": "images/4d37976340bcba693f7d39aaff8346f7_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20120920/362ac1fa7f95c00d021155a683933b5b_150x150.jpg",
+                    "path": "images/362ac1fa7f95c00d021155a683933b5b_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20130927/905aa785dad19d49883f7361b5d15111_150x150.jpg",
+                    "path": "images/905aa785dad19d49883f7361b5d15111_150x150.jpeg"
+                },
+                {
+                    "url": "https://st-cn.meishij.net/r/141/207/2676891/a2676891_67303.jpg",
+                    "path": "images/a2676891_67303.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20130312/b8d2076a48a4dc5c429f13eee68c06df_150x150.jpg",
+                    "path": "images/b8d2076a48a4dc5c429f13eee68c06df_150x150.jpeg"
+                },
+                {
+                    "url": "https://st-cn.meishij.net/r/208/36/1259208/a1259208_35134.jpg",
+                    "path": "images/a1259208_35134.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20100901/bd3d94b045e37b7035a77d631f2b5368_150x150.jpg",
+                    "path": "images/bd3d94b045e37b7035a77d631f2b5368_150x150.jpeg"
+                },
+                {
+                    "url": "https://s1.ig.meishij.net/p/20130904/2b024f5171ac45c2e46c9da58f64546f_150x150.jpg",
+                    "path": "images/2b024f5171ac45c2e46c9da58f64546f_150x150.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20110706/46ff26140cddcba66a59ef101bb7a4a0_70x70.jpg",
+                    "path": "images/46ff26140cddcba66a59ef101bb7a4a0_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20150331/e42c1901635df0e2483221ce2a644ad9_70x70.jpg",
+                    "path": "images/e42c1901635df0e2483221ce2a644ad9_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20111026/211444ad3bcec7436e047c4f50ff67a0_70x70.jpg",
+                    "path": "images/211444ad3bcec7436e047c4f50ff67a0_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20120706/c8b15696a980ae7ac693ffcc1a5103d4_70x70.jpg",
+                    "path": "images/c8b15696a980ae7ac693ffcc1a5103d4_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20170330/39d74e9bfde79ebc96541ab744865293_70x70.jpg",
+                    "path": "images/39d74e9bfde79ebc96541ab744865293_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20130115/1caad250e69a65e95f619e07eb55da46_70x70.jpg",
+                    "path": "images/1caad250e69a65e95f619e07eb55da46_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20131015/540c9531b9f58ff7ebef2af5579e975e_70x70.jpg",
+                    "path": "images/540c9531b9f58ff7ebef2af5579e975e_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20140729/75b4e73b4cf5987bfd68baec53a531d8_70x70.jpg",
+                    "path": "images/75b4e73b4cf5987bfd68baec53a531d8_70x70.jpeg"
+                },
+                {
+                    "url": "http://images.meishij.net/p/20111017/40fe0f6ef22dca3661f792e357a3a534_70x70.jpg",
+                    "path": "images/40fe0f6ef22dca3661f792e357a3a534_70x70.jpeg"
+                },
+                {
+                    "url": "http://site.meishij.net/shicaiimg/196/shicai946_70x70.jpg",
+                    "path": "images/shicai946_70x70.jpeg"
+                },
+                {
+                    "url": "http://site.meishij.net/shicaiimg/61/shicai1061_70x70.jpg",
+                    "path": "images/shicai1061_70x70.jpeg"
+                },
+                {
+                    "url": "https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png",
+                    "path": "images/20180208111357_93713.png"
+                },
+                {
+                    "url": "https://s1.c.meishij.net/n/js/j.m.js?v=1551",
+                    "path": "js/j.m.js"
+                },
+                {
+                    "url": "https://s1.c.meishij.net/n/js/main.js?v=1516",
+                    "path": "js/main.js"
+                },
+                {
+                    "url": "https://s1.c.meishij.net/n/js/list.js",
+                    "path": "js/list.js"
+                },
+                {
+                    "url": "https://dup.baidustatic.com/js/ds.js",
+                    "path": "js/ds.js"
+                },
+                {
+                    "url": "https://www.meishij.net/ajax/loginheader_n2.php?_=1596376305",
+                    "path": "js/loginheader_n2.js"
+                },
+                {
+                    "url": "https://ma1.meishij.net/hculdikzy.js",
+                    "path": "js/hculdikzy.js"
+                },
+                {
+                    "url": "https://ma1.meishij.net/fasjbsigw.js",
+                    "path": "js/fasjbsigw.js"
+                },
+                {
+                    "url": "https://ma1.meishij.net/idvmevlje.js",
+                    "path": "js/idvmevlje.js"
+                },
+                {
+                    "url": "https://s1.c.meishij.net/n/css/ss_base.css?v=1517",
+                    "path": "css/ss_base.css"
+                },
+                {
+                    "url": "https://s1.c.meishij.net/n/css/main.css?v=1961",
+                    "path": "css/main.css",
+                    "children": [
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/header_bg.png",
+                            "path": "images/header_bg.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/logo2.png",
+                            "path": "images/logo2.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/topdsflogin_icon.gif",
+                            "path": "images/topdsflogin_icon.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/dricon_20.png",
+                            "path": "images/dricon_20.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/itoparrow.png",
+                            "path": "images/itoparrow.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/monarrow.gif",
+                            "path": "images/monarrow.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/dao_inxt.gif",
+                            "path": "images/dao_inxt.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/msj_menuarrow.gif?v=3",
+                            "path": "images/msj_menuarrow.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/jccp_navbgg.png",
+                            "path": "images/jccp_navbgg.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/ysjk_navbg.png",
+                            "path": "images/ysjk_navbg.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/littletips_new.gif",
+                            "path": "images/littletips_new.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/follow_btn.png",
+                            "path": "images/follow_btn.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/black75.png",
+                            "path": "images/black75.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/searchslideup_btn.png",
+                            "path": "images/searchslideup_btn.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/bottom_yjfk.png",
+                            "path": "images/bottom_yjfk.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/backtotop_icon.png",
+                            "path": "images/backtotop_icon.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/yjfkshut.gif",
+                            "path": "images/yjfkshut.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/logo_f.png?ver=123",
+                            "path": "images/logo_f.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/footerlinks.png",
+                            "path": "images/footerlinks.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/vip.png",
+                            "path": "images/vip.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/vip_20.png",
+                            "path": "images/vip_20.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/vip_18.png",
+                            "path": "images/vip_18.png"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/jf_hz_wd_userlevel_bg.gif",
+                            "path": "images/jf_hz_wd_userlevel_bg.gif"
+                        },
+                        {
+                            "url": "https://s1.c.meishij.net/n/images/jf_hz_wd_darenlevel_bg.gif",
+                            "path": "images/jf_hz_wd_darenlevel_bg.gif"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "failures": []
+}
