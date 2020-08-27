@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-08-01
  */
 @RestController
-@RequestMapping("/pecipe/taste")
+@RequestMapping("/taste")
 public class TasteController {
 
 }
