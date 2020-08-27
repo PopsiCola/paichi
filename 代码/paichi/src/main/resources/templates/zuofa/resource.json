@@ -10,7 +10,7 @@
     ],
     "success": [
         {
-            "url": "https://www.meishij.net/zuofa/heyejiaohuaji_6.html",
+            "url": "https://www.paichi.net/zuofa/heyejiaohuaji_6.html",
             "path": "index.html",
             "children": [
                 {
@@ -38,7 +38,7 @@
                     "path": "images/s13666470_159635697189755.jpeg"
                 },
                 {
-                    "url": "https://www.meishij.net/ajax/qrcode_wap.php?i=1969698",
+                    "url": "https://www.paichi.net/ajax/qrcode_wap.php?i=1969698",
                     "path": "images/qrcode_wap.png"
                 },
                 {
@@ -174,7 +174,7 @@
                     "path": "js/ds.js"
                 },
                 {
-                    "url": "https://www.meishij.net/ajax/loginheader_n2.php?_=1596369579",
+                    "url": "https://www.paichi.net/ajax/loginheader_n2.php?_=1596369579",
                     "path": "js/loginheader_n2.js"
                 },
                 {
@@ -478,7 +478,7 @@
                     "path": "css/swiper.min.css"
                 },
                 {
-                    "url": "https://www.meishij.net/content/vendor_words.php?q=%E8%8D%B7%E5%8F%B6%E5%8F%AB%E8%8A%B1%E9%B8%A1&vn=so",
+                    "url": "https://www.paichi.net/content/vendor_words.php?q=%E8%8D%B7%E5%8F%B6%E5%8F%AB%E8%8A%B1%E9%B8%A1&vn=so",
                     "path": "vendor_words.php.html"
                 }
             ]

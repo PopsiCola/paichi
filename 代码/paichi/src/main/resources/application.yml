@@ -33,8 +33,8 @@ spring:
 #配置静态资源
   mvc:
     static-path-pattern: /**
-    resources:
-      static-locations=classpath: /static/
+  resources:
+    static-locations: classpath:/static/
 #热加载
   devtools:
     restart:

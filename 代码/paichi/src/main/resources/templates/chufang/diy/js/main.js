@@ -61,7 +61,7 @@ function guidGenerator() {
 	return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()); 
 }
 function loginreg(is_login){
-	Alert("登录美食杰", "iframe:/ajax/login.php?t=" + is_login + '&redirect=' + encodeURIComponent(location.href), "700", "300", "false", "", "true", "img");
+	Alert("登录PaiChi", "iframe:/ajax/login.php?t=" + is_login + '&redirect=' + encodeURIComponent(location.href), "700", "300", "false", "", "true", "img");
 }
 var is_req_login_jifen = 0;
 var is_req_sign_in = 0;

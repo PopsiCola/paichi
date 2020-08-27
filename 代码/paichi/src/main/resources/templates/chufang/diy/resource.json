@@ -10,7 +10,7 @@
     ],
     "success": [
         {
-            "url": "https://www.meishij.net/chufang/diy/",
+            "url": "https://www.paichi.net/chufang/diy/",
             "path": "index.html",
             "children": [
                 {
@@ -114,7 +114,7 @@
                     "path": "js/ds.js"
                 },
                 {
-                    "url": "https://www.meishij.net/ajax/loginheader_n2.php?_=1596367081",
+                    "url": "https://www.paichi.net/ajax/loginheader_n2.php?_=1596367081",
                     "path": "js/loginheader_n2.js"
                 },
                 {

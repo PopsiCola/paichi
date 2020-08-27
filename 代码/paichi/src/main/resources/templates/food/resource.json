@@ -10,7 +10,7 @@
     ],
     "success": [
         {
-            "url": "https://www.meishij.net/%E8%8C%84%E5%AD%90",
+            "url": "https://www.paichi.net/%E8%8C%84%E5%AD%90",
             "path": "index.html",
             "children": [
                 {
@@ -138,7 +138,7 @@
                     "path": "js/ds.js"
                 },
                 {
-                    "url": "https://www.meishij.net/ajax/loginheader_n2.php?_=1596376305",
+                    "url": "https://www.paichi.net/ajax/loginheader_n2.php?_=1596376305",
                     "path": "js/loginheader_n2.js"
                 },
                 {

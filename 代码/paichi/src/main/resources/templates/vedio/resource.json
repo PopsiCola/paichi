@@ -10,7 +10,7 @@
     ],
     "success": [
         {
-            "url": "https://www.meishij.net/video/",
+            "url": "https://www.paichi.net/video/",
             "path": "index.html",
             "children": [
                 {
@@ -94,7 +94,7 @@
                     "path": "js/ds.js"
                 },
                 {
-                    "url": "https://www.meishij.net/ajax/loginheader_n2.php?_=1596371817",
+                    "url": "https://www.paichi.net/ajax/loginheader_n2.php?_=1596371817",
                     "path": "js/loginheader_n2.js"
                 },
                 {
