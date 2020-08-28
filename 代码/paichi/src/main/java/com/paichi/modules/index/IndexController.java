@@ -13,6 +13,16 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index() {
-        return "index/index";
+        return "index";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login/index";
+    }
+
+    @RequestMapping("/regist")
+    public String regist() {
+        return "login/index";
     }
 }
