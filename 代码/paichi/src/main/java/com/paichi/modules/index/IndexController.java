@@ -1,8 +1,12 @@
 package com.paichi.modules.index;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author liulebin
@@ -17,8 +21,15 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login() {
-        return "login/index";
+    public ModelAndView login(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("login/index");
+        //判断是注册还是登陆，注册前端ac=zhuce参数
+        String ac = request.getParameter("ac");
+        if (!"".equals(ac)) {
+            mv.addObject("ac", ac);
+        }
+
+        return mv;
     }
 
     @RequestMapping("/regist")
