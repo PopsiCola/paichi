@@ -25,4 +25,15 @@ public class IndexController {
     public String regist() {
         return "login/index";
     }
+
+    @RequestMapping("/user_agreement")
+    public String userAgreement() {
+        return "user_agreement/index";
+    }
+
+    @RequestMapping("/privacy")
+    public String privacy() {
+        return "privacy/index";
+    }
+
 }
