@@ -1,370 +1,1007 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>菜谱大全_家庭菜谱_家庭实用菜谱大全</title>
-<meta name="keywords" content="菜谱大全,家庭菜谱,家庭实用菜谱大全">
-<meta name="description" content="菜谱大全,家庭菜谱,家庭实用菜谱大全">
-<meta content="www.meishij.net" name="author">
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<script>var _hmt = _hmt || [];</script>
-<link rel="stylesheet" type="text/css" media="all" href="css/ss_base.css"><link rel="stylesheet" type="text/css" media="all" href="css/main.css"><link rel="stylesheet" type="text/css" media="all" href="css/list.css"><script type="text/javascript" src="js/j.m.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/list.js"></script><script src="js/ds.js"></script><script>var _czc = _czc || [];var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?01dd6a7c493607e115255b7e72de5f40";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();</script></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>菜谱大全_家庭菜谱_家庭实用菜谱大全</title>
+    <meta name="keywords" content="菜谱大全,家庭菜谱,家庭实用菜谱大全">
+    <meta name="description" content="菜谱大全,家庭菜谱,家庭实用菜谱大全">
+    <meta content="www.paichi.net" name="author">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script>var _hmt = _hmt || [];</script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/list.css}">
+    <script type="text/javascript" th:src="@{/js/chufang/js/j.m.js}"></script>
+    <script type="text/javascript" th:src="@{/js/chufang/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/chufang/js/list.js}"></script>
+    <script th:src="@{/js/chufang/js/ds.js}"></script>
+    <script>var _czc = _czc || [];
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?01dd6a7c493607e115255b7e72de5f40";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>
+</head>
 <body style>
-<div class="adinheader"><div class="adinheader_w"><script>
-(function() {
-	var s = "_" + Math.random().toString(36).slice(2);
-    document.write('<div id="' + s + '"></div>');
-    (window.slotbydup=window.slotbydup || []).push({
-        id: '206520',
-        container: s,
-        size: '990,40',
-        display: 'inlay-fix'
-    });
-})();
-</script></div></div><div class="header">
-	<div class="header_c">
-		<a href="https://www.paichi.net/" class="logo pngFix"></a>
-		<div class="main_search_top_w">
-			<div class="suggestionsBox" id="suggestions" style="display:none;"><ul class="suggestionList" id="autoSuggestionsList"></ul></div>
-			<form class="search" action="https://so.meishi.cc/">
-				<input type="text" class="text" name="q" defaultval="请输入菜谱/食材/菜单/作者" x-webkit-speech value="请输入菜谱/食材/菜单/作者" autocomplete="off" onfocus="if(this.value=='请输入菜谱/食材/菜单/作者'){this.value='';}$(this).css('color','#333');" onblur="if(this.value==''){this.value='请输入菜谱/食材/菜单/作者';$(this).css('color','#999');}" href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
-			</form>
-		</div>
-		<div class="loginitem_h"><script src="js/loginheader_n2.js"></script></div>
-	</div>
+<div class="adinheader">
+    <div class="adinheader_w">
+        <script>
+            (function () {
+                var s = "_" + Math.random().toString(36).slice(2);
+                document.write('<div id="' + s + '"></div>');
+                (window.slotbydup = window.slotbydup || []).push({
+                    id: '206520',
+                    container: s,
+                    size: '990,40',
+                    display: 'inlay-fix'
+                });
+            })();
+        </script>
+    </div>
+</div>
+<div class="header">
+    <div class="header_c">
+        <a href="https://www.paichi.net/" class="logo pngFix"></a>
+        <div class="main_search_top_w">
+            <div class="suggestionsBox" id="suggestions" style="display:none;">
+                <ul class="suggestionList" id="autoSuggestionsList"></ul>
+            </div>
+            <form class="search" action="https://so.meishi.cc/">
+                <input type="text" class="text" name="q" defaultval="请输入菜谱/食材/菜单/作者" x-webkit-speech
+                       value="请输入菜谱/食材/菜单/作者" autocomplete="off"
+                       onfocus="if(this.value=='请输入菜谱/食材/菜单/作者'){this.value='';}$(this).css('color','#333');"
+                       onblur="if(this.value==''){this.value='请输入菜谱/食材/菜单/作者';$(this).css('color','#999');}"
+                       href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
+            </form>
+        </div>
+        <div class="loginitem_h">
+            <script th:src="@{/js/loginheader_n2.js}"></script>
+        </div>
+    </div>
 </div>
 <div class="nav">
-	<ul id="main_nav">
-		<li><a href="https://www.paichi.net/" class="link pngFix"><strong>首页</strong></a></li>
-		<li class="hasmore current">
-			<a href="https://www.paichi.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
-			<div class="dw clearfix">
-				<div class="dww clearfix dww_cpdq">
-					<div class="dwitem clearfix pngFix"><dl class="clearfix"><dt><a href="https://www.paichi.net/chufang/diy/">家常菜谱</a></dt>		<dd><a href="https://www.paichi.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/langcaipu/">凉菜</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/sushi/">素食</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/wancan/">晚餐</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/sijiacai/">私家菜</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/recaipu/">热菜</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/haixian/">海鲜</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/yunfu/">孕妇</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/zaocan/">早餐</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/wucan/">午餐</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>	<dd><a href="https://www.paichi.net/chufang/diy/weibolucaipu/">微波炉</a></dd></dl></div><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/china-food/caixi/">中华菜系</a></dt><dd><a href="https://www.paichi.net/china-food/caixi/chuancai/">川菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/yuecai/">粤菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/dongbeicai/">东北菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/xiangcai/">湘菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/lucai/">鲁菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/zhecai/">浙菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/hubeicai/">湖北菜</a></dd><dd><a href="https://www.paichi.net/china-food/caixi/qingzhencai/">清真菜</a></dd></dl></div><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/china-food/xiaochi/">各地小吃</a></dt>	<dd><a href="https://www.paichi.net/china-food/xiaochi/sichuan/">四川小吃</a></dd>	<dd><a href="https://www.paichi.net/china-food/xiaochi/guangdong/">广东小吃</a></dd>	<dd><a href="https://www.paichi.net/china-food/xiaochi/beijing/">北京小吃</a></dd>	<dd><a href="https://www.paichi.net/china-food/xiaochi/shanxii/">陕西小吃</a></dd></dl></div><br><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/">外国菜谱</a></dt><dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></dd><dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/japan/">日本料理</a></dd><dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/faguo/">法国菜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/yidali/">意大利餐</a></dd></dl></div><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/hongpei/">烘焙</a></dt><dd><a href="https://www.paichi.net/hongpei/dangaomianbao/">蛋糕面包</a></dd><dd><a href="https://www.paichi.net/hongpei/bingganpeifang/">饼干配方</a></dd><dd><a href="https://www.paichi.net/hongpei/tianpindianxin/">甜品点心</a></dd></dl></div><br><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/pengren/">厨房百科</a></dt><dd><a href="https://www.paichi.net/pengren/baipanzhoubian/">摆盘围边</a></dd><dd><a href="https://www.paichi.net/pengren/jiqiao/">烹饪技巧</a></dd><dd><a href="https://www.paichi.net/pengren/chufangmiaozhao/">生活妙招</a></dd><dd><a href="https://www.paichi.net/pengren/chufang/">美食专题</a></dd></dl></div><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/shicai/">食材百科</a></dt><dd><a href="https://www.paichi.net/shicai/shucai_list">蔬菜</a></dd><dd><a href="https://www.paichi.net/shicai/shuiguo_list">水果</a></dd><dd><a href="https://www.paichi.net/shicai/gulei_list">谷类</a></dd></dl></div><div class="bgitem"></div>
-				</div>
-			</div>
-		</li>
-		<li class="hasmore"><a href="https://www.paichi.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
-			<div class="dw clearfix">
-				<div class="dww clearfix dww_ysjk">
-					<div class="dwitem clearfix pngFix"><dl class="clearfix"><dt><a href="https://www.paichi.net/jiankang/">饮食健康</a></dt><dd><a href="https://www.paichi.net/jiankang/changshi/">饮食小常识</a></dd><dd><a href="https://www.paichi.net/jiankang/meirong/">美容瘦身</a></dd><dd><a href="https://www.paichi.net/jiankang/shipinanquan/">食品安全</a></dd><dd><a href="https://www.paichi.net/jiankang/yangsheng/">养生妙方</a></dd><dd><a href="https://www.paichi.net/jiankang/jinji/">饮食禁忌</a></dd><dd><a href="https://www.paichi.net/jiankang/zhongyi/">中医保健</a></dd><dd><a href="https://www.paichi.net/jiankang/muying/">母婴健康饮食</a></dd><dd><a href="https://www.paichi.net/jiankang/yinshixinwen/">饮食新闻</a></dd></dl></div><div class="dwitem clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd></dl></div><br><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd></dl></div><div class="dwitem dwitem_half clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd></dl></div><br><div class="dwitem clearfix"><dl class="clearfix"><dt><a href="https://www.paichi.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd></dl></div><div class="bgitem"></div>
-				</div>
-			</div>
-		</li>
-		<li><a href="https://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a></li>
-		<li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/" class="link pngFix"><strong>家居馆</strong>
-                            </a></li>
-		<li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img src="images/20160909164810_443.png" style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
-				<li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
-						<li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
-			</ul>
+    <ul id="main_nav">
+        <li><a href="https://www.paichi.net/" class="link pngFix"><strong>首页</strong></a></li>
+        <li class="hasmore current">
+            <a href="https://www.paichi.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_cpdq">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/chufang/diy/">家常菜谱</a></dt>
+                            <dd><a href="https://www.paichi.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/langcaipu/">凉菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/sushi/">素食</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/wancan/">晚餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/sijiacai/">私家菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/recaipu/">热菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/haixian/">海鲜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/zaocan/">早餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/wucan/">午餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/weibolucaipu/">微波炉</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/china-food/caixi/">中华菜系</a></dt>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/chuancai/">川菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/yuecai/">粤菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/dongbeicai/">东北菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/xiangcai/">湘菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/lucai/">鲁菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/zhecai/">浙菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/hubeicai/">湖北菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/qingzhencai/">清真菜</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/china-food/xiaochi/">各地小吃</a></dt>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/sichuan/">四川小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/guangdong/">广东小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/beijing/">北京小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/shanxii/">陕西小吃</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/">外国菜谱</a></dt>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/japan/">日本料理</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/faguo/">法国菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/yidali/">意大利餐</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/hongpei/">烘焙</a></dt>
+                            <dd><a href="https://www.paichi.net/hongpei/dangaomianbao/">蛋糕面包</a></dd>
+                            <dd><a href="https://www.paichi.net/hongpei/bingganpeifang/">饼干配方</a></dd>
+                            <dd><a href="https://www.paichi.net/hongpei/tianpindianxin/">甜品点心</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/pengren/">厨房百科</a></dt>
+                            <dd><a href="https://www.paichi.net/pengren/baipanzhoubian/">摆盘围边</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/jiqiao/">烹饪技巧</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/chufangmiaozhao/">生活妙招</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/chufang/">美食专题</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/shicai/">食材百科</a></dt>
+                            <dd><a href="https://www.paichi.net/shicai/shucai_list">蔬菜</a></dd>
+                            <dd><a href="https://www.paichi.net/shicai/shuiguo_list">水果</a></dd>
+                            <dd><a href="https://www.paichi.net/shicai/gulei_list">谷类</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li class="hasmore"><a href="https://www.paichi.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_ysjk">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/jiankang/">饮食健康</a></dt>
+                            <dd><a href="https://www.paichi.net/jiankang/changshi/">饮食小常识</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/meirong/">美容瘦身</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/shipinanquan/">食品安全</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/yangsheng/">养生妙方</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/jinji/">饮食禁忌</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/zhongyi/">中医保健</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/muying/">母婴健康饮食</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/yinshixinwen/">饮食新闻</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a>
+                            </dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a>
+                            </dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li><a href="https://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a></li>
+        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
+                                                      class="link pngFix"><strong>家居馆</strong>
+        </a></li>
+        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+                src="images/20160909164810_443.png"
+                style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
+        <li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
+        <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
+    </ul>
 </div>
 <div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
-	<div class="main_search_w">
-		<div class="searchform_div">			<form action="https://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q" x-webkit-speech autocomplete="off" id="inputString" placeholder="家常菜谱大全"><input type="submit" class="submit" value="搜 索"></form>
-		</div>
-		<span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
-	</div>
+    <div class="main_search_w">
+        <div class="searchform_div">
+            <form action="https://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q"
+                                                                        x-webkit-speech autocomplete="off"
+                                                                        id="inputString" placeholder="家常菜谱大全"><input
+                    type="submit" class="submit" value="搜 索"></form>
+        </div>
+        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
+    </div>
 </div>
-<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" title="返回家常菜谱大全的顶部" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix"><div class="main">
-	<div class="listnav clearfix" id="listnav">
-	<ul class="listnav_ul" id="listnav_ul">
-		<li disable="1"><a class="link">我的美食属性（未开放）</a></li><li class="current hover"><h1><a href="https://www.paichi.net/chufang/diy/" class="link">家常菜谱</a></h1></li><li><a href="/china-food/caixi/" class="link">中华菜系</a></li><li><a href="/china-food/xiaochi/" class="link">各地小吃</a></li><li><a href="/chufang/diy/guowaicaipu1/" class="link">外国菜谱</a></li><li><a href="/hongpei/" class="link">烘焙</a></li><li><a href="/pengren/" class="link">厨房百科</a></li><li><a href="https://www.paichi.net/shicai/" class="link">食材百科</a></li>
-	</ul>
-		<div class="listnav_con clearfix" id="listnav_con_c">
-		<dl class="listnav_dl_style1 w990 bb1 clearfix">
-			<dt>家常菜谱</dt>
-			<dd><a href="https://www.paichi.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/sijiacai/">私家菜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/langcaipu/">凉菜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/haixian/">海鲜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/recaipu/">热菜</a></dd><dd><a href="https://www.paichi.net/chufang/diy/tangbaocaipu/">汤粥</a></dd><dd><a href="https://www.paichi.net/chufang/diy/sushi/">素食</a></dd><dd><a href="https://www.paichi.net/chufang/diy/jiangliaozhanliao/">酱料蘸料</a></dd><dd><a href="https://www.paichi.net/chufang/diy/weibolucaipu/">微波炉</a></dd><dd><a href="https://www.paichi.net/chufang/diy/huoguo/">火锅底料</a></dd><dd><a href="https://www.paichi.net/chufang/diy/tianpindianxin/">甜品点心</a></dd><dd><a href="https://www.paichi.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd><dd><a href="https://www.paichi.net/chufang/diy/ganguo/">干果制作</a></dd><dd><a href="https://www.paichi.net/chufang/diy/rujiangcai/">卤酱</a></dd><dd><a href="https://www.paichi.net/chufang/diy/yinpin/">时尚饮品</a></dd>		</dl><dl class="listnav_dl_style1 w300 br1 clearfix">
-		<dt>每日三餐</dt>
-			<dd><a href="https://www.paichi.net/chufang/diy/zaocan/">早餐</a></dd><dd><a href="https://www.paichi.net/chufang/diy/wucan/">午餐</a></dd><dd><a href="https://www.paichi.net/chufang/diy/wancan/">晚餐</a></dd><dd><a href="https://www.paichi.net/chufang/diy/xiawucha/">下午茶</a></dd><dd><a href="https://www.paichi.net/chufang/diy/yexiao/">夜宵</a></dd>		</dl><dl class="listnav_dl_style1 w330 br1 clearfix">
-			<dt>人群</dt>
-			<dd><a href="https://www.paichi.net/chufang/diy/laonian/">老年人</a></dd><dd><a href="https://www.paichi.net/chufang/diy/chanfu/">产妇</a></dd><dd><a href="https://www.paichi.net/chufang/diy/yunfu/">孕妇</a></dd><dd><a href="https://www.paichi.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>		</dl><dl class="listnav_dl_style1 w360 clearfix">
-		<dt>功效</dt>
-		<dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/">脏腑调理</a></dd><dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dd>		</dl>
-	</div>						</div>	<div class="bbtitles">印象中的那些妈妈的味道<span class="paixu"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270" class="current">最新</a> | <a href="/list.php?sortby=renqi&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270">最热</a></span></div>
-	<div class="liststyle1_w clearfix">
-		<div class="fliterstyle1" id="fliterstyle1">
-							<div class="fliterstyle1_main">
-					<ul class="tab"><li class="li1" po="1"><a href="####">普通筛选</a></li><li class="li2 current" po="2"><a href="####">食材筛选</a><span class="littletips_new"></span></li></ul>
-					<div class="tabcon" po="1" style="display:none;">
-					<dl class="clearfix">
-						<dt class="pngFix">选择难度</dt><dd class="clearfix"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=1">新手尝试</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=2">初级入门</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=3">初中水平</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=4">中级掌勺</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=5">高级厨师</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=6">厨神级</a></dd>
-					</dl>
-										<dl class="clearfix">
-						<dt class="pngFix">选择工艺</dt><dd class="clearfix bb0">
-												<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=192">炒</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=156">蒸</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=194">煮</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=124">炖</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=141">拌</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=149">烧</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=129">煎</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=153">炸</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=220">烘焙</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=251">微波</a>						<div class="others"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=130">烤</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=147">煲</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=144">焖</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=136">冻</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=252">烙</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=148">砂锅</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=134">腌</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=138">卤</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=132">酱</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=127">烩</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=112">扒</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=114">爆</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=140">炝</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=142">熘</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=139">熏</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=123">汆</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=113">拔丝</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=253">榨汁</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=193">灼</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=256">泡</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=133">腊</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=119">糖蘸</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=255">干锅</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=262">焗</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=260">干煸</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=261">煨</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=259">其他</a></div>
-						</dd>
-						<dd class="long clearfix filter_otherbtn">展开全部 >></dd>
-					</dl>
-															<dl class="clearfix">
-						<dt class="pngFix">选择口味</dt><dd class="clearfix">
-												<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=168">家常味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=187">香辣味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=160">咸鲜味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=185">甜味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=182">酸甜味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=180">酸辣味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=177">麻辣味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=170">酱香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=257">奶香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=183">蒜香味</a>						<div class="others"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=188">鱼香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=162">葱香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=166">果味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=186">五香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=173">咖喱味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=171">椒麻味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=179">茄汁味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=266">酸味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=174">苦香味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=169">姜汁味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=165">怪味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=172">芥末味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=167">红油味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=164">豆瓣味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=176">麻酱味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=264">黑椒味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=265">糊辣味</a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=189">其他</a></div>
-						</dd>
-						<dd class="long clearfix filter_otherbtn">展开全部 >></dd>
-					</dl>
-										<dl class="clearfix">	
-						<dt class="pngFix">选择时间</dt><dd class="clearfix"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=1"><5分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=2"><10分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=3"><15分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=4"><30分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=5"><60分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=6"><90分钟< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=7"><2小时< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=8"><数小时< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=9"><一天< a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=10"><数天< a></数天<></a></一天<></a></数小时<></a></2小时<></a></90分钟<></a></60分钟<></a></30分钟<></a></15分钟<></a></10分钟<></a></5分钟<></a></dd>
-					</dl>
-			</div>
-			<div class="tabcon" po="2">
-				<div class="tabcon_scsearch">
-					<div class="w">
-						<input type="text" class="text" name="q" id="yl_q" defaultval="请输入您想查找的食材" value="请输入您想查找的食材" autocomplete="off" onfocus="if(this.value=='请输入您想查找的食材'){this.value='';}$(this).css('color','#333');" onblur="if(this.value==''){this.value='请输入您想查找的食材';$(this).css('color','#999');}">
-						<input type="button" onclick="list_add_shicai()" class="submit pngFix" value=" ">
-					</div>
-				</div>
-								<dl class="clearfix on">
-					<dt class="pngFix">按数量排序</dt><dd class="clearfix row2">
-										<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=236"><span class="yjtip">应季</span><strong>黄瓜</strong><em>1709</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25063"><span class="yjtip">应季</span><strong>牛肉</strong><em>1206</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25353"><span class="yjtip">应季</span><strong>虾</strong><em>1206</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=241"><span class="yjtip">应季</span><strong>南瓜</strong><em>1121</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=88"><span class="yjtip">应季</span><strong>土豆</strong><em>1031</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=822"><span class="yjtip">应季</span><strong>鸡腿</strong><em>987</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=219"><span class="yjtip">应季</span><strong>西红柿</strong><em>864</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=337"><span class="yjtip">应季</span><strong>藕</strong><em>649</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=178"><span class="yjtip">应季</span><strong>白萝卜</strong><em>648</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=231"><span class="yjtip">应季</span><strong>冬瓜</strong><em>603</em></a>					<div class="others"><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=244"><span class="yjtip">应季</span><strong>丝瓜</strong><em>545</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=346"><span class="yjtip">应季</span><strong>山药</strong><em>536</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1604"><span class="yjtip">应季</span><strong>杏鲍菇</strong><em>476</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=932"><span class="yjtip">应季</span><strong>草鱼</strong><em>425</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=469"><span class="yjtip">应季</span><strong>苹果</strong><em>418</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=317"><span class="yjtip">应季</span><strong>莴笋</strong><em>387</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1064"><span class="yjtip">应季</span><strong>鱿鱼</strong><em>316</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=608"><span class="yjtip">应季</span><strong>芒果</strong><em>309</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25086"><span class="yjtip">应季</span><strong>羊肉</strong><em>296</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=611"><span class="yjtip">应季</span><strong>香蕉</strong><em>295</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=910"><strong>鸡蛋</strong><em>6691</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1507"><strong>面粉</strong><em>6330</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25243"><strong>低筋面粉</strong><em>3398</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25021"><strong>猪肉</strong><em>2607</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25202"><strong>五花肉</strong><em>2505</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1545"><strong>胡萝卜</strong><em>2382</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25241"><strong>高筋面粉</strong><em>2214</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=688"><strong>猪大排</strong><em>1567</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25222"><strong>柿子椒</strong><em>1536</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=89"><strong>马铃薯丁</strong><em>1475</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24997"><strong>猪肉馅</strong><em>1284</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=31"><strong>大米</strong><em>1279</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=452"><strong>香菇</strong><em>1236</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=446"><strong>黑木耳</strong><em>1220</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=56"><strong>米饭</strong><em>1211</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=215"><strong>茄子</strong><em>1070</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=261"><strong>洋葱</strong><em>1017</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25124"><strong>鸡肉</strong><em>1002</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=12"><strong>面条（生</strong><em>980</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25538"><strong>白菜</strong><em>965</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25855"><strong>毛豆腐</strong><em>921</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=50"><strong>糯米</strong><em>839</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=821"><strong>鸡翅</strong><em>808</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25476"><strong>糯米粉</strong><em>806</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=264"><strong>韭菜</strong><em>767</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=210"><strong>豇豆</strong><em>756</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1400"><strong>番茄酱</strong><em>716</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=285"><strong>卷心菜</strong><em>689</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=21763"><strong>荷兰乳牛</strong><em>636</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=304"><strong>芹菜</strong><em>633</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=114"><strong>豆腐</strong><em>620</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=736"><strong>香肠</strong><em>611</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1795"><strong>虾仁</strong><em>606</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=240"><strong>苦瓜</strong><em>594</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=294"><strong>菠菜</strong><em>568</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=872"><strong>牛奶</strong><em>567</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25199"><strong>猪里脊肉</strong><em>551</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=820"><strong>鸡胸脯肉</strong><em>549</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1460"><strong>酵母(干)</strong><em>546</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=106"><strong>黄豆</strong><em>521</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=288"><strong>西兰花</strong><em>518</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=441"><strong>金针菇</strong><em>492</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25230"><strong>淡奶油</strong><em>480</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=103"><strong>粉丝</strong><em>475</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=457"><strong>银耳</strong><em>472</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=690"><strong>猪蹄</strong><em>471</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25475"><strong>紫薯</strong><em>463</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=275"><strong>小白菜</strong><em>458</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=286"><strong>菜花</strong><em>446</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=2025"><strong>水</strong><em>446</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25070"><strong>红椒</strong><em>436</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=67"><strong>玉米面</strong><em>435</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=903"><strong>黄油</strong><em>435</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=127"><strong>豆腐皮</strong><em>433</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25363"><strong>玉米</strong><em>430</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25189"><strong>红薯</strong><em>414</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24917"><strong>培根</strong><em>409</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24824"><strong>食盐</strong><em>409</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24482"><strong>元贞糖</strong><em>404</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=132"><strong>豆腐干</strong><em>400</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1666"><strong>腊肉</strong><em>381</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=202"><strong>毛豆</strong><em>376</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25256"><strong>花生</strong><em>376</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=743"><strong>火腿</strong><em>375</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=953"><strong>鲫鱼</strong><em>371</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25197"><strong>葱</strong><em>336</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25129"><strong>鸭肉</strong><em>335</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=246"><strong>西葫芦</strong><em>329</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25490"><strong>牛腩</strong><em>326</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=348"><strong>芋头</strong><em>323</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25194"><strong>蒜</strong><em>322</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=255"><strong>蒜苔</strong><em>313</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25497"><strong>蘑菇</strong><em>313</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25127"><strong>白糖</strong><em>311</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=218"><strong>茄子(紫</strong><em>310</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=823"><strong>鸡爪</strong><em>304</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=181"><strong>红萝卜</strong><em>284</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25556"><strong>全麦粉</strong><em>283</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1575"><strong>西芹</strong><em>279</em></a><a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25494"><strong>酸菜</strong><em>276</em></a></div>
-										</dd>
-					<dd class="long clearfix filter_otherbtn">展开全部 >></dd>				</dl>
-							</div>
-		</div>
-		<div style="padding-top:20px;width:232px;overflow:hidden;"><script>
-(function() {
-    var s = "_" + Math.random().toString(36).slice(2);
-    document.write('<div id="' + s + '"></div>');
-    (window.slotbydup=window.slotbydup || []).push({
-        id: '502312',
-        container: s,
-        size: '230,300',
-        display: 'inlay-fix'
-    });
-})();
-</script></div>
-	</div>
-	<div class="listtyle1_w" id="listtyle1_w">
-		<div class="listtyle1_list clearfix" id="listtyle1_list">
-		<div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/heyejiaohuaji_6.html" title="荷叶叫花鸡" class="big">
-				<img class="img" alt="荷叶叫花鸡" src="images/a13666470_159635697189755.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>荷叶叫花鸡</strong><span>0 评论  1 人气</span><em>小鱼哥的私房</em></div>
-						<div class="c2"><ul><li class="li1">15步 / 大概数小时</li><li class="li2">烤 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/suannijiangdou_4.html" title="蒜泥豇豆" class="big">
-				<img class="img" alt="蒜泥豇豆" src="images/a3701143_159619834166395.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>蒜泥豇豆</strong><span>0 评论  1 人气</span><em>石榴树2008</em></div>
-						<div class="c2"><ul><li class="li1">5步 / 大概30分钟</li><li class="li2">拌 / 酸辣味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/lazijiding_62.html" title="辣子鸡丁" class="big">
-				<img class="img" alt="辣子鸡丁" src="images/a14744961_159619456750297.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>辣子鸡丁</strong><span>0 评论  10 人气</span><em>鱼儿AA567</em></div>
-						<div class="c2"><ul><li class="li1">14步 / 大概15分钟</li><li class="li2">炒 / 香辣味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/mayishangshu_136.html" title="蚂蚁上树" class="big">
-				<img class="img" alt="蚂蚁上树" src="images/a14668679_159616571521742.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>蚂蚁上树</strong><span>0 评论  1 人气</span><em>位劭婧</em></div>
-						<div class="c2"><ul><li class="li1">8步 / 大概30分钟</li><li class="li2">炒 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/hongshaodoufu_71.html" title="红烧豆腐" class="big">
-				<img class="img" alt="红烧豆腐" src="images/a3781954_159618220782590.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>红烧豆腐</strong><span>0 评论  1 人气</span><em>阿大^.^</em></div>
-						<div class="c2"><ul><li class="li1">6步 / 大概15分钟</li><li class="li2">烧 / 咸鲜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/zhengdoujiao_10.html" title="蒸豆角" class="big">
-				<img class="img" alt="蒸豆角" src="images/a6419256_159613028560798.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>蒸豆角</strong><span>0 评论  1 人气</span><em>花凝雨嫣</em></div>
-						<div class="c2"><ul><li class="li1">11步 / 大概10分钟</li><li class="li2">蒸 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/fanqiechaosigua_9.html" title="番茄炒丝瓜" class="big">
-				<img class="img" alt="番茄炒丝瓜" src="images/a4071567_159548415005180.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>番茄炒丝瓜</strong><span>0 评论  1 人气</span><em>老方小雨</em></div>
-						<div class="c2"><ul><li class="li1">12步 / 大概10分钟</li><li class="li2">炒 / 酸甜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/tudoudunniurou_55.html" title="土豆炖牛肉" class="big">
-				<img class="img" alt="土豆炖牛肉" src="images/a3324407_159618154408960.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>土豆炖牛肉</strong><span>0 评论  2 人气</span><em>髅小彬</em></div>
-						<div class="c2"><ul><li class="li1">9步 / 大概90分钟</li><li class="li2">炖 / 咸鲜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/shenyezuichandemeishixianglaxiawei.html" title="#深夜最馋的美食#香辣虾尾" class="big">
-				<img class="img" alt="#深夜最馋的美食#香辣虾尾" src="images/a5129506_159618172516149.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>#深夜最馋的美食#香辣虾尾</strong><span>0 评论  1 人气</span><em>努努系努努</em></div>
-						<div class="c2"><ul><li class="li1">4步 / 大概30分钟</li><li class="li2">炒 / 香辣味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/shousibaocai_145.html" title="手撕包菜" class="big">
-				<img class="img" alt="手撕包菜" src="images/a3781954_159617937827295.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>手撕包菜</strong><span>0 评论  1 人气</span><em>阿大^.^</em></div>
-						<div class="c2"><ul><li class="li1">5步 / 大概15分钟</li><li class="li2">炒 / 咸鲜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/doujiaochaohuluobopian.html" title="豆角炒胡萝卜片" class="big">
-				<img class="img" alt="豆角炒胡萝卜片" src="images/a6419256_159617626684574.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>豆角炒胡萝卜片</strong><span>0 评论  1 人气</span><em>花凝雨嫣</em></div>
-						<div class="c2"><ul><li class="li1">7步 / 大概10分钟</li><li class="li2">炒 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/shuijingbaicaijuan.html" title="水晶白菜卷" class="big">
-				<img class="img" alt="水晶白菜卷" src="images/a13813007_159617604818365.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>水晶白菜卷</strong><span>0 评论  1 人气</span><em>原味生活•家</em></div>
-						<div class="c2"><ul><li class="li1">6步 / 大概30分钟</li><li class="li2">蒸 / 咸鲜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/haoyousuannishengcai_2.html" title="蚝油蒜泥生菜" class="big">
-				<img class="img" alt="蚝油蒜泥生菜" src="images/a13134870_159611247982937.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>蚝油蒜泥生菜</strong><span>0 评论  1 人气</span><em>蕾宝的烟味生活</em></div>
-						<div class="c2"><ul><li class="li1">5步 / 大概5分钟</li><li class="li2">炒 / 蒜香味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/rishikaliduntudou.html" title="日式咖喱炖土豆" class="big">
-				<img class="img" alt="日式咖喱炖土豆" src="images/a3994922_159610800775978.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>日式咖喱炖土豆</strong><span>0 评论  1 人气</span><em>Dream芸_</em></div>
-						<div class="c2"><ul><li class="li1">11步 / 大概15分钟</li><li class="li2">炖 / 咖喱味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/guobaorou_115.html" title="锅包肉" class="big">
-				<img class="img" alt="锅包肉" src="images/a10276747_159617091225123.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>锅包肉</strong><span>0 评论  15 人气</span><em>婷筱葶</em></div>
-						<div class="c2"><ul><li class="li1">8步 / 大概30分钟</li><li class="li2">其它工艺 / 酸甜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/kaoqiezi_42.html" title="烤茄子" class="big">
-				<img class="img" alt="烤茄子" src="images/a10031823_159611412282499.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>烤茄子</strong><span>0 评论  1 人气</span><em>水怜忧</em></div>
-						<div class="c2"><ul><li class="li1">4步 / 大概15分钟</li><li class="li2">烤 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/qinghuajiaolalupinpan.html" title="青花椒辣卤拼盘" class="big">
-				<img class="img" alt="青花椒辣卤拼盘" src="images/a14225511_159611537632292.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>青花椒辣卤拼盘</strong><span>0 评论  1 人气</span><em>饭FAN姐</em></div>
-						<div class="c2"><ul><li class="li1">10步 / 大概数小时</li><li class="li2">卤 / 咸鲜味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div><div class="listtyle1">
-			<a target="_blank" href="http://www.meishij.net/zuofa/xiangjiandonggua.html" title="香煎冬瓜" class="big">
-				<img class="img" alt="香煎冬瓜" src="images/a13134870_159611724117377.jpeg">
-				<div class="i_w">
-					<div class="i" style="margin-top: 0px;">
-						<div class="c1"><strong>香煎冬瓜</strong><span>0 评论  1 人气</span><em>蕾宝的烟味生活</em></div>
-						<div class="c2"><ul><li class="li1">5步 / 大概15分钟</li><li class="li2">煎 / 家常味</li></ul></div>					</div>
-				</div>
-							</a>
-		</div>	</div><!-- listtyle1_list end -->
-	<div class="listtyle1_page"><div class="listtyle1_page_w"><a href="https://www.paichi.net/chufang/diy/?&page=1" class="current">1</a><a href="https://www.paichi.net/chufang/diy/?&page=2" class>2</a><a href="https://www.paichi.net/chufang/diy/?&page=3" class>3</a><a href="https://www.paichi.net/chufang/diy/?&page=4" class>4</a><a href="https://www.paichi.net/chufang/diy/?&page=5" class>5</a><span>...</span><a href="https://www.paichi.net/chufang/diy/?&page=2" class="next">下一页</a><span class="gopage"><form action="https://www.paichi.net/list.php"><input type="hidden" value="13" name="lm">共56页，到第 <input type="text" class="text" value="2" name="page"> 页 <input type="submit" class="submit" value="确定"></form></span></div></div>	<script type="text/javascript" src="js/jewnfkmaf.js"></script>
-	</div>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" title="返回家常菜谱大全的顶部"
+                                                                                         class="backtotop pngFix">回到顶部</a>
 </div>
+<div class="main_w clearfix">
+    <div class="main">
+        <div class="listnav clearfix" id="listnav">
+            <ul class="listnav_ul" id="listnav_ul">
+                <li disable="1"><a class="link">我的美食属性（未开放）</a></li>
+                <li class="current hover"><h1><a href="https://www.paichi.net/chufang/diy/" class="link">家常菜谱</a></h1>
+                </li>
+                <li><a href="/china-food/caixi/" class="link">中华菜系</a></li>
+                <li><a href="/china-food/xiaochi/" class="link">各地小吃</a></li>
+                <li><a href="/chufang/diy/guowaicaipu1/" class="link">外国菜谱</a></li>
+                <li><a href="/hongpei/" class="link">烘焙</a></li>
+                <li><a href="/pengren/" class="link">厨房百科</a></li>
+                <li><a href="https://www.paichi.net/shicai/" class="link">食材百科</a></li>
+            </ul>
+            <div class="listnav_con clearfix" id="listnav_con_c">
+                <dl class="listnav_dl_style1 w990 bb1 clearfix">
+                    <dt>家常菜谱</dt>
+                    <dd><a href="https://www.paichi.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/sijiacai/">私家菜</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/langcaipu/">凉菜</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/haixian/">海鲜</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/recaipu/">热菜</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/sushi/">素食</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/jiangliaozhanliao/">酱料蘸料</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/weibolucaipu/">微波炉</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/huoguo/">火锅底料</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/ganguo/">干果制作</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/rujiangcai/">卤酱</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/yinpin/">时尚饮品</a></dd>
+                </dl>
+                <dl class="listnav_dl_style1 w300 br1 clearfix">
+                    <dt>每日三餐</dt>
+                    <dd><a href="https://www.paichi.net/chufang/diy/zaocan/">早餐</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/wucan/">午餐</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/wancan/">晚餐</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/xiawucha/">下午茶</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/yexiao/">夜宵</a></dd>
+                </dl>
+                <dl class="listnav_dl_style1 w330 br1 clearfix">
+                    <dt>人群</dt>
+                    <dd><a href="https://www.paichi.net/chufang/diy/laonian/">老年人</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/chanfu/">产妇</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/yunfu/">孕妇</a></dd>
+                    <dd><a href="https://www.paichi.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>
+                </dl>
+                <dl class="listnav_dl_style1 w360 clearfix">
+                    <dt>功效</dt>
+                    <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dd>
+                    <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dd>
+                    <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/">脏腑调理</a></dd>
+                    <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="bbtitles">印象中的那些妈妈的味道<span class="paixu"><a
+                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270" class="current">最新</a> | <a
+                href="/list.php?sortby=renqi&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270">最热</a></span></div>
+        <div class="liststyle1_w clearfix">
+            <div class="fliterstyle1" id="fliterstyle1">
+                <div class="fliterstyle1_main">
+                    <ul class="tab">
+                        <li class="li1" po="1"><a href="####">普通筛选</a></li>
+                        <li class="li2 current" po="2"><a href="####">食材筛选</a><span class="littletips_new"></span></li>
+                    </ul>
+                    <div class="tabcon" po="1" style="display:none;">
+                        <dl class="clearfix">
+                            <dt class="pngFix">选择难度</dt>
+                            <dd class="clearfix"><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=1">新手尝试</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=2">初级入门</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=3">初中水平</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=4">中级掌勺</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=5">高级厨师</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&md=6">厨神级</a>
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt class="pngFix">选择工艺</dt>
+                            <dd class="clearfix bb0">
+                                <a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=192">炒</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=156">蒸</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=194">煮</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=124">炖</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=141">拌</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=149">烧</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=129">煎</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=153">炸</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=220">烘焙</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=251">微波</a>
+                                <div class="others"><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=130">烤</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=147">煲</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=144">焖</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=136">冻</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=252">烙</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=148">砂锅</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=134">腌</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=138">卤</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=132">酱</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=127">烩</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=112">扒</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=114">爆</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=140">炝</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=142">熘</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=139">熏</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=123">汆</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=113">拔丝</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=253">榨汁</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=193">灼</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=256">泡</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=133">腊</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=119">糖蘸</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=255">干锅</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=262">焗</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=260">干煸</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=261">煨</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&gy=259">其他</a>
+                                </div>
+                            </dd>
+                            <dd class="long clearfix filter_otherbtn">展开全部 >></dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt class="pngFix">选择口味</dt>
+                            <dd class="clearfix">
+                                <a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=168">家常味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=187">香辣味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=160">咸鲜味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=185">甜味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=182">酸甜味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=180">酸辣味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=177">麻辣味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=170">酱香味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=257">奶香味</a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=183">蒜香味</a>
+                                <div class="others"><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=188">鱼香味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=162">葱香味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=166">果味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=186">五香味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=173">咖喱味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=171">椒麻味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=179">茄汁味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=266">酸味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=174">苦香味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=169">姜汁味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=165">怪味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=172">芥末味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=167">红油味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=164">豆瓣味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=176">麻酱味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=264">黑椒味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=265">糊辣味</a><a
+                                        href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&kw=189">其他</a>
+                                </div>
+                            </dd>
+                            <dd class="long clearfix filter_otherbtn">展开全部 >></dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt class="pngFix">选择时间</dt>
+                            <dd class="clearfix">
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=1"><5分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=2"><10分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=3"><15分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=4"><30分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=5"><60分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=6"><90分钟<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=7"><2小时<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=8"><数小时<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=9"><一天<a>
+								<a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&mt=10"><数天<a>
+									</数天<></a></一天<></a></数小时<></a></2小时<></a></90分钟<></a></60分钟<></a></30分钟<></a>
+                            </15分钟<></a></10分钟<></a></5分钟<></a></dd>
+                    </dl>
+                </div>
+                <div class="tabcon" po="2">
+                    <div class="tabcon_scsearch">
+                        <div class="w">
+                            <input type="text" class="text" name="q" id="yl_q" defaultval="请输入您想查找的食材"
+                                   value="请输入您想查找的食材" autocomplete="off"
+                                   onfocus="if(this.value=='请输入您想查找的食材'){this.value='';}$(this).css('color','#333');"
+                                   onblur="if(this.value==''){this.value='请输入您想查找的食材';$(this).css('color','#999');}">
+                            <input type="button" onclick="list_add_shicai()" class="submit pngFix" value=" ">
+                        </div>
+                    </div>
+                    <dl class="clearfix on">
+                        <dt class="pngFix">按数量排序</dt>
+                        <dd class="clearfix row2">
+                            <a href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=236"><span
+                                    class="yjtip">应季</span><strong>黄瓜</strong><em>1709</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25063"><span
+                                class="yjtip">应季</span><strong>牛肉</strong><em>1206</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25353"><span
+                                class="yjtip">应季</span><strong>虾</strong><em>1206</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=241"><span
+                                class="yjtip">应季</span><strong>南瓜</strong><em>1121</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=88"><span
+                                class="yjtip">应季</span><strong>土豆</strong><em>1031</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=822"><span
+                                class="yjtip">应季</span><strong>鸡腿</strong><em>987</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=219"><span
+                                class="yjtip">应季</span><strong>西红柿</strong><em>864</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=337"><span
+                                class="yjtip">应季</span><strong>藕</strong><em>649</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=178"><span
+                                class="yjtip">应季</span><strong>白萝卜</strong><em>648</em></a><a
+                                href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=231"><span
+                                class="yjtip">应季</span><strong>冬瓜</strong><em>603</em></a>
+                            <div class="others"><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=244"><span
+                                    class="yjtip">应季</span><strong>丝瓜</strong><em>545</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=346"><span
+                                    class="yjtip">应季</span><strong>山药</strong><em>536</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1604"><span
+                                    class="yjtip">应季</span><strong>杏鲍菇</strong><em>476</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=932"><span
+                                    class="yjtip">应季</span><strong>草鱼</strong><em>425</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=469"><span
+                                    class="yjtip">应季</span><strong>苹果</strong><em>418</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=317"><span
+                                    class="yjtip">应季</span><strong>莴笋</strong><em>387</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1064"><span
+                                    class="yjtip">应季</span><strong>鱿鱼</strong><em>316</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=608"><span
+                                    class="yjtip">应季</span><strong>芒果</strong><em>309</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25086"><span
+                                    class="yjtip">应季</span><strong>羊肉</strong><em>296</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=611"><span
+                                    class="yjtip">应季</span><strong>香蕉</strong><em>295</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=910"><strong>鸡蛋</strong><em>6691</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1507"><strong>面粉</strong><em>6330</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25243"><strong>低筋面粉</strong><em>3398</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25021"><strong>猪肉</strong><em>2607</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25202"><strong>五花肉</strong><em>2505</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1545"><strong>胡萝卜</strong><em>2382</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25241"><strong>高筋面粉</strong><em>2214</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=688"><strong>猪大排</strong><em>1567</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25222"><strong>柿子椒</strong><em>1536</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=89"><strong>马铃薯丁</strong><em>1475</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24997"><strong>猪肉馅</strong><em>1284</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=31"><strong>大米</strong><em>1279</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=452"><strong>香菇</strong><em>1236</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=446"><strong>黑木耳</strong><em>1220</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=56"><strong>米饭</strong><em>1211</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=215"><strong>茄子</strong><em>1070</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=261"><strong>洋葱</strong><em>1017</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25124"><strong>鸡肉</strong><em>1002</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=12"><strong>面条（生</strong><em>980</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25538"><strong>白菜</strong><em>965</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25855"><strong>毛豆腐</strong><em>921</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=50"><strong>糯米</strong><em>839</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=821"><strong>鸡翅</strong><em>808</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25476"><strong>糯米粉</strong><em>806</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=264"><strong>韭菜</strong><em>767</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=210"><strong>豇豆</strong><em>756</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1400"><strong>番茄酱</strong><em>716</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=285"><strong>卷心菜</strong><em>689</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=21763"><strong>荷兰乳牛</strong><em>636</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=304"><strong>芹菜</strong><em>633</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=114"><strong>豆腐</strong><em>620</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=736"><strong>香肠</strong><em>611</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1795"><strong>虾仁</strong><em>606</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=240"><strong>苦瓜</strong><em>594</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=294"><strong>菠菜</strong><em>568</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=872"><strong>牛奶</strong><em>567</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25199"><strong>猪里脊肉</strong><em>551</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=820"><strong>鸡胸脯肉</strong><em>549</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1460"><strong>酵母(干)</strong><em>546</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=106"><strong>黄豆</strong><em>521</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=288"><strong>西兰花</strong><em>518</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=441"><strong>金针菇</strong><em>492</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25230"><strong>淡奶油</strong><em>480</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=103"><strong>粉丝</strong><em>475</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=457"><strong>银耳</strong><em>472</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=690"><strong>猪蹄</strong><em>471</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25475"><strong>紫薯</strong><em>463</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=275"><strong>小白菜</strong><em>458</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=286"><strong>菜花</strong><em>446</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=2025"><strong>水</strong><em>446</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25070"><strong>红椒</strong><em>436</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=67"><strong>玉米面</strong><em>435</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=903"><strong>黄油</strong><em>435</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=127"><strong>豆腐皮</strong><em>433</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25363"><strong>玉米</strong><em>430</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25189"><strong>红薯</strong><em>414</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24917"><strong>培根</strong><em>409</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24824"><strong>食盐</strong><em>409</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=24482"><strong>元贞糖</strong><em>404</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=132"><strong>豆腐干</strong><em>400</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1666"><strong>腊肉</strong><em>381</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=202"><strong>毛豆</strong><em>376</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25256"><strong>花生</strong><em>376</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=743"><strong>火腿</strong><em>375</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=953"><strong>鲫鱼</strong><em>371</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25197"><strong>葱</strong><em>336</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25129"><strong>鸭肉</strong><em>335</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=246"><strong>西葫芦</strong><em>329</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25490"><strong>牛腩</strong><em>326</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=348"><strong>芋头</strong><em>323</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25194"><strong>蒜</strong><em>322</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=255"><strong>蒜苔</strong><em>313</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25497"><strong>蘑菇</strong><em>313</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25127"><strong>白糖</strong><em>311</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=218"><strong>茄子(紫</strong><em>310</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=823"><strong>鸡爪</strong><em>304</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=181"><strong>红萝卜</strong><em>284</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25556"><strong>全麦粉</strong><em>283</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=1575"><strong>西芹</strong><em>279</em></a><a
+                                    href="/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=25494"><strong>酸菜</strong><em>276</em></a>
+                            </div>
+                        </dd>
+                        <dd class="long clearfix filter_otherbtn">展开全部 >></dd>
+                    </dl>
+                </div>
+            </div>
+            <div style="padding-top:20px;width:232px;overflow:hidden;">
+                <script>
+                    (function () {
+                        var s = "_" + Math.random().toString(36).slice(2);
+                        document.write('<div id="' + s + '"></div>');
+                        (window.slotbydup = window.slotbydup || []).push({
+                            id: '502312',
+                            container: s,
+                            size: '230,300',
+                            display: 'inlay-fix'
+                        });
+                    })();
+                </script>
+            </div>
+        </div>
+        <div class="listtyle1_w" id="listtyle1_w">
+            <div class="listtyle1_list clearfix" id="listtyle1_list">
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/heyejiaohuaji_6.html" title="荷叶叫花鸡"
+                       class="big">
+                        <img class="img" alt="荷叶叫花鸡" th:src="@{/js/chufang/images/a13666470_159635697189755.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>荷叶叫花鸡</strong><span>0 评论  1 人气</span><em>小鱼哥的私房</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">15步 / 大概数小时</li>
+                                        <li class="li2">烤 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/suannijiangdou_4.html" title="蒜泥豇豆"
+                       class="big">
+                        <img class="img" alt="蒜泥豇豆" th:src="@{/js/chufang/images/a3701143_159619834166395.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>蒜泥豇豆</strong><span>0 评论  1 人气</span><em>石榴树2008</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">5步 / 大概30分钟</li>
+                                        <li class="li2">拌 / 酸辣味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/lazijiding_62.html" title="辣子鸡丁" class="big">
+                        <img class="img" alt="辣子鸡丁" th:src="@{/js/chufang/images/a14744961_159619456750297.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>辣子鸡丁</strong><span>0 评论  10 人气</span><em>鱼儿AA567</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">14步 / 大概15分钟</li>
+                                        <li class="li2">炒 / 香辣味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/mayishangshu_136.html" title="蚂蚁上树"
+                       class="big">
+                        <img class="img" alt="蚂蚁上树" th:src="@{/js/chufang/images/a14668679_159616571521742.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>蚂蚁上树</strong><span>0 评论  1 人气</span><em>位劭婧</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">8步 / 大概30分钟</li>
+                                        <li class="li2">炒 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/hongshaodoufu_71.html" title="红烧豆腐"
+                       class="big">
+                        <img class="img" alt="红烧豆腐" th:src="@{/js/chufang/images/a3781954_159618220782590.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>红烧豆腐</strong><span>0 评论  1 人气</span><em>阿大^.^</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">6步 / 大概15分钟</li>
+                                        <li class="li2">烧 / 咸鲜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/zhengdoujiao_10.html" title="蒸豆角" class="big">
+                        <img class="img" alt="蒸豆角" th:src="@{/js/chufang/images/a6419256_159613028560798.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>蒸豆角</strong><span>0 评论  1 人气</span><em>花凝雨嫣</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">11步 / 大概10分钟</li>
+                                        <li class="li2">蒸 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/fanqiechaosigua_9.html" title="番茄炒丝瓜"
+                       class="big">
+                        <img class="img" alt="番茄炒丝瓜" th:src="@{/js/chufang/images/a4071567_159548415005180.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>番茄炒丝瓜</strong><span>0 评论  1 人气</span><em>老方小雨</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">12步 / 大概10分钟</li>
+                                        <li class="li2">炒 / 酸甜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/tudoudunniurou_55.html" title="土豆炖牛肉"
+                       class="big">
+                        <img class="img" alt="土豆炖牛肉" th:src="@{/js/chufang/images/a3324407_159618154408960.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>土豆炖牛肉</strong><span>0 评论  2 人气</span><em>髅小彬</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">9步 / 大概90分钟</li>
+                                        <li class="li2">炖 / 咸鲜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/shenyezuichandemeishixianglaxiawei.html"
+                       title="#深夜最馋的美食#香辣虾尾" class="big">
+                        <img class="img" alt="#深夜最馋的美食#香辣虾尾" th:src="@{/js/chufang/images/a5129506_159618172516149.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>#深夜最馋的美食#香辣虾尾</strong><span>0 评论  1 人气</span><em>努努系努努</em>
+                                </div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">4步 / 大概30分钟</li>
+                                        <li class="li2">炒 / 香辣味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/shousibaocai_145.html" title="手撕包菜"
+                       class="big">
+                        <img class="img" alt="手撕包菜" th:src="@{/js/chufang/images/a3781954_159617937827295.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>手撕包菜</strong><span>0 评论  1 人气</span><em>阿大^.^</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">5步 / 大概15分钟</li>
+                                        <li class="li2">炒 / 咸鲜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/doujiaochaohuluobopian.html" title="豆角炒胡萝卜片"
+                       class="big">
+                        <img class="img" alt="豆角炒胡萝卜片" th:src="@{/js/chufang/images/a6419256_159617626684574.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>豆角炒胡萝卜片</strong><span>0 评论  1 人气</span><em>花凝雨嫣</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">7步 / 大概10分钟</li>
+                                        <li class="li2">炒 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/shuijingbaicaijuan.html" title="水晶白菜卷"
+                       class="big">
+                        <img class="img" alt="水晶白菜卷" th:src="@{/js/chufang/images/a13813007_159617604818365.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>水晶白菜卷</strong><span>0 评论  1 人气</span><em>原味生活•家</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">6步 / 大概30分钟</li>
+                                        <li class="li2">蒸 / 咸鲜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/haoyousuannishengcai_2.html" title="蚝油蒜泥生菜"
+                       class="big">
+                        <img class="img" alt="蚝油蒜泥生菜" th:src="@{/js/chufang/images/a13134870_159611247982937.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>蚝油蒜泥生菜</strong><span>0 评论  1 人气</span><em>蕾宝的烟味生活</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">5步 / 大概5分钟</li>
+                                        <li class="li2">炒 / 蒜香味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/rishikaliduntudou.html" title="日式咖喱炖土豆"
+                       class="big">
+                        <img class="img" alt="日式咖喱炖土豆" th:src="@{/js/chufang/images/a3994922_159610800775978.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>日式咖喱炖土豆</strong><span>0 评论  1 人气</span><em>Dream芸_</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">11步 / 大概15分钟</li>
+                                        <li class="li2">炖 / 咖喱味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/guobaorou_115.html" title="锅包肉" class="big">
+                        <img class="img" alt="锅包肉" th:src="@{/js/chufang/images/a10276747_159617091225123.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>锅包肉</strong><span>0 评论  15 人气</span><em>婷筱葶</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">8步 / 大概30分钟</li>
+                                        <li class="li2">其它工艺 / 酸甜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/kaoqiezi_42.html" title="烤茄子" class="big">
+                        <img class="img" alt="烤茄子" th:src="@{/js/chufang/images/a10031823_159611412282499.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>烤茄子</strong><span>0 评论  1 人气</span><em>水怜忧</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">4步 / 大概15分钟</li>
+                                        <li class="li2">烤 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/qinghuajiaolalupinpan.html" title="青花椒辣卤拼盘"
+                       class="big">
+                        <img class="img" alt="青花椒辣卤拼盘" th:src="@{/js/chufang/images/a14225511_159611537632292.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>青花椒辣卤拼盘</strong><span>0 评论  1 人气</span><em>饭FAN姐</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">10步 / 大概数小时</li>
+                                        <li class="li2">卤 / 咸鲜味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="listtyle1">
+                    <a target="_blank" href="http://www.paichi.net/zuofa/xiangjiandonggua.html" title="香煎冬瓜"
+                       class="big">
+                        <img class="img" alt="香煎冬瓜" th:src="@{/js/chufang/images/a13134870_159611724117377.jpeg}">
+                        <div class="i_w">
+                            <div class="i" style="margin-top: 0px;">
+                                <div class="c1"><strong>香煎冬瓜</strong><span>0 评论  1 人气</span><em>蕾宝的烟味生活</em></div>
+                                <div class="c2">
+                                    <ul>
+                                        <li class="li1">5步 / 大概15分钟</li>
+                                        <li class="li2">煎 / 家常味</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- listtyle1_list end -->
+            <div class="listtyle1_page">
+                <div class="listtyle1_page_w"><a href="https://www.paichi.net/chufang/diy/?&page=1"
+                                                 class="current">1</a><a
+                        href="https://www.paichi.net/chufang/diy/?&page=2" class>2</a><a
+                        href="https://www.paichi.net/chufang/diy/?&page=3" class>3</a><a
+                        href="https://www.paichi.net/chufang/diy/?&page=4" class>4</a><a
+                        href="https://www.paichi.net/chufang/diy/?&page=5" class>5</a><span>...</span><a
+                        href="https://www.paichi.net/chufang/diy/?&page=2" class="next">下一页</a><span class="gopage"><form
+                        action="https://www.paichi.net/list.php"><input type="hidden" value="13"
+                                                                        name="lm">共56页，到第 <input type="text"
+                                                                                                 class="text" value="2"
+                                                                                                 name="page"> 页 <input
+                        type="submit" class="submit" value="确定"></form></span></div>
+            </div>
+            <script type="text/javascript" th:src="@{/js/chufang/js/jewnfkmaf.js}"></script>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
-_czc.push(﻿﻿['_trackEvent','pc','pc_list']);
-_czc.push(﻿﻿['_trackEvent','pc','pc_list_class_13']);
-var is_list_adding = 0;
-function list_add_shicai(){
-	var q = $('#yl_q').val();
-	if(q != '' && q != '请输入您想查找的食材'){
-		if(is_list_adding == 0){
-			is_list_adding = 1;
-			$.get('/ajax/list_add_yl.php?c=' + encodeURIComponent(q), null,
-			function(data) {
-				is_list_adding = 0;
-				data = parseInt(data);
-				if(data > 0){
-					location.href = '/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=' + data;
-				}else{
-					alert('未能识别的食材，请尝试其他关键字');
-					$('#yl_q').val('');
-				}
-			});
-		}
-	}else{
-		alert('请输入您想查找的食材');
-	}
-}
-$(function(){
-	var js = document.createElement("script");
-	js.language = "javascript";
-	js.src = "http://click.meishij.net/pl/lclick.php?i=13&addclick=1&_" +(new Date()).getTime();
-	document.body.appendChild(js);
-		$("#yl_q").keypress(function(event) {
-		if (event.keyCode == 13) {
-			list_add_shicai()
-		}
-	});
-});
+    _czc.push(﻿﻿['_trackEvent', 'pc', 'pc_list']
+    )
+    ;
+    _czc.push(﻿﻿['_trackEvent', 'pc', 'pc_list_class_13']
+    )
+    ;
+    var is_list_adding = 0;
+
+    function list_add_shicai() {
+        var q = $('#yl_q').val();
+        if (q != '' && q != '请输入您想查找的食材') {
+            if (is_list_adding == 0) {
+                is_list_adding = 1;
+                $.get('/ajax/list_add_yl.php?c=' + encodeURIComponent(q), null,
+                    function (data) {
+                        is_list_adding = 0;
+                        data = parseInt(data);
+                        if (data > 0) {
+                            location.href = '/list.php?sortby=update&words=%E5%AE%B6%E5%B8%B8%E8%8F%9C&lm=270&yl=' + data;
+                        } else {
+                            alert('未能识别的食材，请尝试其他关键字');
+                            $('#yl_q').val('');
+                        }
+                    });
+            }
+        } else {
+            alert('请输入您想查找的食材');
+        }
+    }
+
+    $(function () {
+        var js = document.createElement("script");
+        js.language = "javascript";
+        js.src = "http://click.paichi.net/pl/lclick.php?i=13&addclick=1&_" + (new Date()).getTime();
+        document.body.appendChild(js);
+        $("#yl_q").keypress(function (event) {
+            if (event.keyCode == 13) {
+                list_add_shicai()
+            }
+        });
+    });
 </script>
-</div><div style="margin:0 auto;padding-top:20px;width:990px;"><div style="display:inline-block;vertical-align:top;"><script type="text/javascript" src="js/fasjbsigw.js"></script></div><div style="display:inline-block;vertical-align:top;"><script type="text/javascript" src="js/idvmevlje.js"></script></div></div><div class="main_footer pngFix">
-	<div class="footer_con1 clearfix">
-		<!--<p class="text pngFix"><a href="https://www.paichi.net/" class="footer_homelink"></a></p>-->
-		<div class="logobottom" style="height:196px;width:600px;background: url(images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
-			<a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
-		</div>
-		<div class="links">
-			<ul class="cleearfix">
-				<li class="sina"><a class="img" target="_blank" href="https://e.weibo.com/meishij"><span>关注：49万</span></a><p><a target="_blank" href="https://e.weibo.com/meishij">点击进入<br>PaiChi官方微博</a></p></li><li class="tengxun"><a class="img" target="_blank" href="https://user.qzone.qq.com/613171717"><span>关注：10.9万</span></a><p><a target="_blank" href="https://user.qzone.qq.com/613171717">点击进入<br>PaiChiQQ空间</a></p></li><li class="weixin"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a><p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码添加<br>PaiChi为微信好友</a></p></li><li class="download"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a><p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码下载<br>PaiChi手机客户端</a></p></li>
-			</ul>
-		</div>
-	</div>
-		<div class="footer_con3">
-		<ul class="clearfix">
-			<li><a target="_blank" href="https://j.meishi.cc/" title="公司简介">公司简介</a></li>
-			<li><a target="_blank" href="https://j.meishi.cc/aboutus.html" title="关于我们">关于我们</a></li>
-			<li><a target="_blank" href="https://j.meishi.cc/download.html" title="产品下载">产品下载</a></li>
-			<li><a target="_blank" href="https://j.meishi.cc/joinus.html" title="加入我们">加入我们</a></li>
-			<li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="联系我们">联系我们</a></li>		
-			<li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="商务合作">商务合作</a></li>
-			<li><a target="_blank" href="https://www.paichi.net/siteinfo/user_agreement.php" title="用户协议">用户协议</a></li>
-			<li><a target="_blank" href="https://www.paichi.net/siteinfo/privacy.php" title="用户协议">隐私政策</a></li>
-			<li><a target="_blank" href="https://www.paichi.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
-			<li><a target="_blank" href="https://www.paichi.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
-		</ul>
-		<p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备14030359号</a>/<a target="_blank" href="https://beian.gov.cn/" class="gray_a"><img src="images/20180208111357_93713.png">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
-	</div>
-</div><div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script></div></body></html>
+</div>
+<div style="margin:0 auto;padding-top:20px;width:990px;">
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/chufang/js/fasjbsigw.js}"></script>
+    </div>
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/chufang/js/idvmevlje.js}"></script>
+    </div>
+</div>
+<div class="main_footer pngFix">
+    <div class="footer_con1 clearfix">
+        <!--<p class="text pngFix"><a href="https://www.paichi.net/" class="footer_homelink"></a></p>-->
+        <div class="logobottom"
+             style="height:196px;width:600px;background: url(/js/chufang/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+            <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
+        </div>
+        <div class="links">
+            <ul class="cleearfix">
+                <li class="sina"><a class="img" target="_blank"
+					href="https://e.weibo.com/paichi"><span>关注：49万</span></a>
+                    <p><a target="_blank" href="https://e.weibo.com/paichi">点击进入<br>PaiChi官方微博</a></p></li>
+                <li class="tengxun"><a class="img" target="_blank" href="https://user.qzone.qq.com/613171717"><span>关注：10.9万</span></a>
+                    <p><a target="_blank" href="https://user.qzone.qq.com/613171717">点击进入<br>PaiChiQQ空间</a></p></li>
+                <li class="weixin"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码添加<br>PaiChi为微信好友</a></p></li>
+                <li class="download"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码下载<br>PaiChi手机客户端</a></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_con3">
+        <ul class="clearfix">
+            <li><a target="_blank" href="https://j.meishi.cc/" title="公司简介">公司简介</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/aboutus.html" title="关于我们">关于我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/download.html" title="产品下载">产品下载</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/joinus.html" title="加入我们">加入我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="联系我们">联系我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="商务合作">商务合作</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/user_agreement.php" title="用户协议">用户协议</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/privacy.php" title="用户协议">隐私政策</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+        </ul>
+        <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备14030359号</a>/
+			<a target="_blank" href="https://beian.gov.cn/" class="gray_a">
+				<img th:src="@{/js/chufang/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 paichi CO.,LTD.</p>
+    </div>
+</div>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
