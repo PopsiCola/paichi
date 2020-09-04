@@ -124,6 +124,14 @@
       <artifactId>ojdbc14</artifactId>
       <version>10.2.0.4.0</version>
     </dependency>
+
+    <!-- FastDFs文件转储，需要使用maven打包到本地仓库再使用 -->
+    <dependency>
+      <groupId>org.csource</groupId>
+      <artifactId>fastdfs-client-java</artifactId>
+      <version>1.29-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
   <build>
