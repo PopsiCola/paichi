@@ -67,10 +67,11 @@ input{outline: none;}
 .login_tips.true{background-position:0px -24px;color:#8fc31f;}
 .login_tips.false{background-position:0px -48px;color:#ea5d4e;}
 .login_tips.tip{background-position:0px 0px;color:#7ecef4;}
-.login_pw_tips{height:24px;line-height:24px;font-size:13px;margin-top:-10px;margin-bottom:10px;background:url(images/nl_pw_strongly.png) no-repeat;padding-left:80px;}
-.login_pw_tips.state1{background-position:0px -0px;color:#ea5d4e;}
-.login_pw_tips.state2{background-position:0px -24px;color:#f98120;}
-.login_pw_tips.state3{background-position:0px -48px;color:#8fc31f;}
+/*.login_pw_tips{height:24px;line-height:24px;font-size:13px;margin-top:-10px;margin-bottom:10px;background:url(/js/login/images/nl_pw_strongly.png) no-repeat;padding-left:80px;}*/
+.login_pw_tips{height:24px;line-height:24px;font-size:13px;margin-top:-10px;margin-bottom:10px;background:url(/js/login/images/20191112164645_930.png) no-repeat;padding-left:80px;}
+.login_pw_tips.state1{background-position:0px -48px;color:#ea5d4e;}
+.login_pw_tips.state2{background-position:0px -0px;color:#f98120;}
+.login_pw_tips.state3{background-position:0px -24px;color:#8fc31f;}
 .loginbox_title{width:100%;text-align:center;padding-top:14px;height:84px;line-height:84px;font-size:24px;font-weight:600;color:#999;}
 .loginbox_title a{color:#999;}
 .loginbox_title a.current{color:#333;}
