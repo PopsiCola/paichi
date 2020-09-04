@@ -2,16 +2,13 @@ package com.paichi.modules.index;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.paichi.common.util.VerificationCodeAdapter;
 import com.paichi.modules.user.service.IUserService;
-import com.paichi.modules.utils.VerificationCodeAdapter;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,12 +23,24 @@ public class IndexController {
 
     @Autowired
     private IUserService userService;
+    //文件保存地址
+    @Value("${afterImage.location}")
+    private String imgLocation;
+    //文件保存地址
+    @Value("${fastDFSPath}")
+    private String fastDFSPath;
 
     @RequestMapping("/index")
     public String index() {
         //return "index";
         return "index";
     }
+
+/*    @RequestMapping(value = "upload", method = RequestMethod.POST)
+    public String uploadFile(@RequestParam MultipartFile file) {
+        this.getClass().getClassLoader().getResource("fdfs_client.conf").getPath().replaceAll("%20"," ");
+        return "index";
+    }*/
 
     /**
      * 前去登录、注册页面
@@ -68,20 +77,26 @@ public class IndexController {
         return "privacy/index";
     }
 
+    /**
+     * 注册邮箱验证码发送
+     * @param maps
+     * @return
+     */
     @RequestMapping(value = "/sendRegistCode", method = RequestMethod.POST)
     public String sendRegistCode(@RequestBody Map<String, Object> maps) {
 
         return "login/index";
     }
 
-    @Value("${afterImage.location}")
-    private String imgLocation;
-
     @RequestMapping("/getImgInfo")
     @ResponseBody
     // 随机获取背景和拼图，返回json
     public String imgInfo(){
         VerificationCodePlace vcPlace = VerificationCodeAdapter.getRandomVerificationCodePlace(imgLocation);
+
+        vcPlace.setBackName(fastDFSPath + vcPlace.getBackName());
+        vcPlace.setMarkName(fastDFSPath + vcPlace.getMarkName());
+
         ObjectMapper om = new ObjectMapper();
         String jsonResult = "";
         try {

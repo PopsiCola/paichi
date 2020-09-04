@@ -255,7 +255,7 @@
 
         .yzmbox {
             width: 400px;
-            height: 230px;
+            height: 252px;
             background: #fff;
             border-radius: 24px;
             box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.3);
@@ -324,10 +324,15 @@
     <div class="yzmbox" id="yzm_yzmbox">
 
         <!--拼图验证码-->
+        <!--<div class="slide_img_content">
+            <img id="before_img" class="slide_img_mark" src="@{/verifyImage/after_image/sample_after_mark.png}">
+            <img id="back_img" src="@{/verifyImage/after_image/sample_after.png}">
+        </div>-->
         <div class="slide_img_content">
-            <img id="before_img" class="slide_img_mark" th:src="@{/verifyImage/after_image/sample_after_mark.png}">
-            <img id="back_img" th:src="@{/verifyImage/after_image/sample_after.png}">
+            <img id="before_img" class="slide_img_mark">
+            <img id="back_img" >
         </div>
+
         <div class="slider">
             <div class="slider_arror" onselectstart="return false;">
                 <img style="margin-top: 5px;" id="arror_icon" th:src="@{/verifyImage/icon/right_arror.png}" draggable="false" width="30px" height="30px">
@@ -382,10 +387,13 @@
                 success : function(data) {
                     lx = data.xLocation;
                     ly = data.yLocation;
-                    backImg = "/createVerfiyImg/" + data.backName;
-                    frontImg = "/createVerfiyImg/" + data.markName;
+                    /*backImg = "/createVerfiyImg/" + data.backName;
+                    frontImg = "/createVerfiyImg/" + data.markName;*/
+                    backImg = data.backName;
+                    frontImg = data.markName;
+
                     initImg(backImg, frontImg, ly);
-                    initMovement()
+                    initMovement();
                 },
                 error : function(){
                     alert("error")

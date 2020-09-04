@@ -37,8 +37,10 @@ function sum(x1, x2){
 
 // 拼图验证码用---初始化图片
 function initImg(backgroundImg, markImg, yLocation){
-    $('#back_img').prop('src', backgroundImg);
-    $('#before_img').prop('src', markImg);
+    /*$('#back_img').prop('src', backgroundImg);
+    $('#before_img').prop('src', markImg);*/
+    $('#back_img').attr('src', backgroundImg.toString())
+    $('#before_img').attr('src', markImg.toString());
     $('.slide_img_mark').css('margin-top', yLocation);
 }
 
@@ -93,18 +95,18 @@ function sliderEnd(e){
 
     sliderStart = false;
     finalX = $('.slide_img_mark').css('margin-left');
-    // 5像素的误差
+    // 2像素的误差
     finalX = finalX.toString().slice(0, -2);
-    if(finalX < (lx - 5) || finalX > (lx + 5)){
+    if(finalX < (lx - 2) || finalX > (lx + 2)){
         failed()
     }
     else if(yVerify()){
         console.log("verify success");
-        success()
+        success();
     }
     else{
         console.log("verify failed");
-        failed()
+        failed();
     }
 }
 
@@ -132,7 +134,7 @@ function success(){
         window.open('/index')
     }*/
 
-    setTimeout(successLink, 1000)
+    setTimeout(reset, 1000)
 }
 
 // 拼图验证码用---失败重置

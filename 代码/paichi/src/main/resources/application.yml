@@ -91,7 +91,7 @@ mybatis-plus:
 afterImage:
   resourceHandler: /after/**
   #生成图片的地址
-  location: src/main/resources/static/createVerfiyImg/
+  location: uploadFile/
 
 
 

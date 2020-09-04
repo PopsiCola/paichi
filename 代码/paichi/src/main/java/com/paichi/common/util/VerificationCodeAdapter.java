@@ -1,6 +1,7 @@
 package com.paichi.common.util;
 
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -41,6 +42,7 @@ public class VerificationCodeAdapter {
      * 抠图的边框宽度
      */
     private static int SLIDER_IMG_OUT_PADDING = 1;
+
 
     // 生成拼图样式
     private static int[][] getBlockData(){
@@ -158,7 +160,6 @@ public class VerificationCodeAdapter {
     // 获取图片
     private static BufferedImage getBufferedImage(String path) throws IOException{
         File file = new File(path);
-        System.out.println(file.getAbsolutePath());
         if(file.isFile()){
             return ImageIO.read(file);
         }
@@ -177,7 +178,6 @@ public class VerificationCodeAdapter {
         ImageIO.write(image,"png",bos);
         imagedata = bos.toByteArray();
         File outFile = new File(file);
-        System.out.println(outFile.getAbsolutePath());
         FileOutputStream out = new FileOutputStream(outFile);
         out.write(imagedata);
         out.close();
@@ -206,8 +206,12 @@ public class VerificationCodeAdapter {
             if (!new File(headPath).exists()) {
                 new File(headPath).mkdir();
             }
+
             writeImg(originImage, headPath + afterName);
             writeImg(markImage, headPath + markName);
+            //文件上传到FastDFS服务器
+            afterName = new FastDFSUtils().uploadFile(headPath + afterName);
+            markName = new FastDFSUtils().uploadFile(headPath + markName);
             vcPlace = new VerificationCodePlace(afterName, markName, locationX, locationY);
         }
 
