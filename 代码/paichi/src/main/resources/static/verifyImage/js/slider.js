@@ -39,8 +39,8 @@ function sum(x1, x2){
 function initImg(backgroundImg, markImg, yLocation){
     /*$('#back_img').prop('src', backgroundImg);
     $('#before_img').prop('src', markImg);*/
-    $('#back_img').attr('src', backgroundImg.toString())
-    $('#before_img').attr('src', markImg.toString());
+    $('#back_img').attr('src', backgroundImg)
+    $('#before_img').attr('src', markImg);
     $('.slide_img_mark').css('margin-top', yLocation);
 }
 
@@ -150,6 +150,29 @@ function failed(){
 
 // 拼图验证码用---修改位置和重置颜色
 function reset(){
+    // 初始化验证码
+    $.ajax({
+        type : "get",// 请求方式
+        url : ctx + "getImgInfo",// 发送请求地址
+        dataType : "json",
+        async : false,
+        // 请求成功后的回调函数有两个参数
+        success : function(data) {
+            lx = data.xLocation;
+            ly = data.yLocation;
+            /*backImg = "/createVerfiyImg/" + data.backName;
+            frontImg = "/createVerfiyImg/" + data.markName;*/
+            backImg = data.backName;
+            frontImg = data.markName;
+
+            initImg(backImg, frontImg, ly);
+            initMovement();
+        },
+        error : function(){
+            alert("error")
+        }
+    });
+
     $('.slider_mask').css('background-color', '#deee97');
 
     $('.slider_arror').css('margin-left', 0);
@@ -157,5 +180,6 @@ function reset(){
     $('.slide_img_mark').css('margin-left', 0);
 
     $('#arror_icon').prop('src', '/verifyImage/icon/right_arror.png');
-    $('.slider_tip').show()
+    $('.slider_tip').show();
+
 }

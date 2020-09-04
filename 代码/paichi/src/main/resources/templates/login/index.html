@@ -374,13 +374,11 @@
 
         //显示验证码验证弹窗
         function showYZM() {
-            $("#yzm_blackbg").fadeIn();
-            $("#yzm_yzmbox").fadeIn();
 
             // 初始化验证码
             $.ajax({
                 type : "get",// 请求方式
-                url : "/getImgInfo",// 发送请求地址
+                url : ctx + "getImgInfo",// 发送请求地址
                 dataType : "json",
                 async : false,
                 // 请求成功后的回调函数有两个参数
@@ -399,6 +397,12 @@
                     alert("error")
                 }
             });
+
+            //弹出拼图验证码
+            $("#yzm_blackbg").fadeIn();
+            $("#yzm_yzmbox").fadeIn();
+
+
         }
 
         function doPyzmNext() {
@@ -440,6 +444,11 @@
             $("#yzm_blackbg").click(function () {
                 $("#yzm_blackbg").fadeOut();
                 $("#yzm_yzmbox").fadeOut();
+
+                //重新拼图验证
+                $('#back_img').attr('src', '')
+                $('#before_img').attr('src', '');
+                $('.slide_img_mark').css('margin-top', 0);
             });
 
 
