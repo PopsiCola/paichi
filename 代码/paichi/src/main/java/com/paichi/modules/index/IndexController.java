@@ -2,7 +2,10 @@ package com.paichi.modules.index;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.paichi.common.util.RedisUtils;
 import com.paichi.common.util.VerificationCodeAdapter;
+import com.paichi.common.web.Message;
+import com.paichi.modules.email.service.MailService;
 import com.paichi.modules.user.service.IUserService;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
+import javax.xml.crypto.Data;
+import java.sql.Time;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * @Author liulebin
@@ -23,6 +31,11 @@ public class IndexController {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private MailService mailService;
+    @Autowired
+    private RedisUtils redisUtils;
+
     //文件保存地址
     @Value("${afterImage.location}")
     private String imgLocation;
@@ -79,18 +92,71 @@ public class IndexController {
 
     /**
      * 注册邮箱验证码发送
-     * @param maps
+     * @param reg_email 注册邮箱地址
      * @return
      */
-    @RequestMapping(value = "/sendRegistCode", method = RequestMethod.POST)
-    public String sendRegistCode(@RequestBody Map<String, Object> maps) {
+    @RequestMapping(value = "/regist/sendMailRegistCode", method = RequestMethod.POST)
+    @ResponseBody
+    public Message sendRegistCode(@RequestBody String reg_email) {
 
-        return "login/index";
+        Message message = new Message();
+
+        long startTime = new Date().getTime();
+        //对参数进行校验，避免参数异常
+        if (reg_email == null || "".equals(reg_email)) {
+            message.setCode(1);
+            message.setMsg("请填写正确的邮箱");
+            return message;
+        }
+        long start2Time ;
+        //发送邮件
+        try {
+            //采用异步来发送邮件，耗时将会减少
+            Future<Integer> codeFuture = mailService.sendHtmlMail(reg_email, "注册");
+            start2Time = new Date().getTime();
+            System.out.println(start2Time - startTime);
+            try {
+                while (true) {
+                    //查看发送邮件是否异步执行完毕
+                    if (codeFuture.isDone()) {
+                        Integer code = codeFuture.get();
+                        //将验证码保存到Redis中，且设置过期时间5分钟有效，key命名规则：email:邮箱号:code
+                        Boolean saveCode = redisUtils.set("email:" + reg_email + ":code", code, 5*60L);
+                        if (saveCode) {
+                            message.setCode(0);
+                            message.setMsg("邮件发送成功，请注意查收");
+                        } else {
+                            message.setCode(1);
+                            message.setMsg("Redis保存失败，请稍后重试");
+                        }
+                        break;
+                    }
+
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            message.setCode(1);
+            message.setMsg("发送邮件失败，请稍后重试");
+            return message;
+        }
+
+        long endTime = new Date().getTime();
+        System.out.println(endTime - start2Time);
+        return message;
     }
 
-    @RequestMapping("/getImgInfo")
+    /**
+     * 随机获取背景和拼图，返回json
+     * @return
+     */
+    @RequestMapping("/login/getImgInfo")
     @ResponseBody
-    // 随机获取背景和拼图，返回json
     public String imgInfo(){
         VerificationCodePlace vcPlace = VerificationCodeAdapter.getRandomVerificationCodePlace(imgLocation);
 

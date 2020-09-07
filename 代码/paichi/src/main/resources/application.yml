@@ -13,10 +13,10 @@ server:
 spring:
   application:
     name: paichi
-#  redis:
-#    host: 39.99.177.49
-#    port: 6379
-#    timeout: 60000
+  redis:
+    host: 39.98.65.221
+    port: 6379
+    timeout: 60000
 #配置Oracle数据源
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver

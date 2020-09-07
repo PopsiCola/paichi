@@ -129,12 +129,23 @@ function yVerify(){
 function success(){
     $('#arror_icon').prop('src', '/verifyImage/icon/green_correct.png');
     $('.slider_mask').css('background-color', '#79e77e');
+    layer.msg('验证成功',
+        {
+            time: 500, //500ms后自动关闭
+        },
+        function () {
 
-    /*function successLink(){
-        window.open('/index')
-    }*/
+            //发送邮箱验证码
+            doPyzmNext();
+            //重新拼图验证
+            $('#back_img').attr('src', '')
+            $('#before_img').attr('src', '');
+            reset();
+    });
+    //关闭拼图验证码
+    $("#yzm_blackbg").fadeOut();
+    $("#yzm_yzmbox").fadeOut();
 
-    setTimeout(reset, 1000)
 }
 
 // 拼图验证码用---失败重置
@@ -143,42 +154,19 @@ function failed(){
     $('#arror_icon').prop('src', '/verifyImage/icon/red_error.png');
     $('.slider_mask').css('background-color', '#e73c4a');
     layer.msg('验证失败，请重新验证！', {
-        time: 1000, //500ms后自动关闭
+        time: 1000, //1000ms后自动关闭
     });
-    setTimeout(reset, 1000)
+    setTimeout(reset, 1000);
 }
 
 // 拼图验证码用---修改位置和重置颜色
 function reset(){
+
     // 初始化验证码
-    $.ajax({
-        type : "get",// 请求方式
-        url : ctx + "getImgInfo",// 发送请求地址
-        dataType : "json",
-        async : false,
-        // 请求成功后的回调函数有两个参数
-        success : function(data) {
-            lx = data.xLocation;
-            ly = data.yLocation;
-            /*backImg = "/createVerfiyImg/" + data.backName;
-            frontImg = "/createVerfiyImg/" + data.markName;*/
-            backImg = data.backName;
-            frontImg = data.markName;
-
-            initImg(backImg, frontImg, ly);
-            initMovement();
-        },
-        error : function(){
-            alert("error")
-        }
-    });
-
     $('.slider_mask').css('background-color', '#deee97');
-
     $('.slider_arror').css('margin-left', 0);
     $('.slider_mask').css('width', 0);
     $('.slide_img_mark').css('margin-left', 0);
-
     $('#arror_icon').prop('src', '/verifyImage/icon/right_arror.png');
     $('.slider_tip').show();
 
