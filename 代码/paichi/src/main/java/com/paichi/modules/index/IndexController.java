@@ -80,12 +80,12 @@ public class IndexController {
         return "login/index";
     }
 
-    @RequestMapping("/user_agreement")
+    @RequestMapping("login/user_agreement")
     public String userAgreement() {
         return "user_agreement/index";
     }
 
-    @RequestMapping("/privacy")
+    @RequestMapping("login/privacy")
     public String privacy() {
         return "privacy/index";
     }
@@ -115,31 +115,26 @@ public class IndexController {
             Future<Integer> codeFuture = mailService.sendHtmlMail(reg_email, "注册");
             start2Time = new Date().getTime();
             System.out.println(start2Time - startTime);
-            try {
-                while (true) {
-                    //查看发送邮件是否异步执行完毕
-                    if (codeFuture.isDone()) {
-                        Integer code = codeFuture.get();
-                        //将验证码保存到Redis中，且设置过期时间5分钟有效，key命名规则：email:邮箱号:code
-                        Boolean saveCode = redisUtils.set("email:" + reg_email + ":code", code, 5*60L);
-                        if (saveCode) {
-                            message.setCode(0);
-                            message.setMsg("邮件发送成功，请注意查收");
-                        } else {
-                            message.setCode(1);
-                            message.setMsg("Redis保存失败，请稍后重试");
-                        }
-                        break;
-                    }
 
+            while (true) {
+                //查看发送邮件是否异步执行完毕
+                if (codeFuture.isDone()) {
+                    Integer code = codeFuture.get();
+                    //将验证码保存到Redis中，且设置过期时间5分钟有效，key命名规则：email:邮箱号:code
+                    Boolean saveCode = redisUtils.set("email:" + reg_email + ":code", code, 5*60L);
+                    if (saveCode) {
+                        message.setCode(0);
+                        message.setMsg("邮件发送成功，请注意查收");
+                    } else {
+                        message.setCode(1);
+                        message.setMsg("Redis保存失败，请稍后重试");
+                    }
+                    break;
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+
             }
 
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             message.setCode(1);
             message.setMsg("发送邮件失败，请稍后重试");
