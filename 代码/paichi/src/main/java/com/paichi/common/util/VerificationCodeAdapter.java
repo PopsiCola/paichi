@@ -167,23 +167,29 @@ public class VerificationCodeAdapter {
     }
 
     /**
-     * 存放图片
-     * @param image
-     * @param file 目标存放目录
+     * 存放图片到FastDFS服务器
+     * @param image 图片流
+     * @param file  目标存放目录
      * @throws Exception
      */
-    private static void writeImg(BufferedImage image, String file) throws Exception {
+    private static String writeImg(BufferedImage image, String file) throws Exception {
         byte[] imagedata = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(image,"png",bos);
         imagedata = bos.toByteArray();
-        File outFile = new File(file);
-        FileOutputStream out = new FileOutputStream(outFile);
-        out.write(imagedata);
-        out.close();
+        String uploadFile = new FastDFSUtils().uploadFile(imagedata, "png");
+        return uploadFile;
     }
 
-    // 处理存放
+    /**
+     * 对图片进行裁剪切割，保存切割后的两个拼图图片
+     * @param imgName   图片名
+     * @param path      图片路径：static/image下的图片
+     * @param data      随机产生的拼图位置
+     * @param headPath  文件保存位置
+     * @return          返回拼图图片的地址、以及拼图的x、y位置
+     * @throws Exception
+     */
     private static VerificationCodePlace cutAndSave(String imgName, String path, int [][] data, String headPath) throws Exception {
         VerificationCodePlace vcPlace =
                 new VerificationCodePlace("sample_after.png", "sample_after_mark.png", 112, 50);
@@ -207,11 +213,10 @@ public class VerificationCodeAdapter {
                 new File(headPath).mkdir();
             }
 
-            writeImg(originImage, headPath + afterName);
-            writeImg(markImage, headPath + markName);
             //文件上传到FastDFS服务器
-            afterName = new FastDFSUtils().uploadFile(headPath + afterName);
-            markName = new FastDFSUtils().uploadFile(headPath + markName);
+            afterName = writeImg(originImage, headPath + afterName);
+            markName = writeImg(markImage, headPath + markName);
+
             vcPlace = new VerificationCodePlace(afterName, markName, locationX, locationY);
         }
 
