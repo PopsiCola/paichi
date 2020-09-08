@@ -3,9 +3,11 @@ package com.paichi.modules.index;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paichi.common.util.RedisUtils;
+import com.paichi.common.util.SnowflakeUtil;
 import com.paichi.common.util.VerificationCodeAdapter;
 import com.paichi.common.web.Message;
 import com.paichi.modules.email.service.MailService;
+import com.paichi.modules.user.entity.User;
 import com.paichi.modules.user.service.IUserService;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,19 +75,57 @@ public class IndexController {
 
     /**
      * 用户邮箱注册
+     * @param user              用户实体类
+     * @param confirmPassword   确认密码
+     * @param code              邮箱验证码
      * @return
      */
-    @RequestMapping("/regist")
-    public String regist() {
-        return "login/index";
+    @RequestMapping(value = "/regist", method = RequestMethod.POST)
+    @ResponseBody
+    public Message regist(User user, String confirmPassword, String code) {
+        Message message = new Message();
+
+        //参数为空验证
+        if (code == null || "".equals(code)) {
+            message.setMsg("验证码不能为空");
+            message.setCode(1);
+            return message;
+        }
+        if (user.getPassword().length() == 0 || !user.getPassword().equals(confirmPassword)) {
+            message.setMsg("密码一致且不能为空");
+            message.setCode(1);
+            return message;
+        }
+
+        //验证码参数验证
+        Object redisCode = redisUtils.get("email:" + user.getUserEmail() + ":code");
+        if (code.equals(String.valueOf(redisCode))) {
+            try {
+                //补充用户信息，根据雪花算法生成主键
+                user.setUserId(SnowflakeUtil.getSnowflakeId());
+                user.setCreateTime(new Date());
+
+                userService.saveUsr(user);
+                message.setMsg("保存用户成功");
+                message.setCode(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+                message.setMsg("保存用户失败");
+                message.setCode(1);
+            }
+        } else {
+            message.setMsg("验证码输入错误");
+            message.setCode(1);
+        }
+        return message;
     }
 
-    @RequestMapping("login/user_agreement")
+    @RequestMapping("regist/user_agreement")
     public String userAgreement() {
         return "user_agreement/index";
     }
 
-    @RequestMapping("login/privacy")
+    @RequestMapping("regist/privacy")
     public String privacy() {
         return "privacy/index";
     }
@@ -143,6 +183,41 @@ public class IndexController {
 
         long endTime = new Date().getTime();
         System.out.println(endTime - start2Time);
+        return message;
+    }
+
+    /**
+     * 邮箱验证码验证
+     * @param email 用户邮箱
+     * @param code  用户输入的验证码
+     * @return
+     */
+    @RequestMapping(value = "regist/comfirmVerifyCode", method = RequestMethod.POST)
+    @ResponseBody
+    public Message comfirmVerifyCode(String email, String code) {
+        Message message = new Message();
+
+        //参数校验
+        if (email == null || "".equals(email)) {
+            message.setMsg("请填写正确的邮箱");
+            message.setCode(1);
+            return message;
+        }
+        if (code == null || "".equals(code)) {
+            message.setMsg("请填写正确的验证码");
+            message.setCode(1);
+            return message;
+        }
+
+        //从redis中获取验证码验证
+        Object redisCode = redisUtils.get("email:" + email + ":code");
+        if (code.equals(String.valueOf(redisCode))) {
+            message.setCode(0);
+            message.setMsg("验证成功");
+        } else {
+            message.setMsg("验证码输入错误");
+            message.setCode(1);
+        }
         return message;
     }
 
