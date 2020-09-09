@@ -15,7 +15,7 @@
     <script type="text/javascript" th:src="@{/js/login/js/main.js}"></script>
     <script th:src="@{/js/login/js/ds.js}"></script>
     <link th:href="@{/verifyImage/css/slider.css}" rel="stylesheet">
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/verifyImage/js/slider.js}"></script>
     <script th:src="@{/layui/layui.all.js}"></script>
     <script>var _czc = _czc || [];
@@ -98,7 +98,7 @@
             <div class="nl_loginbox_w" id="msj_loginbox">
 
                 <div class="loginbox_title">
-                    <a href="javascript:;" class="current" id="login_phone_tab">手机号登录</a>　|　<a href="javascript:;"
+                    <a href="javascript:;" class="current" id="login_phone_tab">邮箱登录</a>　|　<a href="javascript:;"
                                                                                                id="login_acc_tab">账号密码登录</a>
                 </div>
 
@@ -108,7 +108,7 @@
                     <div class="nl_loginbox_w1" id="nl_loginbox_w1">
                         <form>
                             <div class="nl_loginitem">
-                                <input id="login_mobile" type="text" name="username" class="text" placeholder="请输入手机号">
+                                <input id="login_email" type="text" name="username" class="text" placeholder="请输入邮箱">
                             </div>
                             <div class="nl_loginitem">
                                 <input type="hidden" name="login_type" value="1">
@@ -124,7 +124,7 @@
                                     <a href="https://i.meishi.cc/resetpw.php" class="forgetpassword1">忘记密码？</a></label>
                             </div>
                             <div class="nl_loginitem" style="text-align:center;">
-                                <input type="submit" class="submit" value="登 录">
+                                <input type="button" class="submit" id="login_btn" value="登 录">
                             </div>
                         </form>
                     </div>
@@ -406,15 +406,28 @@
 
         //发送邮箱验证码
         function doPyzmNext() {
-            var _this = $("#phone_yzmbtn1");
+            var _this;
+            //注册邮箱
             var reg_email = $("#reg_phone").val();
-            //发送注册邮箱验证码
+            //登录邮箱
+            var login_email = $("#login_email").val();
+
+            var data;
+            //判断是注册还是登录验证码验证
+            if (reg_email == null || reg_email == '') {
+                data = {"email": login_email, "type": "登录"};
+                _this = $("#phone_yzmbtn");
+            } else {
+                data = {"email": reg_email, "type": "注册"};
+                _this = $("#phone_yzmbtn1");
+            }
+
+            //发送邮箱验证码
             $.ajax({
                 type : "post",// 请求方式
-                url : ctx + "regist/sendMailRegistCode",// 发送请求地址
+                url : ctx + "mail/sendMailCode",// 发送请求地址
                 dataType : "json",
-                data : reg_email,
-                contentType:"application/json",
+                data : data,
                 async : false,
                 success : function(data) {
                     layer.msg(data.msg, {
@@ -443,22 +456,23 @@
 
         }
 
-        function doPyzmNext2() {
-            var _this = $("#phone_yzmbtn");
-            _this.addClass("sended");
-            _this.html("60秒后重新获取");
-            var i = 59;
-            yzmsti1 = setInterval(function () {
-                _this.html(i + "秒后重新获取");
-                if (i == 0) {
-                    clearInterval(yzmsti1);
-                    _this.removeClass("sended");
-                    _this.html("获取验证码");
-                }
-                i--;
-            }, 1000);
-
-        }
+        //发送登录邮箱验证码
+        // function doPyzmNext2() {
+        //     var _this = $("#phone_yzmbtn");
+        //     _this.addClass("sended");
+        //     _this.html("60秒后重新获取");
+        //     var i = 59;
+        //     yzmsti1 = setInterval(function () {
+        //         _this.html(i + "秒后重新获取");
+        //         if (i == 0) {
+        //             clearInterval(yzmsti1);
+        //             _this.removeClass("sended");
+        //             _this.html("获取验证码");
+        //         }
+        //         i--;
+        //     }, 1000);
+        //
+        // }
 
         $(function () {
 
@@ -482,61 +496,66 @@
                 _this.attr("src", url)
             });
 
-            //监听输入验证码后的提交
-            $("#yzmbox_yzmbtn").click(function () {
-                var _this = $(this);
-                var mobile_login = $('#login_mobile').val();
-                var mobile;
-                var login_type;
-                var type;
+            //监听验证码验证成功后的提交
+            // $("#yzmbox_yzmbtn").click(function () {
+            //     var mobile_login = $('#login_email').val();
+            //     var mobile;
+            //     var login_type;
+            //     var type;
+            //
+            //     //login_type：登录类型：2（注册），1（登录）
+            //     //type：2是注册，6是登录
+            //     if (!mobile_login) {
+            //         mobile = $('#reg_phone').val();
+            //         login_type = "2";
+            //         type = 2;
+            //     } else {
+            //         mobile = $('#login_email').val();
+            //         login_type = "1";
+            //         type = 6;
+            //     }
+            //     var verify_code_key = $('#verifycode_key_mobile').val();
+            //     var yzm_mobile = $('#yzm_mobile').val();
+            //     $.post(ctx + "sendRegistCode", {
+            //         "mobile": mobile,
+            //         "verifycode": yzm_mobile,
+            //         "verifycode_key": verify_code_key,
+            //         "type": type
+            //     }, function (data) {
+            //         var obj = eval('(' + data + ')');
+            //         if (obj.code == '1') {
+            //             $("#yzm_blackbg").fadeOut();
+            //             $("#yzm_yzmbox").fadeOut();
+            //             if (login_type == 1) {
+            //                 doPyzmNext2();
+            //             } else {
+            //                 doPyzmNext();
+            //             }
+            //
+            //         } else {
+            //             alert("验证码错误，请重新输入");
+            //         }
+            //
+            //     })
+            // });
 
-                //login_type：登录类型：2（注册），1（登录）
-                //type：2是注册，6是登录
-                if (!mobile_login) {
-                    mobile = $('#reg_phone').val();
-                    login_type = "2";
-                    type = 2;
-                } else {
-                    mobile = $('#login_mobile').val();
-                    login_type = "1";
-                    type = 6;
-                }
-                var verify_code_key = $('#verifycode_key_mobile').val();
-                var yzm_mobile = $('#yzm_mobile').val();
-                $.post(ctx + "sendRegistCode", {
-                    "mobile": mobile,
-                    "verifycode": yzm_mobile,
-                    "verifycode_key": verify_code_key,
-                    "type": type
-                }, function (data) {
-                    var obj = eval('(' + data + ')');
-                    if (obj.code == '1') {
-                        $("#yzm_blackbg").fadeOut();
-                        $("#yzm_yzmbox").fadeOut();
-                        if (login_type == 1) {
-                            doPyzmNext2();
-                        } else {
-                            doPyzmNext();
-                        }
-
-                    } else {
-                        alert("验证码错误，请重新输入");
-                    }
-
-                })
-            });
-
-
+            //监听登录验证码发送
             $("#phone_yzmbtn").click(function () {
 
-                var _this = $(this);
-
-
-                if (_this.hasClass("sended")) {
-
+                var login_email = $("#login_email").val();
+                var sended = $("#phone_yzmbtn");
+                if (!checkEmail(login_email)) {
+                    layer.msg('请填写正确的邮箱', {
+                        time: 500, //500ms后自动关闭
+                    });
+                } else if(sended.hasClass("sended")) {
+                    layer.msg('验证码已发送，请稍后再次发送', {
+                        time: 500, //500ms后自动关闭
+                    });
                 } else {
                     showYZM();
                 }
+
             });
 
             //监听获取验证码按钮
@@ -589,42 +608,11 @@
 
             });
 
-            //注册表单参数验证，鼠标松开事件
-            $(".pn_forcheck").keyup(function () {
-                var val = $(this).val();
-                $(this).parent().next().show();
-                if (checkPhonenum(val)) {
-                    $(this).parent().next().removeClass().addClass("login_tips true");
-                    $(this).parent().next().html("手机号码格式正确");
-                    $(this).attr("passCheck", "1");
-                } else {
-                    $(this).parent().next().removeClass().addClass("login_tips tip");
-                    $(this).parent().next().html("请输入正确的手机号码");
-                    $(this).attr("passCheck", "0");
-                }
-
-            });
-
-            //注册表单参数验证，失去焦点事件
-            $(".pn_forcheck").blur(function () {
-                var val = $(this).val();
-                $(this).parent().next().show();
-                if (checkPhonenum(val)) {
-                    $(this).parent().next().removeClass().addClass("login_tips true");
-                    $(this).parent().next().html("邮箱格式正确");
-                    $(this).attr("passCheck", "1");
-                } else {
-                    $(this).parent().next().removeClass().addClass("login_tips false");
-                    $(this).parent().next().html("请输入正确的邮箱");
-                    $(this).attr("passCheck", "0");
-                }
-            });
-
 
             //登录验证码验证
             $(".pyzm_forcheck").blur(function () {
                 var _this = $(this);
-                var email = $('#login_mobile').val();
+                var email = $('#login_email').val();
                 var code = $('#login_code').val();
 
                 $.post(ctx + "regist/comfirmVerifyCode", {
@@ -835,7 +823,6 @@
                 var f = submitCheck($(this));
                 if (f == 1) {
                     //提交注册
-                    console.log("注册提交");
                     var userEmail = $("#reg_phone").val();
                     var code = $("#reg_code").val();
                     var password = $("#password").val();
@@ -855,11 +842,16 @@
                         async : false,
                         success : function(data) {
                             if (data.code == 0) {
-                                window.location.href=ctx +"tologin";
+                                window.location.href=ctx +"toLogin";
                             } else {
                                 layer.msg(data.msg, {
                                     time: 1000, //1000ms后自动关闭
                                 });
+                                //清空输入框内容
+                                $('input[name="password"]').val("");
+                                $('input[name="confirm_password"]').val("");
+                                $("#confirm_tip").hide();
+                                $("#password_tip").hide();
                             }
                         },
                         error : function(data){
@@ -868,7 +860,6 @@
                             });
                         }
                     });
-                    // $(this).parents("form").sibmit();
                 } else {
                     layer.msg('资料填写错误，检查填写的资料', {
                         time: 1000
@@ -884,7 +875,47 @@
                     _this.parent().prev().show();
                     return false;
                 }
-                // $('#reg_form').submit();
+            });
+
+            //监听提交按钮
+            $("#login_btn").click(function () {
+
+                //登录提交
+                var userEmail = $("#login_email").val();
+                var code = $("#login_code").val();
+
+                //参数校验
+                if (!checkEmail(userEmail)) {
+                    layer.msg('邮箱格式不正确', {
+                        time: 1000, //1000ms后自动关闭
+                    });
+                    return;
+                }
+
+
+                // type:  1:账号密码登录  2：邮箱验证码登录
+                var data = {"account":userEmail, "pwd":code, "type": 2};
+                $.ajax({
+                    type : "post",// 请求方式
+                    url : ctx + "login/doLogin",// 发送请求地址
+                    dataType : "json",
+                    data : data,
+                    async : false,
+                    success : function(data) {
+                        if (data.code == 0) {
+                            window.location.href=ctx +"index";
+                        } else {
+                            layer.msg(data.msg, {
+                                time: 1000, //1000ms后自动关闭
+                            });
+                        }
+                    },
+                    error : function(data){
+                        layer.msg(data.msg, {
+                            time: 1000, //1000ms后自动关闭
+                        });
+                    }
+                });
             });
 
         });

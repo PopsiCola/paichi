@@ -4,7 +4,7 @@
 
     <!--保存用户信息-->
     <insert id="saveUser" parameterType="User">
-        INSERT INTO `USER`
+        INSERT INTO "USER"
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null and userId != ''">
                 USER_ID,
@@ -21,7 +21,7 @@
             <if test="userEmail != null and userEmail != ''">
                 USER_EMAIL,
             </if>
-            <if test="userSex != null and userSex != ''">
+            <if test="userSex != null">
                 USER_SEX,
             </if>
             <if test="userIntroduction != null and userIntroduction != ''">
@@ -50,7 +50,7 @@
             <if test="userEmail != null and userEmail != ''">
                 #{userEmail},
             </if>
-            <if test="userSex != null and userSex != ''">
+            <if test="userSex != null">
                 #{userSex, jdbcType=NUMERIC},
             </if>
             <if test="userIntroduction != null and userIntroduction != ''">
@@ -64,4 +64,42 @@
             </if>
         </trim>
     </insert>
+
+    <!--根据id查询用户信息-->
+    <select id="getUserByUserId" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <!--根据邮箱查询用户信息-->
+    <select id="getUserByUserEmail" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+
+    <!--根据用户账号查询用户信息-->
+    <select id="getUserByUserName" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_NAME = #{userName}
+    </select>
+
+    <!--根据用户账号、邮箱、id查询用户信息-->
+    <select id="getUserByUserNameOrEmailOrId" parameterType="String" resultType="List">
+        SELECT *
+        FROM "USER"
+        <where>
+            <if test="userId != null and userId != ''">
+                and #{USER_ID},
+            </if>
+            <if test="userName != null and userName != ''">
+                and USER_NAME = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and #{USER_EMAIL},
+            </if>
+        </where>
+    </select>
 </mapper>

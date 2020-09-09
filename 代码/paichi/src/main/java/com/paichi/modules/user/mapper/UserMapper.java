@@ -2,6 +2,9 @@ package com.paichi.modules.user.mapper;
 
 import com.paichi.modules.user.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +17,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface UserMapper extends BaseMapper<User> {
 
     void saveUser(User user);
+
+    User getUserByUserId(String userId);
+
+    User getUserByUserEmail(String userEmail);
+
+    User getUserByUserName(String userName);
+
+    List<User> getUserByUserNameOrEmailOrId(@Param("userId") String userId, @Param("userName") String userName,
+                                      @Param("userEmail") String userEmail);
 }

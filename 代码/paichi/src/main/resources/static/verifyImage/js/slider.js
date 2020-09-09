@@ -37,9 +37,7 @@ function sum(x1, x2){
 
 // 拼图验证码用---初始化图片
 function initImg(backgroundImg, markImg, yLocation){
-    /*$('#back_img').prop('src', backgroundImg);
-    $('#before_img').prop('src', markImg);*/
-    $('#back_img').attr('src', backgroundImg)
+    $('#back_img').attr('src', backgroundImg);
     $('#before_img').attr('src', markImg);
     $('.slide_img_mark').css('margin-top', yLocation);
 }
@@ -99,12 +97,10 @@ function sliderEnd(e){
     finalX = finalX.toString().slice(0, -2);
     if(finalX < (lx - 2) || finalX > (lx + 2)){
         failed()
-    }
-    else if(yVerify()){
+    } else if(yVerify()){
         console.log("verify success");
         success();
-    }
-    else{
+    } else{
         console.log("verify failed");
         failed();
     }
