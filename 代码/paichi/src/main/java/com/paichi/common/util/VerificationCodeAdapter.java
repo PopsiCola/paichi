@@ -169,10 +169,9 @@ public class VerificationCodeAdapter {
     /**
      * 存放图片到FastDFS服务器
      * @param image 图片流
-     * @param file  目标存放目录
      * @throws Exception
      */
-    private static String writeImg(BufferedImage image, String file) throws Exception {
+    private static String writeImg(BufferedImage image) throws Exception {
         byte[] imagedata = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(image,"png",bos);
@@ -186,11 +185,10 @@ public class VerificationCodeAdapter {
      * @param imgName   图片名
      * @param path      图片路径：static/image下的图片
      * @param data      随机产生的拼图位置
-     * @param headPath  文件保存位置
      * @return          返回拼图图片的地址、以及拼图的x、y位置
      * @throws Exception
      */
-    private static VerificationCodePlace cutAndSave(String imgName, String path, int [][] data, String headPath) throws Exception {
+    private static VerificationCodePlace cutAndSave(String imgName, String path, int [][] data) throws Exception {
         VerificationCodePlace vcPlace =
                 new VerificationCodePlace("sample_after.png", "sample_after_mark.png", 112, 50);
 
@@ -208,14 +206,10 @@ public class VerificationCodeAdapter {
             int r = (int)Math.round(Math.random() * 8999) + 1000;
             String afterName = name + "_after" + r + ".png";
             String markName = name + "_after_mark" + r + ".png";
-            // 目录文件夹是否存在，不存在则创建
-            if (!new File(headPath).exists()) {
-                new File(headPath).mkdir();
-            }
 
             //文件上传到FastDFS服务器
-            afterName = writeImg(originImage, headPath + afterName);
-            markName = writeImg(markImage, headPath + markName);
+            afterName = writeImg(originImage);
+            markName = writeImg(markImage);
 
             vcPlace = new VerificationCodePlace(afterName, markName, locationX, locationY);
         }
@@ -241,7 +235,7 @@ public class VerificationCodeAdapter {
     // 总流程，随机获取图片并处理，将拼图和对应图片存放至after_img
     // 出错则返回sample
     // headPath为存放生成图片的文件夹地址
-    public static VerificationCodePlace getRandomVerificationCodePlace(String headPath) {
+    public static VerificationCodePlace getRandomVerificationCodePlace() {
         VerificationCodePlace vcPlace = new VerificationCodePlace("sample_after.png", "sample_mark_after.png", 112, 50);
 
         // 从文件夹中读取所有待选择文件
@@ -256,7 +250,7 @@ public class VerificationCodeAdapter {
 
         // 进行图片处理
         try {
-            vcPlace = cutAndSave(imgName, path, data, headPath);
+            vcPlace = cutAndSave(imgName, path, data);
         } catch (Exception e) {
             e.printStackTrace();
             return vcPlace;
