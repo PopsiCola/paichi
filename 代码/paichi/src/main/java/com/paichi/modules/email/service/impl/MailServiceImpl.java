@@ -104,7 +104,7 @@ public class MailServiceImpl implements MailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
         helper.setFrom(from);
         helper.setTo(to);
-        helper.setSubject("欢迎使用PaiChi- " + subject + " -服务");
+        helper.setSubject("欢迎使用PaiChi【 " + subject + " 】服务");
         //true表示发送的是html邮件
         helper.setText(template, true);
 
