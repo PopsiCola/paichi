@@ -56,11 +56,12 @@ public class LoginController {
      * @param account   账号、邮箱账号
      * @param pwd       密码或邮箱验证码
      * @param type      1:账号密码登录  2：邮箱验证码登录
+     * @param request   request
      * @return
      */
     @RequestMapping(value = "login/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public Message doLogin(String account, String pwd, int type) {
+    public Message doLogin(String account, String pwd, int type, HttpServletRequest request) {
         Message message = new Message();
         //参数校验
         if (account == null || "".equals(account) || pwd == null || "".equals(pwd)) {
@@ -80,6 +81,16 @@ public class LoginController {
                 message.setMsg("密码错误");
                 message.setCode(1);
             } else {
+                /**
+                 * @TODO:暂定，登录成功后，暂定redis、session中保存用户信息，保存token，通过token可以查找到redis中缓存的用户信息
+                 * token生成方式根据用户id的MD5值生成token
+                 *      redis保存方式：保存key值格式为 info:用户token:user
+                 *      sesion客户端保存：key为user，值为token
+                 */
+                String token = DigestUtils.md5DigestAsHex(user.getUserId().getBytes());
+                redisUtils.set("info:" + token + ":user", user);
+                request.getSession().setAttribute("user", token);
+
                 message.setMsg("登录成功");
                 message.setCode(0);
                 message.setData(user);
@@ -95,6 +106,16 @@ public class LoginController {
                 message.setMsg("验证码错误，请重新输入");
                 message.setCode(1);
             } else {
+                /**
+                 * @TODO:暂定，登录成功后，暂定redis、session中保存用户信息，保存token，通过token可以查找到redis中缓存的用户信息
+                 * token生成方式根据用户id的MD5值生成token
+                 *      redis保存方式：保存key值格式为 info:用户token:user
+                 *      sesion客户端保存：key为user，值为token
+                 */
+                String token = DigestUtils.md5DigestAsHex(user.getUserId().getBytes());
+                redisUtils.set("info:" + token + ":user", user);
+                request.getSession().setAttribute("user", token);
+
                 message.setMsg("登录成功");
                 message.setCode(0);
                 message.setData(user);
