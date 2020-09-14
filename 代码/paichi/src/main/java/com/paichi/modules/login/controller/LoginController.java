@@ -81,15 +81,13 @@ public class LoginController {
                 message.setMsg("密码错误");
                 message.setCode(1);
             } else {
+
                 /**
-                 * @TODO:暂定，登录成功后，暂定redis、session中保存用户信息，保存token，通过token可以查找到redis中缓存的用户信息
-                 * token生成方式根据用户id的MD5值生成token
-                 *      redis保存方式：保存key值格式为 info:用户token:user
-                 *      sesion客户端保存：key为user，值为token
+                 * 保存用户信息到session，并且保存到redis，用来做用户登录限制或单点登录
+                 * 用户redis信息保存格式：info:用户id:user
                  */
-                String token = DigestUtils.md5DigestAsHex(user.getUserId().getBytes());
-                redisUtils.set("info:" + token + ":user", user);
-                request.getSession().setAttribute("user", token);
+                request.getSession().setAttribute("user", user);
+                redisUtils.set("info:" + user.getUserId() + ":user", user);
 
                 message.setMsg("登录成功");
                 message.setCode(0);
@@ -107,14 +105,11 @@ public class LoginController {
                 message.setCode(1);
             } else {
                 /**
-                 * @TODO:暂定，登录成功后，暂定redis、session中保存用户信息，保存token，通过token可以查找到redis中缓存的用户信息
-                 * token生成方式根据用户id的MD5值生成token
-                 *      redis保存方式：保存key值格式为 info:用户token:user
-                 *      sesion客户端保存：key为user，值为token
+                 * 保存用户信息到session，并且保存到redis，用来做用户登录限制或单点登录
+                 * 用户redis信息保存格式：info:用户id:user
                  */
-                String token = DigestUtils.md5DigestAsHex(user.getUserId().getBytes());
-                redisUtils.set("info:" + token + ":user", user);
-                request.getSession().setAttribute("user", token);
+                request.getSession().setAttribute("user", user);
+                redisUtils.set("info:" + user.getUserId() + ":user", user);
 
                 message.setMsg("登录成功");
                 message.setCode(0);
