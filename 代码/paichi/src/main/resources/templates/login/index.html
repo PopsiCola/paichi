@@ -78,13 +78,21 @@
                     $("#nl_loginbox_w_w").removeClass("right").addClass("left");
                     $(this).siblings().removeClass("current");
                     $(this).addClass("current");
+                    //登录方式切换
                     $("#login_phone_tab").click(function () {
+
+                        //登录类型
+                        $("#login_type").val("2");
+
                         $(".login_false_tip").hide();
                         $("#nl_loginbox_w_w").removeClass("right").addClass("left");
                         $(this).siblings().removeClass("current");
                         $(this).addClass("current");
                     });
                     $("#login_acc_tab").click(function () {
+
+                        $("#login_type").val("1");
+
                         $(".login_false_tip").hide();
                         $("#nl_loginbox_w_w").removeClass("left").addClass("right");
                         $(this).siblings().removeClass("current");
@@ -107,11 +115,11 @@
 
                     <div class="nl_loginbox_w1" id="nl_loginbox_w1">
                         <form>
+                            <input type="hidden" id="login_type" value="2">
                             <div class="nl_loginitem">
                                 <input id="login_email" type="text" name="username" class="text" placeholder="请输入邮箱">
                             </div>
                             <div class="nl_loginitem">
-                                <input type="hidden" name="login_type" value="1">
                                 <input id="login_code" type="text" class="text forcheck pyzm_forcheck yzm"
                                        name="password" placeholder="请输入验证码">
                                 <a href="javascript:void(0)" class="phone_yzmbtn" id="phone_yzmbtn">获取验证码</a>
@@ -124,7 +132,7 @@
                                     <a href="https://i.meishi.cc/resetpw.php" class="forgetpassword1">忘记密码？</a></label>
                             </div>
                             <div class="nl_loginitem" style="text-align:center;">
-                                <input type="button" class="submit" id="login_btn" value="登 录">
+                                <input type="button" class="submit" name="login_btn" value="登 录">
                             </div>
                         </form>
                     </div>
@@ -133,11 +141,10 @@
 
                         <form>
                             <div class="nl_loginitem">
-                                <input type="text" class="text" name="username" placeholder="请输入账号">
+                                <input type="text" class="text" name="username" id="account" placeholder="请输入账号">
                             </div>
                             <div class="nl_loginitem">
-                                <input type="hidden" name="login_type" value="2">
-                                <input type="password" class="password" name="password" placeholder="请输入密码">
+                                <input type="password" class="password" name="password" id="login_pwd" placeholder="请输入密码">
                             </div>
 
                             <div class="nl_loginitem" style="height:20px;line-height:20px;">
@@ -148,7 +155,7 @@
                             </div>
 
                             <div class="nl_loginitem" style="text-align:center;">
-                                <input type="submit" class="submit" id value="登 录">
+                                <input type="button" class="submit" name="login_btn" value="登 录">
                             </div>
                         </form>
                     </div>
@@ -878,23 +885,39 @@
             });
 
             //监听提交按钮
-            $("#login_btn").click(function () {
+            $("input[name='login_btn']").click(function () {
 
-                //登录提交
-                var userEmail = $("#login_email").val();
-                var code = $("#login_code").val();
+                //登录类型，1：账号密码登录。2：邮箱和验证码登录
+                var type = $("#login_type").val();
 
-                //参数校验
-                if (!checkEmail(userEmail)) {
-                    layer.msg('邮箱格式不正确', {
-                        time: 1000, //1000ms后自动关闭
-                    });
-                    return;
+                var account;
+                var pwd;
+                if (type == 1) {
+                    // 账号密码登录
+                    account = $("#account").val();
+                    pwd = $("#login_pwd").val();
+                    //参数校验
+                    if (pwd.length < 5 || pwd.length > 15) {
+                        layer.msg('密码长度大于5且小于15位', {
+                            time: 1000, //1000ms后自动关闭
+                        });
+                        return;
+                    }
+                } else {
+                    // 邮箱验证码登录
+                    account = $("#login_email").val();
+                    pwd = $("#login_code").val();
+                    //参数校验
+                    if (!checkEmail(account)) {
+                        layer.msg('邮箱格式不正确', {
+                            time: 1000, //1000ms后自动关闭
+                        });
+                        return;
+                    }
                 }
 
 
-                // type:  1:账号密码登录  2：邮箱验证码登录
-                var data = {"account":userEmail, "pwd":code, "type": 2};
+                var data = {"account":account, "pwd":pwd, "type": type};
                 $.ajax({
                     type : "post",// 请求方式
                     url : ctx + "login/doLogin",// 发送请求地址
