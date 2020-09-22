@@ -2,9 +2,10 @@ package com.paichi.modules.record.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -35,7 +36,7 @@ public class FileRecord implements Serializable {
      * 文件长传时间
      */
     @TableField("UPLOAD_TIME")
-    private LocalDateTime uploadTime;
+    private Date uploadTime;
 
     /**
      * 文件类型（1 长久文件  2  临时文件）

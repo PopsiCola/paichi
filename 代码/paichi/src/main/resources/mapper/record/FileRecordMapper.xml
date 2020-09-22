@@ -2,4 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.record.mapper.FileRecordMapper">
 
+    <insert id="saveFileRecord" parameterType="FileRecord">
+        insert into FILE_RECORD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pictureUrl != null">
+                PICTURE_URL,
+            </if>
+                UPLOAD_TIME,
+            <if test="pictureType != null">
+                PICTURE_TYPE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pictureUrl != null">
+                #{pictureUrl},
+            </if>
+                sysdate,
+            <if test="pictureType != null">
+                #{pictureType, jdbcType=NUMERIC},
+            </if>
+        </trim>
+    </insert>
 </mapper>

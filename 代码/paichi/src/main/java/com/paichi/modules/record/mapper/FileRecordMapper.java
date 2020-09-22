@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface FileRecordMapper extends BaseMapper<FileRecord> {
 
+    void saveFileRecord(FileRecord fileRecord);
 }
