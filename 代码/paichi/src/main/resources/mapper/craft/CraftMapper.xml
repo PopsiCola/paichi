@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.craft.mapper.CraftMapper">
 
+    <select id="getCraft" parameterType="String" resultType="Craft">
+        select * from CRAFT where tasteName = ${craftName}
+    </select>
+
+    <insert id="saveCraft" parameterType="Craft" useGeneratedKeys="true" keyProperty="craftId">
+        insert into CRAFT (CRAFT_NAME) values(${craftName})
+    </insert>
 </mapper>

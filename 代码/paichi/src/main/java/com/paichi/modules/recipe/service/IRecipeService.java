@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IRecipeService extends IService<Recipe> {
 
+    void addRecipe(Recipe recipe);
+
 }

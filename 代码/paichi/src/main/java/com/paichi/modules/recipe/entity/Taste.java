@@ -29,7 +29,7 @@ public class Taste implements Serializable {
      * 口味表主键
      */
     @TableId("TASTE_ID")
-    private Double tasteId;
+    private Integer tasteId;
 
     /**
      * 口味名称

@@ -4,6 +4,7 @@ import com.paichi.modules.effect.entity.Effect;
 import com.paichi.modules.effect.mapper.EffectMapper;
 import com.paichi.modules.effect.service.IEffectService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +18,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class EffectServiceImpl extends ServiceImpl<EffectMapper, Effect> implements IEffectService {
 
+    @Autowired
+    private EffectMapper effectMapper;
+
+    /**
+     * 添加功效
+     * @param effect
+     */
+    @Override
+    public Integer addEffect(Effect effect) {
+        Effect existEffect = effectMapper.getEffect(effect.getEffectName());
+        //功效是否存在
+        if (existEffect == null) {
+            return  effectMapper.saveEffect(effect);
+        }
+        return existEffect.getEffectId();
+    }
 }

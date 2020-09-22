@@ -54,5 +54,11 @@ public class Materials implements Serializable {
     @TableField("MATERIALS_FLAG")
     private Integer materialsFlag;
 
+    /**
+     * 用料图片
+     */
+    @TableField("MATERIALSIMG")
+    private String materialsImg;
+
 
 }

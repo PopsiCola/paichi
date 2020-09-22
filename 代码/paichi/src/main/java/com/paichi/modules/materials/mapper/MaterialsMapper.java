@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface MaterialsMapper extends BaseMapper<Materials> {
 
+    void saveMaterial(Materials materials);
 }

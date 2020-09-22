@@ -4,6 +4,7 @@ import com.paichi.modules.craft.entity.Craft;
 import com.paichi.modules.craft.mapper.CraftMapper;
 import com.paichi.modules.craft.service.ICraftService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +18,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class CraftServiceImpl extends ServiceImpl<CraftMapper, Craft> implements ICraftService {
 
+    @Autowired
+    private CraftMapper craftMapper;
+
+    /**
+     * 添加工艺
+     * @param craft
+     */
+    @Override
+    public Integer addCraft(Craft craft) {
+        Craft existCraft = craftMapper.getCraft(craft.getCraftName());
+        if (existCraft == null) {
+            return craftMapper.saveCraft(craft);
+        }
+        return existCraft.getCraftId();
+    }
 }

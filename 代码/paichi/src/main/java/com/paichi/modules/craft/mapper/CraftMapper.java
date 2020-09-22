@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CraftMapper extends BaseMapper<Craft> {
 
+    Craft getCraft(String craftName);
+
+    Integer saveCraft(Craft craft);
 }

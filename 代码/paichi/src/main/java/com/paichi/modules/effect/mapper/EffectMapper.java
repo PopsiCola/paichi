@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface EffectMapper extends BaseMapper<Effect> {
 
+    Effect getEffect(String effectName);
+
+    Integer saveEffect(Effect effect);
 }

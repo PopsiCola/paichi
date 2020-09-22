@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IEffectService extends IService<Effect> {
 
+    Integer addEffect(Effect effect);
 }

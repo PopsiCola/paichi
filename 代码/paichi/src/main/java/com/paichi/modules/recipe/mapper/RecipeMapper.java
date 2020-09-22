@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface RecipeMapper extends BaseMapper<Recipe> {
 
+    /**
+     * 保存食谱
+     * @param recipe
+     */
+    void saveRecipe(Recipe recipe);
 }

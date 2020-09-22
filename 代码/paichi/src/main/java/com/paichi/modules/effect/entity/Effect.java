@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 功效表
+ * 功效表，与食谱表多对多关系
  * </p>
  *
  * @author llb
@@ -28,13 +28,7 @@ public class Effect implements Serializable {
      * 功效表主键
      */
     @TableId("EFFECT_ID")
-    private String effectId;
-
-    /**
-     * 食谱表主键
-     */
-    @TableField("RECIPE_ID")
-    private String recipeId;
+    private Integer effectId;
 
     /**
      * 功效名称

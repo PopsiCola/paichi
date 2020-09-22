@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface RecipeStepMapper extends BaseMapper<RecipeStep> {
 
+    void saveRecipeStep(RecipeStep recipeStep);
 }

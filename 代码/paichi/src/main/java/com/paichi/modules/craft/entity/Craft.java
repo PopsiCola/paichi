@@ -28,7 +28,7 @@ public class Craft implements Serializable {
      * 食谱工艺表主键
      */
     @TableId("CRAFT_ID")
-    private Double craftId;
+    private Integer craftId;
 
     /**
      * 食谱工艺名称

@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IRecipeStepService extends IService<RecipeStep> {
 
+    void addRecipeStep(RecipeStep recipeStep);
 }

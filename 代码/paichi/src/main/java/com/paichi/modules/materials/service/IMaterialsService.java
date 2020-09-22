@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMaterialsService extends IService<Materials> {
 
+    void addMaterial(Materials materials);
 }

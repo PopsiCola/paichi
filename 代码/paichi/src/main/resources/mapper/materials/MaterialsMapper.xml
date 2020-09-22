@@ -2,4 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.materials.mapper.MaterialsMapper">
 
+    <insert id="saveMaterial" parameterType="Materials">
+        insert into MATERIALS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                MATERIALS_ID,
+                RECIPE_ID,
+            <if test="mainMaterials != null and mainMaterials != ''">
+                MAIN_MATERIALS,
+            </if>
+            <if test="mainNumber != null and mainNumber != ''">
+                MAIN_NUMBER,
+            </if>
+            <if test="materialsFlag != null">
+                MATERIALS_FLAG,
+            </if>
+            <if test="materialsImg != null and materialsImg != ''">
+                MATERIALSIMG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                #{materialsId},
+                ${recipeId},
+            <if test="mainMaterials != null and mainMaterials != ''">
+                ${mainMaterials},
+            </if>
+            <if test="mainNumber != null and mainNumber != ''">
+                ${mainNumber},
+            </if>
+            <if test="materialsFlag != null">
+                ${materialsFlag},
+            </if>
+            <if test="materialsImg != null and materialsImg != ''">
+                ${materialsImg},
+            </if>
+        </trim>
+    </insert>
 </mapper>

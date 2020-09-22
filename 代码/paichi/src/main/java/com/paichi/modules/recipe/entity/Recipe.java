@@ -2,9 +2,10 @@ package com.paichi.modules.recipe.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -53,25 +54,13 @@ public class Recipe implements Serializable {
      * 工艺表主键(包含炒、煮、烧烤等方法)
      */
     @TableField("CRAFT_ID")
-    private Double craftId;
-
-    /**
-     * 人数（食用人数）
-     */
-    @TableField("PEOPLE_NUMBER")
-    private Integer peopleNumber;
+    private Integer craftId;
 
     /**
      * 口味表主键(麻辣、香甜等口味)
      */
     @TableField("TASTE_ID")
-    private Double tasteId;
-
-    /**
-     * 烹饪时间
-     */
-    @TableField("COOK_TIME")
-    private Integer cookTime;
+    private Integer tasteId;
 
     /**
      * 上传用户主键
@@ -80,10 +69,16 @@ public class Recipe implements Serializable {
     private String userId;
 
     /**
-     * 时间戳
+     * 人数（食用人数）
      */
-    @TableField("TIMESTAMP")
-    private LocalDateTime timestamp;
+    @TableField("PEOPLE_NUMBER")
+    private Integer peopleNumber;
+
+    /**
+     * 烹饪时间  按照分钟为单位
+     */
+    @TableField("COOK_TIME")
+    private String cookTime;
 
     /**
      * 准备时间
@@ -91,5 +86,33 @@ public class Recipe implements Serializable {
     @TableField("PREPARATION_TIME")
     private Integer preparationTime;
 
+    /**
+     * 人气
+     */
+    @TableField("POPULARITY")
+    private Integer popularity;
 
+    /**
+     * 难度
+     */
+    @TableField("DIFFICULTY")
+    private Integer difficulty;
+
+    /**
+     * 简介
+     */
+    @TableField("INTRODUCTION")
+    private String introduction;
+
+    /**
+     * 技巧
+     */
+    @TableField("COOKINGSKILL")
+    private String cookingSkill;
+
+    /**
+     * 时间戳
+     */
+    @TableField("TIMESTAMP")
+    private Date timestamp;
 }

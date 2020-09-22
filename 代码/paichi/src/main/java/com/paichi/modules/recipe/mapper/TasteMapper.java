@@ -14,4 +14,7 @@ import com.paichi.modules.recipe.entity.Taste;
  */
 public interface TasteMapper extends BaseMapper<Taste> {
 
+    Taste getTaste(String tasteName);
+
+    Integer saveTaste(Taste taste);
 }

@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.recipe.mapper.TasteMapper">
 
+    <select id="getTaste" parameterType="String" resultType="Taste">
+        select * from TASTE where tasteName = ${tasteName}
+    </select>
+
+    <insert id="saveTaste" parameterType="Taste" useGeneratedKeys="true" keyProperty="tasteId">
+        insert into TASTE (TASTE_NAME) values(${tasteName})
+    </insert>
 </mapper>

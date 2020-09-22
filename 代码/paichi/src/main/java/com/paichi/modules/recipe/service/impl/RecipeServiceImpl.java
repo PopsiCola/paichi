@@ -4,6 +4,7 @@ import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.mapper.RecipeMapper;
 import com.paichi.modules.recipe.service.IRecipeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +18,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> implements IRecipeService {
 
+    @Autowired
+    private RecipeMapper recipeMapper;
+
+    /**
+     * 保存食谱
+     * @param recipe
+     */
+    @Override
+    public void addRecipe(Recipe recipe) {
+        recipeMapper.saveRecipe(recipe);
+    }
 }
