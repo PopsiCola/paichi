@@ -1,19 +1,27 @@
 package com.paichi.common.util;
 
+import com.paichi.modules.record.entity.FileRecord;
+import com.paichi.modules.record.service.IFileRecordService;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
+@Component
 public class VerificationCodeAdapter {
+
+    @Autowired
+    private IFileRecordService fileRecordService;
+
     /**
      * 源文件宽度
      */
@@ -171,12 +179,21 @@ public class VerificationCodeAdapter {
      * @param image 图片流
      * @throws Exception
      */
-    private static String writeImg(BufferedImage image) throws Exception {
+    private String writeImg(BufferedImage image) throws Exception {
         byte[] imagedata = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(image,"png",bos);
         imagedata = bos.toByteArray();
         String uploadFile = new FastDFSUtils().uploadFile(imagedata, "png");
+
+        //保存文件上传记录到数据库
+        FileRecord fileRecord = new FileRecord();
+        fileRecord.setPictureUrl(uploadFile);
+        fileRecord.setPictureType(2);
+        fileRecord.setUploadTime(new Date());
+
+        fileRecordService.saveFile(fileRecord);
+
         return uploadFile;
     }
 
@@ -188,7 +205,7 @@ public class VerificationCodeAdapter {
      * @return          返回拼图图片的地址、以及拼图的x、y位置
      * @throws Exception
      */
-    private static VerificationCodePlace cutAndSave(String imgName, String path, int [][] data) throws Exception {
+    private VerificationCodePlace cutAndSave(String imgName, String path, int[][] data) throws Exception {
         VerificationCodePlace vcPlace =
                 new VerificationCodePlace("sample_after.png", "sample_after_mark.png", 112, 50);
 
@@ -204,12 +221,10 @@ public class VerificationCodeAdapter {
 
             // 考虑图片覆盖,简单设置四位随机数
             int r = (int)Math.round(Math.random() * 8999) + 1000;
-            String afterName = name + "_after" + r + ".png";
-            String markName = name + "_after_mark" + r + ".png";
 
             //文件上传到FastDFS服务器
-            afterName = writeImg(originImage);
-            markName = writeImg(markImage);
+            String afterName = this.writeImg(originImage);
+            String markName = this.writeImg(markImage);
 
             vcPlace = new VerificationCodePlace(afterName, markName, locationX, locationY);
         }
@@ -235,7 +250,7 @@ public class VerificationCodeAdapter {
     // 总流程，随机获取图片并处理，将拼图和对应图片存放至after_img
     // 出错则返回sample
     // headPath为存放生成图片的文件夹地址
-    public static VerificationCodePlace getRandomVerificationCodePlace() {
+    public VerificationCodePlace getRandomVerificationCodePlace() {
         VerificationCodePlace vcPlace = new VerificationCodePlace("sample_after.png", "sample_mark_after.png", 112, 50);
 
         // 从文件夹中读取所有待选择文件
@@ -250,7 +265,7 @@ public class VerificationCodeAdapter {
 
         // 进行图片处理
         try {
-            vcPlace = cutAndSave(imgName, path, data);
+            vcPlace = this.cutAndSave(imgName, path, data);
         } catch (Exception e) {
             e.printStackTrace();
             return vcPlace;
