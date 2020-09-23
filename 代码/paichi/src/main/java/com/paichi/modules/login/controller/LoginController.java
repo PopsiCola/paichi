@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 
 /**
  * 登录
@@ -34,17 +36,18 @@ public class LoginController {
     //文件保存地址
     @Value("${fastDFSPath}")
     private String fastDFSPath;
+    @Autowired
+    private VerificationCodeAdapter verificationCodeAdapter;
 
     /**
      * 前去登录、注册页面
-     * @param request
+     * @param ac    ac有值则说明注册页面
      * @return
      */
     @RequestMapping("/toLogin")
-    public ModelAndView login(HttpServletRequest request) {
+    public ModelAndView login(String ac) {
         ModelAndView mv = new ModelAndView("login/index");
         //判断是注册还是登陆，注册前端ac=zhuce参数
-        String ac = request.getParameter("ac");
         if (!"".equals(ac)) {
             mv.addObject("ac", ac);
         }
@@ -126,7 +129,7 @@ public class LoginController {
     @RequestMapping("/login/getImgInfo")
     @ResponseBody
     public String imgInfo(){
-        VerificationCodePlace vcPlace = VerificationCodeAdapter.getRandomVerificationCodePlace();
+        VerificationCodePlace vcPlace = verificationCodeAdapter.getRandomVerificationCodePlace();
 
         vcPlace.setBackName(fastDFSPath + vcPlace.getBackName());
         vcPlace.setMarkName(fastDFSPath + vcPlace.getMarkName());
