@@ -22,18 +22,18 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
                 #{materialsId},
-                ${recipeId},
+                #{recipeId},
             <if test="mainMaterials != null and mainMaterials != ''">
-                ${mainMaterials},
+                #{mainMaterials},
             </if>
             <if test="mainNumber != null and mainNumber != ''">
-                ${mainNumber},
+                #{mainNumber},
             </if>
             <if test="materialsFlag != null">
-                ${materialsFlag},
+                #{materialsFlag, jdbcType=NUMERIC},
             </if>
             <if test="materialsImg != null and materialsImg != ''">
-                ${materialsImg},
+                #{materialsImg},
             </if>
         </trim>
     </insert>

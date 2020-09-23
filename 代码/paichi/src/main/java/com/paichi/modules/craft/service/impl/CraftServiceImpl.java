@@ -29,7 +29,8 @@ public class CraftServiceImpl extends ServiceImpl<CraftMapper, Craft> implements
     public Integer addCraft(Craft craft) {
         Craft existCraft = craftMapper.getCraft(craft.getCraftName());
         if (existCraft == null) {
-            return craftMapper.saveCraft(craft);
+            Integer row = craftMapper.saveCraft(craft);
+            return craft.getCraftId();
         }
         return existCraft.getCraftId();
     }

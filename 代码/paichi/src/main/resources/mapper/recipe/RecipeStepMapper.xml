@@ -23,16 +23,16 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             #{recipeStepId},
             <if test="recipeId != null and recipeId != ''">
-                ${recipeId},
+                #{recipeId},
             </if>
             <if test="stepContent != null and stepContent != ''">
-                ${stepContent},
+                #{stepContent},
             </if>
             <if test="stepImg != null and stepImg != ''">
-                ${stepImg},
+                #{stepImg},
             </if>
             <if test="stepNumber != null">
-                ${stepNumber},
+                #{stepNumber, jdbcType=NUMERIC},
             </if>
         </trim>
     </insert>

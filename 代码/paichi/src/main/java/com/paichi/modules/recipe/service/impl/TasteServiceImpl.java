@@ -26,11 +26,13 @@ public class TasteServiceImpl extends ServiceImpl<TasteMapper, Taste> implements
      * @param taste
      */
     @Override
-    public void addTaste(Taste taste) {
+    public Integer addTaste(Taste taste) {
         //查询口味是否存在
         Taste existTaste = tasteMapper.getTaste(taste.getTasteName());
         if (existTaste == null) {
-            tasteMapper.saveTaste(taste);
+            Integer row = tasteMapper.saveTaste(taste);
+            return taste.getTasteId();
         }
+        return existTaste.getTasteId();
     }
 }

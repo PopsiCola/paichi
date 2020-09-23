@@ -30,7 +30,8 @@ public class EffectServiceImpl extends ServiceImpl<EffectMapper, Effect> impleme
         Effect existEffect = effectMapper.getEffect(effect.getEffectName());
         //功效是否存在
         if (existEffect == null) {
-            return  effectMapper.saveEffect(effect);
+            Integer row = effectMapper.saveEffect(effect);
+            return effect.getEffectId();
         }
         return existEffect.getEffectId();
     }

@@ -14,5 +14,5 @@ import com.paichi.modules.recipe.entity.Taste;
  */
 public interface ITasteService extends IService<Taste> {
 
-    void addTaste(Taste taste);
+    Integer addTaste(Taste taste);
 }

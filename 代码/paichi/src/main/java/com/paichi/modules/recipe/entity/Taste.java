@@ -1,5 +1,6 @@
 package com.paichi.modules.recipe.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -28,7 +29,7 @@ public class Taste implements Serializable {
     /**
      * 口味表主键
      */
-    @TableId("TASTE_ID")
+    @TableId(value = "TASTE_ID", type = IdType.AUTO)
     private Integer tasteId;
 
     /**

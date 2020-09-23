@@ -1,5 +1,6 @@
 package com.paichi.modules.craft.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -27,7 +28,7 @@ public class Craft implements Serializable {
     /**
      * 食谱工艺表主键
      */
-    @TableId("CRAFT_ID")
+    @TableId(value = "CRAFT_ID", type = IdType.AUTO)
     private Integer craftId;
 
     /**

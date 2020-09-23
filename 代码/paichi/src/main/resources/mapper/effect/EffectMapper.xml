@@ -3,10 +3,13 @@
 <mapper namespace="com.paichi.modules.effect.mapper.EffectMapper">
 
     <select id="getEffect" parameterType="String" resultType="Effect">
-        select * from EFFECT where tasteName = ${effectName}
+        select * from EFFECT where EFFECT_NAME = #{effectName}
     </select>
 
-    <insert id="saveEffect" parameterType="Taste" useGeneratedKeys="true" keyProperty="effectId">
-        insert into EFFECT (EFFECT_NAME) values(${effectName})
+    <insert id="saveEffect" parameterType="Effect">
+        <selectKey  keyProperty="effectId" resultType="Integer" order="BEFORE">
+            select EFFECT_ID_SEQ.nextval from dual
+        </selectKey>
+        insert into EFFECT (EFFECT_ID, EFFECT_NAME) values(#{effectId}, #{effectName})
     </insert>
 </mapper>

@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import com.paichi.modules.effect.entity.Effect;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -115,4 +117,7 @@ public class Recipe implements Serializable {
      */
     @TableField("TIMESTAMP")
     private Date timestamp;
+
+    //与effect表多对多关联关系
+    private List<Effect> effects;
 }

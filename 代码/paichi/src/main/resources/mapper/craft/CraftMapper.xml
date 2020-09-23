@@ -3,10 +3,13 @@
 <mapper namespace="com.paichi.modules.craft.mapper.CraftMapper">
 
     <select id="getCraft" parameterType="String" resultType="Craft">
-        select * from CRAFT where tasteName = ${craftName}
+        select * from CRAFT where CRAFT_NAME = #{craftName}
     </select>
 
-    <insert id="saveCraft" parameterType="Craft" useGeneratedKeys="true" keyProperty="craftId">
-        insert into CRAFT (CRAFT_NAME) values(${craftName})
+    <insert id="saveCraft" parameterType="Craft">
+        <selectKey  keyProperty="craftId" resultType="Integer" order="BEFORE">
+            select craft_seq_id.nextval from dual
+        </selectKey>
+        insert into CRAFT (CRAFT_ID, CRAFT_NAME) values(#{craftId}, #{craftName})
     </insert>
 </mapper>

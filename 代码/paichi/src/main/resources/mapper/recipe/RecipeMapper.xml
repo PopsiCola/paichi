@@ -49,42 +49,42 @@
             <trim prefix="values (" suffix=")" suffixOverrides=",">
                     #{recipeId},
                 <if test="recipeName != null and recipeName != ''">
-                    ${recipeName},
+                    #{recipeName},
                 </if>
                 <if test="recipeImg != null and recipeImg != ''">
-                    ${recipeImg},
+                    #{recipeImg},
                 </if>
                 <if test="recipeVideo != null and recipeVideo != ''">
-                    ${recipeVideo},
+                    #{recipeVideo},
                 </if>
-                    ${craftId},
-                    ${tasteId},
+                    #{craftId, jdbcType=NUMERIC},
+                    #{tasteId, jdbcType=NUMERIC},
                 <if test="userId != null">
-                    ${userId},
+                    #{userId},
                 </if>
                 <if test="peopleNumber != null">
-                    ${peopleNumber},
+                    #{peopleNumber, jdbcType=NUMERIC},
                 </if>
                 <if test="cookTime != null">
-                    ${cookTime},
+                    #{cookTime, jdbcType=NUMERIC},
                 </if>
                 <if test="preparationTime != null">
-                    ${preparationTime},
+                    #{preparationTime, jdbcType=NUMERIC},
                 </if>
                 <if test="popularity != null">
-                    ${popularity},
+                    #{popularity, jdbcType=NUMERIC},
                 </if>
                 <if test="difficulty != null">
-                    ${difficulty},
+                    #{difficulty, jdbcType=NUMERIC},
                 </if>
                 <if test="introduction != null and introduction != ''">
-                    ${introduction},
+                    #{introduction, jdbcType=CLOB},
                 </if>
                 <if test="cookingSkill != null and cookingSkill != ''">
-                    ${cookingSkill},
+                    #{cookingSkill},
                 </if>
                 <if test="timestamp != null">
-                    ${timestamp},
+                    #{timestamp},
                 </if>
             </trim>
     </insert>

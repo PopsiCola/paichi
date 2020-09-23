@@ -1,9 +1,13 @@
 package com.paichi.modules.effect.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.List;
+
+import com.paichi.modules.recipe.entity.Recipe;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -27,7 +31,7 @@ public class Effect implements Serializable {
     /**
      * 功效表主键
      */
-    @TableId("EFFECT_ID")
+    @TableId(value = "EFFECT_ID", type = IdType.AUTO)
     private Integer effectId;
 
     /**
@@ -36,5 +40,7 @@ public class Effect implements Serializable {
     @TableField("EFFECT_NAME")
     private String effectName;
 
+    //与Recipe表多对多关联关系
+    private List<Recipe> recipes;
 
 }
