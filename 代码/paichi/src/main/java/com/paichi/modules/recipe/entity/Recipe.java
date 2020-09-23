@@ -80,7 +80,7 @@ public class Recipe implements Serializable {
      * 烹饪时间  按照分钟为单位
      */
     @TableField("COOK_TIME")
-    private String cookTime;
+    private Integer cookTime;
 
     /**
      * 准备时间

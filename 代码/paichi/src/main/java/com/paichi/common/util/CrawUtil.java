@@ -101,7 +101,7 @@ public class CrawUtil {
             Elements select = doc.select("a.next");
             String pageUrl = select.attr("href");
 
-            System.out.println(pageUrl);
+            System.out.println("========爬取页面========" +pageUrl);
 
             if (pageUrl == "" || "".equals(pageUrl)) {
                 System.out.println("爬取完成");
@@ -150,17 +150,16 @@ public class CrawUtil {
             fenzhong = split[1].trim();
 
             if (fenzhong.contains("分钟")) {
-                fenzhong = fenzhong.replaceAll("[\\u4e00-\\u9fa5]", "");
-                if (fenzhong.trim().length() > 0) {
+                fenzhong = fenzhong.replaceAll("[\\u4e00-\\u9fa5]", "").trim();
+                if (fenzhong != null && !"".equals(fenzhong)) {
                     recipe.setPreparationTime(Integer.parseInt(fenzhong));
                 }
             } else if (fenzhong.contains("小时")){
-                fenzhong = fenzhong.replaceAll("[\\u4e00-\\u9fa5]", "");
-                if (fenzhong.trim().length() > 0) {
+                fenzhong = fenzhong.replaceAll("[\\u4e00-\\u9fa5]", "").trim();
+                if (fenzhong != null && !"".equals(fenzhong)) {
                     recipe.setPreparationTime(Integer.parseInt(fenzhong) * 60);
                 }
             } else {
-                System.out.println(fenzhong);
             }
 
 
@@ -201,7 +200,7 @@ public class CrawUtil {
             }
             recipe.setRecipeName(recipeName);
             recipe.setRecipeImg(recipeImg);
-            recipe.setCookTime(fenzhong);
+//            recipe.setCookTime(fenzhong);
             recipe.setPopularity(Integer.parseInt(renqi));
             recipe.setUserId("1306523235645465465");
             recipe.setTimestamp(new Date());
@@ -229,6 +228,12 @@ public class CrawUtil {
 
             saveData(recipeDetail, recipe);
 
+            //为防止爬去过快导致被拦截，这里休息5秒钟
+            try {
+                Thread.sleep(5 * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -269,18 +274,35 @@ public class CrawUtil {
 
             if (zbsj.contains("分钟")) {
                 zbsj = zbsj.substring(0, zbsj.indexOf("分"));
-                zbsj = zbsj.replaceAll("[\\u4e00-\\u9fa5]", "");
-                if (zbsj.trim().length() > 0) {
+                zbsj = zbsj.replaceAll("[\\u4e00-\\u9fa5]", "").trim();
+                if (zbsj != null && !"".equals(zbsj)) {
                     recipe.setPreparationTime(Integer.parseInt(zbsj));
                 }
             } else if (zbsj.contains("小时")){
                 zbsj = zbsj.substring(0, zbsj.indexOf("小"));
-                zbsj = zbsj.replaceAll("[\\u4e00-\\u9fa5]", "");
-                if (zbsj.trim().length() > 0) {
+                zbsj = zbsj.replaceAll("[\\u4e00-\\u9fa5]", "").trim();
+                if (zbsj != null && !"".equals(zbsj)) {
                     recipe.setPreparationTime(Integer.parseInt(zbsj) * 60);
                 }
             } else {
                 System.out.println(zbsj);
+            }
+
+            //烹饪时间  <30分钟
+            String cookingTime = document.select("a[id=tongji_prsj]").text();
+
+            if(cookingTime.contains("分钟")) {
+                cookingTime = cookingTime.replaceAll("[^0-9]", "").trim();
+                if (cookingTime != null && !"".equals(cookingTime)) {
+                    recipe.setCookTime(Integer.parseInt(cookingTime));
+                }
+            } else if (cookingSkill.contains("小时")) {
+                cookingTime = cookingTime.replaceAll("[^0-9]", "").trim();
+                if (cookingTime != null && !"".equals(cookingTime)) {
+                    recipe.setCookTime(Integer.parseInt(cookingTime) * 60);
+                }
+            } else {
+                System.out.println("烹饪时间==========" + cookingTime);
             }
 
             //简介
