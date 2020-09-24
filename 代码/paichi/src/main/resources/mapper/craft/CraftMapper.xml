@@ -8,7 +8,7 @@
 
     <insert id="saveCraft" parameterType="Craft">
         <selectKey  keyProperty="craftId" resultType="Integer" order="BEFORE">
-            select craft_seq_id.nextval from dual
+            select CRAFT_SEQ_ID.nextval from dual
         </selectKey>
         insert into CRAFT (CRAFT_ID, CRAFT_NAME) values(#{craftId}, #{craftName})
     </insert>

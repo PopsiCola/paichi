@@ -82,7 +82,7 @@ public class CrawUtil {
 
 
     public static void saveRecipeData(String url) {
-
+        System.out.println("========爬取页面========" +url);
 
         String meishiUrl = "https://www.meishij.net";
         HttpClient httpClient = new HttpClient();
@@ -101,13 +101,12 @@ public class CrawUtil {
             Elements select = doc.select("a.next");
             String pageUrl = select.attr("href");
 
-            System.out.println("========爬取页面========" +pageUrl);
+
 
             if (pageUrl == "" || "".equals(pageUrl)) {
                 System.out.println("爬取完成");
                 return;
             }
-
             saveRecipeData(meishiUrl + pageUrl);
 
         } catch (IOException e) {
@@ -259,8 +258,13 @@ public class CrawUtil {
             //难度
             Elements elements = document.select("span.processing");
             String difficulty = elements.attr("class");
-            System.out.println(difficulty);
-            difficulty = difficulty.substring(difficulty.lastIndexOf("processing_nd") + 13);
+//            System.out.println(difficulty);
+            if (difficulty.contains("processing_nd")) {
+                difficulty = difficulty.substring(difficulty.lastIndexOf("processing_nd") + 13);
+            } else {
+                //默认为0
+                difficulty = "0";
+            }
 
             //人数
             String persons = document.select("a[id=tongji_rsh]").text();
@@ -296,7 +300,7 @@ public class CrawUtil {
                 if (cookingTime != null && !"".equals(cookingTime)) {
                     recipe.setCookTime(Integer.parseInt(cookingTime));
                 }
-            } else if (cookingSkill.contains("小时")) {
+            } else if (cookingTime.contains("小时")) {
                 cookingTime = cookingTime.replaceAll("[^0-9]", "").trim();
                 if (cookingTime != null && !"".equals(cookingTime)) {
                     recipe.setCookTime(Integer.parseInt(cookingTime) * 60);
@@ -308,7 +312,9 @@ public class CrawUtil {
             //简介
             String introduction = document.select("div.materials").select("p").text();
             //去除多余的双引号
-            introduction = introduction.substring(1, introduction.length() -1);
+            if (introduction.contains("“") && introduction.contains("”")) {
+                introduction = introduction.substring(1, introduction.length() -1);
+            }
 
             recipe.setCookingSkill(cookingSkill);
             recipe.setIntroduction(introduction);
@@ -405,10 +411,28 @@ public class CrawUtil {
 
                 //描述
                 Elements miaoshuEles = element.select("p");
+                String miaoshu = "";
+                String img = "";
+                for (Element miaoShuEle : miaoshuEles) {
+
+                    Elements imgElement = miaoShuEle.select("img.conimg");
+                    if (imgElement.size() != 0) {
+                        //步骤图片
+                        img = imgElement.attr("src");
+                    } else {
+                        miaoshu = miaoShuEle.text();
+                    }
+                }
+
+                /*//步骤分为描述和图片   index0为描述，index1为图片
+                if (miaoshuEles.size() != 2) {
+                    //拦截步骤
+                    break;
+                }
                 String miaoshu = miaoshuEles.get(0).text();
                 //图片
                 String img = miaoshuEles.get(1).select("img.conimg").attr("src");
-
+*/
                 try {
 
                     if (img != null && !"".equals(img)) {
