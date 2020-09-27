@@ -628,8 +628,7 @@
                     // 'type': 6,
                     'code': code
                 }, function (data) {
-                    var obj = eval('(' + data + ')');
-                    if (obj.code == 0) {
+                    if (data.code == 0) {
                         _this.parent().next().removeClass().addClass("login_tips true");
                         _this.parent().next().html("验证码正确");
                         _this.attr("passCheck", "1");
@@ -862,7 +861,7 @@
                             }
                         },
                         error : function(data){
-                            layer.msg(data.msg, {
+                            layer.msg(data, {
                                 time: 1000, //1000ms后自动关闭
                             });
                         }
