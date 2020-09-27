@@ -34,7 +34,7 @@ public class User implements Serializable {
     private String userId;
 
     /**
-     * 用户昵称
+     * 用户昵称(用户昵称不能为空，用户注册没有填写昵称时，自动生成以 PaiChi_+随机字符数据 生成的随机名)
      */
     @TableField("USER_NAME")
     private String userName;

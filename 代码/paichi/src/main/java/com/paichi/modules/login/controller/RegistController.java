@@ -1,5 +1,6 @@
 package com.paichi.modules.login.controller;
 
+import com.paichi.common.util.GenerateUserNameUtil;
 import com.paichi.common.util.RedisUtils;
 import com.paichi.common.util.SnowflakeUtil;
 import com.paichi.common.web.Message;
@@ -69,6 +70,10 @@ public class RegistController {
                 user.setUserId(SnowflakeUtil.getSnowflakeId());
                 user.setCreateTime(new Date());
                 user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+                //判断用户昵称是否为空，为空随机生成字符
+                if (user.getUserName().trim().length() == 0) {
+                    user.setUserName(GenerateUserNameUtil.generateUserName());
+                }
                 userService.saveUser(user);
                 message.setMsg("注册成功");
                 message.setCode(0);
