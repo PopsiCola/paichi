@@ -11,6 +11,7 @@ import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -120,6 +121,26 @@ public class LoginController {
             }
         }
         return message;
+    }
+
+    /**
+     * 退出登录
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/login/loginOut", method = RequestMethod.GET)
+    public String loginOut(HttpServletRequest request) {
+        //清除session，删除redis中保存的用户信息
+        User user = (User) request.getSession().getAttribute("user");
+
+        boolean exists = redisUtils.exists("info:" + user.getUserId() + ":user");
+        if (exists) {
+            redisUtils.remove("info:" + user.getUserId() + ":user");
+        }
+
+        request.getSession().removeAttribute("user");
+
+        return "redirect:/index";
     }
 
     /**

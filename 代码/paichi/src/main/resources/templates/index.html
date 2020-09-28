@@ -59,7 +59,6 @@
         <!--登录显示用户信息，未登录显示登录方式-->
 
         <div class="loginitem_h" id="loginitem_h">
-            [[${session.user}]]
             <input id="id" th:value="${session.user == null}" hidden>
             <script th:src="${session.user == null} ? @{/js/loginheader_n2.js} : ''"></script>
 
@@ -105,8 +104,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://i.meishi.cc/logout.php?redirect=https%3A%2F%2Fwww.meishij.net%2F"
-                                   class="linkk">
+                                <a th:href="@{/login/loginOut}" class="linkk">
                                     退出登录
                                 </a>
                             </li>
