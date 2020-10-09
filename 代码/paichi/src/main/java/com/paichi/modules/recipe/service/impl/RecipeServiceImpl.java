@@ -5,7 +5,11 @@ import com.paichi.modules.recipe.mapper.RecipeMapper;
 import com.paichi.modules.recipe.service.IRecipeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -20,6 +24,9 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
 
     @Autowired
     private RecipeMapper recipeMapper;
+    //文件保存地址
+    @Value("${fastDFSPath}")
+    private String fastDFSPath;
 
     /**
      * 保存食谱
@@ -28,5 +35,41 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
     @Override
     public void addRecipe(Recipe recipe) {
         recipeMapper.saveRecipe(recipe);
+    }
+
+    /**
+     * 每天最热菜谱
+     * @return
+     */
+    @Override
+    public List<Map> queryHotRecipeOfDay() {
+        return recipeMapper.queryHotRecipeOfDay(fastDFSPath);
+    }
+
+    /**
+     * 每小时最热菜谱
+     * @return
+     */
+    @Override
+    public List<Map> queryHotRecipeOfHour() {
+        return recipeMapper.queryHotRecipeOfHour(fastDFSPath);
+    }
+
+    /**
+     * 每周最热菜谱
+     * @return
+     */
+    @Override
+    public List<Map> queryHotRecipeOfWeek() {
+        return recipeMapper.queryHotRecipeOfWeek(fastDFSPath);
+    }
+
+    /**
+     * 最新最热菜谱
+     * @return
+     */
+    @Override
+    public List<Map> queryHotRecipeOfNow() {
+        return recipeMapper.queryHotRecipeOfNow(fastDFSPath);
     }
 }
