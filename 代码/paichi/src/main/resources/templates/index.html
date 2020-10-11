@@ -34,6 +34,9 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();</script>
+    <script th:inline="javascript">
+        var ctx = [[@{/}]]
+    </script>
 </head>
 <body>
 <div class="adinheader">
@@ -213,14 +216,10 @@
             <script>
                 var id = $("#id").val();
 
-                console.log(id);
-
                 if(id == 'true') {
-                    console.log("true");
                     // 隐藏用户信息，显示登录方式
                     $(".userinfo").hide();
                 } else {
-                    console.log("false");
                     $(".userinfo").show();
                 }
             </script>
@@ -978,164 +977,9 @@
             <div id="index_cp_rightarrow_mask"></div>
 
             <div class="index_pxw_w" id="index_pxw_w">
-                <!--切换后的数据展示-->
+                <!--Swiper轮播图数据展示-->
                 <div class="index_pxw clearfix" id="index_pxw">
-                    <!--<div class="index_pxi">-->
-                    <!--    &lt;!&ndash;每小时、最新、今日、一周最热轮播图&ndash;&gt;-->
-                    <!--    <h3 class="bbtitles">每小时最热菜谱</h3>-->
-                    <!--    <div class="listtyle2_w clearfix" id="listtyle1_w">-->
-                    <!--        <div class="listtyle1_list clearfix" id="listtyle1_list">-->
-                    <!--            <div class="listtyle1 ml0">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/mizhijichi_28.html"-->
-                    <!--                   title="蜜汁鸡翅" class="big">-->
-                    <!--                    <img class="img" alt="蜜汁鸡翅" th:src="@{/js/index/images/a5140155_155196470921235.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1">-->
-                    <!--                                <strong>蜜汁鸡翅</strong><span>83 评论  490 人气</span><em>风意画</em></div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">10步 / 大概30分钟</li>-->
-                    <!--                                    <li class="li2">煮 / 咸鲜味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>抵抗力</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/xiaozhuquqi_1.html"-->
-                    <!--                   title="小猪曲奇" class="big">-->
-                    <!--                    <img class="img" alt="小猪曲奇" th:src="@{/js/index/images/a5140155_155196606509547.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1">-->
-                    <!--                                <strong>小猪曲奇</strong><span>40 评论  283 人气</span><em>风意画</em></div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">14步 / 大概15分钟</li>-->
-                    <!--                                    <li class="li2">烤 / 甜味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>健脑益智</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1">-->
-                    <!--                <a target="_blank"-->
-                    <!--                   href="https://www.meishijie.net/zuofa/niuyouguoxiangjiaosimuxue.html"-->
-                    <!--                   title="牛油果香蕉思慕雪" class="big">-->
-                    <!--                    <img class="img" alt="牛油果香蕉思慕雪" th:src="@{/js/index/images/a5140155_155196688335045.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1"><strong>牛油果香蕉思慕雪</strong><span>14 评论  242 人气</span><em>风意画</em>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">8步 / 大概10分钟</li>-->
-                    <!--                                    <li class="li2">其它工艺 / 甜味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>脂肪肝</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/xiangchangfeibingjuan_1.html"-->
-                    <!--                   title="香肠飞饼卷" class="big">-->
-                    <!--                    <img class="img" alt="香肠飞饼卷" th:src="@{/js/index/images/a5140155_155196394270704.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1">-->
-                    <!--                                <strong>香肠飞饼卷</strong><span>26 评论  339 人气</span><em>风意画</em></div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">9步 / 大概30分钟</li>-->
-                    <!--                                    <li class="li2">烤 / 咸鲜味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>健脑益智</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1 ml0">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/meiguihuamantou_25.html"-->
-                    <!--                   title="玫瑰花馒头" class="big">-->
-                    <!--                    <img class="img" alt="玫瑰花馒头" th:src="@{/js/index/images/a621773_155197115694003.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1"><strong>玫瑰花馒头</strong><span>30 评论  292 人气</span><em>黄豆豆的一家</em>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">16步 / 大概30分钟</li>-->
-                    <!--                                    <li class="li2">蒸 / 家常味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>安神</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/lvdagun_56.html" title="驴打滚"-->
-                    <!--                   class="big">-->
-                    <!--                    <img class="img" alt="驴打滚" th:src="@{/js/index/images/a13410386_155196477266046.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1">-->
-                    <!--                                <strong>驴打滚</strong><span>31 评论  304 人气</span><em>小马美食厨房</em></div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">5步 / 大概30分钟</li>-->
-                    <!--                                    <li class="li2">蒸 / 家常味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>抵抗力</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1">-->
-                    <!--                <a target="_blank" href="https://www.meishijie.net/zuofa/huakaifuguixiangchanggu.html"-->
-                    <!--                   title="花开富贵香肠菇" class="big">-->
-                    <!--                    <img class="img" alt="花开富贵香肠菇" th:src="@{/js/index/images/a430336_155194389396290.jpeg}">-->
-                    <!--                    <div class="i_w">-->
-                    <!--                        <div class="i" style="margin-top: 0px;">-->
-                    <!--                            <div class="c1"><strong>花开富贵香肠菇</strong><span>54 评论  239 人气</span><em>Smile湘雨</em>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="c2">-->
-                    <!--                                <ul>-->
-                    <!--                                    <li class="li1">16步 / 大概15分钟</li>-->
-                    <!--                                    <li class="li2">蒸 / 咸鲜味</li>-->
-                    <!--                                </ul>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <strong class="gx"><span>抵抗力</span></strong></a>-->
-                    <!--            </div>-->
-                    <!--            <div class="listtyle1 ">-->
-                    <!--                <div class="index_cplist_more">-->
-                    <!--                    <h3>热门栏目推荐</h3>-->
-                    <!--                    <ul>-->
-                    <!--                        <li><a href="/chufang/diy/">最新菜谱</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/langcaipu/">凉菜</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/sushi/">素食</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/zaocan/">早餐</a></li>-->
-                    <!--                        <li><a href="/yaoshanshiliao/gongnengxing/wufa/">乌发</a></li>-->
-                    <!--                        <li><a href="/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></li>-->
-                    <!--                        <li><a href="/hongpei/">烘焙</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></li>-->
-                    <!--                        <li><a href="/china-food/caixi/chuancai/">川菜</a></li>-->
-                    <!--                        <li><a href="/china-food/caixi/yuecai/">粤菜</a></li>-->
-                    <!--                        <li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>-->
-                    <!--                        <li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>-->
-                    <!--                    </ul>-->
-                    <!--                </div>-->
-                    <!--            </div>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
+
                 </div>
                 <span class="paixu"><a class="l_n l_n_5" po="5"
                                        href="javascript:refresh_inews(5)">最新</a><span> | 最热：</span><a
