@@ -45,4 +45,11 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
      * @return
      */
     List<Map> queryHotRecipeOfNow(String fastDFSPath);
+
+    /**
+     * 菜谱详情以及做法
+     * @param recipeId  菜谱id
+     * @return
+     */
+    Recipe getRecipeDetailByRecipeId(String recipeId);
 }

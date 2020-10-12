@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.recipe.mapper.RecipeMapper">
-    
+
+    <!--食谱详情数据，包含食谱步骤表的一对多关系和食谱功效表的多对多关系-->
+    <resultMap id="recipeZuoFa" type="com.paichi.modules.recipe.entity.Recipe">
+        <id property="recipeId" column="RECIPE_ID"></id>
+        <result property="recipeName" column="RECIPE_NAME"></result>
+        <result property="recipeImg" column="RECIPE_IMG"></result>
+        <result property="recipeVideo" column="RECIPE_VIDEO"></result>
+        <result property="peopleNumber" column="PEOPLE_NUMBER"></result>
+        <result property="cookTime" column="COOK_TIME"></result>
+        <result property="preparationTime" column="PREPARATION_TIME"></result>
+        <result property="popularity" column="POPULARITY"></result>
+        <result property="difficulty" column="DIFFICULTY"></result>
+        <result property="introduction" column="INTRODUCTION"></result>
+        <result property="cookingSkill" column="COOKINGSKILL"></result>
+        <result property="timestamp" column="TIMESTAMP"></result>
+        <!--一对一关联关系-->
+        <association property="craft" javaType="com.paichi.modules.craft.entity.Craft">
+            <id property="craftId" column="CRAFT_ID"></id>
+            <result property="craftName" column="CRAFT_NAME"></result>
+        </association>
+        <association property="taste" javaType="com.paichi.modules.recipe.entity.Taste">
+            <id property="tasteId" column="TASTE_ID"></id>
+            <result property="tasteName" column="TASTE_NAME"></result>
+        </association>
+        <association property="user" javaType="com.paichi.modules.user.entity.User">
+            <id property="userId" column="USER_ID"></id>
+            <result property="userName" column="USER_NAME"></result>
+            <result property="userIcon" column="USER_ICON"></result>
+            <result property="userEmail" column="USER_EMAIL"></result>
+            <result property="userSex" column="USER_SEX"></result>
+            <result property="userIntroduction" column="USER_INTRODUCTION"></result>
+            <result property="birth" column="BIRTH"></result>
+            <result property="createTime" column="CREATE_TIME"></result>
+        </association>
+        <!--多对多关联关系-->
+        <collection property="effects" ofType="com.paichi.modules.effect.entity.Effect">
+            <id property="effectId" column="EFFECT_ID"></id>
+            <result property="effectName" column="EFFECT_NAME"></result>
+        </collection>
+        <collection property="recipeSteps" ofType="com.paichi.modules.recipe.entity.RecipeStep">
+            <id property="recipeStepId" column="RECIPE_STEP_ID"></id>
+            <result property="stepContent" column="STEP_CONTENT"></result>
+            <result property="stepImg" column="STEP_IMG"></result>
+            <result property="stepNumber" column="STEP_NUMBER"></result>
+        </collection>
+    </resultMap>
+
     <!--保存食谱-->
     <insert id="saveRecipe" parameterType="Recipe">
         insert into RECIPE
@@ -88,6 +134,24 @@
                 </if>
             </trim>
     </insert>
+
+    <!--根据食谱表id获取食谱做法，包含步骤表等表信息-->
+    <select id="getRecipeDetailByRecipeId" parameterType="String" resultMap="recipeZuoFa">
+        select r.recipe_id as recipeId, r.recipe_name, r.recipe_img, r.recipe_video, r.CRAFT_ID, r.TASTE_ID,
+           r.USER_ID, r.people_number, r.cook_time, r.preparation_time, r.popularity, r.timestamp, r.difficulty,
+           r.cookingskill, r.introduction, e.EFFECT_ID, e.EFFECT_NAME, rs.RECIPE_ID, rs.STEP_CONTENT,
+           rs.STEP_IMG, rs.STEP_NUMBER, u.USER_ID, USER_NAME, PASSWORD, USER_ICON, USER_EMAIL,
+           USER_SEX, USER_INTRODUCTION, BIRTH, CREATE_TIME, c.CRAFT_ID, c.CRAFT_NAME, t.TASTE_ID, TASTE_NAME
+        from RECIPE r, RECIPE_EFFECT re, EFFECT e, RECIPE_STEP rs, "USER" u, CRAFT c, TASTE t
+        where r.RECIPE_ID = re.RECIPE_ID
+          and re.EFFECT_ID = e.EFFECT_ID
+          and rs.RECIPE_ID = r.RECIPE_ID
+          and r.USER_ID = u.USER_ID
+          and r.CRAFT_ID = c.CRAFT_ID
+          and t.TASTE_ID = r.TASTE_ID
+          and r.RECIPE_ID = #{recipeId}
+        order by rs.STEP_NUMBER ASC
+    </select>
 
     <!--最新菜谱-->
     <select id="queryHotRecipeOfDay" resultType="map">

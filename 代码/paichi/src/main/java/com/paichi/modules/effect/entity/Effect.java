@@ -40,7 +40,4 @@ public class Effect implements Serializable {
     @TableField("EFFECT_NAME")
     private String effectName;
 
-    //与Recipe表多对多关联关系
-    private List<Recipe> recipes;
-
 }

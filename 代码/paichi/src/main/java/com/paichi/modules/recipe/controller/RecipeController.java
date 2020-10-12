@@ -5,13 +5,13 @@ import com.paichi.common.web.Message;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.service.IRecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +30,9 @@ public class RecipeController {
 
     @Autowired
     private IRecipeService recipeService;
+    @Autowired
+    private HttpServletRequest request;
+
 
     /**
      * 主页热点菜单Swiper数据
@@ -78,6 +81,42 @@ public class RecipeController {
         message.setCode(200);
         message.setData(dataMap);
         message.setMsg("查询成功");
+        return message;
+    }
+
+    /**
+     * 菜谱做法，展示详细信息，包含步骤信息
+     * @param recipeId 菜谱唯一主键
+     * @return
+     */
+    @RequestMapping(value = "/zuofa", method = RequestMethod.GET)
+    public ModelAndView showRecipeDetail(String recipeId) {
+
+        ModelAndView modelAndView = new ModelAndView("zuofa/index");
+
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        modelAndView.addObject("recipe", recipe);
+
+        return modelAndView;
+    }
+
+    /**
+     * 菜谱做法，展示详细信息，包含步骤信息
+     * @param recipeId  菜谱唯一主键
+     * @return
+     */
+    @RequestMapping(value = "recipeDetail", method = RequestMethod.POST)
+    public Message recipePractice(String recipeId) {
+        Message message = new Message();
+
+        if (recipeId == null || "".equals(recipeId)) {
+            message.setMsg("请问你要查看哪个菜谱呢？");
+            message.setCode(1);
+            return message;
+        }
+
+        Recipe recipe = recipeService.getRecipe(recipeId);
+
         return message;
     }
 }

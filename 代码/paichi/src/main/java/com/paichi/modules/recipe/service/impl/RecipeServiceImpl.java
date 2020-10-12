@@ -72,4 +72,14 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
     public List<Map> queryHotRecipeOfNow() {
         return recipeMapper.queryHotRecipeOfNow(fastDFSPath);
     }
+
+    /**
+     * 查询菜谱，包含菜谱详细信息，步骤做法以及所有功效
+     * @param recipeId  食谱表主键id
+     * @return
+     */
+    @Override
+    public Recipe getRecipe(String recipeId) {
+        return recipeMapper.getRecipeDetailByRecipeId(recipeId);
+    }
 }

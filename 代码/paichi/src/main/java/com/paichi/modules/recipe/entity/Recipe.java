@@ -7,7 +7,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.paichi.modules.craft.entity.Craft;
 import com.paichi.modules.effect.entity.Effect;
+import com.paichi.modules.user.entity.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -118,6 +120,28 @@ public class Recipe implements Serializable {
     @TableField("TIMESTAMP")
     private Date timestamp;
 
-    //与effect表多对多关联关系
+    /**
+     * 与食谱工艺表一对一关系
+     */
+    private Craft craft;
+
+    /**
+     * 与口味表一对一关系
+     */
+    private Taste taste;
+
+    /**
+     * 用户表一对一关系
+     */
+    private User user;
+
+    /**
+     * 与effect表多对多关联关系
+     */
     private List<Effect> effects;
+
+    /**
+     * 与食谱步骤表一对多关联关系
+     */
+    private List<RecipeStep> recipeSteps;
 }
