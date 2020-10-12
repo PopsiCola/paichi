@@ -756,8 +756,6 @@ function moveSelect(step) {
     $(lis[active]).find('a').css("color", "#fff");
     $(lis[active]).find('span').css("color", "#fff")
 };
-
-// 主页Swiper切换
 var pxarr = [" "," "," "," "," "," "," "," "];
 var pxflag;
 function refresh_inews(st,forward){
@@ -765,7 +763,6 @@ pxflag = 0;
 if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 	pxflag = 1;
 	var data = pxarr[st];
-
 	if(forward == 1){
 		$("#index_cp_rightarrow_mask").show();
 		$("#index_pxw").append(data);
@@ -788,62 +785,12 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 	$('.paixu').find('.current').removeClass('current');
 	$('.l_n_' + st).addClass('current');
 }
-
-
-	if(pxflag==0){$.get(ctx + 'recipe/index_more_news?newsType=' + st, null,
-		function(result) {
-			if (result.data != '') {
-
-				let data = result.data;
-				//拼接swiper数据
-				//头部固定数据
-				let newsHeadHtml = '<div class="index_pxi">\n' +
-					'\t<h3 class="bbtitles">' + data.title + '</h3>\n' +
-					'\t<div class="listtyle2_w clearfix" id="listtyle1_w">\n' +
-					'<div class="listtyle1_list clearfix" id="listtyle1_list">';
-				//中间循环数据
-				let newsHtml = '';
-				for (let i = 0; i < data.recipeList.length; i++) {
-					newsHeadHtml += '<div class="listtyle1'+ (i%4 == 0?" ml0":"") +'">\n' +
-						'<a target="_blank" href="recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
-						'<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
-						'<div class="i_w">\n' +
-						'<div class="i" style="margin-top: 0px;">\n' +
-						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / 大概'+ data.recipeList[i].COOK_TIME +'分钟</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
-						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
-						'</a>\n' +
-						'</div>';
-				}
-				//尾部固定数据
-				let newsTailHtml = '<div class="listtyle1">\n' +
-					'<div class="index_cplist_more">\n' +
-					'<h3>热门栏目推荐</h3>\n' +
-					'<ul>' +
-						'<li><a href="/chufang/diy/">最新菜谱</a></li>' +
-						'<li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>' +
-						'<li><a href="/chufang/diy/langcaipu/">凉菜</a></li>' +
-						'<li><a href="/chufang/diy/sushi/">素食</a></li>' +
-						'<li><a href="/chufang/diy/zaocan/">早餐</a></li>' +
-						'<li><a href="/yaoshanshiliao/gongnengxing/wufa/">乌发</a></li>' +
-						'<li><a href="/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></li>' +
-						'<li><a href="/hongpei/">烘焙</a></li>' +
-						'<li><a href="/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></li>' +
-						'<li><a href="/china-food/caixi/chuancai/">川菜</a></li>' +
-						'<li><a href="/china-food/caixi/yuecai/">粤菜</a></li>' +
-						'<li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>' +
-						'<li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>' +
-						'<li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>' +
-					'</ul>\n' +
-					'</div>\n' +
-					'</div></div></div>';
-
-				// 拼接html
-				newsHeadHtml = newsHeadHtml + newsHtml + newsTailHtml;
-
+	if(pxflag==0){$.get('/ajax/index_more_news.php?st=' + st, null,
+		function(data) {
+			if (data != '') {
 				if(forward==1){
 					$("#index_cp_rightarrow_mask").show();
-					$("#index_pxw").append(newsHeadHtml);
+					$("#index_pxw").append(data);
 					$("#index_pxw").css("margin-left","0px");
 					$("#index_pxw").animate({"margin-left":"-988px"},600,function(){
 						$("#index_pxw .index_pxi").first().remove();
@@ -852,7 +799,7 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 					});
 				}else if(forward==-1){
 					$("#index_cp_leftarrow_mask").show();
-					$("#index_pxw").prepend(newsHeadHtml);
+					$("#index_pxw").prepend(data);
 					$("#index_pxw").css("margin-left","-988px");
 					$("#index_pxw").animate({"margin-left":"0px"},600,function(){
 						$("#index_pxw .index_pxi").last().remove();
@@ -862,7 +809,7 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 				}
 				$('.paixu').find('.current').removeClass('current');
 				$('.l_n_' + st).addClass('current');
-				pxarr.splice(st,1,newsHeadHtml);
+				pxarr.splice(st,1,data);
 			}
 		})
 	}
@@ -870,63 +817,6 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 var paixu_i = 2;
 var sti;
 $(function(){
-
-	// 加载页面，补充Swiper轮播图的菜谱信息，默认展示今日菜谱
-	$.get(ctx + 'recipe/index_more_news?newsType=' + 1, null,
-		function(result) {
-			if (result.data != '') {
-
-				let data = result.data;
-				//拼接swiper数据
-				//头部固定数据
-				let newsHeadHtml = '<div class="index_pxi">\n' +
-					'\t<h3 class="bbtitles">' + data.title + '</h3>\n' +
-					'\t<div class="listtyle2_w clearfix" id="listtyle1_w">\n' +
-					'<div class="listtyle1_list clearfix" id="listtyle1_list">';
-				//中间循环数据
-				let newsHtml = '';
-				for (let i = 0; i < data.recipeList.length; i++) {
-					newsHeadHtml += '<div class="listtyle1'+ (i%4 == 0?" ml0":"") +'">\n' +
-						'<a target="_blank" href="recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
-						'<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
-						'<div class="i_w">\n' +
-						'<div class="i" style="margin-top: 0px;">\n' +
-						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / 大概'+ data.recipeList[i].COOK_TIME +'分钟</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
-						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
-						'</a>\n' +
-						'</div>';
-				}
-				//尾部固定数据
-				let newsTailHtml = '<div class="listtyle1">\n' +
-					'<div class="index_cplist_more">\n' +
-					'<h3>热门栏目推荐</h3>\n' +
-					'<ul>' +
-					'<li><a href="/chufang/diy/">最新菜谱</a></li>' +
-					'<li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>' +
-					'<li><a href="/chufang/diy/langcaipu/">凉菜</a></li>' +
-					'<li><a href="/chufang/diy/sushi/">素食</a></li>' +
-					'<li><a href="/chufang/diy/zaocan/">早餐</a></li>' +
-					'<li><a href="/yaoshanshiliao/gongnengxing/wufa/">乌发</a></li>' +
-					'<li><a href="/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></li>' +
-					'<li><a href="/hongpei/">烘焙</a></li>' +
-					'<li><a href="/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></li>' +
-					'<li><a href="/china-food/caixi/chuancai/">川菜</a></li>' +
-					'<li><a href="/china-food/caixi/yuecai/">粤菜</a></li>' +
-					'<li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>' +
-					'<li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>' +
-					'<li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>' +
-					'</ul>\n' +
-					'</div>\n' +
-					'</div></div></div>';
-
-				// 拼接html
-				newsHeadHtml = newsHeadHtml + newsHtml + newsTailHtml;
-
-				$("#index_pxw").html(newsHeadHtml);
-			}
-		});
-
 	if($('#index_pxw').length > 0){
 	setsti();
 	setInterval(function(){pxarr = [" "," "," "," "," "," "," "," "]},10*60*1000);
