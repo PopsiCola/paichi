@@ -40,12 +40,21 @@
             <id property="effectId" column="EFFECT_ID"></id>
             <result property="effectName" column="EFFECT_NAME"></result>
         </collection>
+        <!--一对多关联关系-->
         <collection property="recipeSteps" ofType="com.paichi.modules.recipe.entity.RecipeStep">
             <id property="recipeStepId" column="RECIPE_STEP_ID"></id>
             <result property="recipeId" column="RECIPE_ID"></result>
             <result property="stepContent" column="STEP_CONTENT"></result>
             <result property="stepImg" column="STEP_IMG"></result>
             <result property="stepNumber" column="STEP_NUMBER"></result>
+        </collection>
+        <collection property="materials" ofType="com.paichi.modules.materials.entity.Materials">
+            <id property="materialsId" column="MATERIALS_ID"></id>
+            <result property="recipeId" column="RECIPE_ID"></result>
+            <result property="mainMaterials" column="MAIN_MATERIALS"></result>
+            <result property="mainNumber" column="MAIN_NUMBER"></result>
+            <result property="materialsFlag" column="MATERIALS_FLAG"></result>
+            <result property="materialsImg" column="MATERIALSIMG"></result>
         </collection>
     </resultMap>
 
@@ -142,7 +151,8 @@
            r.USER_ID, r.people_number, r.cook_time, r.preparation_time, r.popularity, r.timestamp, r.difficulty,
            r.cookingskill, r.introduction, e.EFFECT_ID, e.EFFECT_NAME, rs.RECIPE_STEP_ID, rs.RECIPE_ID, rs.STEP_CONTENT,
            #{fastDFSPath} || rs.STEP_IMG as STEP_IMG, rs.STEP_NUMBER, u.USER_ID, USER_NAME, PASSWORD, USER_ICON, USER_EMAIL,
-           USER_SEX, USER_INTRODUCTION, BIRTH, CREATE_TIME, c.CRAFT_ID, c.CRAFT_NAME, t.TASTE_ID, TASTE_NAME
+           USER_SEX, USER_INTRODUCTION, BIRTH, CREATE_TIME, c.CRAFT_ID, c.CRAFT_NAME, t.TASTE_ID, TASTE_NAME,
+           m.MATERIALS_ID, m.RECIPE_ID, m.MAIN_MATERIALS, m.MAIN_NUMBER, m.MATERIALS_FLAG, #{fastDFSPath} || m.MATERIALSIMG as MATERIALSIMG
         from RECIPE r
             left join RECIPE_EFFECT re on r.RECIPE_ID = re.RECIPE_ID
             left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
@@ -150,6 +160,7 @@
             left join "USER" u on u.USER_ID = r.USER_ID
             left join CRAFT c on c.CRAFT_ID = r.CRAFT_ID
             left join TASTE t on t.TASTE_ID = r.TASTE_ID
+            left join Materials m on m.RECIPE_ID = r.RECIPE_ID
         where r.RECIPE_ID = #{recipeId}
         order by rs.STEP_NUMBER ASC
     </select>

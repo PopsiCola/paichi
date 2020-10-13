@@ -454,73 +454,40 @@
                     </p>
                     <strong class="cpc_h2">用料</strong>
                     <div class="materials_box">
+                        <!--主料-->
                         <div class="yl zl clearfix">
                             <h3><a href="javascript:;" th:title="${recipe.recipeName}+ '的主料'">主料</a></h3>
                             <ul class="clearfix">
-                                <li class=" bb0">
+                                <li class="" th:each="material, materialStat : ${recipe.materials}" th:if="${material.materialsFlag == 1}">
                                     <a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/" class="img">
-                                        <img th:src="@{/js/zuofa/images/52c7f611c17459de9eaf1f4cdd6574cc_60x60.jpeg}"></a>
-                                    <div class="c"><h4><a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/">鸡</a><span>1250克</span>
-                                    </h4><a href="#" class="fortb" data-type="2" biz-keyword="鸡 鲜"
-                                            biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                            target="_blank"></a></div>
-                                </li>
-                                <li class="br0 bb0"><a target="_blank" href="https://www.paichi.net/shicaizuofa/heye/"
-                                                       class="img"><img th:src="@{/js/zuofa/images/shicai25186_60x60.jpeg}"></a>
-                                    <div class="c"><h4><a target="_blank"
-                                                          href="https://www.paichi.net/shicaizuofa/heye/">荷叶</a><span>3张</span>
-                                    </h4><a href="#" class="fortb" data-type="2" biz-keyword="荷叶 鲜"
-                                            biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                            target="_blank"></a></div>
+                                        <img th:src="${material.materialsImg}">
+                                    </a>
+                                    <div class="c">
+                                        <h4>
+                                            <a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/">[[${material.mainMaterials}]]</a>
+                                            <span>[[${material.mainNumber}]]</span>
+                                        </h4>
+                                        <!--购物车链接-->
+                                        <a href="#" class="fortb" data-type="2" th:biz-keyword="${material.mainMaterials} + ' 鲜'" biz-category="50016422"
+                                           data-style="1" data-tmpl="290x380" target="_blank">
+                                        </a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
+                        <!--辅料-->
                         <div class="yl fuliao clearfix">
-                            <h3><a href="javascript:;" title="荷叶叫花鸡的辅料">辅料</a></h3>
+                            <h3><a href="javascript:;" th:title="${recipe.recipeName} + '的辅料'">辅料</a></h3>
                             <ul class="clearfix">
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/海盐">海盐</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="海盐 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class="br0"><h4><a target="_blank" href="https://www.paichi.net/干香菇">干香菇</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="干香菇 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/莲子">莲子</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="莲子 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class="br0"><h4><a target="_blank" href="https://www.paichi.net/花椒">花椒</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="花椒 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/料酒">料酒</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="料酒 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class="br0"><h4><a target="_blank" href="https://www.paichi.net/酱油">酱油</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="酱油 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/老抽">老抽</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="老抽 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class="br0"><h4><a target="_blank" href="https://www.paichi.net/蚝油">蚝油</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="蚝油 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/白糖">白糖</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="白糖 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
-                                <li class="br0"><h4><a target="_blank" href="https://www.paichi.net/葱">葱</a></h4><span>适量</span><a
-                                        href="#" class="fortb" data-type="2" biz-keyword="葱 鲜" biz-category="50016422"
-                                        data-style="1" data-tmpl="290x380" target="_blank"></a></li>
-                                <li class><h4><a target="_blank" href="https://www.paichi.net/姜">姜</a></h4>
-                                    <span>适量</span><a href="#" class="fortb" data-type="2" biz-keyword="姜 鲜"
-                                                      biz-category="50016422" data-style="1" data-tmpl="290x380"
-                                                      target="_blank"></a></li>
+                                <li th:class="${materialStat.index % 2 == 0 ? 'br0' : ''} " th:each="material, materialStat : ${recipe.materials}" th:if="${material.materialsFlag == 2}">
+                                    <h4>
+                                        <a target="_blank" href="https://www.paichi.net/海盐">[[${material.mainMaterials}]]</a>
+                                    </h4>
+                                    <span>[[${material.mainNumber}]]</span>
+                                    <a href="#" class="fortb" data-type="2" th:biz-keyword="${material.mainMaterials} + ' 鲜'"
+                                       biz-category="50016422" data-style="1" data-tmpl="290x380"
+                                                  target="_blank"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

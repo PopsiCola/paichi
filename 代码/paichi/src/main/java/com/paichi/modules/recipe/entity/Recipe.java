@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import com.paichi.modules.craft.entity.Craft;
 import com.paichi.modules.effect.entity.Effect;
+import com.paichi.modules.materials.entity.Materials;
 import com.paichi.modules.user.entity.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -117,7 +118,7 @@ public class Recipe implements Serializable {
      * 时间戳
      */
     @TableField("TIMESTAMP")
-    public Date timestamp;
+    private Date timestamp;
 
     /**
      * 与食谱工艺表一对一关系
@@ -143,4 +144,9 @@ public class Recipe implements Serializable {
      * 与食谱步骤表一对多关联关系
      */
     private List<RecipeStep> recipeSteps;
+
+    /**
+     * 与用料表一对多关联关系
+     */
+    private List<Materials> materials;
 }
