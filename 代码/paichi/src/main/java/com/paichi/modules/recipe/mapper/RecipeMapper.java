@@ -51,5 +51,5 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
      * @param recipeId  菜谱id
      * @return
      */
-    Recipe getRecipeDetailByRecipeId(String recipeId);
+    Recipe getRecipeDetailByRecipeId(String recipeId, String fastDFSPath);
 }

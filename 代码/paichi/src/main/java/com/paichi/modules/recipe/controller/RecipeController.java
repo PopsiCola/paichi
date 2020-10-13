@@ -92,11 +92,18 @@ public class RecipeController {
     @RequestMapping(value = "/zuofa", method = RequestMethod.GET)
     public ModelAndView showRecipeDetail(String recipeId) {
 
-        ModelAndView modelAndView = new ModelAndView("zuofa/index");
+        ModelAndView modelAndView = new ModelAndView();
 
         Recipe recipe = recipeService.getRecipe(recipeId);
-        modelAndView.addObject("recipe", recipe);
 
+        // 没有查到菜谱详情时，跳转到主页
+        if (recipe == null) {
+            modelAndView.setViewName("redirect:index");
+            return modelAndView;
+        }
+
+        modelAndView.addObject("recipe", recipe);
+        modelAndView.setViewName("zuofa/index");
         return modelAndView;
     }
 

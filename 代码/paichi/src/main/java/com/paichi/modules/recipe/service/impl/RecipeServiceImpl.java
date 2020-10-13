@@ -80,6 +80,6 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
      */
     @Override
     public Recipe getRecipe(String recipeId) {
-        return recipeMapper.getRecipeDetailByRecipeId(recipeId);
+        return recipeMapper.getRecipeDetailByRecipeId(recipeId, fastDFSPath);
     }
 }

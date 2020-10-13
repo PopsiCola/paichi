@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import com.paichi.modules.craft.entity.Craft;
 import com.paichi.modules.effect.entity.Effect;
 import com.paichi.modules.user.entity.User;
@@ -118,7 +117,7 @@ public class Recipe implements Serializable {
      * 时间戳
      */
     @TableField("TIMESTAMP")
-    private Date timestamp;
+    public Date timestamp;
 
     /**
      * 与食谱工艺表一对一关系

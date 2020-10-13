@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>荷叶叫花鸡的做法【步骤图】_菜谱_PaiChi</title>
+    <title>[[${recipe.recipeName}]]【步骤图】_菜谱_PaiChi</title>
     <meta name="keywords"
-          content="荷叶叫花鸡的做法,荷叶叫花鸡,荷叶叫花鸡的家常做法,荷叶叫花鸡怎么做,家常荷叶叫花鸡的做法,荷叶叫花鸡怎么做好吃,荷叶叫花鸡的做法大全,如何做荷叶叫花鸡,荷叶叫花鸡的菜谱,荷叶叫花鸡的制作方法">
+          th:content="${recipe.recipeName} + '的做法,' + ${recipe.recipeName} + ',' + ${recipe.recipeName} + '的家常做法,' + ${recipe.recipeName}+ '怎么做,' + ${recipe.recipeName} + '的做法,' + ${recipe.recipeName}+ '怎么做好吃,'+ ${recipe.recipeName} + '的做法大全,如何做' + ${recipe.recipeName} + ','+ ${recipe.recipeName} + '的菜谱,' + ${recipe.recipeName}+ '的制作方法'">
     <meta name="description"
-          content="荷叶叫花鸡的做法 - 家常荷叶叫花鸡的做法非常简单易学。如果荷叶叫花鸡怎么做好吃,荷叶叫花鸡的家常做法如何做一直困扰着你,PaiChi提供的图文荷叶叫花鸡的家常做法大全,用最短的时间让你学会荷叶叫花鸡的做法">
+          th:content="${recipe.recipeName} + '的做法 - ' + ${recipe.recipeName} + '的做法非常简单易学。如果'+ ${recipe.recipeName} + '怎么做好吃,' +${recipe.recipeName} + '的家常做法如何做一直困扰着你,PaiChi提供的图文' + ${recipe.recipeName} + '的家常做法大全,用最短的时间让你学会' + ${recipe.recipeName} + '的做法'">
     <meta content="www.meishij.net" name="author">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,7 +14,7 @@
     <meta name="mobile-agent" content="format=xhtml; url=https://www.paichi.net/zuofa/heyejiaohuaji_6.html">
     <meta name="mobile-agent" content="format=wml; url=https://www.paichi.net/zuofa/heyejiaohuaji_6.html">
     <script>var _hmt = _hmt || [];</script>
-    <link rel="stylesheet" type="text/css" media="all" href="https://s1.c.meishij.net/n/css/ss_base.css?v=1517">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/ss_base.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/main.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/list.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/content.css}">
@@ -55,7 +55,7 @@
 </div>
 <div class="header">
     <div class="header_c">
-        <a href="https://www.paichi.net/" class="logo pngFix"></a>
+        <a href="" class="logo pngFix"></a>
         <div class="main_search_top_w">
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
@@ -75,7 +75,9 @@
 </div>
 <div class="nav">
     <ul id="main_nav">
-        <li class="current"><a href="https://www.paichi.net/" class="link pngFix"><strong>首页</strong></a></li>
+        <li class="current">
+            <a href="" class="link pngFix"><strong>首页</strong></a>
+        </li>
         <li class="hasmore">
             <a href="https://www.paichi.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
             <div class="dw clearfix">
@@ -242,7 +244,7 @@
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
         <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
-                src="images/20160909164810_443.png"
+                th:src="@{/js/zuofa/images/20160909164810_443.png}"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
         <li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
         <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
@@ -259,8 +261,9 @@
         <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
     </div>
 </div>
-<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" title="返回荷叶叫花鸡的顶部"
-                                                                                         class="backtotop pngFix">回到顶部</a>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+    <a href="#" th:title="'返回' + ${recipe.recipeName} + '的顶部'"
+       class="backtotop pngFix">回到顶部</a>
 </div>
 <div class="main_w clearfix">
     <div class="main clearfix">
@@ -269,78 +272,173 @@
             <li> ></li>
             <li><a id="tongji_caipudaquan" href="/chufang/diy/">菜谱大全</a></li>
             <li> ></li>
-            <li>荷叶叫花鸡</li>
+            <li>[[${recipe.recipeName}]]</li>
         </ul>
         <div class="cp_header clearfix">
-            <div class="cp_headerimg_w"><img alt="荷叶叫花鸡的做法" th:src="@{/js/zuofa/images/s13666470_159635697189755.jpeg}"></div>
+            <div class="cp_headerimg_w">
+                <img th:alt="${recipe.recipeName}" th:src="${recipe.recipeImg}"></div>
             <div class="cp_main_info_w">
                 <div class="info1">
-                    <h1 class="title"><a id="tongji_title" title="荷叶叫花鸡的做法"
-                                         href="https://www.paichi.net/zuofa/heyejiaohuaji_6.html">荷叶叫花鸡</a></h1>
+                    <h1 class="title">
+                        <a id="tongji_title" th:title="${recipe.recipeName} + '的做法'"
+                                         th:href="@{/recipe/zuofa?recipeId=} + ${recipe.recipeId}">[[${recipe.recipeName}]]</a></h1>
                     <div class="erweima_t" id="erweima_t"></div>
                     <div class="ewmbox" id="ewmbox">
                         <div class="c"><strong>用手机查看这篇菜谱</strong>
-                            <p>手机扫描右侧二维码，<br>将这篇菜谱带进厨房，让您边做边看！<br><br>您也可以 <a target="_blank"
-                                                                              href="http://sj.meishi.cc/">下载PaiChi手机客户端
-                                ></a><br>随时随地看菜谱!</p></div>
-                        <img th:src="@{/js/zuofa/images/qrcode_wap.png}" class="ewmimg"></div>
-                    <span class="favbtns"><a href="javascript:add_fav(1969698)" title="荷叶叫花鸡的做法" class="addToFav_con"
-                                             id="addToFav_con">收藏<span id="f_num"></span></a><div id="bdshare"
-                                                                                                  class="bdshare_b"><div
-                            class="bdsharebuttonbox" data-tag="share_1"
-                            style="height:50px;width:168px;background:#f5f5f5;position:relative;float:left;line-height:50px;">
-                        <a class="bds_more" data-cmd="more" style="display:block;position:absolute;left:0px;top:0px;height:48px;width:167px;text-indent:-9999px;background:none;margin:0px;padding:0px;border:1px solid #e5e5e5;border-left:0px;">更多</a>
-                        <span style="display:block;height:50px;font-size:14px;font-weight:bold;color:#999;width:78px;text-align:right;float:left;">分享到：</span>
-                        <a class="bds_sqq" data-cmd="sqq" style="margin-top:17px;position:relative;"></a>
-                        <a class="bds_qzone" data-cmd="qzone" href="#" style="margin-top:17px;position:relative;"></a>
-                        <a class="bds_tsina" data-cmd="tsina" style="margin-top:17px;position:relative;"></a>
-                        </div></div>
+                            <p>手机扫描右侧二维码，<br>将这篇菜谱带进厨房，让您边做边看！<br><br>您也可以
+                                <a target="_blank" href="http://sj.meishi.cc/">下载PaiChi手机客户端 ></a>
+                                <br>随时随地看菜谱!
+                            </p>
+                        </div>
+                        <img th:src="@{/js/zuofa/images/qrcode_wap.png}" class="ewmimg">
+                    </div>
+                    <span class="favbtns">
+                        <a href="javascript:add_fav(1969698)" th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
+                            <span id="f_num">
+                            </span>
+                        </a>
+                        <div id="bdshare" class="bdshare_b">
+                            <div class="bdsharebuttonbox" data-tag="share_1" style="height:50px;width:168px;background:#f5f5f5;position:relative;float:left;line-height:50px;">
+                                <a class="bds_more" data-cmd="more" style="display:block;position:absolute;left:0px;top:0px;height:48px;width:167px;text-indent:-9999px;background:none;margin:0px;padding:0px;border:1px solid #e5e5e5;border-left:0px;">更多</a>
+                                <span style="display:block;height:50px;font-size:14px;font-weight:bold;color:#999;width:78px;text-align:right;float:left;">分享到：</span>
+                                <a class="bds_sqq" data-cmd="sqq" style="margin-top:17px;position:relative;"></a>
+                                <a class="bds_qzone" data-cmd="qzone" href="#" style="margin-top:17px;position:relative;"></a>
+                                <a class="bds_tsina" data-cmd="tsina" style="margin-top:17px;position:relative;"></a>
+                            </div>
+                        </div>
                     </span>
+                    <!--功效-->
+                    <dl class="yj_tags clearfix">
+                        <dt th:each="effect : ${recipe.effects}">
+                            <a href="javascript:;">[[${effect.effectName}]]</a>
+                        </dt>
+                        <!--没有功效标签时显示 暂无-->
+                        <dt th:if="${#arrays.isEmpty(recipe.effects)}">
+                            <a>暂无</a>
+                        </dt>
+                    </dl>
                 </div>
+
                 <div class="info2">
                     <ul class="clearfix">
                         <li class="w127"><strong>工艺</strong>
-                            <a id="tongji_gy" href="javascript:;" title="荷叶叫花鸡的工艺" class="big">烤</a>
+                            <a id="tongji_gy" href="javascript:;" th:title="${recipe.recipeName} + '荷叶叫花鸡的工艺'" class="big">[[${recipe.craft.craftName}]]</a>
                         </li>
+                        <!--
+                            困难程度： 0-18，三级一个档次
+                            档次：0：未知， 1-3：新手尝试、4-6：初级入门、7-9：初级水平、10-12：中级掌勺、13-15：高级厨师、16-18：厨神级
+                        -->
+
                         <li class="w270"><strong>难度</strong>
-                            <div class="processing_w"><span class="icon icon_nd"></span><span
-                                    class="processing processing_nd0"></span>未知
+                            <div class="processing_w">
+                                <span class="icon icon_nd"></span>
+                                <span th:class="'processing processing_nd' + ${recipe.difficulty}"></span>
+
+                                <a id="tongji_nd" href="javascript:;" th:title="${recipe.recipeName} + '的难度'"
+                                   class="small">
+                                    [[${recipe.difficulty == 0 ? '未知'
+                                    : recipe.difficulty / 4 == 0 ? "新手尝试"
+                                    : recipe.difficulty / 4 == 1 ? '初级入门'
+                                    : recipe.difficulty / 4 == 2 ? '初级水平'
+                                    : recipe.difficulty / 4 == 3 ? '中级掌勺'
+                                    : recipe.difficulty / 4 == 4 ? '高级厨师'
+                                    : recipe.difficulty / 4 == 1 ? '厨神级' : '未知'}]]
+                                </a>
                             </div>
                         </li>
                         <li class="w270 br0"><strong>人数</strong>
-                            <div class="processing_w"><span class="icon icon_rs"></span><span
-                                    class="processing processing_nd0"></span>未知
+                            <div class="processing_w">
+                                <span class="icon icon_rs"></span>
+                                <span th:class="'processing processing_nd' + ${recipe.peopleNumber == null ? 0 : recipe.peopleNumber * 4}"></span>
+                                <a id="tongji_rsh" href="javascript:;" th:title="${recipe.recipeName == null ? '未知' : recipe.peopleNumber}" class="small">
+                                    [[${recipe.peopleNumber == null ? '未知' : recipe.peopleNumber + '人份'}]]
+                                </a>
                             </div>
                         </li>
-                        <li class="w127 bb0"><strong>口味</strong><a id="tongji_kw" href="javascript:;" title="荷叶叫花鸡的口味"
-                                                                   class="big">家常味</a></li>
+                        <li class="w127 bb0"><strong>口味</strong>
+                            <a id="tongji_kw" href="javascript:;"
+                               th:title="${recipe.recipeName} + '的口味'" class="big">
+                                [[${recipe.taste.tasteName}]]
+                            </a>
+                        </li>
                         <li class="w270 bb0"><strong>准备时间</strong>
-                            <div class="processing_w"><span class="icon icon_zb"></span><span
-                                    class="processing processing_nd0"></span>未知
+                            <!--准备时间
+                                分类<10分钟  <30分钟 <60分钟 <90分钟 <2小时 <数小时 <一天 <数天
+                            -->
+                            <div class="processing_w"><span class="icon icon_zb"></span>
+                                <span th:class="'processing processing_nd' +
+                                    ${recipe.preparationTime >= 2880
+                                    ? '16'
+                                    : recipe.preparationTime >= 1440
+                                    ? '13'
+                                    : recipe.preparationTime > 120
+                                    ? '10'
+                                    : recipe.preparationTime > 60
+                                    ? '7'
+                                    : recipe.preparationTime > 0
+                                    ? '3'
+                                    : '0'}"></span>
+                                <a id="tongji_zbsj" href="javascript:;" th:title="${recipe.recipeName} +'的准备时间'" class="small">
+                                    [[${recipe.preparationTime >= 2880
+                                    ? '数天'
+                                    : recipe.preparationTime >= 1440
+                                    ? '两天'
+                                    : recipe.preparationTime > 120
+                                    ? '数小时'
+                                    : recipe.preparationTime > 60
+                                    ? '两小时'
+                                    : recipe.preparationTime > 0
+                                    ? recipe.preparationTime + '分钟'
+                                    : '未知'}]]
+                                </a>
                             </div>
                         </li>
                         <li class="w270 bb0 br0"><strong>烹饪时间</strong>
-                            <div class="processing_w"><span class="icon icon_pr"></span><span
-                                    class="processing processing_nd13"></span><a href="javascript:;" id="tongji_prsj"
-                                                                                 title="荷叶叫花鸡的烹饪时间" class="small">
-                                <数小时
-                                < a></数小时<></a></div>
+                            <div class="processing_w">
+                                <span class="icon icon_pr"></span>
+                                <span th:class="'processing processing_nd' +
+                                    ${recipe.cookTime >= 2880
+                                    ? '16'
+                                    : recipe.cookTime >= 1440
+                                    ? '13'
+                                    : recipe.cookTime > 120
+                                    ? '10'
+                                    : recipe.cookTime > 60
+                                    ? '7'
+                                    : recipe.cookTime > 0
+                                    ? '3'
+                                    : '0'}"></span>
+                                <a href="javascript:;" id="tongji_prsj" th:title="${recipe.recipeName} + '的烹饪时间'" class="small">
+                                    [[${recipe.cookTime >= 2880
+                                    ? '数天'
+                                    : recipe.cookTime >= 1440
+                                    ? '两天'
+                                    : recipe.cookTime > 120
+                                    ? '数小时'
+                                    : recipe.cookTime > 60
+                                    ? '两小时'
+                                    : recipe.cookTime > 0
+                                    ? recipe.cookTime + '分钟'
+                                    : '未知'}]]
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
                 <div class="info3">
                     <div class="user">
-                        <a target="_blank" id="tongji_author_img" href="https://i.meishi.cc/cook.php?id=13666470"
-                           class="img"><img th:src="@{/js/zuofa/images/t13666470_155353102090913.jpeg}"><span
-                                class="masker pngFix"></span></a>
+                        <a target="_blank" id="tongji_author_img" href="" class="img">
+                            <img th:src="${recipe.user.userIcon}">
+                            <span class="masker pngFix"></span>
+                        </a>
                         <div class="info">
                             <h4>
-                                <a id="tongji_author" target="_blank" href="https://i.meishi.cc/cook.php?id=13666470">小鱼哥的私房</a>
+                                <a id="tongji_author" target="_blank" href="https://i.meishi.cc/cook.php?id=13666470">[[${recipe.user.userName}]]</a>
                                 <a target="_blank" class="v_small" href="https://i.meishi.cc/expert/" title="达人"
                                    _hover-ignore="1"></a>
                             </h4>
                             <span>菜谱：144　/　关注：3　/　粉丝：63</span>
-                            <strong>2020-08-02　/　<em id="viewclicknum"></em>人看过</strong>
+                            <strong>[[${#dates.format(recipe.timestamp, 'yyyy-MM-dd HH:mm:ss')}]]　/　<em id="viewclicknum"></em>人看过</strong>
                         </div>
                     </div>
                 </div>
@@ -349,19 +447,19 @@
         <div class="cp_body clearfix">
             <div class="cp_body_left">
                 <div class="materials">
-                    <p><strong>“</strong>我叫小鱼哥，来自山东菏泽，参赛作品《荷叶叫花鸡》。<br>
-                        有一种念想，叫妈妈的手艺，<br>
-                        有一种回味，叫妈妈的菜香。<br>
-                        小时候家里穷，一般都是逢年过节才杀鸡做菜，平时很少会吃到，而且那时候的佐料没有现在这么多，味道也是普普通通，可每次吃的时候都兴奋不已，毕竟每年才那么几个节日(>_<)！每次有鸡吃的时候，母亲都会把好肉挑给我，自己确吃着鸡骨、鸡架之类，母亲辛苦了一辈子，今天我来为她做顿饭，就用小时候爱吃、确轻易吃不到的鸡来做道菜吧，叫花鸡之前我做过一次，这次经过改良，整体都有了明显提高，不足之处还请大家多提宝贵意见！<strong>”</)！每次有鸡吃的时候，母亲都会把好肉挑给我，自己确吃着鸡骨、鸡架之类，母亲辛苦了一辈子，今天我来为她做顿饭，就用小时候爱吃、确轻易吃不到的鸡来做道菜吧，叫花鸡之前我做过一次，这次经过改良，整体都有了明显提高，不足之处还请大家多提宝贵意见！<strong>
+                    <p>
+                        <strong>“</strong>
+                            [[${recipe.introduction}]]
+                        <strong>”</strong>
                     </p>
                     <strong class="cpc_h2">用料</strong>
                     <div class="materials_box">
                         <div class="yl zl clearfix">
-                            <h3><a href="javascript:;" title="荷叶叫花鸡的主料">主料</a></h3>
+                            <h3><a href="javascript:;" th:title="${recipe.recipeName}+ '的主料'">主料</a></h3>
                             <ul class="clearfix">
-                                <li class=" bb0"><a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/"
-                                                    class="img"><img
-                                        th:src="@{/js/zuofa/images/52c7f611c17459de9eaf1f4cdd6574cc_60x60.jpeg}"></a>
+                                <li class=" bb0">
+                                    <a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/" class="img">
+                                        <img th:src="@{/js/zuofa/images/52c7f611c17459de9eaf1f4cdd6574cc_60x60.jpeg}"></a>
                                     <div class="c"><h4><a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/">鸡</a><span>1250克</span>
                                     </h4><a href="#" class="fortb" data-type="2" biz-keyword="鸡 鲜"
                                             biz-category="50016422" data-style="1" data-tmpl="290x380"
@@ -428,7 +526,7 @@
                     </div>
                 </div>
                 <div class="measure">
-                    <h2 class="cpc_h2">荷叶叫花鸡的做法</h2>
+                    <h2 class="cpc_h2">[[${recipe.recipeName}]]的做法</h2>
                     <div class="editnew edit">
                         <div class="content clearfix">
                             <em class="step" id="step_num1">1.</em>
@@ -649,7 +747,7 @@
                     .iphonestyle_new {
                         width: 300px;
                         height: 609px;
-                        background: #fff url(images/20190522174006_590.png) center top no-repeat;
+                        background: #fff url(/js/zuofa/images/20190522174006_590.png) center top no-repeat;
                         border-top: 20px solid #fae8c8;
                         border-bottom: 20px solid #fae8c8;
                         padding-top: 136px;
@@ -667,7 +765,7 @@
                         position: absolute;
                         left: 0px;
                         top: 0px;
-                        background: url(images/20190522163304_680.png) center no-repeat;
+                        background: url(/js/zuofa/images/20190522163304_680.png) center no-repeat;
                         z-index: 10;
                     }
 
@@ -707,7 +805,7 @@
                     }
 
                     .side_qrcode {
-                        background: url(images/20190522172502_923.png) center no-repeat;
+                        background: url(/js/zuofa/images/20190522172502_923.png) center no-repeat;
                         width: 120px;
                         height: 193px;
                         position: fixed;
@@ -890,7 +988,7 @@
             bdMiniList: ['mshare', 'qzone', 'tsina', 'tqq', 'huaban', 'renren', 'weixin', 'kaixin001', 'douban', 'tsohu', 'bdysc', 'sohu', 't163', 'meilishuo', 'mogujie', 'tfh', 'fx', 'youdao']
         }, share: [{"bdSize": 16}], selectShare: [{"bdselectMiniList": ['qzone', 'tsina', 'douban', 'tqq', 'renren']}]
     }
-    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+</script>
     <div style="display:none;"></div>
     <script>
         (function () {
@@ -919,7 +1017,7 @@
     <div class="footer_con1 clearfix">
         <!--<p class="text pngFix"><a href="https://www.paichi.net/" class="footer_homelink"></a></p>-->
         <div class="logobottom"
-             style="height:196px;width:600px;background: url(images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+             style="height:196px;width:600px;background: url(/js/zuofa/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
             <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
         </div>
         <div class="links">
