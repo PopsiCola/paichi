@@ -2,6 +2,7 @@ package com.paichi.modules.recipe.mapper;
 
 import com.paichi.modules.recipe.entity.Recipe;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -52,4 +53,22 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
      * @return
      */
     Recipe getRecipeDetailByRecipeId(String recipeId, String fastDFSPath);
+
+    /**
+     * 菜谱搜索
+     * @param current       当前页
+     * @param limit         每页显示条数
+     * @param fastDFSPath   图片保存服务器地址以及端口号
+     * @return
+     */
+    List<Map> queryRecipeOfSearch(@Param("current") int current,
+                                  @Param("limit") int limit,
+                                  @Param("fastDFSPath") String fastDFSPath);
+
+    /**
+     * 菜谱总数
+     * @return
+     */
+    Integer recipeCount();
+
 }

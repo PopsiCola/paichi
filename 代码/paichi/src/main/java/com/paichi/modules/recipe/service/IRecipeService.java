@@ -26,5 +26,9 @@ public interface IRecipeService extends IService<Recipe> {
 
     List<Map> queryHotRecipeOfNow();
 
-    Recipe  getRecipe(String recipeId);
+    Recipe getRecipe(String recipeId);
+
+    Integer getRecipeCount();
+
+    List<Map> queryRecipeOfSearch(int current, int limit);
 }

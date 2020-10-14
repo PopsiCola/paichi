@@ -1,17 +1,14 @@
 package com.paichi.modules.recipe.controller;
 
-
 import com.paichi.common.web.Message;
+import com.paichi.common.web.Page;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.service.IRecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.Currency;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,21 +105,27 @@ public class RecipeController {
     }
 
     /**
-     * 菜谱做法，展示详细信息，包含步骤信息
-     * @param recipeId  菜谱唯一主键
+     * 菜谱大全
+     * 根据条件搜索所有菜谱
      * @return
      */
-    @RequestMapping(value = "recipeDetail", method = RequestMethod.POST)
-    public Message recipePractice(String recipeId) {
+    @RequestMapping(value = "searchRecipe", method = RequestMethod.POST)
+    @ResponseBody
+    public Message searchRecipe(@RequestParam(name = "current", defaultValue = "1") int current,
+                                @RequestParam(name = "limit", defaultValue = "18") int limit) {
         Message message = new Message();
+        Map<String, Object> dataMap = new HashMap<>();
 
-        if (recipeId == null || "".equals(recipeId)) {
-            message.setMsg("请问你要查看哪个菜谱呢？");
-            message.setCode(1);
-            return message;
-        }
+        List<Map> recipes = recipeService.queryRecipeOfSearch(current, limit);
+        //总条数
+        Integer recipeCount = recipeService.getRecipeCount();
 
-        Recipe recipe = recipeService.getRecipe(recipeId);
+        dataMap.put("recipes", recipes);
+        dataMap.put("recipeCount", recipeCount);
+
+        message.setCode(1);
+        message.setData(dataMap);
+        message.setMsg("查询成功");
 
         return message;
     }

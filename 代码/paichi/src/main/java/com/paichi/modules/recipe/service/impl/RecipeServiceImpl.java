@@ -82,4 +82,24 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
     public Recipe getRecipe(String recipeId) {
         return recipeMapper.getRecipeDetailByRecipeId(recipeId, fastDFSPath);
     }
+
+    /**
+     * 获取菜谱总数
+     * @return
+     */
+    @Override
+    public Integer getRecipeCount() {
+        return recipeMapper.recipeCount();
+    }
+
+    /**
+     * 条件搜索，分页展示菜谱
+     * @param current   当前页
+     * @param limit     每页显示条数
+     * @return
+     */
+    @Override
+    public List<Map> queryRecipeOfSearch(int current, int limit) {
+        return recipeMapper.queryRecipeOfSearch(current, limit, fastDFSPath);
+    }
 }

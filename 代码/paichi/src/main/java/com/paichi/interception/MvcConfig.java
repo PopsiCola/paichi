@@ -41,8 +41,13 @@ public class MvcConfig implements WebMvcConfigurer {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/login.html").setViewName("/login/index");
-                //直接访问找回密码页面
+                // 直接访问找回密码页面
                 registry.addViewController("/resetpwd.html").setViewName("/login/resetpwd");
+                // 全部菜谱展示页面
+                registry.addViewController("/chufang/diy/index.html").setViewName("/chufang/diy/index");
+
+
+                registry.addViewController("/test.html").setViewName("/test");
             }
         };
     }
