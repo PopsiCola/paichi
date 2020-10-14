@@ -12,10 +12,13 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/ss_base.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/main.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/chufang/css/list.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/layui/css/layui.css}">
     <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
     <script type="text/javascript" th:src="@{/js/chufang/js/main.js}"></script>
     <script type="text/javascript" th:src="@{/js/chufang/js/list.js}"></script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script th:src="@{/js/chufang/js/ds.js}"></script>
+    <script th:src="@{/js/chufang/js/chufang.js}"></script>
     <script>var _czc = _czc || [];
     var _hmt = _hmt || [];
     (function () {
@@ -231,7 +234,7 @@
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
         <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
-                src="images/20160909164810_443.png"
+                th:src="@{/image/vip_hat.png}"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
         <li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
         <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
@@ -890,19 +893,28 @@
                 </div>
             </div><!-- listtyle1_list end -->
             <div class="listtyle1_page">
-                <div class="listtyle1_page_w"><a href="https://www.paichi.net/chufang/diy/?&page=1"
-                                                 class="current">1</a><a
-                        href="https://www.paichi.net/chufang/diy/?&page=2" class>2</a><a
-                        href="https://www.paichi.net/chufang/diy/?&page=3" class>3</a><a
-                        href="https://www.paichi.net/chufang/diy/?&page=4" class>4</a><a
-                        href="https://www.paichi.net/chufang/diy/?&page=5" class>5</a><span>...</span><a
-                        href="https://www.paichi.net/chufang/diy/?&page=2" class="next">下一页</a><span class="gopage"><form
-                        action="https://www.paichi.net/list.php"><input type="hidden" value="13"
-                                                                        name="lm">共56页，到第 <input type="text"
-                                                                                                 class="text" value="2"
-                                                                                                 name="page"> 页 <input
-                        type="submit" class="submit" value="确定"></form></span></div>
+
+                <div class="listtyle1_page_w">
+                    <a href="https://www.paichi.net/chufang/diy/?&page=1" class="current">1</a>
+                    <a href="https://www.paichi.net/chufang/diy/?&page=2" class>2</a>
+                    <a href="https://www.paichi.net/chufang/diy/?&page=3" class>3</a>
+                    <a href="https://www.paichi.net/chufang/diy/?&page=4" class>4</a>
+                    <a href="https://www.paichi.net/chufang/diy/?&page=5" class>5</a>
+                    <span>...</span>
+                    <a href="https://www.paichi.net/chufang/diy/?&page=2" class="next">下一页</a>
+                    <span class="gopage">
+                        <form action="https://www.paichi.net/list.php">
+                            <input type="hidden" value="13" name="lm">共56页，到第
+                            <input type="text" class="text" value="2" name="page"> 页
+                            <input type="submit" class="submit" value="确定">
+                        </form>
+                    </span>
+                </div>
             </div>
+            <div class="listtyle1_page">
+                <div class="listtyle1_page_w" id="page_list"></div>
+            </div>
+
             <script type="text/javascript" th:src="@{/js/chufang/js/jewnfkmaf.js}"></script>
         </div>
     </div>
