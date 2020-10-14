@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script>var _hmt = _hmt || [];</script>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/jiankang/css/ss_base.css}">
-    <link rel="stylesheet" type="text/css" media="all" href="css/main.css">
-    <link rel="stylesheet" type="text/css" media="all" href="css/list.css">
-    <script type="text/javascript" src="js/j.m.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/list.js"></script>
-    <script src="js/ds.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/jiankang/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/jiankang/css/list.css}">
+    <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jiankang/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jiankang/js/list.js}"></script>
+    <script th:src="@{/js/jiankang/js/ds.js}"></script>
     <script>var _czc = _czc || [];
     var _hmt = _hmt || [];
     (function () {
@@ -232,7 +231,7 @@
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
         <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
-                src="images/20160909164810_443.png"
+                th:src="@{/js/jiankang/images/20160909164810_443.png}"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
         <li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
         <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
@@ -241,21 +240,23 @@
 <div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
     <div class="main_search_w">
         <div class="searchform_div">
-            <form action="https://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q"
-                                                                        x-webkit-speech autocomplete="off"
-                                                                        id="inputString" placeholder="健康饮食"><input
-                    type="submit" class="submit" value="搜 索"></form>
+            <form action="https://so.meishi.cc/" target="_blank">
+                <input type="text" class="text" name="q" x-webkit-speech autocomplete="off"
+                       id="inputString" placeholder="健康饮食">
+                <input type="submit" class="submit" value="搜 索">
+            </form>
         </div>
         <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
     </div>
 </div>
-<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" title="返回健康饮食的顶部"
-                                                                                         class="backtotop pngFix">回到顶部</a>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+    <a href="#" title="返回健康饮食的顶部" class="backtotop pngFix">回到顶部</a>
 </div>
 <div class="main_w clearfix">
     <div class="main">
-        <strong class="bbtitles"><a target="_blank" href="http://sj.meishi.cc/app.php?to=health" class="jksz pngFix">戌时宜清淡晚餐，是养心包的最佳时机，可通过散步、沐浴来缓解疲
-            劳。</a></strong>
+        <strong class="bbtitles">
+            <a target="_blank" href="http://sj.meishi.cc/app.php?to=health" class="jksz pngFix">戌时宜清淡晚餐，是养心包的最佳时机，可通过散步、沐浴来缓解疲 劳。</a>
+        </strong>
         <div class="listnav clearfix mt0" id="listnav">
             <ul class="listnav_ul" id="listnav_ul">
                 <li disable="1"><a href class="link">我的体质（未开放）</a></li>
@@ -530,74 +531,87 @@
         <div class="listtyle1_w listtyle1_w_c4" id="listtyle1_w">
             <div class="listtyle1_list clearfix" id="listtyle1_list">
                 <div class="listtyle1 ml0">
-                    <div class="img"><a target="_blank" title="九阳净食机XJS-02A——让你用得安心，吃得放心"
-                                        href="https://www.paichi.net/zuofa/jiuyangjingshijixjs02arangni.html"
-                                        class="img"><img class="cpimg" alt="九阳净食机XJS-02A——让你用得安心，吃得放心"
-                                                         th:src="@{/js/jiankang/images/d9238bd8c219ca81ad538a15d3a25091_150x150.jpeg}"
-                                                         width="232" height="232"></a></div>
+                    <div class="img">
+                        <a target="_blank" title="九阳净食机XJS-02A——让你用得安心，吃得放心"
+                           href="https://www.paichi.net/zuofa/jiuyangjingshijixjs02arangni.html" class="img">
+                            <img class="cpimg" alt="九阳净食机XJS-02A——让你用得安心，吃得放心"
+                                 th:src="@{/js/jiankang/images/d9238bd8c219ca81ad538a15d3a25091_150x150.jpeg}" width="232" height="232">
+                        </a>
+                    </div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="九阳净食机XJS-02A——让你用得安心，吃得放心"
-                                                 href="https://www.paichi.net/zuofa/jiuyangjingshijixjs02arangni.html">九阳净食机XJS-02A——让你用得安心，吃得放心</a></strong>
+                        <strong class="title">
+                            <a target="_blank" title="九阳净食机XJS-02A——让你用得安心，吃得放心"
+                               href="https://www.paichi.net/zuofa/jiuyangjingshijixjs02arangni.html">九阳净食机XJS-02A——让你用得安心，吃得放心</a></strong>
                         <div class="d1"><span>0 评论</span><span>1662 人气</span></div>
                     </div>
                 </div>
                 <div class="listtyle1">
-                    <div class="img"><a target="_blank" title="日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！"
+                    <div class="img">
+                        <a target="_blank" title="日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！"
                                         href="https://www.paichi.net/zuofa/rixingwanbugengjiankangyaozh.html"
                                         class="img"><img class="cpimg" alt="日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！"
                                                          th:src="@{/js/jiankang/images/1356c4e86d81974d82a9750e8af63e5a_150x150.jpeg}"
                                                          width="232" height="232"></a></div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！"
+                        <strong class="title">
+                            <a target="_blank" title="日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！"
                                                  href="https://www.paichi.net/zuofa/rixingwanbugengjiankangyaozh.html">日行万步更健康？要注意这些点搭配氨糖软骨素钙片，避免伤关节！</a></strong>
                         <div class="d1"><span>0 评论</span><span>4579 人气</span></div>
                     </div>
                 </div>
                 <div class="listtyle1">
-                    <div class="img"><a target="_blank" title="如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片"
+                    <div class="img">
+                        <a target="_blank" title="如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片"
                                         href="https://www.paichi.net/zuofa/ruheanwenguoxiajishishizheji.html"
                                         class="img"><img class="cpimg" alt="如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片"
                                                          th:src="@{/js/jiankang/images/3ca8b7834a418eef31a273e47c5cc6df_150x150.jpeg}"
                                                          width="232" height="232"></a></div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片"
+                        <strong class="title">
+                            <a target="_blank" title="如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片"
                                                  href="https://www.paichi.net/zuofa/ruheanwenguoxiajishishizheji.html">如何安稳过夏季？试试这几个方法搭配多种维生素矿物质片</a></strong>
                         <div class="d1"><span>0 评论</span><span>1617 人气</span></div>
                     </div>
                 </div>
                 <div class="listtyle1">
-                    <div class="img"><a target="_blank" title="老酒新酿 偏爱老味道的人一定要品品匠上匠"
+                    <div class="img">
+                        <a target="_blank" title="老酒新酿 偏爱老味道的人一定要品品匠上匠"
                                         href="https://www.paichi.net/zuofa/laojiuxinniangpianailaoweida.html"
                                         class="img"><img class="cpimg" alt="老酒新酿 偏爱老味道的人一定要品品匠上匠"
                                                          th:src="@{/js/jiankang/images/f594589ec3f0cc9a8ea240d071c31c29_150x150.jpeg}"
                                                          width="232" height="232"></a></div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="老酒新酿 偏爱老味道的人一定要品品匠上匠"
+                        <strong class="title">
+                            <a target="_blank" title="老酒新酿 偏爱老味道的人一定要品品匠上匠"
                                                  href="https://www.paichi.net/zuofa/laojiuxinniangpianailaoweida.html">老酒新酿
                             偏爱老味道的人一定要品品匠上匠</a></strong>
                         <div class="d1"><span>0 评论</span><span>4129 人气</span></div>
                     </div>
                 </div>
                 <div class="listtyle1 ml0">
-                    <div class="img"><a target="_blank" title="匠心追求，酱香佳酿的匠上匠全新升级了！"
+                    <div class="img">
+                        <a target="_blank" title="匠心追求，酱香佳酿的匠上匠全新升级了！"
                                         href="https://www.paichi.net/zuofa/jiangxinzhuiqiujiangxiangjia.html"
                                         class="img"><img class="cpimg" alt="匠心追求，酱香佳酿的匠上匠全新升级了！"
                                                          th:src="@{/js/jiankang/images/d6ebacd7ee75a6a5353b9fae33ff14b6_150x150.jpeg}"
                                                          width="232" height="232"></a></div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="匠心追求，酱香佳酿的匠上匠全新升级了！"
+                        <strong class="title">
+                            <a target="_blank" title="匠心追求，酱香佳酿的匠上匠全新升级了！"
                                                  href="https://www.paichi.net/zuofa/jiangxinzhuiqiujiangxiangjia.html">匠心追求，酱香佳酿的匠上匠全新升级了！</a></strong>
                         <div class="d1"><span>0 评论</span><span>3289 人气</span></div>
                     </div>
                 </div>
                 <div class="listtyle1">
-                    <div class="img"><a target="_blank" title="匠上匠1号：古法秘调，打造酱酒品质新标杆"
+                    <div class="img">
+                        <a target="_blank" title="匠上匠1号：古法秘调，打造酱酒品质新标杆"
                                         href="https://www.paichi.net/zuofa/jiangshangjiang1haogufamidia.html"
                                         class="img"><img class="cpimg" alt="匠上匠1号：古法秘调，打造酱酒品质新标杆"
                                                          th:src="@{/js/jiankang/images/0226b20f89ce1e720b9484149287af19_150x150.jpeg}"
                                                          width="232" height="232"></a></div>
                     <div class="info1">
-                        <strong class="title"><a target="_blank" title="匠上匠1号：古法秘调，打造酱酒品质新标杆"
+                        <strong class="title">
+                            <a target="_blank" title="匠上匠1号：古法秘调，打造酱酒品质新标杆"
                                                  href="https://www.paichi.net/zuofa/jiangshangjiang1haogufamidia.html">匠上匠1号：古法秘调，打造酱酒品质新标杆</a></strong>
                         <div class="d1"><span>0 评论</span><span>4345 人气</span></div>
                     </div>
@@ -752,7 +766,8 @@
         <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备14030359号</a>/<a target="_blank"
                                                                                                       href="https://beian.gov.cn/"
                                                                                                       class="gray_a"><img
-                th:src="@{/js/jiankang/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 paichi CO.,LTD.</p>
+                th:src="@{/js/jiankang/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020
+            paichi CO.,LTD.</p>
     </div>
 </div>
 <div style="display:none;">

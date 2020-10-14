@@ -1,4 +1,4 @@
-document.domain = "meishij.net";
+document.domain = "localhost";
 $(function(){
 	var news_id = $("#news_id").val();
 	var ntitle = $("#news_title").val();
