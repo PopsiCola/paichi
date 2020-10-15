@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	var isEMail=false;
 	var isMobile=false;
 	var isPassword=false;
@@ -27,13 +28,14 @@ $(document).ready(function(){
 		$("#email_tips").html('<p><span class="tips"></span>请输入您的注册邮箱</p>');
 	});
 
+	// 鼠标离开输入框，点击其他位置
 	$("#email").blur(function(){
 			var email=$("#email").val();
 			if(testEmail(email)==false){
 				$('#email_tips').html('<p  class="tips_error_p"><span class="tips_error"></span>请输入正确的邮箱地址</p>');
 				return false;
 			}
-			$.post("/ajax/resetpw.php", {"email": email,"check":'true'},function(data){
+			$.post("/resetPwdByEmail", {"email": email},function(data){
 				if(data.code=='1'){
 					$('#email_tips').html('<p><span class="tips_right"></span></p>');
 					isEMail=true;
@@ -53,7 +55,10 @@ $(document).ready(function(){
 		$("#mobile_tips").html('<p><span class="tips"></span>请输入您的注册手机号</p>');
 	});
 	$("#mobile").blur(function(){
-		var mobile=$("#mobile").val();
+		layer.msg('手机找回密码功能暂时下架，请通过邮箱找回密码', {
+			time : 1000
+		});
+		/*var mobile=$("#mobile").val();
 		var r=testMobile(mobile);
 		if(r!=true){
 			$('#mobile_tips').html('<p class="tips_error_p"><span class="tips_error"></span>'+r+'</p>');
@@ -70,7 +75,7 @@ $(document).ready(function(){
 				$('#mobile_tips').html('<p class="tips_error_p"><span class="tips_error"></span>'+data.msg+'</p>');
 				$("#send_mobile_code").attr("disabled","disabled");
 			}
-		}, "json");
+		}, "json");*/
 	});
 
 	$("#mobile_code").focus(function(){
@@ -93,7 +98,7 @@ $(document).ready(function(){
 			$("#mobile_tips").html('<p class="tips_error_p"><span class="tips_error"></span>手机号码有误</p>');
 			return false;
 		}
-		$.post("/ajax/resetpw.php", {"mobile_code":mobile_code,"mobile":mobile,"check":'true'},function(data){
+		/*$.post("/ajax/resetpw.php", {"mobile_code":mobile_code,"mobile":mobile,"check":'true'},function(data){
 			if(data.code=='1'){
 				$('#mobile_code_tips').html('<p><span class="tips_right"></span></p>');
 				isMobileYzm=true;
@@ -101,13 +106,16 @@ $(document).ready(function(){
 				isMobileYzm=false;
 				$('#mobile_code_tips').html('<p class="tips_error_p"><span class="tips_error"></span>'+data.msg+'</p>');
 			}
-		}, "json");
+		}, "json");*/
 	});
 
 
-
+	// 发送手机验证码 TODO：停用！无手机短信套餐，暂时停用
 	$("#send_mobile_code").click(function(){
-		var mobile=$("#mobile").val();
+
+		layer.msg('功能完善中，暂时停用，请使用邮箱找回密码。');
+
+		/*var mobile=$("#mobile").val();
 		if(!isMobile){
 			$('#send_mobile_code_tips').html('<p class="tips_error_p"><span class="tips_error"></span>请输入正确的手机号码</p>');
 			return false;
@@ -124,12 +132,17 @@ $(document).ready(function(){
 				$('#send_mobile_code_tips').html('<p class="tips_error_p"><span class="tips_error"></span>'+data.msg+'</p>');
 				$("#send_mobile_code").removeAttr("disabled");
 			}
-		}, "json");
+		}, "json");*/
 
 	});
 
-
+	// 手机密码提交
 	$("#mobile_getpw_submit").unbind('click').click(function(){
+
+		layer.msg('手机找回密码功能暂时下线，请通过邮箱找回密码', {
+			time: 1000
+		});
+
 		if(!isMobile || !isMobileYzm){
 			return false;
 		}
