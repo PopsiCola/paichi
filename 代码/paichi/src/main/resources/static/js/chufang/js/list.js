@@ -80,6 +80,8 @@ $(".listtyle1 .info2").live("mouseleave",function(){
 	var _this = $(this);
 	_this.find(".info2_c").stop().animate({left: "232px",opacity:"0"}, 800,function(){});
 });
+
+// 收起
 $(".filter_otherbtn").toggle(function(){
 	var _this = $(this);
 	_this.html("<< 收起");

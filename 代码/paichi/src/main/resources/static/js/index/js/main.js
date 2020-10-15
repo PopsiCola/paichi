@@ -820,7 +820,7 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 					'<div class="index_cplist_more">\n' +
 					'<h3>热门栏目推荐</h3>\n' +
 					'<ul>' +
-						'<li><a href="/chufang/diy/">最新菜谱</a></li>' +
+						'<li><a href="/chufang/diy/index.html">最新菜谱</a></li>' +
 						'<li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>' +
 						'<li><a href="/chufang/diy/langcaipu/">凉菜</a></li>' +
 						'<li><a href="/chufang/diy/sushi/">素食</a></li>' +
@@ -833,7 +833,7 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 						'<li><a href="/china-food/caixi/yuecai/">粤菜</a></li>' +
 						'<li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>' +
 						'<li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>' +
-						'<li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>' +
+						'<li><a href="/chufang/diy/index.html" class="hot">进入菜谱大全 >></a></li>' +
 					'</ul>\n' +
 					'</div>\n' +
 					'</div></div></div>';
@@ -887,7 +887,7 @@ $(function(){
 				let newsHtml = '';
 				for (let i = 0; i < data.recipeList.length; i++) {
 					newsHeadHtml += '<div class="listtyle1'+ (i%4 == 0?" ml0":"") +'">\n' +
-						'<a target="_blank" href="recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
+						'<a target="_blank" href="/recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
 						'<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
 						'<div class="i_w">\n' +
 						'<div class="i" style="margin-top: 0px;">\n' +
@@ -902,7 +902,7 @@ $(function(){
 					'<div class="index_cplist_more">\n' +
 					'<h3>热门栏目推荐</h3>\n' +
 					'<ul>' +
-					'<li><a href="/chufang/diy/">最新菜谱</a></li>' +
+					'<li><a href="/chufang/diy/index.html">最新菜谱</a></li>' +
 					'<li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>' +
 					'<li><a href="/chufang/diy/langcaipu/">凉菜</a></li>' +
 					'<li><a href="/chufang/diy/sushi/">素食</a></li>' +
@@ -915,7 +915,7 @@ $(function(){
 					'<li><a href="/china-food/caixi/yuecai/">粤菜</a></li>' +
 					'<li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>' +
 					'<li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>' +
-					'<li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>' +
+					'<li><a href="/chufang/diy/index.html" class="hot">进入菜谱大全 >></a></li>' +
 					'</ul>\n' +
 					'</div>\n' +
 					'</div></div></div>';

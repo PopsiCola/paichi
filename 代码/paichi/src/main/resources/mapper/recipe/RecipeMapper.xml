@@ -168,24 +168,31 @@
     <!--搜索查询菜谱-->
     <select id="queryRecipeOfSearch" resultType="Map">
         select *  from (
-            select r.RECIPE_ID, r.RECIPE_NAME, #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG, r.POPULARITY,
-                r.COOK_TIME, r.TIMESTAMP,
-                (select max(rs.STEP_NUMBER) from RECIPE_STEP rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                (select u.USER_NAME from "USER" u where u.USER_ID = r.USER_ID) as userName,
-                (select c.CRAFT_NAME from CRAFT c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
-                (select t.TASTE_NAME from TASTE t where t.TASTE_ID = r.TASTE_ID) as tasteName,
-                -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
-                (select e.EFFECT_NAME
-                 from RECIPE_EFFECT re
-                  left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
-                  left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
-                 where r1.RECIPE_ID = r.RECIPE_ID
-                   and ROWNUM = 1) as effectName,
-                ROWNUM as rn
+            select t1.RECIPE_ID, RECIPE_NAME, RECIPE_IMG, POPULARITY, COOK_TIME, TIMESTAMP,
+                stepNumber, userName, craftName, tasteName, effectName, ROWNUM as rn
+                from (
+                select r.RECIPE_ID, r.RECIPE_NAME, #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG, r.POPULARITY,
+                    r.COOK_TIME, r.TIMESTAMP,
+                    (select max(rs.STEP_NUMBER) from RECIPE_STEP rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
+                    (select u.USER_NAME from "USER" u where u.USER_ID = r.USER_ID) as userName,
+                    (select c.CRAFT_NAME from CRAFT c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
+                    (select t.TASTE_NAME from TASTE t where t.TASTE_ID = r.TASTE_ID) as tasteName,
+                    -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
+                    (select e.EFFECT_NAME
+                from RECIPE_EFFECT re
+                left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
+                left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
+                where r1.RECIPE_ID = r.RECIPE_ID and ROWNUM = 1) as effectName
             from RECIPE r
+            <if test="recipeType == 1">
+                order by r.TIMESTAMP DESC
+            </if>
+            <if test="recipeType == 2">
+                order by r.POPULARITY DESC
+            </if>
+            ) t1
             where ROWNUM &lt;= #{current} * #{limit} ) t
         where rn &gt; (#{current} - 1) * #{limit}
-        order by t.TIMESTAMP DESC
     </select>
 
     <!--最新菜谱-->

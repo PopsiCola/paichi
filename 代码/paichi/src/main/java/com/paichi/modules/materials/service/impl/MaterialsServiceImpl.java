@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  * 用料表（Materials） 服务实现类
@@ -28,5 +31,14 @@ public class MaterialsServiceImpl extends ServiceImpl<MaterialsMapper, Materials
     @Override
     public void addMaterial(Materials materials) {
         materialsMapper.saveMaterial(materials);
+    }
+
+    /**
+     * 查询主料食材
+     * @return
+     */
+    @Override
+    public List<Map> queryMainMaterial() {
+        return materialsMapper.queryMainMaterial();
     }
 }

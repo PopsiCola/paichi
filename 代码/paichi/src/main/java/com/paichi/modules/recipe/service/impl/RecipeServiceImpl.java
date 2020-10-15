@@ -94,12 +94,13 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
 
     /**
      * 条件搜索，分页展示菜谱
-     * @param current   当前页
-     * @param limit     每页显示条数
+     * @param recipeType    查询菜谱，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
+     * @param current       当前页
+     * @param limit         每页显示条数
      * @return
      */
     @Override
-    public List<Map> queryRecipeOfSearch(int current, int limit) {
-        return recipeMapper.queryRecipeOfSearch(current, limit, fastDFSPath);
+    public List<Map> queryRecipeOfSearch(int recipeType, int current, int limit) {
+        return recipeMapper.queryRecipeOfSearch(recipeType, current, limit, fastDFSPath);
     }
 }

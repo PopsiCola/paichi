@@ -30,5 +30,5 @@ public interface IRecipeService extends IService<Recipe> {
 
     Integer getRecipeCount();
 
-    List<Map> queryRecipeOfSearch(int current, int limit);
+    List<Map> queryRecipeOfSearch(int recipeType, int current, int limit);
 }

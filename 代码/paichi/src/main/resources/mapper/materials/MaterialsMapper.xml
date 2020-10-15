@@ -37,4 +37,15 @@
             </if>
         </trim>
     </insert>
+
+    <!--食材筛选 食材列表-->
+    <select id="queryMainMaterial" resultType="map">
+        select *
+        from (select count(MAIN_MATERIALS) as materialsNumber, MAIN_MATERIALS as mainMaterials
+              from MATERIALS
+              where MATERIALS_FLAG = 1
+              group by MAIN_MATERIALS
+              order by count(MAIN_MATERIALS) DESC) m
+        where materialsNumber &gt;= 10  -- 过滤掉出现次数小于10次的
+    </select>
 </mapper>

@@ -56,12 +56,14 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
 
     /**
      * 菜谱搜索
+     * @param recipeType    查询菜谱，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
      * @param current       当前页
      * @param limit         每页显示条数
      * @param fastDFSPath   图片保存服务器地址以及端口号
      * @return
      */
-    List<Map> queryRecipeOfSearch(@Param("current") int current,
+    List<Map> queryRecipeOfSearch(@Param("recipeType") int recipeType,
+                                  @Param("current") int current,
                                   @Param("limit") int limit,
                                   @Param("fastDFSPath") String fastDFSPath);
 
