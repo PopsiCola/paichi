@@ -133,6 +133,11 @@ public class LoginController {
         //清除session，删除redis中保存的用户信息
         User user = (User) request.getSession().getAttribute("user");
 
+        // 用户未登录，直接返回
+        if (user == null) {
+            return "redirect:/index";
+        }
+
         boolean exists = redisUtils.exists("info:" + user.getUserId() + ":user");
         if (exists) {
             redisUtils.remove("info:" + user.getUserId() + ":user");
