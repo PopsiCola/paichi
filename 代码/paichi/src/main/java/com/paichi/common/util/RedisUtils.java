@@ -124,4 +124,46 @@ public class RedisUtils {
 		return result;
 	}
 
+	/**
+	 * 设置过期时间
+	 * @param key
+	 * @param expireTime
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public Boolean setExpire(final String key, Long expireTime) {
+		boolean result = false;
+		try {
+			boolean exists = this.exists(key);
+			if (exists) {
+				redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+			}
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	/**
+	 * 获取过期时间
+	 * @param key
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public Long getExpire(final String key) {
+		Long expire = 0l;
+		try {
+			boolean exists = this.exists(key);
+			if (exists) {
+				expire = redisTemplate.getExpire(key);
+			} else {
+				expire = -2l;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return expire;
+	}
+
 }

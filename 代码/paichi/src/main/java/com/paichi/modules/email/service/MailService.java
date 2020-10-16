@@ -27,4 +27,13 @@ public interface MailService {
      */
     public Future<Integer> sendHtmlMail(String to, String subject) throws MessagingException;
 
+    /**
+     * 发送HTML邮件验证链接
+     * @param server            服务器地址
+     * @param to                发送目标邮箱
+     * @param subject           标题：登录、注册、找回密码
+     * @param verifyUrl   验证链接
+     */
+    public void sendHtmlMail(String server, String to, String subject, String verifyUrl) throws MessagingException;
+
 }
