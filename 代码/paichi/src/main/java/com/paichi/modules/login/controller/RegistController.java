@@ -10,12 +10,14 @@ import com.paichi.modules.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.Future;
 
 /**
@@ -110,7 +112,7 @@ public class RegistController {
     /**
      * 邮箱验证码发送
      * @param email 邮箱地址
-     * @param type  发送邮件类型：注册、登录、找回密码
+     * @param type  发送邮件类型：注册、登录
      * @return
      */
     @RequestMapping(value = "/mail/sendMailCode", method = RequestMethod.POST)
@@ -190,6 +192,136 @@ public class RegistController {
             message.setMsg("验证码输入错误");
             message.setCode(1);
         }
+        return message;
+    }
+
+    /**
+     * 找回密码，发送邮箱验证链接
+     * @param account       找回账号
+     * @param accountType   账号类型：0.手机账号；1.邮箱账号
+     * @return
+     */
+    @RequestMapping(value = "mail/sendResetPwd", method = RequestMethod.POST)
+    @ResponseBody
+    public Message resetPwd(@RequestParam("account") String account,
+                            @RequestParam(value = "accountType", defaultValue = "1") int accountType,
+                            HttpServletRequest request) {
+        Message message = new Message();
+
+        // 参数校验
+        if (account == null || "".equals(account)) {
+            message.setCode(1);
+            message.setMsg("账号不能为空，请重新输入账号");
+            return message;
+        }
+
+        if (accountType == 0) {
+            //TODO:手机账号找回密码短信业务没有，暂时不开放
+            message.setCode(1);
+            message.setMsg("功能完善中，暂时停用，请使用邮箱找回密码。");
+            return message;
+        } else {
+            //邮箱账号
+            User user = userService.getUserByEmail(account);
+            if (user == null) {
+                message.setCode(1);
+                message.setMsg("邮箱未注册，请先注册");
+                return message;
+            }
+
+            // 找回密码验证token，并将邮箱信息保存到redis中，保存格式：email:token:reset_token，过期时间5分钟
+            String resetToken = UUID.randomUUID().toString().replaceAll("-", "");
+
+            // 发送邮件重置密码
+            try {
+                String server = "http://" + request.getServerName() + ":" + request.getServerPort() + "/regist/confirmResetPwdLink?pt=" + resetToken;
+                mailService.sendHtmlMail(server, account, "找回密码", resetToken);
+
+                Boolean saveToken = redisUtils.set("email:" + resetToken + ":reset_token", account, 5 * 60L);
+                if (!saveToken) {
+                    message.setCode(1);
+                    message.setMsg("Redis保存失败，请稍后重试");
+                    return message;
+                }
+                message.setCode(0);
+                message.setMsg("邮件发送成功，请注意查收");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                message.setCode(1);
+                message.setMsg("邮件发送失败，请重新操作");
+            }
+
+        }
+
+        return message;
+    }
+
+    /**
+     * 找回密码链接验证
+     * @param pt    验证token
+     */
+    @RequestMapping(value = "regist/confirmResetPwdLink", method = RequestMethod.GET)
+    public ModelAndView confirmResetPwdLink(String pt) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        Object email = redisUtils.get("email:" + pt + ":reset_token");
+        if (email == null || "".equals(email)) {
+            modelAndView.addObject("msg", "抱歉！链接错误，请检查链接是否完整或参数是否过期");
+            modelAndView.setViewName("login/index");
+            return modelAndView;
+        }
+
+        // 根据邮箱，重置密码
+        // 将pt(paichiToken)保存到页面，等待用户重置密码提交后再次验证
+        modelAndView.addObject("pt", pt);
+        modelAndView.setViewName("resetpwd/reset_new_pwd");
+        return modelAndView;
+    }
+
+
+    /**
+     * 重置密码
+     * @param pt            验证token
+     * @param pwd           密码
+     * @param confirmPwd    重置密码
+     */
+    @RequestMapping(value = "regist/resetPwd", method = RequestMethod.POST)
+    @ResponseBody
+    public Message confirmResetPwd(String pt, String pwd, String confirmPwd, HttpServletRequest request) {
+
+        Message message = new Message();
+
+        if (!pwd.equals(confirmPwd)) {
+            message.setCode(1);
+            message.setMsg("两次输入的密码不一致");
+            return message;
+        }
+
+        Object email = redisUtils.get("email:" + pt + ":reset_token");
+
+        // 校验token是否有效，防止重复提交
+        if (email == null || "".equals(email)) {
+            message.setCode(1);
+            message.setMsg("抱歉！链接错误，请检查链接是否完整或参数是否过期");
+            return message;
+        }
+
+        // 修改密码
+        User user = new User();
+        user.setUserEmail((String) email);
+        user.setPassword(DigestUtils.md5DigestAsHex(pwd.getBytes()));
+
+        // 修改密码
+        userService.updatePassword(user);
+
+        // 修改完密码后，删除token
+        redisUtils.remove("email:" + pt + ":reset_token");
+
+        // 根据邮箱，重置密码
+        // 将pt(paichiToken)保存到页面，等待用户重置密码提交后再次验证
+        message.setCode(0);
+        message.setMsg("重置成功");
         return message;
     }
 }

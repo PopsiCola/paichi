@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>操作成功 - PaiChi - 美食,菜谱 - 中国最全的家常菜谱美食网</title>
+    <title>找回密码 - PaiChi - 美食,菜谱 - 中国最全的家常菜谱美食网</title>
     <meta name="keywords" content="美食,美食网,菜谱,菜谱网,美食地图,食谱,食谱网,特色食谱,特色美食,美食大全家常菜谱,菜谱大全">
     <meta name="description" content="PaiChi - 中国最优质的美食，食谱，菜谱网。做你最喜爱的美食网，菜谱网。提供最人性化的菜谱大全">
     <meta content="www.meishij.net" name="author">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script>var _hmt = _hmt || [];</script>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/resetPwd/css/ss_base.css}">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/resetPwd/css/main.css}">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/resetPwd/css/login.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/login/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/login/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/login/css/login.css}">
+    <script th:src="@{/layui/layui.all.js}"></script>
     <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
-    <script type="text/javascript" th:src="@{/js/resetPwd/js/main.js}"></script>
-    <script th:src="@{/js/resetPwd/js/ds.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login/js/main.js}">
+
+    </script>
+    <script type="text/javascript" th:src="@{/js/login/js/list.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login/js/resetpw.js}"></script>
+    <script th:src="@{/js/login/js/ds.js}"></script>
     <script>var _czc = _czc || [];
     var _hmt = _hmt || [];
     (function () {
@@ -27,7 +32,7 @@
 <body style>
 <div class="header">
     <div class="header_c">
-        <a href="/" class="logo pngFix"></a>
+        <a href="" class="logo pngFix"></a>
         <div class="main_search_top_w">
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
@@ -41,20 +46,21 @@
             </form>
         </div>
         <div class="loginitem_h">
-            <script th:src="@{/js/resetPwd/js/loginheader_n2.js}"></script>
+            <script th:src="@{js/loginheader_n2.js}"></script>
         </div>
     </div>
 </div>
 <div class="nav">
     <ul id="main_nav">
-        <li><a href="/" class="link pngFix"><strong>首页</strong></a></li>
+        <li><a href="" class="link pngFix"><strong>首页</strong></a></li>
         <li class="hasmore">
             <a href="https://www.meishij.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
             <div class="dw clearfix">
                 <div class="dww clearfix dww_cpdq">
                     <div class="dwitem clearfix pngFix">
                         <dl class="clearfix">
-                            <dt><a href="https://www.meishij.net/chufang/diy/">家常菜谱</a></dt>
+                            <dt>
+                                <a href="https://www.meishij.net/chufang/diy/">家常菜谱</a></dt>
                             <dd><a href="https://www.meishij.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
                             <dd><a href="https://www.meishij.net/chufang/diy/langcaipu/">凉菜</a></dd>
                             <dd><a href="https://www.meishij.net/chufang/diy/sushi/">素食</a></dd>
@@ -215,9 +221,9 @@
         <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
-        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong>
-            <img th:src="@{/image/vip_hat.png}" style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a>
-        </li>
+        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+                th:src="@{/image/vip_hat.png}"
+                style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
         <li><a href="https://www.meishij.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
         <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
     </ul>
@@ -233,28 +239,72 @@
         <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
     </div>
 </div>
-<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
-    <a href="#" class="backtotop pngFix">回到顶部</a>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#"
+                                                                                         class="backtotop pngFix">回到顶部</a>
 </div>
 <div class="main_w clearfix">
     <div class="main clearfix">
+        <h3 class="bbtitles">下次不许忘了哦~</h3>
         <div class="login_w clearfix">
-            <div class id="resetpw_bymail_ok">
-                <img class="ok_u29" width="80px" th:src="@{/js/resetPwd/images/ok_u29.png}">
-                <h1>操作成功，已发送验证邮件至您的邮箱</h1>
-                <br>
-                <p class="go_mail">请到<a target="_blank" href="http://mail.163.com">liulebinn@163.com</a>查阅来自PaiChi的邮件，点击邮件中的链接重设您的密码。
-                </p> <br>
-                <p class="add_write_list"> 如果收不到邮件请将 liulebinn@163.com 加入白名单</p>
+            <div class="dsf_box clearfix">
+                <a href="https://i.meishi.cc/connect/index.php?site=qzone" class="qq">QQ账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=sina" class="weibo">新浪微博账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=renren" class="renren">人人网账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=baidu" class="baidu">百度账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=taobao" class="taobao">淘宝账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=kaixin001" class="kaixin">开心网账号登录</a><a
+                    href="https://i.meishi.cc/connect/index.php?site=sdo" class="shengda">盛大通行证登录</a></div>
+            <div class="loginbox">
+
+                <p id="regist_type">
+					<span class="regist_type_selected" id="mobile_getpw_tab">用手机找回</span>
+					<span>|</span>
+					<span id="email_getpw_tab">用邮箱找回</span>
+                </p>
+                <span class="go">还没有账号？<a href="https://i.meishi.cc/r.php">注册账号</a></span>
+
+                <div id="mobile_form" style>
+                    <dl class="clearfix">
+                        <dt>手机：</dt>
+                        <dd><input type="text" placeholder="请输入您的手机号" id="mobile" class="text"></dd>
+                        <dd class="fortips" id="mobile_tips"></dd>
+
+                        <dt class="send_mobile_code_class send_mobile_code"></dt>
+                        <dd class="send_mobile_code_class send_mobile_code">
+							<input type="button" id="send_mobile_code"
+								   disabled="disabled" value="免费获取验证码">
+                        </dd>
+                        <dd class="fortips send_mobile_code_class send_mobile_code" id="send_mobile_code_tips"></dd>
+
+                        <dt class="send_mobile_code_class">验证码：</dt>
+                        <dd class="send_mobile_code_class"><input type="text" placeholder="请填写验证码" class="text"
+                                                                  id="mobile_code"></dd>
+                        <dd class="fortips send_mobile_code_class" id="mobile_code_tips"></dd>
+
+                        <dt></dt>
+                        <dd><input type="button" id="mobile_getpw_submit" class="submit" value="下一步"></dd>
+                    </dl>
+                </div>
+
+
+                <div id="email_form" style="display:none">
+                    <dl class="clearfix">
+                        <dt>邮箱：</dt>
+                        <dd><input type="text" placeholder="请输入您的邮箱" name="email" id="email" class="text"></dd>
+                        <dd class="fortips" id="email_tips"></dd>
+                        <dt></dt>
+                        <dd><input type="button" id="email_getpw_submit" class="submit" value="下一步"></dd>
+                    </dl>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 <div class="main_footer pngFix">
     <div class="footer_con1 clearfix">
-        <!--<p class="text pngFix"><a href="https://www.meishij.net/" class="footer_homelink"></a></p>-->
         <div class="logobottom"
-             style="height:196px;width:600px;background: url(images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+             style="height:196px;width:600px;background: url(/js/resetPwd/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
             <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
         </div>
         <div class="links">
@@ -287,7 +337,7 @@
         <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备150335号</a>/<a target="_blank"
                                                                                                     href="https://beian.gov.cn/"
                                                                                                     class="gray_a"><img
-                src="images/20180208111357_93713.png">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
+                th:src="@{/js/resetpwd/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
     </div>
 </div>
 <div style="display:none;">

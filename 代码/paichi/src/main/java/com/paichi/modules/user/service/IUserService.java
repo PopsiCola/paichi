@@ -60,4 +60,10 @@ public interface IUserService extends IService<User> {
      * @return
      */
     List<User> getUserByUserNameOrEmailOrId(String id, String userName, String email);
+
+    /**
+     * 修改密码
+     * @param user
+     */
+    void updatePassword(User user);
 }

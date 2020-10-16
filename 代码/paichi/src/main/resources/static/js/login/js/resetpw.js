@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	var isEMail=false;
 	var isMobile=false;
 	var isPassword=false;
@@ -34,16 +33,18 @@ $(document).ready(function(){
 			if(testEmail(email)==false){
 				$('#email_tips').html('<p  class="tips_error_p"><span class="tips_error"></span>请输入正确的邮箱地址</p>');
 				return false;
+			} else {
+				$('#email_tips').html('<p><span class="tips_right"></span></p>');
 			}
-			$.post("/resetPwdByEmail", {"email": email},function(data){
+			/*$.post("/resetPwdByEmail", {"email": email},function(data){
 				if(data.code=='1'){
-					$('#email_tips').html('<p><span class="tips_right"></span></p>');
+
 					isEMail=true;
 				}else{
 					isMobile=false;
 					$('#email_tips').html('<p  class="tips_error_p"><span class="tips_error"></span>'+data.msg+'</p>');
 				}
-			}, "json");
+			}, "json");*/
 		}
 	);
 
@@ -170,13 +171,15 @@ $(document).ready(function(){
 
 
 	$("#email_getpw_submit").unbind('click').click(function(){
-		if(!isEMail){
-			return false;
-		}
+
 		var email=$("#email").val();
-		$.post("/ajax/resetpw.php", {"email": email, "getpw_type":'email'},function(data){
-			if(data.code=='1'){
-				window.location.href="http://i.meishi.cc/resetpw_bymail_ok.php?email="+email;
+
+		console.log(email);
+
+		$.post("/mail/sendResetPwd", {"account": email, "accountType" : 1},function(data){
+			console.log(data);
+			if(data.code == 0){
+				window.location.href= "/resetPwd_success.html?email=" + email;
 			}else{
 				switch (data.code) {
 				    case -2:
@@ -189,8 +192,61 @@ $(document).ready(function(){
 			}
 		}, "json");
 
-	})
+	});
 
+	// 重置密码提交
+	$("#summitResetPwd").click(function () {
+
+		// 重置密码参数
+		var pt = $("#pt").val();		//token
+		var pwd = $("#mm1").val();		//密码
+		var confirmPwd = $("#mm2").val();		//确认密码
+
+		if (pwd == null || pwd == "" || confirmPwd == null || confirmPwd == "") {
+			$("#msg").html('<div class="status">密码不能为空</div>');
+		} else if (pwd.length < 5 || pwd.length> 15) {
+			$("#msg").html('<div class="status">密码长度大于5并且小于15位</div>');
+		} else if (pwd != confirmPwd) {
+			$("#msg").html('<div class="status">两次输入的密码不一致</div>');
+		} else {
+			// 按钮变为不可用，防止重复提交
+			$("#summitResetPwd").attr("disabled", true)
+
+			$.ajax({
+				url: "/regist/resetPwd",
+				type: "POST",
+				data: {"pt": pt, "pwd": pwd, "confirmPwd": confirmPwd},
+				dataType: "JSON",
+				success: function (result) {
+
+					if (result.code == 0) {
+						// 成功
+						$(".main.clearfix").html(
+							'<div class="main_w clearfix">\n' +
+							'\t\t\t<div class="" id="resetpw_sucess">\n' +
+							'\t<img class="ok_u29" width="80px" src="/image/ok_u29.png"> <h1>恭喜，重设密码成功</h1>\n' +
+							'<br>\n' +
+							'\t<p class="login"><a href="/toLogin">马上登录</a></p> <br>\n' +
+							'\t\t\t</div>\n' +
+							'\n' +
+							'\t\t</div>');
+					} else {
+						// 失败
+						layer.confirm(result.msg,{
+							btn: ['确定'],
+							title: '提示'
+							},
+							function () {
+								location.href = "/toLogin";
+							}
+						);
+					}
+				}
+			})
+		}
+
+
+	});
 
 
 
@@ -245,7 +301,7 @@ $(document).ready(function(){
 	function Trim(string){
 		return string.replace(/(^\s*)|(\s*$)|(\n)/g, "");
 	}
-})
+});
 
 
 

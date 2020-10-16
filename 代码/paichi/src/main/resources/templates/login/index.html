@@ -40,12 +40,8 @@
               content="牛肉的做法 - 家常牛肉的做法非常简单易学。如果牛肉怎么做好吃,牛肉的家常做法如何做一直困扰着你,PaiChi提供的图文牛肉的家常做法大全和牛肉的视频,用最短的时间让你学会牛肉的做法">
         <meta content="www.paichi.net" name="author">
         <meta name="renderer" content="webkit">
-
         <meta name="“viewport”" content="“width=device-width;" initial-scale="1.0”">
-
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-
         <link th:href="@{/js/login/css/base.css}" rel="stylesheet">
         <link th:href="@{/js/login/css/login2019.css}" rel="stylesheet">
         <script type="text/javascript" th:src="@{/js/login/js/jquery-2.1.4.min.js}"></script>
@@ -102,14 +98,13 @@
 
             </script>
 
-
             <div class="nl_loginbox_w" id="msj_loginbox">
 
                 <div class="loginbox_title">
                     <a href="javascript:;" class="current" id="login_phone_tab">邮箱登录</a>　|　<a href="javascript:;"
                                                                                                id="login_acc_tab">账号密码登录</a>
                 </div>
-
+                <p id="msg" style="text-align: center;padding: 6px 0px;color: red;">[[${msg}]]</p>
 
                 <div class="nl_loginbox_w_w left" id="nl_loginbox_w_w">
 
@@ -129,7 +124,7 @@
                             <div class="nl_loginitem" style="height:20px;line-height:20px;">
                                 <label class="label2"><input type="checkbox" checked="checked" class="checkbox"
                                                              name="cookietime"> 下次自动登录　　
-                                    <a href="resetpwd.html" class="forgetpassword1">忘记密码？</a></label>
+                                    <a href="/resetpwd.html" class="forgetpassword1">忘记密码？</a></label>
                             </div>
                             <div class="nl_loginitem" style="text-align:center;">
                                 <input type="button" class="submit" name="login_btn" value="登 录">
@@ -150,7 +145,7 @@
                             <div class="nl_loginitem" style="height:20px;line-height:20px;">
                                 <label class="label2">
                                     <input type="checkbox" checked="checked" class="checkbox" name="cookietime"> 下次自动登录　　
-                                        <a href class="forgetpassword1">忘记密码？</a>
+                                        <a href="/resetpwd.html" class="forgetpassword1">忘记密码？</a>
                                 </label>
                             </div>
 

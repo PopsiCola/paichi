@@ -92,14 +92,53 @@
         FROM "USER"
         <where>
             <if test="userId != null and userId != ''">
-                and #{USER_ID},
+                and USER_ID =  #{userId}
             </if>
             <if test="userName != null and userName != ''">
                 and USER_NAME = #{userName}
             </if>
             <if test="userEmail != null and userEmail != ''">
-                and #{USER_EMAIL},
+                and USER_EMAIL = #{userEmail}
             </if>
         </where>
     </select>
+
+    <!--修改用户-->
+    <update id="updateUser">
+        update "USER"
+        <set>
+            <if test="userName != null and userName != ''">
+                USER_NAME = #{userName},
+            </if>
+            <if test="password != null and password != ''">
+                PASSWORD = #{password},
+            </if>
+            <if test="userIcon != null and userIcon != ''">
+                USER_ICON = #{userIcon},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                USER_EMAIL = #{userEmail},
+            </if>
+            <if test="userSex != null">
+                USER_SEX = #{userSex},
+            </if>
+            <if test="userIntroduction != null and userIntroduction != ''">
+                USER_INTRODUCTION = #{userIntroduction},
+            </if>
+            <if test="birth != null">
+                BIRTH = #{birth},
+            </if>
+        </set>
+        <where>
+            <if test="userId != null and userId != ''">
+                and USER_ID = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and USER_NAME = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and USER_EMAIL = #{userEmail}
+            </if>
+        </where>
+    </update>
 </mapper>

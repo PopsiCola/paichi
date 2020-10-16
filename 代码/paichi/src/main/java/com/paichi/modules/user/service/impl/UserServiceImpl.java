@@ -101,5 +101,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return userMapper.getUserByUserNameOrEmailOrId(id, userName, email);
     }
 
+    /**
+     * 修改密码
+     * @param user
+     */
+    @Override
+    public void updatePassword(User user) {
+        userMapper.updateUser(user);
+    }
+
 
 }
