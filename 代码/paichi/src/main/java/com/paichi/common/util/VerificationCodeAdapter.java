@@ -254,13 +254,13 @@ public class VerificationCodeAdapter {
         VerificationCodePlace vcPlace = new VerificationCodePlace("sample_after.png", "sample_mark_after.png", 112, 50);
 
         // 从文件夹中读取所有待选择文件
-        String directoryPath = "src/main/resources/static/image";
+        String directoryPath = "src/main/resources/static/image/puzzle";
         ArrayList<String> imageFileNames = getFileNamesFromDic(directoryPath);
 
         // 随机获取
         int r = (int)Math.round(Math.random() * (imageFileNames.size() - 1));
         String imgName = imageFileNames.get(r);
-        String path = "src/main/resources/static/image/" + imgName;
+        String path = "src/main/resources/static/image/puzzle/" + imgName;
         int[][] data = VerificationCodeAdapter.getBlockData();
 
         // 进行图片处理
