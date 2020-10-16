@@ -112,4 +112,33 @@ public class MailServiceImpl implements MailService {
 
         return new AsyncResult<Integer>(code);
     }
+
+    /**
+     * 发送HTML邮件验证链接
+     * @param server            服务器地址
+     * @param to                发送目标邮箱
+     * @param subject           标题：登录、注册、找回密码
+     * @param verifyToken       验证token
+     */
+    @Override
+    public void sendHtmlMail(String server, String to, String subject, String verifyToken) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+
+        //创建邮件正文
+        Context context = new Context();
+        context.setVariable("verifyUrl", server);
+        context.setVariable("subject", subject);
+        //将模板内容解析成html
+        String template = templateEngine.process("email_link_template", context);
+        //true表示创建一个multipart message
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject("欢迎使用PaiChi【 " + subject + " 】服务");
+        //true表示发送的是html邮件
+        helper.setText(template, true);
+
+        mailSender.send(mimeMessage);
+
+    }
 }
