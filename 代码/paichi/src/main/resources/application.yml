@@ -89,10 +89,6 @@ mybatis-plus:
 #    允许返回字段值为null
     call-setters-on-nulls: true
 
-afterImage:
-  resourceHandler: /after/**
-  #生成图片的地址
-  location: uploadFile/
 
 
 
