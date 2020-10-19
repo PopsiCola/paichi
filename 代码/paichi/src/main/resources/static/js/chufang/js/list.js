@@ -98,10 +98,15 @@ $(".filter_otherbtn").toggle(function(){
 $(".other_c").css("min-height",$("#listnav_con_c").height()+"px");
 if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) { 
 	$(".other_c").css("height",$("#listnav_con_c").height()+"px");//for ie6
-} 
+}
+
+// 普通筛选展开
 $("#fliterstyle1 dt").click(function(){
+
 	var _this=$(this);
+
 	if(_this.parent().hasClass("on")){
+
 	}else{
 		_this.parents(".tabcon").find("dl.on").find("dd").slideUp(function(){
 		});
@@ -112,13 +117,79 @@ $("#fliterstyle1 dt").click(function(){
 		_this.parent().addClass("on");
 	}
 });
+
+// 普通筛选、食材筛选切换
 $("#fliterstyle1 .tab li").click(function(){
+
+	// 选择工艺
+	$.ajax({
+		url: ctx + 'craft/queryCraft',
+		type: "POST",
+		dataType: "json",
+		success: function (result) {
+			var data = result.data;
+			var craftHtml ='';
+			var craftOthersHtml = '';
+
+			if (data.length > 10) {
+				for (let i = 0; i < 10; i++) {
+					craftHtml += '<a href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+				}
+				for (let i = 10; i < data.length; i++) {
+					craftOthersHtml += '<a  href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+				}
+				craftHtml += '<div class="others" id="craftOthers">\n' +
+									craftOthersHtml +
+									'</div>';
+			} else {
+				for (let i = 0; i < data.length; i++) {
+					craftHtml += '<a href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+				}
+			}
+			$("#craft").html(craftHtml);
+		}
+	});
+
+	// 选择口味
+	$.ajax({
+		url: ctx + 'taste/tasteList',
+		type: 'POST',
+		dataType: "json",
+		success: function (result) {
+			var data = result.data;
+			var tasteHtml = '';
+			var tasteOthersHtml = '';
+
+			if (data.length > 10) {
+				for (let i = 0; i < 10; i++) {
+					tasteHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+				}
+				for (let i = 10; i < data.length; i++) {
+					tasteOthersHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+				}
+
+				tasteHtml += '<div class="others" id="tasteOthers">\n' +
+								tasteOthersHtml +
+							'</div>';
+
+			} else {
+				for (let i = 0; i < data.length; i++) {
+					tasteHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+				}
+			}
+
+			$("#taste").html(tasteHtml);
+		}
+	});
+
 	var po = $(this).attr("po");
+
 	if(!$(this).hasClass("current")){
 		$(this).siblings().removeClass("current");
 		$(this).addClass("current");
 	}
 	$("#fliterstyle1 .tabcon").each(function(){
+
 		if($(this).attr("po") == po){
 			$(this).siblings(".tabcon").hide();
 			$(this).show();
@@ -126,8 +197,14 @@ $("#fliterstyle1 .tab li").click(function(){
 	});
 });
 $("#cdlists li").click(function(){
+
+	console.log(222222);
+
 	var _this = $(this);
 	var po = _this.attr("po");
+
+	console.log(po);
+
 	if($("#cdlist .cdlist_w[po='"+po+"']").length>0){
 		
 		_this.siblings().removeClass("current");

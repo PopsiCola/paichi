@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 食谱工艺(食谱做法)表 服务实现类
@@ -33,5 +35,14 @@ public class CraftServiceImpl extends ServiceImpl<CraftMapper, Craft> implements
             return craft.getCraftId();
         }
         return existCraft.getCraftId();
+    }
+
+    /**
+     * 查询工艺
+     * @return
+     */
+    @Override
+    public List<Craft> queryCraft() {
+        return craftMapper.queryCraft();
     }
 }

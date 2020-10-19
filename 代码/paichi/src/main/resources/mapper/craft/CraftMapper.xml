@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paichi.modules.craft.mapper.CraftMapper">
 
+    <!--查询所有工艺-->
+    <select id="queryCraft" parameterType="String" resultType="Craft">
+        select * from CRAFT
+    </select>
+
     <select id="getCraft" parameterType="String" resultType="Craft">
         select * from CRAFT where CRAFT_NAME = #{craftName}
     </select>

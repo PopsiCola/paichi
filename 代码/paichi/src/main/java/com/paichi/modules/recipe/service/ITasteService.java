@@ -4,6 +4,8 @@ package com.paichi.modules.recipe.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.paichi.modules.recipe.entity.Taste;
 
+import java.util.List;
+
 /**
  * <p>
  * 口味表 服务类
@@ -15,4 +17,6 @@ import com.paichi.modules.recipe.entity.Taste;
 public interface ITasteService extends IService<Taste> {
 
     Integer addTaste(Taste taste);
+
+    List<Taste> queryTaste();
 }

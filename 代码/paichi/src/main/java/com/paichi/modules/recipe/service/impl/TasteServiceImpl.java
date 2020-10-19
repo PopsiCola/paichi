@@ -7,6 +7,8 @@ import com.paichi.modules.recipe.service.ITasteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 口味表 服务实现类
@@ -34,5 +36,14 @@ public class TasteServiceImpl extends ServiceImpl<TasteMapper, Taste> implements
             return taste.getTasteId();
         }
         return existTaste.getTasteId();
+    }
+
+    /**
+     * 查询所有口味
+     * @return
+     */
+    @Override
+    public List<Taste> queryTaste() {
+        return tasteMapper.queryTaste();
     }
 }
