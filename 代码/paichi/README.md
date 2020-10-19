@@ -40,7 +40,7 @@ PaiChi(拍吃)，让人们在宣泄的都市中体验在家常做菜，享受美
 ## 系统搭建
 1.  文件存储服务器：<br>
     http://39.98.65.221:9000 <br>
-    账号/密码：minioadmin/minioadmin
+    账号/密码：minio/qwerasdf1234
 
 ## 在线体验
 
