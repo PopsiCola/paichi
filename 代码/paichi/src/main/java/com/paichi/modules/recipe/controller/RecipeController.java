@@ -1,6 +1,7 @@
 package com.paichi.modules.recipe.controller;
 
 import com.paichi.common.web.Message;
+import com.paichi.common.web.Page;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.service.IRecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,19 +107,17 @@ public class RecipeController {
      * 菜谱大全
      * 根据条件搜索所有菜谱
      * @param recipeType    查询菜谱，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
-     * @param current       当前页
-     * @param limit         每页显示数量
+     * @param page          分页
      * @return
      */
     @RequestMapping(value = "searchRecipe", method = RequestMethod.POST)
     @ResponseBody
     public Message searchRecipe(@RequestParam(name = "recipeType", defaultValue = "1") int recipeType,
-                                @RequestParam(name = "current", defaultValue = "1") int current,
-                                @RequestParam(name = "limit", defaultValue = "18") int limit) {
+                                Page page) {
         Message message = new Message();
         Map<String, Object> dataMap = new HashMap<>();
 
-        List<Map> recipes = recipeService.queryRecipeOfSearch(recipeType, current, limit);
+        List<Map> recipes = recipeService.queryRecipeOfSearch(recipeType, page.getCurrent(), page.getLimit());
         //总条数
         Integer recipeCount = recipeService.getRecipeCount();
 
