@@ -316,18 +316,15 @@
         </div>
         <div class="bbtitles">印象中的那些妈妈的味道
             <span class="paixu">
-                <!--<a th:href="@{/recipe/searchRecipe?recipeType=1}" class="current" id="zuixin">最新</a> |-->
-                <!--<a th:href="@{/recipe/searchRecipe?recipeType=2}" id="zuire">最热</a>-->
                 <a href="JavaScript:void(0);" class="current" id="zuixin">最新</a> |
                 <a href="JavaScript:void(0);" id="zuire">最热</a>
             </span>
         </div>
         <div class="liststyle1_w clearfix">
             <div class="fliterstyle1" id="fliterstyle1">
-                <div class="chosedbox clearfix">
-                    <a href="/list.php?sortby=update&amp;words=%E9%BB%84%E7%93%9C&amp;lm=270&amp;md=1&amp;gy=149">黄瓜</a>
-                    <a href="/list.php?sortby=update&amp;words=%E9%BB%84%E7%93%9C&amp;lm=270&amp;yl=236&amp;gy=149">新手尝试</a>
-                    <a href="/list.php?sortby=update&amp;words=%E9%BB%84%E7%93%9C&amp;lm=270&amp;yl=236&amp;md=1">烧</a>				</div>
+                <!--查询条件筛选-->
+                <div id="termList">
+                </div>
                 <div class="fliterstyle1_main">
                     <ul class="tab">
                         <li class="li1" po="1"><a href="####">普通筛选</a></li>
@@ -336,13 +333,13 @@
                     <div class="tabcon" po="1" style="display:none;">
                         <dl class="clearfix">
                             <dt class="pngFix">选择难度</dt>
-                            <dd class="clearfix"><a
-                                    href="/list">新手尝试</a><a
-                                    href="/list">初级入门</a><a
-                                    href="/list">初中水平</a><a
-                                    href="/list">中级掌勺</a><a
-                                    href="/list">高级厨师</a><a
-                                    href="/list">厨神级</a>
+                            <dd class="clearfix">
+                                <a onclick="chooseTerm(this.text, 2)" id="新手尝试">新手尝试</a>
+                                <a onclick="chooseTerm(this.text, 2)" id="初级入门">初级入门</a>
+                                <a onclick="chooseTerm(this.text, 2)" id="初中水平">初中水平</a>
+                                <a onclick="chooseTerm(this.text, 2)" id="中级掌勺">中级掌勺</a>
+                                <a onclick="chooseTerm(this.text, 2)" id="高级厨师">高级厨师</a>
+                                <a onclick="chooseTerm(this.text, 2)" id="厨神级">厨神级</a>
                             </dd>
                         </dl>
                         <dl class="clearfix">
@@ -363,16 +360,12 @@
                         <dl class="clearfix">
                             <dt class="pngFix">选择时间</dt>
                             <dd class="clearfix" id="time">
-								<a href="/list?start=0&end=5"><5分钟</a>
-								<a href="/list?start=0&end=10"><10分钟</a>
-								<a href="/list?start=0&end=15"><15分钟</a>
-								<a href="/list?start=0&end=30"><30分钟</a>
-								<a href="/list?start=0&end=40"><60分钟</a>
-								<a href="/list?start=0&end=90"><90分钟</a>
-								<a href="/list?start=0&end=120"><2小时</a>
-								<a href="/list?start=0&end=360"><数小时</a>
-								<a href="/list?start=0&end=720"><一天</a>
-								<a href="/list?start=720"><数天</a>
+								<a onclick="chooseTerm(this.text, 5)" id="一小时"><一小时</a>
+								<a onclick="chooseTerm(this.text, 5)" id="两小时"><两小时</a>
+								<a onclick="chooseTerm(this.text, 5)" id="数小时"><数小时</a>
+								<a onclick="chooseTerm(this.text, 5)" id="两天"><两天</a>
+								<a onclick="chooseTerm(this.text, 5)" id="数天"><数天</a>
+								<a onclick="chooseTerm(this.text, 5)" id="未知">未知</a>
                             </dd>
                         </dl>
                 </div>
