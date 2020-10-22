@@ -1,5 +1,7 @@
 package com.paichi.modules.recipe.mapper;
 
+import com.paichi.common.web.Page;
+import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -57,15 +59,22 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
     /**
      * 菜谱搜索
      * @param recipeType    查询菜谱，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
-     * @param current       当前页
-     * @param limit         每页显示条数
+     * @param page       分页
+     * @param term         条件筛选
      * @param fastDFSPath   图片保存服务器地址以及端口号
      * @return
      */
     List<Map> queryRecipeOfSearch(@Param("recipeType") int recipeType,
-                                  @Param("current") int current,
-                                  @Param("limit") int limit,
+                                  Page page,
+                                  Term term,
                                   @Param("fastDFSPath") String fastDFSPath);
+
+    /**
+     * 菜谱条件查询数量
+     * @param term         条件筛选
+     * @return
+     */
+    Integer queryRecipeOfSearchCount(Term term);
 
     /**
      * 菜谱总数

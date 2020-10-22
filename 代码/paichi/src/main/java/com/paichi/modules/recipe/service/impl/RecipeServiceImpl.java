@@ -1,5 +1,7 @@
 package com.paichi.modules.recipe.service.impl;
 
+import com.paichi.common.web.Page;
+import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.mapper.RecipeMapper;
 import com.paichi.modules.recipe.service.IRecipeService;
@@ -95,12 +97,22 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
     /**
      * 条件搜索，分页展示菜谱
      * @param recipeType    查询菜谱，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
-     * @param current       当前页
-     * @param limit         每页显示条数
+     * @param page          分页
+     * @param term          条件筛选
      * @return
      */
     @Override
-    public List<Map> queryRecipeOfSearch(int recipeType, int current, int limit) {
-        return recipeMapper.queryRecipeOfSearch(recipeType, current, limit, fastDFSPath);
+    public List<Map> queryRecipeOfSearch(int recipeType, Page page, Term term) {
+        return recipeMapper.queryRecipeOfSearch(recipeType, page, term, fastDFSPath);
+    }
+
+    /**
+     * 条件搜索菜谱的数量
+     * @param term          条件筛选
+     * @return
+     */
+    @Override
+    public Integer queryRecipeOfSearchCount(Term term) {
+        return recipeMapper.queryRecipeOfSearchCount(term);
     }
 }

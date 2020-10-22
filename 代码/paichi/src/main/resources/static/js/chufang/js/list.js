@@ -133,17 +133,17 @@ $("#fliterstyle1 .tab li").click(function(){
 
 			if (data.length > 10) {
 				for (let i = 0; i < 10; i++) {
-					craftHtml += '<a href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+					craftHtml += '<a onclick="chooseTerm(this.id, 3)" id="'+ data[i].craftName +'">'+ data[i].craftName +'</a>';
 				}
 				for (let i = 10; i < data.length; i++) {
-					craftOthersHtml += '<a  href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+					craftOthersHtml += '<a onclick="chooseTerm(this.id, 3)" id="'+ data[i].craftName +'">'+ data[i].craftName +'</a>';
 				}
 				craftHtml += '<div class="others" id="craftOthers">\n' +
 									craftOthersHtml +
 									'</div>';
 			} else {
 				for (let i = 0; i < data.length; i++) {
-					craftHtml += '<a href="/list?craftId='+ data[i].craftId +'">'+ data[i].craftName +'</a>';
+					craftHtml += '<a onclick="chooseTerm(this.id, 3)" id="'+ data[i].craftName +'">'+ data[i].craftName +'</a>';
 				}
 			}
 			$("#craft").html(craftHtml);
@@ -162,10 +162,10 @@ $("#fliterstyle1 .tab li").click(function(){
 
 			if (data.length > 10) {
 				for (let i = 0; i < 10; i++) {
-					tasteHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+					tasteHtml += '<a onclick="chooseTerm(this.id, 4)" id="'+ data[i].tasteName +'">'+ data[i].tasteName +'</a>';
 				}
 				for (let i = 10; i < data.length; i++) {
-					tasteOthersHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+					tasteOthersHtml += '<a onclick="chooseTerm(this.id, 4)" id="'+ data[i].tasteName +'">'+ data[i].tasteName +'</a>';
 				}
 
 				tasteHtml += '<div class="others" id="tasteOthers">\n' +
@@ -174,7 +174,7 @@ $("#fliterstyle1 .tab li").click(function(){
 
 			} else {
 				for (let i = 0; i < data.length; i++) {
-					tasteHtml += '<a href="/list?tasteId='+ data[i].tasteId +'">'+ data[i].tasteName +'</a>';
+					tasteHtml += '<a onclick="chooseTerm(this.id, 4)" id="'+ data[i].tasteName +'">'+ data[i].tasteName +'</a>';
 				}
 			}
 
@@ -197,8 +197,6 @@ $("#fliterstyle1 .tab li").click(function(){
 	});
 });
 $("#cdlists li").click(function(){
-
-	console.log(222222);
 
 	var _this = $(this);
 	var po = _this.attr("po");

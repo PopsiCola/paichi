@@ -1,5 +1,7 @@
 package com.paichi.modules.recipe.service;
 
+import com.paichi.common.web.Page;
+import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -30,5 +32,7 @@ public interface IRecipeService extends IService<Recipe> {
 
     Integer getRecipeCount();
 
-    List<Map> queryRecipeOfSearch(int recipeType, int current, int limit);
+    List<Map> queryRecipeOfSearch(int recipeType, Page page, Term term);
+
+    Integer queryRecipeOfSearchCount(Term term);
 }

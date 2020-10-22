@@ -14,36 +14,36 @@ public class Term implements Serializable {
     /**
      * 食材
      */
-    private String material;
+    private String materialTerm;
 
     /**
      * 难度
      */
-    private String diffcult;
+    private String diffcultTerm;
 
     /**
      * 工艺
      */
-    private String craft;
+    private String craftTerm;
 
     /**
      * 口味
      */
-    private String taste;
+    private String tasteTerm;
 
     /**
      * 做饭时间
      */
-    private String cookTime;
+    private String cookTimeTerm;
 
     @Override
     public String toString() {
         return "Term{" +
-                "material='" + material + '\'' +
-                ", diffcult='" + diffcult + '\'' +
-                ", craft='" + craft + '\'' +
-                ", taste='" + taste + '\'' +
-                ", cookTime='" + cookTime + '\'' +
+                "materialTerm='" + materialTerm + '\'' +
+                ", diffcultTerm='" + diffcultTerm + '\'' +
+                ", craftTerm='" + craftTerm + '\'' +
+                ", tasteTerm='" + tasteTerm + '\'' +
+                ", cookTimeTerm='" + cookTimeTerm + '\'' +
                 '}';
     }
 
@@ -51,43 +51,43 @@ public class Term implements Serializable {
         return serialVersionUID;
     }
 
-    public String getMaterial() {
-        return material;
+    public String getMaterialTerm() {
+        return materialTerm;
     }
 
-    public void setMaterial(String material) {
-        this.material = material;
+    public void setMaterialTerm(String materialTerm) {
+        this.materialTerm = materialTerm;
     }
 
-    public String getDiffcult() {
-        return diffcult;
+    public String getDiffcultTerm() {
+        return diffcultTerm;
     }
 
-    public void setDiffcult(String diffcult) {
-        this.diffcult = diffcult;
+    public void setDiffcultTerm(String diffcultTerm) {
+        this.diffcultTerm = diffcultTerm;
     }
 
-    public String getCraft() {
-        return craft;
+    public String getCraftTerm() {
+        return craftTerm;
     }
 
-    public void setCraft(String craft) {
-        this.craft = craft;
+    public void setCraftTerm(String craftTerm) {
+        this.craftTerm = craftTerm;
     }
 
-    public String getTaste() {
-        return taste;
+    public String getTasteTerm() {
+        return tasteTerm;
     }
 
-    public void setTaste(String taste) {
-        this.taste = taste;
+    public void setTasteTerm(String tasteTerm) {
+        this.tasteTerm = tasteTerm;
     }
 
-    public String getCookTime() {
-        return cookTime;
+    public String getCookTimeTerm() {
+        return cookTimeTerm;
     }
 
-    public void setCookTime(String cookTime) {
-        this.cookTime = cookTime;
+    public void setCookTimeTerm(String cookTimeTerm) {
+        this.cookTimeTerm = cookTimeTerm;
     }
 }

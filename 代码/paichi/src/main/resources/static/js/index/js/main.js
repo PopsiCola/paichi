@@ -810,7 +810,7 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 						'<div class="i_w">\n' +
 						'<div class="i" style="margin-top: 0px;">\n' +
 						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / 大概'+ data.recipeList[i].COOK_TIME +'分钟</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
+						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / '+ (data.recipeList[i].COOK_TIME != null ? '大概'+ data.recipeList[i].COOK_TIME +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
 						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
 						'</a>\n' +
 						'</div>';
@@ -892,7 +892,7 @@ $(function(){
 						'<div class="i_w">\n' +
 						'<div class="i" style="margin-top: 0px;">\n' +
 						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / 大概'+ data.recipeList[i].COOK_TIME +'分钟</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
+						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / '+ (data.recipeList[i].COOK_TIME != null ? '大概'+ data.recipeList[i].COOK_TIME +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
 						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
 						'</a>\n' +
 						'</div>';

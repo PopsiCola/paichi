@@ -179,11 +179,66 @@
                     (select t.TASTE_NAME from TASTE t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                     -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
                     (select e.EFFECT_NAME
-                from RECIPE_EFFECT re
-                left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
-                left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
-                where r1.RECIPE_ID = r.RECIPE_ID and ROWNUM = 1) as effectName
+                        from RECIPE_EFFECT re
+                        left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
+                        left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
+                    where r1.RECIPE_ID = r.RECIPE_ID and ROWNUM = 1) as effectName
             from RECIPE r
+            <where>
+                <if test="term.diffcultTerm != null and term.diffcultTerm != ''">
+                    <choose>
+                        <when test="term.diffcultTerm == '厨神级'">
+                            and r.DIFFICULTY > 15
+                        </when>
+                        <when test="term.diffcultTerm == '高级厨师'">
+                            and r.DIFFICULTY > 12
+                        </when>
+                        <when test="term.diffcultTerm == '中级掌勺'">
+                            and r.DIFFICULTY > 9
+                        </when>
+                        <when test="term.diffcultTerm == '初级水平'">
+                            and r.DIFFICULTY > 6
+                        </when>
+                        <when test="term.diffcultTerm == '初级入门'">
+                            and r.DIFFICULTY > 3
+                        </when>
+                        <otherwise>
+                            and (r.DIFFICULTY &lt;=3 or r.DIFFICULTY IS NULL)
+                        </otherwise>
+                    </choose>
+                </if>
+                <if test="term.cookTimeTerm != null and term.cookTimeTerm != ''">
+                    <choose>
+                        <when test="term.cookTimeTerm == '数天'">
+                            and r.COOK_TIME >= 2880
+                        </when>
+                        <when test="term.cookTimeTerm == '两天'">
+                            and r.COOK_TIME >= 1440 and r.COOK_TIME &lt; 2880
+                        </when>
+                        <when test="term.cookTimeTerm == '数小时'">
+                            and r.COOK_TIME >= 120 and r.COOK_TIME &lt; 1440
+                        </when>
+                        <when test="term.cookTimeTerm == '两小时'">
+                            and r.COOK_TIME >= 60 and r.COOK_TIME &lt; 120
+                        </when>
+                        <when test="term.cookTimeTerm == '一小时'">
+                            and r.COOK_TIME >= 0 and r.COOK_TIME &lt; 60
+                        </when>
+                        <otherwise>
+                            and (r.COOK_TIME IS NULL or r.COOK_TIME &lt; 0)
+                        </otherwise>
+                    </choose>
+                </if>
+                <if test="term.craftTerm != null and term.craftTerm != ''">
+                    and r.CRAFT_ID = (select rc.CRAFT_ID from CRAFT rc where rc.CRAFT_NAME = #{term.craftTerm})
+                </if>
+                <if test="term.tasteTerm != null and term.tasteTerm != ''">
+                    and r.TASTE_ID = (select rt.TASTE_ID from TASTE rt where rt.TASTE_NAME = #{term.tasteTerm})
+                </if>
+                <if test="term.materialTerm != null and term.materialTerm != ''">
+                    and EXISTS (select rm.RECIPE_ID from MATERIALS rm where rm.MAIN_MATERIALS = #{term.materialTerm} and rm.MATERIALS_FLAG = 1 and rm.RECIPE_ID = r.RECIPE_ID)
+                </if>
+            </where>
             <if test="recipeType == 1">
                 order by r.TIMESTAMP DESC
             </if>
@@ -191,8 +246,69 @@
                 order by r.POPULARITY DESC
             </if>
             ) t1
-            where ROWNUM &lt;= #{current} * #{limit} ) t
-        where rn &gt; (#{current} - 1) * #{limit}
+            where ROWNUM &lt;= #{page.current} * #{page.limit} ) t
+        where rn &gt; (#{page.current} - 1) * #{page.limit}
+    </select>
+
+    <!--条件查询食谱数量-->
+    <select id="queryRecipeOfSearchCount" resultType="Integer">
+        select count(*)
+        from RECIPE r
+        <where>
+            <if test="diffcultTerm != null and diffcultTerm != ''">
+                <choose>
+                    <when test="diffcultTerm == '厨神级'">
+                        and r.DIFFICULTY > 15
+                    </when>
+                    <when test="diffcultTerm == '高级厨师'">
+                        and r.DIFFICULTY > 12
+                    </when>
+                    <when test="diffcultTerm == '中级掌勺'">
+                        and r.DIFFICULTY > 9
+                    </when>
+                    <when test="diffcultTerm == '初级水平'">
+                        and r.DIFFICULTY > 6
+                    </when>
+                    <when test="diffcultTerm == '初级入门'">
+                        and r.DIFFICULTY > 3
+                    </when>
+                    <otherwise>
+                        and (r.DIFFICULTY &lt;=3 or r.DIFFICULTY IS NULL)
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="cookTimeTerm != null and cookTimeTerm != ''">
+                <choose>
+                    <when test="cookTimeTerm == '数天'">
+                        and r.COOK_TIME >= 2880
+                    </when>
+                    <when test="cookTimeTerm == '两天'">
+                        and r.COOK_TIME >= 1440 and r.COOK_TIME &lt; 2880
+                    </when>
+                    <when test="cookTimeTerm == '数小时'">
+                        and r.COOK_TIME >= 120 and r.COOK_TIME &lt; 1440
+                    </when>
+                    <when test="cookTimeTerm == '两小时'">
+                        and r.COOK_TIME >= 60 and r.COOK_TIME &lt; 120
+                    </when>
+                    <when test="cookTimeTerm == '一小时'">
+                        and r.COOK_TIME >= 0 and r.COOK_TIME &lt; 60
+                    </when>
+                    <otherwise>
+                        and (r.COOK_TIME IS NULL or r.COOK_TIME &lt; 0)
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="craftTerm != null and craftTerm != ''">
+                and r.CRAFT_ID = (select rc.CRAFT_ID from CRAFT rc where rc.CRAFT_NAME = #{craftTerm})
+            </if>
+            <if test="tasteTerm != null and tasteTerm != ''">
+                and r.TASTE_ID = (select rt.TASTE_ID from TASTE rt where rt.TASTE_NAME = #{tasteTerm})
+            </if>
+            <if test="materialTerm != null and materialTerm != ''">
+                and EXISTS (select rm.RECIPE_ID from MATERIALS rm where rm.MAIN_MATERIALS = #{materialTerm} and rm.MATERIALS_FLAG = 1 and rm.RECIPE_ID = r.RECIPE_ID)
+            </if>
+        </where>
     </select>
 
     <!--最新菜谱-->
