@@ -216,6 +216,8 @@ function recipeList() {
                     ,groups: 3  // 连续出现页码的个数
                     ,layout: ['prev', 'page', 'next', 'refresh','count', 'skip']
                     ,jump: function(obj, first){
+                        data['limit'] = obj.limit;
+                        data['current'] = obj.curr;
 
                         // 首次不执行
                         if (!first) {
