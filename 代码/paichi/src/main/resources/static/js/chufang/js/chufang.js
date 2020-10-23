@@ -82,6 +82,23 @@ function materialsList() {
     });
 }
 
+// 删除筛选条件并更新列表
+function removeTerm(id) {
+    // 移除选中的样式
+    let removeCSS = $("#" + id + "").text();
+    $("#"+ removeCSS +"").removeClass();
+    // 删除筛选条件列表
+    let element = document.getElementById(id);
+    element.parentElement.removeChild(element);
+    // 查询条件列表数量，列表中没有条件时，移除列表样式
+    if ($("#termList a").size() == 0) {
+        $("#termList").removeClass();
+    }
+    // 更新列表
+    recipeList();
+
+}
+
 // 添加筛选条件。type：筛选类型 1：食材筛选。2：难度筛选。3：工艺筛选。4：口味筛选。5：时间筛选。
 function chooseTerm(data, type) {
     // 新添加的筛选条件
@@ -97,7 +114,7 @@ function chooseTerm(data, type) {
                 element.parentElement.removeChild(element);
             }
 
-            termHtml = '<a id="materialTerm">' + data + '</a>';
+            termHtml = '<a href="JavaScript:void(0);" onclick="removeTerm(this.id);" id="materialTerm">' + data + '</a>';
             break;
         case 2:
             // 获取条件列表，一类条件只能有一个，需要删除上一个
@@ -108,7 +125,7 @@ function chooseTerm(data, type) {
                 element.parentElement.removeChild(element);
             }
 
-            termHtml = '<a id="diffcultTerm">' + data + '</a>';
+            termHtml = '<a href="JavaScript:void(0);" onclick="removeTerm(this.id);" id="diffcultTerm">' + data + '</a>';
             break;
         case 3:
             // 获取条件列表，一类条件只能有一个，需要删除上一个
@@ -119,7 +136,7 @@ function chooseTerm(data, type) {
                 element.parentElement.removeChild(element);
             }
 
-            termHtml = '<a id="craftTerm">' + data + '</a>';
+            termHtml = '<a href="JavaScript:void(0);" onclick="removeTerm(this.id);" id="craftTerm">' + data + '</a>';
             break;
         case 4:
             // 获取条件列表，一类条件只能有一个，需要删除上一个
@@ -130,7 +147,7 @@ function chooseTerm(data, type) {
                 element.parentElement.removeChild(element);
             }
 
-            termHtml = '<a id="tasteTerm">' + data + '</a>';
+            termHtml = '<a href="JavaScript:void(0);" onclick="removeTerm(this.id);" id="tasteTerm">' + data + '</a>';
             break;
         default:
             // 删除"<"符号
@@ -143,7 +160,7 @@ function chooseTerm(data, type) {
                 element.parentElement.removeChild(element);
             }
 
-            termHtml = '<a id="cookTimeTerm">' + data + '</a>';
+            termHtml = '<a href="JavaScript:void(0);" onclick="removeTerm(this.id);" id="cookTimeTerm">' + data + '</a>';
             break;
     }
 
@@ -200,7 +217,6 @@ function recipeList() {
                     ,layout: ['prev', 'page', 'next', 'refresh','count', 'skip']
                     ,jump: function(obj, first){
 
-                        console.log(first);
                         // 首次不执行
                         if (!first) {
                             $.ajax({
@@ -212,11 +228,8 @@ function recipeList() {
                                     // 查询成功回调函数
 
                                     var data = result.data;
-
                                     let newsHeadHtml = recipePageList(data);
-
                                     $("#listtyle1_list").html(newsHeadHtml);
-
                                 },
                                 fail: function (result) {
                                     // 查询失败回调函数
