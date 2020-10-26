@@ -47,6 +47,9 @@ public class MvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/chufang/diy/index.html").setViewName("/chufang/diy/index");
                 // news新闻静态页
                 registry.addViewController("/news/lanrenzaocan_news.html").setViewName("/news/lanrenzaocan_news");
+                //关于我们静态页
+                registry.addViewController("/about/contact_us.html").setViewName("/about/contact_us");
+                registry.addViewController("/about/index.html").setViewName("/about/index");
             }
         };
     }
