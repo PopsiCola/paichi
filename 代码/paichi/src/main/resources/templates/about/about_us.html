@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>关于我们</title>
+    <meta name="keywords" content="PaiChi">
+    <meta name="description" content="PaiChi">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/about/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/about/css/about1.css}">
+    <script type="text/javascript" th:src="@{/js/about/js/jquery.min.js}"></script>
+</head>
+<body>
+<div class="topbar" id="topbar">
+    <div class="topbar_c">
+        <a href="/" class="logo"></a>
+
+        <ul class="nav">
+            <li><a href="/about/index.html"><strong>首页</strong></a></li>
+            <li class="active"><a href="/about/about_us.html"><strong>关于我们</strong></a></li>
+            <!--<li><a href="download.html"><strong>产品下载</strong></a></li>-->
+            <li><a href="/about/join_us.html"><strong>加入我们</strong></a></li>
+            <li><a href="/about/contact_us.html"><strong>联系我们</strong></a></li>
+        </ul>
+    </div>
+</div>
+<div class="banner1" style="background:url(/js/about/images/20190104181737_379.jpeg) center no-repeat;background-size:cover;">
+    <div class="bigtitle">
+        <strong>用户至上 诚信 合作 创新</strong>
+        <div class="line"></div>
+        <em>立志成为最有影响力的美食平台</em>
+    </div>
+</div>
+<div class="content">
+    <div class="title0">
+        <h1>PaiChi文化</h1>
+    </div>
+    <div class="au_item1" style="background:url(/js/about/images/20190215172534_438.jpeg) center no-repeat;background-size:cover;">
+        <div class="au_item_con">
+            <div class="box">
+                <strong class="title">使命</strong>
+                <div class="line"></div>
+                <p class="des">不再为吃什么而苦恼</p>
+            </div>
+            <i class="arrow"></i>
+        </div>
+    </div>
+    <div class="au_item1" style="background:url(/js/about/images/20190215172705_820.jpeg) center no-repeat;background-size:cover;">
+        <div class="au_item_con">
+            <div class="box">
+                <strong class="title">愿景</strong>
+                <div class="line"></div>
+                <p class="des">成为最有影响力的<br>美食平台</p>
+            </div>
+            <i class="arrow"></i>
+        </div>
+    </div>
+    <div class="au_item1" style="background:url(/js/about/images/20190215172534_682.jpeg) center no-repeat;background-size:cover;">
+        <div class="au_item_con">
+            <div class="box">
+                <strong class="title">价值观</strong>
+                <div class="line"></div>
+                <p class="des">用户至上、诚信、合<br>作、创新</p>
+            </div>
+            <i class="arrow"></i>
+        </div>
+    </div>
+    <div class="au_item1" style="background:url(/js/about/images/20190215172534_660.jpeg) center no-repeat;background-size:cover;">
+        <div class="au_item_con">
+            <div class="box">
+                <strong class="title">团队理念</strong>
+                <div class="line"></div>
+                <p class="des">关爱、快乐、和谐、学<br>习、执行</p>
+            </div>
+            <i class="arrow"></i>
+        </div>
+    </div>
+</div>
+<div class="bottom"><p>京ICP备 150335号 / 京公网安备 11010802026928 Copyright © 2003-2018 MEISHIJ CO.,LTD.</p></div>
+<script>
+    $(function () {
+        $(window).scroll(function () {
+            var st = $(window).scrollTop();
+            if (st > 100) {
+                $("#topbar").addClass("show");
+            } else {
+                $("#topbar").removeClass("show");
+            }
+        });
+    });
+</script>
+</body>
+   
+    

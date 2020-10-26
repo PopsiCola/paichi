@@ -50,6 +50,8 @@ public class MvcConfig implements WebMvcConfigurer {
                 //关于我们静态页
                 registry.addViewController("/about/contact_us.html").setViewName("/about/contact_us");
                 registry.addViewController("/about/index.html").setViewName("/about/index");
+                registry.addViewController("/about/about_us.html").setViewName("/about/about_us");
+                registry.addViewController("/about/join_us.html").setViewName("/about/join_us");
             }
         };
     }
