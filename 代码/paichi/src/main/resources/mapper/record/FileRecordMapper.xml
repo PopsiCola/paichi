@@ -12,6 +12,10 @@
             <if test="pictureType != null">
                 PICTURE_TYPE,
             </if>
+            <if test="uploadUserId != null">
+                UPLOAD_USER_ID,
+            </if>
+                DEL_FLAG
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pictureUrl != null">
@@ -21,6 +25,10 @@
             <if test="pictureType != null">
                 #{pictureType, jdbcType=NUMERIC},
             </if>
+            <if test="uploadUserId != null and uploadUserId != ''">
+                #{uploadUserId},
+            </if>
+                #{delFlag}
         </trim>
     </insert>
 </mapper>

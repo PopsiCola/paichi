@@ -191,6 +191,7 @@ public class VerificationCodeAdapter {
         fileRecord.setPictureUrl(uploadFile);
         fileRecord.setPictureType(2);
         fileRecord.setUploadTime(new Date());
+        fileRecord.setDelFlag(1);
 
         fileRecordService.saveFile(fileRecord);
 

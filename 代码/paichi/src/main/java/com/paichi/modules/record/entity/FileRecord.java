@@ -44,5 +44,16 @@ public class FileRecord implements Serializable {
     @TableField("PICTURE_TYPE")
     private Integer pictureType;
 
+    /**
+     * 上传用户主键
+     */
+    @TableField("UPLOAD_USER_ID")
+    private String uploadUserId;
+
+    /**
+     * 删除标志 (1 未删除 2 已删除)
+     */
+    @TableField("DEL_FLAG")
+    private Integer delFlag;
 
 }

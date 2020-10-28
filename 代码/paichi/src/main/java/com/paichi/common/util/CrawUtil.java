@@ -190,6 +190,9 @@ public class CrawUtil {
                     fileRecord.setPictureType(1);
                     fileRecord.setUploadTime(new Date());
                     fileRecord.setPictureUrl(url);
+                    fileRecord.setDelFlag(1);
+                    fileRecord.setUploadUserId("1306523235645465465");
+
                     crawUtil.fileRecordService.saveFile(fileRecord);
 
                 }
@@ -342,6 +345,9 @@ public class CrawUtil {
                         fileRecord.setPictureUrl(fileUrl);
                         fileRecord.setUploadTime(new Date());
                         fileRecord.setPictureType(1);
+                        fileRecord.setDelFlag(1);
+                        fileRecord.setUploadUserId("1306523235645465465");
+
                         crawUtil.fileRecordService.saveFile(fileRecord);
                     }
 
@@ -448,6 +454,9 @@ public class CrawUtil {
                         fileRecord.setPictureUrl(fileUrl);
                         fileRecord.setUploadTime(new Date());
                         fileRecord.setPictureType(1);
+                        fileRecord.setDelFlag(1);
+                        // 爬取文件为管理员用户上传
+                        fileRecord.setUploadUserId("1306523235645465465");
 
                         crawUtil.fileRecordService.saveFile(fileRecord);
                     }
