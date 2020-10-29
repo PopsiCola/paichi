@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>我的菜单_杰米8872154335的我的菜单菜单–美食菜单【PaiChi】</title>
+    <meta name="keywords" content="我的菜单，我的菜单的做法，我的菜单大全，我的菜单菜单，美食菜单，PaiChi">
+    <meta name="description" content="我的菜单的菜单包括我的菜单的做法由用户精心收集打造，美食杰美食菜单为你提供展示平台">
+    <meta content="www.meishij.net" name="author">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script>var _hmt = _hmt || [];</script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/list.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/tipswindown.css}">
+    <script type="text/javascript" th:src="@{/js/recipe_list/js/j.m.js}"></script>
+    <script type="text/javascript" th:src="@{/js/recipe_list/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/recipe_list/js/list.js}"></script>
+    <script type="text/javascript" th:src="@{/js/recipe_list/js/tipswindown.js}"></script>
+    <script type="text/javascript" th:src="@{/js/recipe_list/js/user.js}"></script>
+    <script th:src="@{/js/recipe_list/js/ds.js}"></script>
+    <script>var _czc = _czc || [];
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?01dd6a7c493607e115255b7e72de5f40";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>
+</head>
+<body style>
+<div class="adinheader">
+    <div class="adinheader_w">
+        <script>
+            (function () {
+                var s = "_" + Math.random().toString(36).slice(2);
+                document.write('<div id="' + s + '"></div>');
+                (window.slotbydup = window.slotbydup || []).push({
+                    id: '206520',
+                    container: s,
+                    size: '990,40',
+                    display: 'inlay-fix'
+                });
+            })();
+        </script>
+    </div>
+</div>
+<div class="header">
+    <div class="header_c">
+        <a href="/" class="logo pngFix"></a>
+        <div class="main_search_top_w">
+            <div class="suggestionsBox" id="suggestions" style="display:none;">
+                <ul class="suggestionList" id="autoSuggestionsList"></ul>
+            </div>
+            <form class="search" action="https://so.meishi.cc/">
+                <input type="text" class="text" name="q" defaultval="请输入菜谱/食材/菜单/作者" x-webkit-speech
+                       value="请输入菜谱/食材/菜单/作者" autocomplete="off"
+                       onfocus="if(this.value=='请输入菜谱/食材/菜单/作者'){this.value='';}$(this).css('color','#333');"
+                       onblur="if(this.value==''){this.value='请输入菜谱/食材/菜单/作者';$(this).css('color','#999');}"
+                       href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
+            </form>
+        </div>
+        <div class="loginitem_h">
+            <script th:src="@{/js/recipe_list/js/loginheader_n2.js}"></script>
+        </div>
+    </div>
+</div>
+<div class="nav">
+    <ul id="main_nav">
+        <li><a href="/" class="link pngFix"><strong>首页</strong></a></li>
+        <li class="hasmore">
+            <a href="https://www.meishij.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_cpdq">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/chufang/diy/">家常菜谱</a></dt>
+                            <dd><a href="https://www.meishij.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/langcaipu/">凉菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/sushi/">素食</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/wancan/">晚餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/sijiacai/">私家菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/recaipu/">热菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/haixian/">海鲜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/zaocan/">早餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/wucan/">午餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/weibolucaipu/">微波炉</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/china-food/caixi/">中华菜系</a></dt>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/chuancai/">川菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/yuecai/">粤菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/dongbeicai/">东北菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/xiangcai/">湘菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/lucai/">鲁菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/zhecai/">浙菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/hubeicai/">湖北菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/qingzhencai/">清真菜</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/china-food/xiaochi/">各地小吃</a></dt>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/sichuan/">四川小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/guangdong/">广东小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/beijing/">北京小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/shanxii/">陕西小吃</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/">外国菜谱</a></dt>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/japan/">日本料理</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/faguo/">法国菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/yidali/">意大利餐</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/hongpei/">烘焙</a></dt>
+                            <dd><a href="https://www.meishij.net/hongpei/dangaomianbao/">蛋糕面包</a></dd>
+                            <dd><a href="https://www.meishij.net/hongpei/bingganpeifang/">饼干配方</a></dd>
+                            <dd><a href="https://www.meishij.net/hongpei/tianpindianxin/">甜品点心</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/pengren/">厨房百科</a></dt>
+                            <dd><a href="https://www.meishij.net/pengren/baipanzhoubian/">摆盘围边</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/jiqiao/">烹饪技巧</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/chufangmiaozhao/">生活妙招</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/chufang/">美食专题</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/shicai/">食材百科</a></dt>
+                            <dd><a href="https://www.meishij.net/shicai/shucai_list">蔬菜</a></dd>
+                            <dd><a href="https://www.meishij.net/shicai/shuiguo_list">水果</a></dd>
+                            <dd><a href="https://www.meishij.net/shicai/gulei_list">谷类</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li class="hasmore"><a href="https://www.meishij.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_ysjk">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/jiankang/">饮食健康</a></dt>
+                            <dd><a href="https://www.meishij.net/jiankang/changshi/">饮食小常识</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/meirong/">美容瘦身</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/shipinanquan/">食品安全</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/yangsheng/">养生妙方</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/jinji/">饮食禁忌</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/zhongyi/">中医保健</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/muying/">母婴健康饮食</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/yinshixinwen/">饮食新闻</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li class="current"><a href="https://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a>
+        </li>
+        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
+                                                      class="link pngFix"><strong>家居馆</strong>
+        </a></li>
+        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+                th:src="@{/js/recipe_list/images/20160909164810_443.png}"
+                style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
+        <li><a href="https://www.meishij.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
+        <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
+    </ul>
+</div>
+<div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
+    <div class="main_search_w">
+        <div class="searchform_div">
+            <form action="https://so.meishi.cc/" target="_blank">
+                <input type="text" class="text" name="q" x-webkit-speech autocomplete="off"
+                       id="inputString" placeholder="输入菜谱、食材、作者">
+                <input type="submit" class="submit" value="搜 索"></form>
+        </div>
+        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
+    </div>
+</div>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+    <a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+    <div class="main">
+        <div class="cd_showbox clearfix">
+            <div class="infobox clearfix">
+                <div class="cdinfo">
+                    <h1>我的菜单</h1>
+                    <p>暂无简介</p>
+                    <span>最后修改：2020-10-01 22:36</span>
+                </div>
+                <div class="authorinfo">
+                    <div class="user">
+                        <a href="https://i.meishi.cc/cook.php?id=14639709" class="img"><img th:src="@{/js/recipe_list/images/tx2_4.png}"><span
+                                class="masker"></span></a>
+                        <div class="info">
+                            <h4><a href="https://i.meishi.cc/cook.php?id=14639709">杰米8872154335</a>
+                                <a class="followTa" uid="14639709"></a>
+                            </h4>
+                            <span>菜谱：0 / 关注：0 / 粉丝：0</span>
+                        </div>
+                    </div>
+                    <div class="btns"><a href="####" class="addToFav_Cd fl mr10" id="addCdToFavInCon">收藏菜单</a>
+                        <div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+                            <img th:src="@{/js/recipe_list/images/sharebtn_style1.gif}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="bbtitles">如果你不知道做什么，你就做饭。</h3>
+        <div class="clearfix">
+            <div class="listtyle1_w clearfix" id="listtyle1_w">
+                <div class="listtyle1_list clearfix" id="listtyle1_list">
+                    <div class="listtyle1 ml0">
+                        <div class="img">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/zhugulianouhuashengtang.html">
+                                <img th:src="@{/js/recipe_list/images/a2378886_144982648753765.jpeg}" width="232" height="232"></a></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/zhugulianouhuashengtang.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/zhugulianouhuashengtang.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煲</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="nd">初中水平</li>
+                                        <li class="sj"><60分钟</li>
+                                        <li>>60分钟</li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/zhugulianouhuashengtang.html">猪骨煲莲藕花生汤</a>
+                            </h3>
+                            <div class="d1"><span>26 评论</span><span>3137 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=2378886">草莓茶</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank"
+                                            href="https://www.meishij.net/zuofa/yangdujunbaopaigutang.html"><img
+                                th:src="@{/js/recipe_list/images/a4367086_155548967007539.jpeg}" width="232" height="232"></a><strong
+                                class="gx"><span>防癌</span></strong></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/yangdujunbaopaigutang.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/yangdujunbaopaigutang.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">蒸</li>
+                                        <li class="kw">咸鲜味</li>
+                                        <li class="nd">初级入门</li>
+                                        <li class="sj"><90分钟</li>
+                                        <li>>90分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>防癌、补肾、润肺</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/yangdujunbaopaigutang.html">羊肚菌煲排骨汤</a>
+                            </h3>
+                            <div class="d1"><span>2 评论</span><span>462 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=4367086">尾巴的厨房</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/dianfanbaoyangyanyinerlitang.html">
+                                <img th:src="@{/js/recipe_list/images/a9805402_151165975038562.jpeg}" width="232" height="232">
+                            </a>
+                            <strong class="gx">
+                                <span>降压</span>
+                            </strong>
+                        </div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/dianfanbaoyangyanyinerlitang.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank"
+                                   href="https://www.meishij.net/zuofa/dianfanbaoyangyanyinerlitang.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">炖</li>
+                                        <li class="kw">甜味</li>
+                                        <li class="nd">新手尝试</li>
+                                        <li class="sj"><30分钟</li>
+                                        <li>>30分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>降压、润肺化痰、开胃、防癌...</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank"
+                                   href="https://www.meishij.net/zuofa/dianfanbaoyangyanyinerlitang.html">电饭煲养颜银耳梨汤</a>
+                            </h3>
+                            <div class="d1"><span>105 评论</span><span>6005 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=9805402">罐头视频</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1 ml0">
+                        <div class="img">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/tiepishihubaopaigutangwancan.html">
+                            <img th:src="@{/js/recipe_list/images/a9087269_151427647488583.jpeg}" width="232" height="232">
+                            </a>
+                            <strong class="gx">
+                                <span>补肾</span>
+                            </strong>
+                        </div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/tiepishihubaopaigutangwancan.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank"
+                                   href="https://www.meishij.net/zuofa/tiepishihubaopaigutangwancan.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">炖</li>
+                                        <li class="kw">奶香味</li>
+                                        <li class="nd">初中水平</li>
+                                        <li class="sj">< 数小时</li>
+                                        <li>>数小时</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>补肾、润肺</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank"
+                                   href="https://www.meishij.net/zuofa/tiepishihubaopaigutangwancan.html">铁皮石斛煲排骨汤</a>
+                            </h3>
+                            <div class="d1"><span>77 评论</span><span>10355 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=9087269">幸福精灵a</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank"
+                                            href="https://www.meishij.net/zuofa/yezibaojitang_3.html"><img
+                                th:src="@{/js/recipe_list/images/a2378886_160197683504155.jpeg}" width="232" height="232"></a><strong
+                                class="gx"><span>清热解暑</span></strong></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/yezibaojitang_3.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/yezibaojitang_3.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煲</li>
+                                        <li class="kw">咸鲜味</li>
+                                        <li class="sj"><60分钟</li>
+                                        <li>>60分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>清热解暑、利尿、驱虫、美容...</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/yezibaojitang_3.html">椰子煲鸡汤</a>
+                            </h3>
+                            <div class="d1"><span>0 评论</span><span>364 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=2378886">草莓茶</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/chashuguyatang_1.html">
+                                <img th:src="@{/js/recipe_list/images/a2829720_142675254419129.jpeg}" width="232" height="232">
+                            </a>
+                            <strong class="gx">
+                                <span>防癌</span>
+                            </strong>
+                        </div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/chashuguyatang_1.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/chashuguyatang_1.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">炖</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="nd">初级入门</li>
+                                        <li class="sj"><90分钟</li>
+                                        <li>>90分钟</li></ul>
+                                </a>
+                                <div class="gx2"><span>防癌、抗衰老、治尿床、预防...</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/chashuguyatang_1.html">茶树菇煲鸭汤</a>
+                            </h3>
+                            <div class="d1"><span>17 评论</span><span>10739 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=2829720">依然-美食</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1 ml0">
+                        <div class="img"><a target="_blank" href="https://www.meishij.net/zuofa/dianfanguobaotang.html"><img
+                                th:src="@{/js/recipe_list/images/a13678092_156629983635633.jpeg}" width="232" height="232"></a><strong
+                                class="gx"><span>减肥瘦身</span></strong></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/dianfanguobaotang.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/dianfanguobaotang.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煮</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="sj"><60分钟</li>
+                                        <li>>60分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>减肥瘦身、防癌、降血压、保...</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/dianfanguobaotang.html">电饭锅煲汤</a>
+                            </h3>
+                            <div class="d1"><span>0 评论</span><span>372 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=13678092">姊姊！</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank"
+                                            href="https://www.meishij.net/zuofa/xiangluobaojitangwucan.html"><img
+                                th:src="@{/js/recipe_list/images/a9087269_152966815562018.jpeg}" width="232" height="232"></a><strong
+                                class="gx"><span>强身健体</span></strong></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/xiangluobaojitangwucan.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/xiangluobaojitangwucan.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煲</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="nd">初中水平</li>
+                                        <li class="sj"><2小时</li>
+                                        <li>>2小时</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>强身健体、排毒、减肥瘦身</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/xiangluobaojitangwucan.html">响螺煲鸡汤</a>
+                            </h3>
+                            <div class="d1"><span>1 评论</span><span>484 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=9087269">幸福精灵a</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank"
+                                            href="https://www.meishij.net/zuofa/suantangfeiyangbao.html"><img
+                                th:src="@{/js/recipe_list/images/a2251484_148115990978554.jpeg}" width="232" height="232">
+                        </a>
+                            <strong class="gx"><span>助消化</span>
+                            </strong>
+                        </div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/suantangfeiyangbao.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/suantangfeiyangbao.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煮</li>
+                                        <li class="kw">酸辣味</li>
+                                        <li class="nd">新手尝试</li>
+                                        <li class="sj"><30分钟</li>
+                                        <li>>30分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>助消化、消食</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank"
+                                   href="https://www.meishij.net/zuofa/suantangfeiyangbao.html">酸汤肥羊煲</a></h3>
+                            <div class="d1"><span>30 评论</span><span>2963 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=2251484">明月燕子</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1 ml0">
+                        <div class="img">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/haicanshanyaojitang.html">
+                                <img th:src="@{/js/recipe_list/images/a1102105_144062766206242.jpeg}" width="232" height="232"></a></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/haicanshanyaojitang.html"
+                               class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/haicanshanyaojitang.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">炖</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="nd">初级入门</li>
+                                        <li class="sj"><90分钟</li>
+                                        <li>>90分钟</li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank"
+                                   href="https://www.meishij.net/zuofa/haicanshanyaojitang.html">海参山药煲鸡汤</a></h3>
+                            <div class="d1"><span>26 评论</span><span>4470 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=1102105">冰清一色</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank" href="https://www.meishij.net/zuofa/jitang_7.html"><img
+                                th:src="@{/js/recipe_list/images/a2860297_142208130672425.jpeg}" width="232" height="232"></a></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/jitang_7.html" class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/jitang_7.html" class="link_cp">
+                                    <ul>
+                                        <li class="gy">煲</li>
+                                        <li class="kw">咸鲜味</li>
+                                        <li class="nd">新手尝试</li>
+                                        <li class="sj">< 数小时</li>
+                                        <li>>数小时</li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/jitang_7.html">煲鸡汤</a></h3>
+                            <div class="d1"><span>76 评论</span><span>102504 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=2860297">子同妈妈</a>
+                        </div>
+                    </div>
+                    <div class="listtyle1">
+                        <div class="img"><a target="_blank" href="https://www.meishij.net/zuofa/jidanbing_61.html"><img
+                                th:src="@{/js/recipe_list/images/a5458252_149275791251809.jpeg}" width="232" height="232"></a><strong
+                                class="gx"><span>抵抗力</span></strong></div>
+                        <div class="info2">
+                            <a target="_blank" href="https://www.meishij.net/zuofa/jidanbing_61.html" class="img"></a>
+                            <div class="info2_c">
+                                <a target="_blank" href="https://www.meishij.net/zuofa/jidanbing_61.html"
+                                   class="link_cp">
+                                    <ul>
+                                        <li class="gy">煎</li>
+                                        <li class="kw">家常味</li>
+                                        <li class="nd">新手尝试</li>
+                                        <li class="sj"><5分钟</li>
+                                        <li>>5分钟</li>
+                                    </ul>
+                                </a>
+                                <div class="gx2"><span>抵抗力、健脑益智、保肝、动...</span></div>
+                            </div>
+                        </div>
+                        <div class="info1">
+                            <h3><a target="_blank" href="https://www.meishij.net/zuofa/jidanbing_61.html">鸡蛋饼</a></h3>
+                            <div class="d1"><span>82 评论</span><span>6304 人气</span></div>
+                            <a target="_blank" class="author" href="https://i.meishi.cc/cook.php?id=5458252">美乐猪</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- listtyle1_list end -->
+                <div class="listtyle1_page">
+                    <div class="listtyle1_page_w">
+                        <span>1</span><a href="?cid=19565745&page=2">2</a><a href="?cid=19565745&page=2" class="next">下一页</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pl232_w" id="caidan_comments">
+                <h3>说说对此菜单的印象吧</h3>
+                <div class="form_w">
+                    <textarea id="comments" placeholder="好不好？我来评。"></textarea>
+                    <input type="submit" class="submit" value="提交" id="comments_ts">
+                </div>
+                <ul class="pl232_pllist">
+                </ul>
+                <div class="page">
+                </div>
+            </div>
+        </div>
+        <h3 class="bbtitles">TA的其他菜单...</h3>
+        <div class="cdlist_style2 clearfix">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var page = 1;
+        var cid = '19565745';
+        var contents_page_total = "0";
+        $('#comments_ts').live('click', function () {
+            var content = $("#comments").val();
+            $.post("/ajax/caidan/caidanJsCallPost.php", {
+                cid: cid,
+                content: encodeURIComponent(content),
+                page: page,
+                type: 'insert'
+            }, function (results) {
+                var obj = eval('(' + results + ')');
+                if (obj.code == 0) {
+                    $("#caidan_comments").html(obj.detail);
+                } else if (obj.code == 3) {
+                    location.href = '/login.php?redirect=' + encodeURIComponent(location.href);
+                } else if (obj.code == 10) {
+                    location.href = 'https://i.meishi.cc/account/bind_phone.php';
+                } else if (obj.code == 5) {
+                    alert('评论不能为空');
+                }
+            });
+        });
+        $('.next').live('click', function () {
+            page = page + 1;
+            $.post("/ajax/caidan/caidanJsCallPost.php", {cid: cid, page: page}, function (results) {
+                var obj = eval('(' + results + ')');
+                if (obj.code == 0) {
+                    if (obj.detail != '') {
+                        $("#caidan_comments").html(obj.detail);
+                        contents_page_total = obj.page_total;
+                    }
+                }
+            });
+        });
+        $('#c_prev').live('click', function () {
+            page = page - 1;
+            $.post("/ajax/caidan/caidanJsCallPost.php", {cid: cid, page: page}, function (results) {
+                var obj = eval('(' + results + ')');
+                if (obj.code == 0) {
+                    if (obj.detail != '') {
+                        $("#caidan_comments").html(obj.detail);
+                        contents_page_total = obj.page_total;
+                    }
+                }
+            });
+        });
+        // get_onclick(19565745);
+    });
+    // function get_onclick(cid) {
+    // 	var js = document.createElement("script");
+    // 	js.language = "javascript";
+    // 	js.src = "http://click.meishij.net/pl/rclick.php?i=" + cid + "&_" +(new Date()).getTime();
+    // 	document.body.appendChild(js)
+    // }
+    function delete_caidan(cid) {
+        if (confirm("确认要删除这个菜单吗？\n里面的所有菜谱关系也将全部删除！")) {
+            location.href = "/create_caidan.php?act=delete&cid=" + cid;
+        }
+        return false;
+    }
+
+    function delete_caidan_recipe(cid, nid) {
+        if (confirm("确定取消收藏这个菜谱么？")) {
+            location.href = "/create_caidan.php?act=deleten&nid=" + nid + "&cid=" + cid;
+        }
+        return false;
+    }
+
+    $(document).ready(function () {
+        var shouChangType = 1;
+        $("#addCdToFavInCon").click(function () {
+            $.post("/ajax/caidan/shoucang.php", {
+                type: shouChangType,
+                cid: 19565745,
+                obj_type: 'fav'
+            }, function (result) {
+                var obj = eval('(' + result + ')');
+                if (obj.code == 0) {
+                    if (shouChangType == 1) {
+                        shouChangType = 2;
+                        alert('收藏成功');
+                        $("#addCdToFavInCon").text("已收藏");
+                    } else {
+                        shouChangType = 1;
+                        alert('取消收藏成功');
+                        $("#addCdToFavInCon").text("收藏菜单");
+                    }
+                } else if (obj.code == 3) {
+                    location.href = '/login.php?redirect=' + encodeURIComponent(location.href);
+                } else if (obj.code == 5) {
+                    alert('评论不能为空');
+                }
+            });
+        });
+    });
+
+    function shutDialog() {
+        $("#windownbg").remove();
+        $("#iframe_ss").remove();
+        $("#windown-box").fadeOut("slow", function () {
+            $(this).remove();
+        });
+    }
+</script>
+<script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=6674010"></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);</script>
+<div style="margin:0 auto;padding-top:20px;width:990px;">
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/recipe_list/js/fasjbsigw.js}"></script>
+    </div>
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/recipe_list/js/idvmevlje.js}"></script>
+    </div>
+</div>
+<div class="main_footer pngFix">
+    <div class="footer_con1 clearfix">
+        <!--<p class="text pngFix"><a href="https://www.meishij.net/" class="footer_homelink"></a></p>-->
+        <div class="logobottom"
+             style="height:196px;width:600px;background: url(/js/recipe_list/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+            <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
+        </div>
+        <div class="links">
+            <ul class="cleearfix">
+                <li class="sina"><a class="img" target="_blank"
+                                    href="https://e.weibo.com/meishij"><span>关注：49万</span></a>
+                    <p><a target="_blank" href="https://e.weibo.com/meishij">点击进入<br>美食杰官方微博</a></p></li>
+                <li class="tengxun"><a class="img" target="_blank" href="https://user.qzone.qq.com/613171717"><span>关注：10.9万</span></a>
+                    <p><a target="_blank" href="https://user.qzone.qq.com/613171717">点击进入<br>美食杰QQ空间</a></p></li>
+                <li class="weixin"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码添加<br>美食杰为微信好友</a></p></li>
+                <li class="download"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码下载<br>美食杰手机客户端</a></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_con3">
+        <ul class="clearfix">
+            <li><a target="_blank" href="https://j.meishi.cc/" title="公司简介">公司简介</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/aboutus.html" title="关于我们">关于我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/download.html" title="产品下载">产品下载</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/joinus.html" title="加入我们">加入我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="联系我们">联系我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="商务合作">商务合作</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/user_agreement.php" title="用户协议">用户协议</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/privacy.php" title="用户协议">隐私政策</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+        </ul>
+        <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备150335号</a>/<a target="_blank"
+                                                                                                    href="https://beian.gov.cn/"
+                                                                                                    class="gray_a"><img
+                th:src="@{/js/recipe_list/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
+    </div>
+</div>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
