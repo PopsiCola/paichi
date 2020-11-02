@@ -58,6 +58,20 @@
         </collection>
     </resultMap>
 
+    <!--用户美食菜单-->
+    <resultMap id="recipeOrders" type="User">
+        <id property="userId" column="USER_ID"></id>
+        <result property="userName" column="USER_NAME"></result>
+        <result property="userIcon" column="USER_ICON"></result>
+        <result property="ordersCount" column="ordersCount"></result>
+        <collection property="recipes" ofType="Recipe">
+            <id property="recipeId" column="RECIPE_ID"></id>
+            <result property="recipeName" column="RECIPE_NAME"></result>
+            <result property="recipeImg" column="RECIPE_IMG"></result>
+            <result property="timestamp" column="TIMESTAMP"></result>
+        </collection>
+    </resultMap>
+
     <!--保存食谱-->
     <insert id="saveRecipe" parameterType="Recipe">
         insert into RECIPE
@@ -394,5 +408,35 @@
     <!--菜谱总数 -->
     <select id="recipeCount" resultType="int">
         select count(*) from RECIPE
+    </select>
+
+    <!--美食菜单-->
+    <select id="queryRecipeOrders" resultMap="recipeOrders">
+        select r.RECIPE_ID, RECIPE_NAME, #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG,
+               r.USER_ID, timestamp,u.USER_NAME, u.USER_ICON,
+            -- 食谱菜单总数
+            (select count(*) from RECIPE re where re.USER_ID = u.USER_ID) as ordersCount
+        from "USER" u
+        left join (
+        select RECIPE_ID, RECIPE_NAME, USER_ID, RECIPE_IMG,
+        ROW_NUMBER() over (PARTITION BY USER_ID order by TIMESTAMP DESC) as num,
+        TIMESTAMP
+        from RECIPE) r
+        on u.USER_ID = r.USER_ID
+        where num &lt;= 5
+    </select>
+
+    <!--美食菜单总数-->
+    <select id="recipeOrdersCount" resultMap="recipeOrders">
+        select r.RECIPE_ID, RECIPE_NAME, r.RECIPE_IMG, r.USER_ID, timestamp,
+                     u.USER_NAME, u.USER_ICON
+            from "USER" u
+            left join (
+                select RECIPE_ID, RECIPE_NAME, USER_ID, RECIPE_IMG,
+                ROW_NUMBER() over (PARTITION BY USER_ID order by TIMESTAMP DESC ) as num,
+                TIMESTAMP
+                from RECIPE) r
+            on u.USER_ID = r.USER_ID
+            where num &lt;= 1
     </select>
 </mapper>

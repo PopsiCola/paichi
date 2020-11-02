@@ -12,10 +12,13 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/ss_base.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/main.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/recipe_list/css/list.css}">
-    <script type="text/javascript" th:src="@{/js/recipe_list/js/j.m.js}"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
     <script type="text/javascript" th:src="@{/js/recipe_list/js/main.js}"></script>
     <script type="text/javascript" th:src="@{/js/recipe_list/js/list.js}"></script>
     <script th:src="@{/js/recipe_list/js/ds.js}"></script>
+    <script th:src="@{/js/recipe_list/js/recipe_list.js}"></script>
     <script>var _czc = _czc || [];
     var _hmt = _hmt || [];
     (function () {
@@ -24,6 +27,9 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();</script>
+    <script th:inline="javascript">
+        var ctx = [[@{/}]]
+    </script>
 </head>
 <body style>
 <div class="adinheader">
@@ -265,260 +271,16 @@
             </span>
         </div>
         <div class="cdlist_main" id="cdlist">
-            <span class="loading">加载中...</span>
-            <div class="cdlist_w cdlist_w_current" po="1">
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">我的菜单</a></h3>
-                    <span class="cpcount"><em>12</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2018-07-05 11:36</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=12947507"><img
-                                th:src="@{/js/recipe_list/images/tx2_9.png}"><strong>柠檬8326</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">
-                            <img th:src="@{/js/recipe_list/images/a13384850_154468136043363.jpeg}"><h4>酒鬼鸡爪</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">
-                            <img th:src="@{/js/recipe_list/images/a2378495_148513462393239.jpeg}"><h4>番茄鱼片汤</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">
-                            <img th:src="@{/js/recipe_list/images/a494680_146406670448282.jpeg}"><h4>水煮牛肉</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">
-                            <img th:src="@{/js/recipe_list/images/a9198668_150294089048550.jpeg}"><h4>红薯饼</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">
-                            <img th:src="@{/js/recipe_list/images/a364242_142174929521875.jpeg}"><h4>老北京炸酱面</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">我的菜单</a></h3>
-                    <span class="cpcount"><em>10</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2020-05-16 16:22</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=14623363"><img
-                                th:src="@{/js/recipe_list/images/tx2_3.png}"><strong>杰米9175032545</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">
-                            <img th:src="@{/js/recipe_list/images/a2798595_145095385400559.jpeg}"><h4>小熊的圣诞礼物便当</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">
-                            <img th:src="@{/js/recipe_list/images/efc8d7632200b87339161f2009d7cb6b_150x150.jpeg}"><h4>油豆角炖肉</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">
-                            <img th:src="@{/js/recipe_list/images/a8315575_149690024033367.jpeg}"><h4>大辣椒炒肉</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">
-                            <img th:src="@{/js/recipe_list/images/a3995606_150401690895344.jpeg}"><h4>土豆炖豆角</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19435761">
-                            <img th:src="@{/js/recipe_list/images/a6695887_152341974070947.jpeg}"><h4>牛肉炖萝卜</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">我的菜单</a></h3>
-                    <span class="cpcount"><em>10</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2019-09-14 16:09</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=14061490"><img
-                                th:src="@{/js/recipe_list/images/tx2_7.png}"><strong>杰米0387024236</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">
-                            <img th:src="@{/js/recipe_list/images/a4420184_146400135873854.jpeg}"><h4>椒香干煎带鱼</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">
-                            <img th:src="@{/js/recipe_list/images/a9050441_158705722262765.jpeg}"><h4>凤梨咕噜肉</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">
-                            <img th:src="@{/js/recipe_list/images/a13384850_154466951365496.jpeg}"><h4>豆豉回锅肉</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">
-                            <img th:src="@{/js/recipe_list/images/a13187148_154510497670918.jpeg}"><h4>可乐鸡翅</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=18936348">
-                            <img th:src="@{/js/recipe_list/images/a1025708_149388094718647.jpeg}"><h4>红烧肉</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">我的菜单</a></h3>
-                    <span class="cpcount"><em>12</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">44分前</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=14820834"><img
-                                th:src="@{/js/recipe_list/images/tx2_7.png}"><strong>杰米0819698643</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">
-                            <img th:src="@{/js/recipe_list/images/a13384850_154467049727608.jpeg}"><h4>干拌土豆片</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">
-                            <img th:src="@{/js/recipe_list/images/a113291_154511347525697.jpeg}"><h4>咖喱土豆</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">
-                            <img th:src="@{/js/recipe_list/images/a13119183_154466419247524.jpeg}"><h4>凉拌面</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">
-                            <img th:src="@{/js/recipe_list/images/a13190532_154484161203158.jpeg}"><h4>干锅土豆片</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19586430">
-                            <img th:src="@{/js/recipe_list/images/a9198668_153986709928600.jpeg}"><h4>自制麻辣烫</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">我的菜单</a></h3>
-                    <span class="cpcount"><em>18</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2018-07-18 11:35</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=12985305"><img
-                                th:src="@{/js/recipe_list/images/tx2_3.png}"><strong>小木偶964</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">
-                            <img th:src="@{/js/recipe_list/images/a3542197_151132001979256.jpeg}"><h4>油炸臭豆腐</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">
-                            <img th:src="@{/js/recipe_list/images/a13667263_155395467907612.jpeg}"><h4>油炸猪排</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">
-                            <img th:src="@{/js/recipe_list/images/a2281438_147433553057644.jpeg}"><h4>不用油炸的鸡翅根</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">
-                            <img th:src="@{/js/recipe_list/images/a4125983_150137727745616.jpeg}"><h4>油炸鸡米花</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17382788">
-                            <img th:src="@{/js/recipe_list/images/a13116233_154475344423765.jpeg}"><h4>油炸火腿肠</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">我的菜单</a></h3>
-                    <span class="cpcount"><em>13</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2020-05-01 13:30</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=14647306"><img
-                                th:src="@{/js/recipe_list/images/tx2_8.png}"><strong>杰米4026586139</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">
-                            <img th:src="@{/js/recipe_list/images/a2827639_151556829530544.jpeg}"><h4>油焖大虾</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">
-                            <img th:src="@{/js/recipe_list/images/a30010_154589383979467.jpeg}"><h4>红烧带鱼</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">
-                            <img th:src="@{/js/recipe_list/images/a6878481_155167853936903.jpeg}"><h4>干锅花菜</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">
-                            <img th:src="@{/js/recipe_list/images/nopic.gif}"><h4>清炖鸡汤</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=19417077">
-                            <img th:src="@{/js/recipe_list/images/nopic.gif}"><h4>扬州炒饭</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">我的菜单</a></h3>
-                    <span class="cpcount"><em>10</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2016-08-21 21:54</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=6912416"><img
-                                th:src="@{/js/recipe_list/images/tx2_3.png}"><strong>中国强(来自微信.)</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">
-                            <img th:src="@{/js/recipe_list/images/a1259208_142208287596986.jpeg}"><h4>三蔬小炒肉丁</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">
-                            <img th:src="@{/js/recipe_list/images/a13116233_154466782315810.jpeg}"><h4>家常小炒鸡</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">
-                            <img th:src="@{/js/recipe_list/images/a13384097_154450995081685.jpeg}"><h4>电饭煲鸡腿</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">
-                            <img th:src="@{/js/recipe_list/images/a13261690_154485792632806.jpeg}"><h4>蒜香烤茄子</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=10762190">
-                            <img th:src="@{/js/recipe_list/images/a4420184_146415633887387.jpeg}"><h4>蚝油香菇油菜</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=14256927">我的文章</a></h3>
-                    <span class="cpcount"><em>11</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2017-04-04 16:23</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=9778775"><img
-                                th:src="@{/js/recipe_list/images/tx2_4.png}"><strong>草木枝</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=14256927">
-                            <img th:src="@{/js/recipe_list/images/97b2d9fbea8e99df87ed6cac41b7cff1_150x150.jpeg}"><h4>蒸出来的更健康，12种快手下饭菜</h4>
-                        </a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">我的菜单</a></h3>
-                    <span class="cpcount"><em>10</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2018-05-03 05:31</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=12770212"><img
-                                th:src="@{/js/recipe_list/images/tx2_4.png}"><strong>胡尚伟梦空间心理咨询室</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">
-                            <img th:src="@{/js/recipe_list/images/a8488470_149804336799597.jpeg}"><h4>暴腌脆黄瓜</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">
-                            <img th:src="@{/js/recipe_list/images/3c096d658c1f9c3da573326f771e4fdc_150x150.jpeg}"><h4>鸡腿炖土豆</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">
-                            <img th:src="@{/js/recipe_list/images/a10429822_155895881538753.jpeg}"><h4>东北茄子炖土豆</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">
-                            <img th:src="@{/js/recipe_list/images/a10399764_151896821185437.jpeg}"><h4>东北土豆炖茄子</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17062671">
-                            <img th:src="@{/js/recipe_list/images/a3586137_145665005918649.jpeg}"><h4>烤箱烤红薯</h4></a></li>
-                    </ul>
-                </div>
-                <div class="cdlist_item_style1 clearfix">
-                    <h3><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">我的菜单</a></h3>
-                    <span class="cpcount"><em>10</em>篇菜谱</span>
-                    <div class="info">
-                        <dl>
-                            <dd><strong class="tag">2017-02-14 17:44</strong></dd>
-                        </dl>
-                        <a class="author" href="https://i.meishi.cc/cook.php?id=9545003"><img
-                                th:src="@{/js/recipe_list/images/q9545003_148706549876128.jpeg}"><strong>传扬(来自微信.)</strong></a>
-                    </div>
-                    <ul class="cplist">
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">
-                            <img th:src="@{/js/recipe_list/images/a6801209_156620460892900.jpeg}"><h4>番茄菌菇汤</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">
-                            <img th:src="@{/js/recipe_list/images/a13190532_157533843867144.jpeg}"><h4>酸辣汤</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">
-                            <img th:src="@{/js/recipe_list/images/a13190532_154484252103458.jpeg}"><h4>酸汤肥牛</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">
-                            <img th:src="@{/js/recipe_list/images/a1259208_10320.jpeg}"><h4>三蔬小炒蛋</h4></a></li>
-                        <li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=13683425">
-                            <img th:src="@{/js/recipe_list/images/a13119183_154440446946130.jpeg}"><h4>过桥豆腐</h4></a></li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
         <div class="listtyle1_page">
-            <div class="listtyle1_page_w"><a href="https://i.meishi.cc/recipe_list/?st=new&page=1#bbtitles"
-                                             class="current">1</a><a
-                    href="https://i.meishi.cc/recipe_list/?st=new&page=2#bbtitles" class>2</a><a
-                    href="https://i.meishi.cc/recipe_list/?st=new&page=3#bbtitles" class>3</a><a
-                    href="https://i.meishi.cc/recipe_list/?st=new&page=4#bbtitles" class>4</a><a
-                    href="https://i.meishi.cc/recipe_list/?st=new&page=5#bbtitles" class>5</a><span>...</span><a
-                    href="https://i.meishi.cc/recipe_list/?st=new&page=2#bbtitles" class="next">下一页</a><span
-                    class="gopage"><form action="https://i.meishi.cc/recipe_list/">共244695页，到第 <input type="text"
-                                                                                                      class="text"
-                                                                                                      value="2"
-                                                                                                      name="page"> 页 <input
-                    type="submit" class="submit" value="确定"></form></span></div>
+            <!--分页插件-->
+            <div class="listtyle1_page_w" id="page_list"></div>
         </div>
-    </div>
-</div>
-<div style="margin:0 auto;padding-top:20px;width:990px;">
-    <div style="display:inline-block;vertical-align:top;">
-        <script type="text/javascript" th:src="@{/js/recipe_list/js/fasjbsigw.js}"></script>
-    </div>
-    <div style="display:inline-block;vertical-align:top;">
-        <script type="text/javascript" th:src="@{/js/recipe_list/js/idvmevlje.js}"></script>
     </div>
 </div>
 <div class="main_footer pngFix">
     <div class="footer_con1 clearfix">
-        <!--<p class="text pngFix"><a href="https://www.meishij.net/" class="footer_homelink"></a></p>-->
         <div class="logobottom"
              style="height:196px;width:600px;background: url(/js/recipe_list/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
             <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>

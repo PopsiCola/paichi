@@ -6,6 +6,7 @@ import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.mapper.RecipeMapper;
 import com.paichi.modules.recipe.service.IRecipeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.paichi.modules.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -114,5 +115,30 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
     @Override
     public Integer queryRecipeOfSearchCount(Term term) {
         return recipeMapper.queryRecipeOfSearchCount(term);
+    }
+
+    /**
+     * 美食菜单
+     * @param newOrHot    查询菜单，1：最新，根据发布时间倒叙查询。2：最热，根据人气正叙查询
+     * @param page          分页
+     * @return
+     */
+    @Override
+    public List<User> queryRecipeOrders(int newOrHot, Page page) {
+        // TODO:此处使用了一对多分组查询，没有想出如何在sql中分页，想到后修改
+        List<User> orders = recipeMapper.queryRecipeOrders(newOrHot, fastDFSPath);
+        // 模拟分页
+        orders = orders.subList((page.getCurrent() - 1) * page.getLimit() < orders.size() ? (page.getCurrent() - 1) * page.getLimit() : orders.size() -1,
+                page.getCurrent() * page.getLimit() < orders.size() ? page.getCurrent() * page.getLimit() : orders.size());
+        return orders;
+    }
+
+    /**
+     * 美食菜单总数
+     * @return
+     */
+    @Override
+    public Integer recipeOrdersCount() {
+        return recipeMapper.recipeOrdersCount().size();
     }
 }

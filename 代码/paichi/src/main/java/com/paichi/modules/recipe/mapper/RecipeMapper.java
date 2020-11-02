@@ -4,6 +4,7 @@ import com.paichi.common.web.Page;
 import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.paichi.modules.user.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -82,4 +83,23 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
      */
     Integer recipeCount();
 
+    /**
+     * 美食菜单列表
+     * @param newOrHot
+     * @return
+     */
+    List<User> queryRecipeOrders(@Param("newOrHot") int newOrHot, @Param("fastDFSPath") String fastDFSPath);
+
+    /**
+     * 美食菜单总数
+     * @return
+     */
+    List<User> recipeOrdersCount();
+
+    /**
+     *
+     * @param url
+     * @return
+     */
+    Integer deleteTempFileByUrl(String url);
 }

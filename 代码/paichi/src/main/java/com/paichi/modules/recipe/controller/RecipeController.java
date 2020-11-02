@@ -5,6 +5,7 @@ import com.paichi.common.web.Page;
 import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.service.IRecipeService;
+import com.paichi.modules.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -125,6 +126,29 @@ public class RecipeController {
 
         dataMap.put("recipeList", recipes);
         dataMap.put("recipeCount", recipeCount);
+
+        message.setCode(1);
+        message.setData(dataMap);
+        message.setMsg("查询成功");
+
+        return message;
+    }
+
+    /**
+     * 美食菜单
+     * @return
+     */
+    @PostMapping("recipe_orders")
+    @ResponseBody
+    public Message recipeOrders(@RequestParam(name = "recipeType", defaultValue = "1") int recipeType,
+                                Page page) {
+        Message message = new Message();
+        Map<String, Object> dataMap = new HashMap<>();
+
+        List<User> recipeOrders = recipeService.queryRecipeOrders(recipeType, page);
+
+        dataMap.put("recipeOrders", recipeOrders);
+        dataMap.put("ordersCount", recipeService.recipeOrdersCount());
 
         message.setCode(1);
         message.setData(dataMap);

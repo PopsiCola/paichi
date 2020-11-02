@@ -4,6 +4,7 @@ import com.paichi.common.web.Page;
 import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.paichi.modules.user.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -35,4 +36,8 @@ public interface IRecipeService extends IService<Recipe> {
     List<Map> queryRecipeOfSearch(int recipeType, Page page, Term term);
 
     Integer queryRecipeOfSearchCount(Term term);
+
+    List<User> queryRecipeOrders(int newOrHot, Page page);
+
+    Integer recipeOrdersCount();
 }

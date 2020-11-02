@@ -6,7 +6,9 @@ import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import com.paichi.modules.recipe.entity.Recipe;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -81,5 +83,13 @@ public class User implements Serializable {
     @TableField("CREATE_TIME")
     private Date createTime;
 
+    /**
+     * 与Recipe表一对多关联关系
+     */
+    private List<Recipe> recipes;
 
+    /**
+     * 用户发布菜谱的数量
+     */
+    private Integer ordersCount;
 }

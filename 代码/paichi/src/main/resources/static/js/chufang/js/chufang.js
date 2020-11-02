@@ -256,7 +256,6 @@ function recipeList() {
             layer.msg(result.data.msg,{
                 time: 1000
             });
-            console.log(result);
         }
     });
 }
