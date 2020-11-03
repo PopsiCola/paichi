@@ -96,10 +96,4 @@ public interface RecipeMapper extends BaseMapper<Recipe> {
      */
     List<User> recipeOrdersCount();
 
-    /**
-     *
-     * @param url
-     * @return
-     */
-    Integer deleteTempFileByUrl(String url);
 }

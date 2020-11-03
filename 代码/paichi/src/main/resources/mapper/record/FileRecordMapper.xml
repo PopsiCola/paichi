@@ -31,4 +31,18 @@
                 #{delFlag}
         </trim>
     </insert>
+
+    <!--查询临时文件-->
+    <select id="queryTempFile" resultType="FileRecord">
+        select PICTURE_URL, UPLOAD_TIME, PICTURE_TYPE, UPLOAD_USER_ID, DEL_FLAG
+        from FILE_RECORD
+        where PICTURE_TYPE = 2
+    </select>
+
+    <!--删除临时文件（将删除标志变为2）-->
+    <update id="deleteTempFileByUrl" parameterType="String">
+        update FILE_RECORD
+        set DEL_FLAG = 2
+        where PICTURE_URL = #{url}
+    </update>
 </mapper>
