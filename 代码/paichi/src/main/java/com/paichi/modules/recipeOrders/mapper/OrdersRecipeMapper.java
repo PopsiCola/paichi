@@ -2,6 +2,7 @@ package com.paichi.modules.recipeOrders.mapper;
 
 import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface OrdersRecipeMapper extends BaseMapper<OrdersRecipe> {
 
+    /**
+     * 添加收藏
+     */
+    Integer addRecipeToOrder(OrdersRecipe ordersRecipe);
 }

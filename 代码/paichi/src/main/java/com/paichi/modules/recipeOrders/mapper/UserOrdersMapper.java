@@ -13,4 +13,16 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UserOrdersMapper extends BaseMapper<UserOrders> {
 
+    /**
+     * 查询用户菜单
+     * @param userId 用户主键
+     * @return
+     */
+    UserOrders getUserOrder(String userId);
+
+    /**
+     * 创建用户订单
+     * @param userOrders
+     */
+    void insertUserOrder(UserOrders userOrders);
 }

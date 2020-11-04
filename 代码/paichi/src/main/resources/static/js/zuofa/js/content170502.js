@@ -13,8 +13,10 @@ $(function(){
 	if(title_length >16){
 		$(".cp_main_info_w .info1 .title").css({"line-height":"22px"});
 	}
+
+	// 收藏弹窗
 	$("#addToFav_con").click(function(){
-		Alert("", "iframe:https://i.meishi.cc/ajax/add_caidan_new.php?id=" + news_id + "&title=" + ntitle + "", "600", "415", "false", "", "true", "img");
+		// Alert("", "iframe:https://i.meishi.cc/ajax/add_caidan_new.php?id=" + news_id + "&title=" + ntitle + "", "600", "415", "false", "", "true", "img");
 	});
 	$(".similar_cp img,#listtyle1_w img,.userupload_box img").lazyload({
 		placeholder :"https://css.meishij.net/n/images/grey.gif",
@@ -157,8 +159,40 @@ function get_more_pl(id,page){
 		}
 	})
 }
-function add_fav(id) {
-	$.getScript('https://i.meishi.cc/ajax/add_nfav.php?in=1&obj_id=' + id + '&_' +(new Date()).getTime(),function() {})
+
+// 添加到收藏菜单
+function add_fav(id, userId) {
+
+	// 判断用户是否登录，未登录跳转登录页面
+	if (!userId) {
+		window.location.href= "/toLogin";
+	} else {
+		let data = {"recipeId": id, "userId": userId};
+
+		// 添加到我的菜单中
+		$.ajax({
+			type: 'POST',
+			url: ctx + "recipeOrders/addCollection",
+			dataType: "JSON",
+			data: data,
+			success: function (result) {
+				console.log(result);
+				if (result.code != 0) {
+					window.location.href= "/toLogin";
+				} else {
+					// 添加到收藏菜单
+					layer.msg('收藏成功', {
+						time: 1000
+					});
+				}
+			},
+			error: function (result) {
+
+			}
+		});
+	}
+
+	// $.getScript('https://i.meishi.cc/ajax/add_nfav.php?in=1&obj_id=' + id + '&_' +(new Date()).getTime(),function() {})
 }
 function get_onclick(id, classid, from_search) {
 	var js = document.createElement("script");

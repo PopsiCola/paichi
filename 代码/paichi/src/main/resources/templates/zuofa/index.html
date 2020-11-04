@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/content.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/tipswindown.css}">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/swiper.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/login/css/login.css}">
+    <script th:src="@{/layui/layui.all.js}"></script>
     <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
     <script type="text/javascript" th:src="@{/js/zuofa/js/main.js}"></script>
     <script type="text/javascript" th:src="@{/js/zuofa/js/list.js}"></script>
@@ -35,6 +37,9 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();</script>
+    <script th:inline="javascript">
+        var ctx = [[@{/}]]
+    </script>
 </head>
 <body style>
 <div class="adinheader">
@@ -457,7 +462,7 @@
                         <img th:src="@{/js/zuofa/images/qrcode_wap.png}" class="ewmimg">
                     </div>
                     <span class="favbtns">
-                        <a href="javascript:add_fav(1969698)" th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
+                        <a th:href="|javascript:add_fav('${recipe.recipeId}',  '${session.user != null ? session.user.userId : null}')|" th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
                             <span id="f_num">
                             </span>
                         </a>

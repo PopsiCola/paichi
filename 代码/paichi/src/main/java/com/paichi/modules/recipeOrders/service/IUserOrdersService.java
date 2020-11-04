@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserOrdersService extends IService<UserOrders> {
 
+    void addCollection(String userId, String recipeId);
 }
