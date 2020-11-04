@@ -125,6 +125,13 @@
       <version>10.2.0.4.0</version>
     </dependency>
 
+    <!--minio文件存储系统-->
+    <dependency>
+      <groupId>io.minio</groupId>
+      <artifactId>minio</artifactId>
+      <version>7.1.0</version>
+    </dependency>
+
     <!-- FastDFs文件转储，需要使用maven打包到本地仓库再使用 -->
     <dependency>
       <groupId>org.csource</groupId>
