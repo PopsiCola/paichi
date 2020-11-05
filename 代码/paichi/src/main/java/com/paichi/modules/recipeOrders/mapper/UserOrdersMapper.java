@@ -1,7 +1,9 @@
 package com.paichi.modules.recipeOrders.mapper;
 
+import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -25,4 +27,19 @@ public interface UserOrdersMapper extends BaseMapper<UserOrders> {
      * @param userOrders
      */
     void insertUserOrder(UserOrders userOrders);
+
+    /**
+     * 查看用户是否已经收藏过该食谱
+     * @param userId   用户id
+     * @param recipeId 食谱id
+     * @return
+     */
+    OrdersRecipe getUserCollectionByRecipeId(@Param("userId") String userId,
+                                             @Param("recipeId") String recipeId);
+
+    /**
+     * 移除收藏（取消收藏）
+     * @param ordersRecipeId 菜单食谱中间表id
+     */
+    void removeRecipeFromCollections(Integer ordersRecipeId);
 }

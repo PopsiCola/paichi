@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -43,6 +44,7 @@ public class UserOrdersServiceImpl extends ServiceImpl<UserOrdersMapper, UserOrd
     @Override
     @Transactional(rollbackFor=Exception.class) //指定回滚,遇到异常Exception时回滚
     public void addCollection(String userId, String recipeId) {
+
         OrdersRecipe ordersRecipe = new OrdersRecipe();
         // 首先判断是否存在该用户的菜单
         UserOrders userOrder = userOrdersMapper.getUserOrder(userId);
@@ -75,5 +77,35 @@ public class UserOrdersServiceImpl extends ServiceImpl<UserOrdersMapper, UserOrd
                 log.error("添加收藏失败，数据回滚: {}", e);
             }
         }
+    }
+
+    /**
+     * 查看用户是否已经收藏过该食谱
+     * @param userId
+     * @param recipeId
+     * @return
+     */
+    @Override
+    public OrdersRecipe getUserCollectionByRecipeId(String userId, String recipeId) {
+        return userOrdersMapper.getUserCollectionByRecipeId(userId, recipeId);
+    }
+
+    /**
+     * 移除收藏菜单（取消收藏）
+     * @param ordersRecipeId 菜单食谱中间表id
+     */
+    @Override
+    public void removeRecipeFromColletion(Integer ordersRecipeId) {
+        userOrdersMapper.removeRecipeFromCollections(ordersRecipeId);
+    }
+
+    /**
+     * 批量移除收藏菜单（批量取消收藏）
+     * @param ordersRecipes 菜单食谱表集合
+     */
+    public void removeBatchRecipesFromCollection(List<OrdersRecipe> ordersRecipes) {
+        ordersRecipes.forEach(ordersRecipe -> {
+            this.removeRecipeFromColletion(ordersRecipe.getOrdersRecipeId());
+        });
     }
 }

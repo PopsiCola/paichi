@@ -1,5 +1,8 @@
 document.domain = "localhost";
 $(function(){
+
+	console.log("加载页面");
+
 	var news_id = $("#news_id").val();
 	var ntitle = $("#news_title").val();
 	var from_search = $("#from_search").val();
@@ -180,8 +183,8 @@ function add_fav(id, userId) {
 				if (result.code != 0) {
 					window.location.href= "/toLogin";
 				} else {
-					// 添加到收藏菜单
-					layer.msg('收藏成功', {
+					// 添加/取消收藏菜单
+					layer.msg(result.msg, {
 						time: 1000
 					});
 				}

@@ -1,7 +1,10 @@
 package com.paichi.modules.recipeOrders.service;
 
+import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +17,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserOrdersService extends IService<UserOrders> {
 
     void addCollection(String userId, String recipeId);
+
+    OrdersRecipe getUserCollectionByRecipeId(String userId, String recipeId);
+
+    void removeRecipeFromColletion(Integer ordersRecipeId);
+
+    void removeBatchRecipesFromCollection(List<OrdersRecipe> ordersRecipes);
 }

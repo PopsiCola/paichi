@@ -3,6 +3,7 @@ package com.paichi.modules.recipeOrders.controller;
 
 import com.paichi.common.util.RedisUtils;
 import com.paichi.common.web.Message;
+import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.paichi.modules.recipeOrders.service.IOrdersRecipeService;
 import com.paichi.modules.recipeOrders.service.IUserOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +49,26 @@ public class OrdersRecipeController {
         if (exists) {
 
             try {
+
+                // 添加收藏前需要查询该用户是否已经收藏过该食谱，如果已收藏，则移出收藏菜单
+                OrdersRecipe collection = userOrdersService.getUserCollectionByRecipeId(userId, recipeId);
+                if (collection != null) {
+                    // 取消收藏
+                    userOrdersService.removeRecipeFromColletion(collection.getOrdersRecipeId());
+                    message.setCode(0);
+                    message.setMsg("取消收藏成功");
+                    return message;
+                }
+
                 userOrdersService.addCollection(userId, recipeId);
                 message.setCode(0);
                 message.setMsg("收藏成功");
+
             } catch (Exception e) {
                 message.setCode(1);
-                message.setMsg("收藏失败：" + e);
+                message.setMsg("操作失败：" + e);
+            } finally {
+                return message;
             }
         } else {
             // 没有登录在线
@@ -62,7 +77,6 @@ public class OrdersRecipeController {
             return message;
         }
 
-        return message;
     }
 }
 
