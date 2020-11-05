@@ -75,9 +75,9 @@
         </div>
 
         <!--登录显示用户信息，未登录显示登录方式-->
-
+        <input id="recipeId" th:value="${recipe.recipeId}" hidden>
         <div class="loginitem_h" id="loginitem_h">
-            <input id="id" th:value="${session.user == null}" hidden>
+            <input id="id" th:value="${session.user != null ? session.user.userId : null}" hidden>
             <script th:src="${session.user == null} ? @{/js/loginheader_n2.js} : ''"></script>
 
             <div class="userinfo">
@@ -462,7 +462,8 @@
                         <img th:src="@{/js/zuofa/images/qrcode_wap.png}" class="ewmimg">
                     </div>
                     <span class="favbtns">
-                        <a th:href="|javascript:add_fav('${recipe.recipeId}',  '${session.user != null ? session.user.userId : null}')|" th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
+                        <a th:href="|javascript:add_fav('${recipe.recipeId}',  '${session.user != null ? session.user.userId : null}')|"
+                           th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
                             <span id="f_num">
                             </span>
                         </a>

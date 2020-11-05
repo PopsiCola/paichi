@@ -1,7 +1,32 @@
 document.domain = "localhost";
 $(function(){
 
-	console.log("加载页面");
+	// 页面加载时需要判断用户是否收藏过这个食谱
+	let userId = $("#id").val();
+	let recipeId = $("#recipeId").val();
+	if (userId != null && recipeId != null) {
+		let data = {userId : userId, recipeId : recipeId};
+		// 查询该用户是否收藏过该食谱
+		$.ajax({
+			type: 'POST',
+			url: ctx + "recipeOrders/isFavorite",
+			dataType: "JSON",
+			data: data,
+			success: function (result) {
+				if (result.data) {
+					$("#addToFav_con").text("取消收藏");
+				} else {
+					$("#addToFav_con").text("收藏");
+				}
+
+			},
+			error: function (result) {
+				layer.msg(result.msg, {
+					time: 1000
+				});
+			}
+		});
+	};
 
 	var news_id = $("#news_id").val();
 	var ntitle = $("#news_title").val();
@@ -183,6 +208,11 @@ function add_fav(id, userId) {
 				if (result.code != 0) {
 					window.location.href= "/toLogin";
 				} else {
+					if (result.data) {
+						$("#addToFav_con").text("取消收藏");
+					} else {
+						$("#addToFav_con").text("收藏");
+					}
 					// 添加/取消收藏菜单
 					layer.msg(result.msg, {
 						time: 1000
@@ -190,7 +220,9 @@ function add_fav(id, userId) {
 				}
 			},
 			error: function (result) {
-
+				layer.msg(result.msg, {
+					time: 1000
+				});
 			}
 		});
 	}

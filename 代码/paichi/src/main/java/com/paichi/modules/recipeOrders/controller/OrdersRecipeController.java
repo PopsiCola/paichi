@@ -6,6 +6,7 @@ import com.paichi.common.web.Message;
 import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.paichi.modules.recipeOrders.service.IOrdersRecipeService;
 import com.paichi.modules.recipeOrders.service.IUserOrdersService;
+import com.sun.org.apache.bcel.internal.generic.RET;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,18 +57,18 @@ public class OrdersRecipeController {
                     // 取消收藏
                     userOrdersService.removeRecipeFromColletion(collection.getOrdersRecipeId());
                     message.setCode(0);
+                    message.setData(false);
                     message.setMsg("取消收藏成功");
-                    return message;
+                } else {
+                    userOrdersService.addCollection(userId, recipeId);
+                    message.setCode(0);
+                    message.setData(true);
+                    message.setMsg("收藏成功");
                 }
-
-                userOrdersService.addCollection(userId, recipeId);
-                message.setCode(0);
-                message.setMsg("收藏成功");
 
             } catch (Exception e) {
                 message.setCode(1);
                 message.setMsg("操作失败：" + e);
-            } finally {
                 return message;
             }
         } else {
@@ -76,7 +77,26 @@ public class OrdersRecipeController {
             message.setMsg("没有登录，请先去登录");
             return message;
         }
+        return message;
+    }
 
+    /**
+     * 查询是否为用户喜欢的食谱
+     * @param userId   用户id
+     * @param recipeId 食谱id
+     * @return
+     */
+    @PostMapping("isFavorite")
+    @ResponseBody
+    public Message isFavorite(String userId, String recipeId) {
+        Message message = new Message();
+
+        OrdersRecipe isFavorite = userOrdersService.getUserCollectionByRecipeId(userId, recipeId);
+
+        message.setCode(0);
+        message.setMsg("查询成功");
+        message.setData(isFavorite == null ? false : true);
+        return message;
     }
 }
 
