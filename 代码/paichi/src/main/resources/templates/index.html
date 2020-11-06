@@ -71,7 +71,7 @@
                         <img th:src="@{/image/icon/user_default_icon.png}">
                     </a>
                     <a href="https://i.meishi.cc/cook.php?id=14791758" class="outer">
-                        [[${session.user == null ? '' : session.user.userName}]]
+                        [[${session.user == null ? '' : #strings.abbreviate(session.user.userName,10)}]]
                     </a>
                     <div class="top_userinfo_more">
                         <div class="u">
@@ -79,7 +79,7 @@
                                 <img th:src="@{/image/icon/user_default_icon.png}">
                             </a>
                             <div class="n">
-                                <a href="https://i.meishi.cc/cook.php?id=14791758">
+                                <a href="https://i.meishi.cc/cook.php?id=14791758" th:title="${session.user == null ? '' : session.user.userName}">
                                     [[${session.user == null ? '' : session.user.userName}]]
                                 </a>
                                 <span class="l">
@@ -394,7 +394,7 @@
                 </div>
             </div>
         </li>
-        <li><a href="/recipe_list/recipe_list.html" class="link pngFix"><strong>美食菜单</strong></a></li>
+        <li><a href="/order_list/order_list.html" class="link pngFix"><strong>美食菜单</strong></a></li>
         <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
