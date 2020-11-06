@@ -412,31 +412,29 @@
 
     <!--美食菜单-->
     <select id="queryRecipeOrders" resultMap="recipeOrders">
-        select r.RECIPE_ID, RECIPE_NAME, #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG,
-               r.USER_ID, timestamp,u.USER_NAME, u.USER_ICON,
-            -- 食谱菜单总数
-            (select count(*) from RECIPE re where re.USER_ID = u.USER_ID) as ordersCount
-        from "USER" u
-        left join (
-        select RECIPE_ID, RECIPE_NAME, USER_ID, RECIPE_IMG,
-        ROW_NUMBER() over (PARTITION BY USER_ID order by TIMESTAMP DESC) as num,
-        TIMESTAMP
-        from RECIPE) r
-        on u.USER_ID = r.USER_ID
+        select *
+        from (select uo.USER_ID, u.USER_NAME, u.USER_ICON, r.RECIPE_ID, r.RECIPE_NAME,
+                #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG, uo.LAST_UPDATE_DATE as TIMESTAMP,
+                ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num,
+                -- 食谱菜单总数
+                (select count(uo.USER_ORDERS_ID) from ORDERS_RECIPE rr where rr.USER_ORDERS_ID = uo.USER_ORDERS_ID) as ordersCount
+            from USER_ORDERS uo
+                left join "USER" u on u.USER_ID = uo.USER_ID
+                left join ORDERS_RECIPE oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
+                left join RECIPE r on oo.RECIPE_ID = r.RECIPE_ID
+                order by uo.LAST_UPDATE_DATE DESC)
         where num &lt;= 5
     </select>
 
     <!--美食菜单总数-->
     <select id="recipeOrdersCount" resultMap="recipeOrders">
-        select r.RECIPE_ID, RECIPE_NAME, r.RECIPE_IMG, r.USER_ID, timestamp,
-                     u.USER_NAME, u.USER_ICON
-            from "USER" u
-            left join (
-                select RECIPE_ID, RECIPE_NAME, USER_ID, RECIPE_IMG,
-                ROW_NUMBER() over (PARTITION BY USER_ID order by TIMESTAMP DESC ) as num,
-                TIMESTAMP
-                from RECIPE) r
-            on u.USER_ID = r.USER_ID
-            where num &lt;= 1
+        select *
+        from (select uo.USER_ID,
+                ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num
+            from USER_ORDERS uo
+                left join "USER" u on u.USER_ID = uo.USER_ID
+                left join ORDERS_RECIPE oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
+                left join RECIPE r on oo.RECIPE_ID = r.RECIPE_ID)
+        where num &lt;= 1
     </select>
 </mapper>

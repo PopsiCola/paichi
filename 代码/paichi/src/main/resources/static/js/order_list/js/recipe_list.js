@@ -57,7 +57,6 @@ function recipe_orders() {
                         } else {
                             // 只有初始化执行
                             let ordersHtml = recipeOrdersHtml(result.data);
-                            console.log(ordersHtml);
                             $(".cdlist_main").html(ordersHtml);
                         }
                     }
@@ -77,7 +76,6 @@ function recipe_orders() {
 // 拼接菜单html
 function recipeOrdersHtml(data) {
 
-    console.log(data);
     var ordersHtml = '';
     for (let i = 0; i < data.recipeOrders.length; i++) {
         ordersHtml += '<div class="cdlist_item_style1 clearfix">\n' +
@@ -95,7 +93,7 @@ function recipeOrdersHtml(data) {
             '        <ul class="cplist">\n';
 
             for (let j=0; j<data.recipeOrders[i].recipes.length; j++) {
-                ordersHtml += '<li><a href="https://i.meishi.cc/recipe_list/detail.php?cid=17330825">\n' +
+                ordersHtml += '<li><a href="/recipeOrders/recipeOrderDetail?uid='+ data.recipeOrders[i].userId +'">\n' +
                     '        <img src="'+ data.recipeOrders[i].recipes[j].recipeImg +'"><h4>'+ data.recipeOrders[i].recipes[j].recipeName +'</h4></a></li>\n';
             }
         ordersHtml += '    </ul>\n' +
