@@ -23,4 +23,6 @@ public interface IUserOrdersService extends IService<UserOrders> {
     void removeRecipeFromColletion(Integer ordersRecipeId);
 
     void removeBatchRecipesFromCollection(List<OrdersRecipe> ordersRecipes);
+
+    UserOrders getOrderDetailByUserId(String userId);
 }

@@ -108,4 +108,14 @@ public class UserOrdersServiceImpl extends ServiceImpl<UserOrdersMapper, UserOrd
             this.removeRecipeFromColletion(ordersRecipe.getOrdersRecipeId());
         });
     }
+
+    /**
+     * 查询用户菜单详细信息，包含每道菜的工艺、做法、难度等详细信息
+     * @param userId
+     * @return
+     */
+    @Override
+    public UserOrders getOrderDetailByUserId(String userId) {
+        return userOrdersMapper.getOrderDetailByUserId(userId);
+    }
 }

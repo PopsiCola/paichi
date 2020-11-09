@@ -42,4 +42,11 @@ public interface UserOrdersMapper extends BaseMapper<UserOrders> {
      * @param ordersRecipeId 菜单食谱中间表id
      */
     void removeRecipeFromCollections(Integer ordersRecipeId);
+
+    /**
+     * 查看用户菜单详情信息（包含做法、工艺、上传用户等详细信息）
+     * @param userId
+     * @return
+     */
+    UserOrders getOrderDetailByUserId(String userId);
 }

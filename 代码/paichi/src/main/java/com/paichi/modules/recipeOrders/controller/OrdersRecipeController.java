@@ -1,19 +1,14 @@
 package com.paichi.modules.recipeOrders.controller;
 
-
 import com.paichi.common.util.RedisUtils;
 import com.paichi.common.web.Message;
 import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
-import com.paichi.modules.recipeOrders.service.IOrdersRecipeService;
+import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.paichi.modules.recipeOrders.service.IUserOrdersService;
-import com.sun.org.apache.bcel.internal.generic.RET;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * <p>
@@ -22,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author liulebin
  * @since 2020-11-04
  */
-@RestController
-@RequestMapping("/recipeOrders")
+@Controller
+@RequestMapping("recipeOrders")
 public class OrdersRecipeController {
 
     @Autowired
@@ -96,6 +91,38 @@ public class OrdersRecipeController {
         message.setCode(0);
         message.setMsg("查询成功");
         message.setData(isFavorite == null ? false : true);
+        return message;
+    }
+
+    /**
+     * 菜单详情页面
+     * @param uid     用户id
+     * @return
+     */
+    @GetMapping("recipeOrderDetail")
+    public ModelAndView recipeOrderDetail(String uid) {
+        ModelAndView modelAndView = new ModelAndView();
+        UserOrders userOrder = userOrdersService.getOrderDetailByUserId(uid);
+        // modelAndView.addObject("uid", uid);
+        modelAndView.addObject("userOrder", userOrder);
+        modelAndView.setViewName("/order_list/detail/orders_detail");
+        return modelAndView;
+    }
+
+    /**
+     * 用户菜单详细信息
+     * @param userId 用户id
+     * @return
+     */
+    @PostMapping("userOrderDetail")
+    @ResponseBody
+    public Message userOrderDetail(String userId) {
+        Message message = new Message();
+
+        UserOrders userOrder = userOrdersService.getOrderDetailByUserId(userId);
+        message.setCode(0);
+        message.setData(userOrder);
+        message.setMsg("查询成功");
         return message;
     }
 }

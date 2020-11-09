@@ -8,7 +8,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.paichi.modules.recipe.entity.Recipe;
+import com.paichi.modules.user.entity.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -69,17 +71,28 @@ public class UserOrders implements Serializable {
      * 最后修改时间
      */
     @TableField("LAST_UPDATE_DATE")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss"
+    )
     private Date lastUpdateDate;
 
     /**
      * 创建时间/时间戳
      */
     @TableField("CREATE_TIME")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss"
+    )
     private Date createTime;
 
     /**
      * 菜单表和食谱表多对多关系
      */
     private List<Recipe> recipes;
+
+    /**
+     * 与用户表一对一关联关系
+     */
+    private User userOrder;
 
 }
