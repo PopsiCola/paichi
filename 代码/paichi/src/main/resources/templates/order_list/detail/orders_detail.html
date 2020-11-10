@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,16 +9,20 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script>var _hmt = _hmt || [];</script>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/js/order_list/css/ss_base.css}">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/js/order_list/css/main.css}">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/js/order_list/css/list.css}">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/js/order_list/css/tipswindown.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/order_list/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/order_list/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/order_list/css/list.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
-    <script type="text/javascript" th:src="@{/static/js/order_list/js/main.js}"></script>
-    <script type="text/javascript" th:src="@{/static/js/order_list/js/list.js}"></script>
-    <script type="text/javascript" th:src="@{/static/js/order_list/js/tipswindown.js}"></script>
-    <script type="text/javascript" th:src="@{/static/js/order_list/js/user.js}"></script>
-    <script th:src="@{/static/js/order_list/js/ds.js}"></script>
+    <script type="text/javascript" th:src="@{/js/order_list/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/order_list/js/list.js}"></script>
+    <script type="text/javascript" th:src="@{/js/order_list/js/user.js}"></script>
+    <script th:src="@{/js/order_list/js/ds.js}"></script>
+    <script th:src="@{/js/order_list/js/order_detail.js}"></script>
+    <script th:inline="javascript">
+        var ctx = [[@{/}]]
+    </script>
     <script>var _czc = _czc || [];
     var _hmt = _hmt || [];
     (function () {
@@ -61,7 +65,7 @@
             </form>
         </div>
         <div class="loginitem_h">
-            <script th:src="@{/static/js/order_list/js/loginheader_n2.js}"></script>
+            <script th:src="@{/js/order_list/js/loginheader_n2.js}"></script>
         </div>
     </div>
 </div>
@@ -259,39 +263,42 @@
 </div>
 <div class="main_w clearfix">
     <div class="main">
+        <!--<input id="uid" th:value="${uid}" hidden>-->
         <div class="cd_showbox clearfix">
             <div class="infobox clearfix">
                 <div class="cdinfo">
                     <h1>我的菜单</h1>
-                    <p>暂无简介</p>
-                    <span>最后修改：2018-12-28 18:02</span>
+                    <p id="order_title">没有简介</p>
+                    <span id="last_update_time">最后修改：</span>
                 </div>
                 <div class="authorinfo">
                     <div class="user">
-                        <a href="https://i.meishi.cc/cook.php?id=13465471" class="img"><img th:src="@{/static/js/order_list/images/tx2_3.png}"><span
-                                class="masker"></span></a>
+                        <a href="https://i.meishi.cc/cook.php?id=13465471" class="img">
+                            <img id="user_icon_order" src="">
+                            <span class="masker"></span>
+                        </a>
                         <div class="info">
-                            <h4><a href="https://i.meishi.cc/cook.php?id=13465471">A佳9490</a>
-								<a class="followTa" uid="13465471"></a>
+                            <h4><a id="user_name_order" href="https://i.meishi.cc/cook.php?id=13465471"></a>
+								<a class="followTa" th:uid="${uid}"></a>
 							</h4>
-                            <span>菜谱：0 / 关注：0 / 粉丝：1</span>
+                            <span id="recipesCount">菜谱：0 / 关注：0 / 粉丝：0</span>
                         </div>
                     </div>
                     <div class="btns"><a href="####" class="addToFav_Cd fl mr10" id="addCdToFavInCon">收藏菜单</a>
                         <div id="bdshare" class="bdshare_b" style="line-height: 12px;"><img
-                                th:src="@{/static/js/order_list/images/sharebtn_style1.gif}"></div>
+                                th:src="@{/js/order_list/images/sharebtn_style1.gif}"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <h3 class="bbtitles">如果你不知道做什么，你就做饭。</h3>
+        <h3 class="bbtitles"></h3>
         <div class="clearfix">
             <div class="listtyle1_w clearfix" id="listtyle1_w">
                 <div class="listtyle1_list clearfix" id="listtyle1_list">
                     <div class="listtyle1 ml0">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/xianglamaoxuewangwucan.html">
-							<img th:src="@{/static/js/order_list/images/a4758097_151330277135739.jpeg}" width="232" height="232"></a><strong
+							<img th:src="@{/js/order_list/images/a4758097_151330277135739.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>消食</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/xianglamaoxuewangwucan.html"
@@ -320,7 +327,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/suoyihuanggua_26.html"><img
-                                th:src="@{/static/js/order_list/images/a3964451_143204803224972.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a3964451_143204803224972.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>防癌</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/suoyihuanggua_26.html"
@@ -349,7 +356,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/yuzhongbutongdefanqiechaodan.html"><img
-                                th:src="@{/static/js/order_list/images/a6681847_151304393264501.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a6681847_151304393264501.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>健脑益智</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/yuzhongbutongdefanqiechaodan.html"
@@ -380,7 +387,7 @@
                     <div class="listtyle1 ml0">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/xihongshichaojidan_182.html"><img
-                                th:src="@{/static/js/order_list/images/a113291_154088896161458.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a113291_154088896161458.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>健脑益智</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/xihongshichaojidan_182.html"
@@ -409,7 +416,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/jianjiaochaojidan_24.html"><img
-                                th:src="@{/static/js/order_list/images/a113291_154511374653735.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a113291_154511374653735.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>健脑益智</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/jianjiaochaojidan_24.html"
@@ -438,7 +445,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/qingjiaoxianggan_2.html"><img
-                                th:src="@{/static/js/order_list/images/a13119183_154417442801242.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a13119183_154417442801242.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>缓解疲劳</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/qingjiaoxianggan_2.html"
@@ -467,7 +474,7 @@
                     <div class="listtyle1 ml0">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/nongjiaxiaochaorou_62.html"><img
-                                th:src="@{/static/js/order_list/images/a13119183_156015949766792.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a13119183_156015949766792.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>缓解疲劳</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/nongjiaxiaochaorou_62.html"
@@ -496,7 +503,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/yuxiangxingbaogu_17.html"><img
-                                th:src="@{/static/js/order_list/images/a5124367_154217640812349.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a5124367_154217640812349.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>高血压</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/yuxiangxingbaogu_17.html"
@@ -524,7 +531,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/jiangxiangyoumaicai_1.html"><img
-                                th:src="@{/static/js/order_list/images/a1025708_153923900902552.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a1025708_153923900902552.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>散瘀止痛</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/jiangxiangyoumaicai_1.html"
@@ -553,7 +560,7 @@
                     <div class="listtyle1 ml0">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/qiezhijinzhengu_14.html"><img
-                                th:src="@{/static/js/order_list/images/a8271085_154509792338317.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a8271085_154509792338317.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>抵抗力</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/qiezhijinzhengu_14.html"
@@ -582,7 +589,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/haoyoushengcai_114.html"><img
-                                th:src="@{/static/js/order_list/images/a13269365_156352014445337.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a13269365_156352014445337.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>减肥</span></strong></div>
                         <div class="info2">
                             <a target="_blank" href="https://www.meishij.net/zuofa/haoyoushengcai_114.html"
@@ -611,7 +618,7 @@
                     <div class="listtyle1">
                         <div class="img"><a target="_blank"
                                             href="https://www.meishij.net/zuofa/jiangxianglaoganmabanhongshaodoufu.html"><img
-                                th:src="@{/static/js/order_list/images/a3050265_144593691088901.jpeg}" width="232" height="232"></a><strong
+                                th:src="@{/js/order_list/images/a3050265_144593691088901.jpeg}" width="232" height="232"></a><strong
                                 class="gx"><span>补钙</span></strong></div>
                         <div class="info2">
                             <a target="_blank"
@@ -787,7 +794,7 @@
     <div class="footer_con1 clearfix">
         <!--<p class="text pngFix"><a href="https://www.meishij.net/" class="footer_homelink"></a></p>-->
         <div class="logobottom"
-             style="height:196px;width:600px;background: url(/static/js/order_list/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+             style="height:196px;width:600px;background: url(/js/order_list/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
             <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
         </div>
         <div class="links">
@@ -820,7 +827,7 @@
         <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备150335号</a>/<a target="_blank"
                                                                                                     href="https://beian.gov.cn/"
                                                                                                     class="gray_a"><img
-                th:src="@{/static/js/order_list/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
+                th:src="@{/js/order_list/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
     </div>
 </div>
 <div style="display:none;">

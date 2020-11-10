@@ -102,9 +102,7 @@ public class OrdersRecipeController {
     @GetMapping("recipeOrderDetail")
     public ModelAndView recipeOrderDetail(String uid) {
         ModelAndView modelAndView = new ModelAndView();
-        UserOrders userOrder = userOrdersService.getOrderDetailByUserId(uid);
-        // modelAndView.addObject("uid", uid);
-        modelAndView.addObject("userOrder", userOrder);
+        modelAndView.addObject("uid", uid);
         modelAndView.setViewName("/order_list/detail/orders_detail");
         return modelAndView;
     }
@@ -118,11 +116,15 @@ public class OrdersRecipeController {
     @ResponseBody
     public Message userOrderDetail(String userId) {
         Message message = new Message();
-
         UserOrders userOrder = userOrdersService.getOrderDetailByUserId(userId);
-        message.setCode(0);
-        message.setData(userOrder);
-        message.setMsg("查询成功");
+        if (userOrder != null) {
+            message.setCode(0);
+            message.setData(userOrder);
+            message.setMsg("查询成功");
+        } else {
+            message.setCode(1);
+            message.setMsg("用户没有菜单");
+        }
         return message;
     }
 }
