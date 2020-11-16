@@ -1,8 +1,0 @@
-com\paichi\CrawData.class
-com\paichi\TestRedis.class
-com\paichi\TestSQL.class
-com\paichi\TestMinio.class
-com\paichi\TestMD5.class
-com\paichi\DeleteFastDFSImg.class
-com\paichi\TestFastDFS.class
-com\paichi\TestService.class
