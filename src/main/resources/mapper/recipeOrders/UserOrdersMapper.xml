@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.recipeOrders.mapper.UserOrdersMapper">
+
+    <resultMap id="userOrders" type="com.paichi.modules.recipeOrders.entity.UserOrders">
+        <id property="userOrdersId" column="USER_ORDERS_ID"></id>
+        <result property="userId" column="USER_ID"></result>
+        <result property="userOrdersTitle" column="USER_ORDERS_TITLE"></result>
+        <result property="userOrdersContent" column="USER_ORDERS_CONTENT"></result>
+        <result property="popularity" column="POPULARITY"></result>
+        <result property="likes" column="LIKES"></result>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE"></result>
+        <result property="createTime" column="CREATE_TIME"></result>
+        <!--多对多关联关系-->
+        <collection property="recipes" ofType="com.paichi.modules.recipe.entity.Recipe">
+            <id property="recipeId" column="RECIPE_ID"></id>
+            <result property="recipeName" column="RECIPE_NAME"></result>
+            <result property="recipeImg" column="RECIPE_IMG"></result>
+            <result property="recipeVideo" column="RECIPE_VIDEO"></result>
+            <result property="craftId" column="CRAFT_ID"></result>
+            <result property="userId" column="USER_ID"></result>
+            <result property="peopleNumber" column="PEOPLE_NUMBER"></result>
+            <result property="cookTime" column="COOK_TIME"></result>
+            <result property="preparationTime" column="PREPARATION_TIME"></result>
+            <result property="popularity" column="POPULARITY"></result>
+            <result property="difficulty" column="DIFFICULTY"></result>
+            <result property="introduction" column="INTRODUCTION"></result>
+            <result property="cookingSkill" column="COOKINGSKILL"></result>
+            <result property="timestamp" column="TIMESTAMP"></result>
+        </collection>
+    </resultMap>
+
+    <!--用户菜单详细信息-->
+    <resultMap id="userOrderDetail" type="com.paichi.modules.recipeOrders.entity.UserOrders">
+        <id property="userOrdersId" column="USER_ORDERS_ID"></id>
+        <result property="userId" column="USER_ID"></result>
+        <result property="userOrdersTitle" column="USER_ORDERS_TITLE"></result>
+        <result property="userOrdersContent" column="USER_ORDERS_CONTENT"></result>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE"></result>
+        <association property="userOrder" javaType="com.paichi.modules.user.entity.User">
+            <id property="userId" column="USER_ID"></id>
+            <result property="userName" column="USER_NAME"></result>
+            <result property="userIcon" column="USER_ICON"></result>
+        </association>
+        <!--多对多关联关系-->
+        <collection property="recipes" ofType="com.paichi.modules.recipe.entity.Recipe">
+            <id property="recipeId" column="RECIPE_ID"></id>
+            <result property="recipeName" column="RECIPE_NAME"></result>
+            <result property="recipeImg" column="RECIPE_IMG"></result>
+            <result property="recipeVideo" column="RECIPE_VIDEO"></result>
+            <result property="craftId" column="CRAFT_ID"></result>
+            <result property="userId" column="USER_ID"></result>
+            <result property="peopleNumber" column="PEOPLE_NUMBER"></result>
+            <result property="cookTime" column="COOK_TIME"></result>
+            <result property="preparationTime" column="PREPARATION_TIME"></result>
+            <result property="popularity" column="POPULARITY"></result>
+            <result property="difficulty" column="DIFFICULTY"></result>
+            <result property="introduction" column="INTRODUCTION"></result>
+            <result property="cookingSkill" column="COOKINGSKILL"></result>
+            <result property="timestamp" column="TIMESTAMP"></result>
+            <!--与用户一对一-->
+            <association property="user" javaType="com.paichi.modules.user.entity.User">
+                <id property="userId" column="USER_ID"></id>
+                <result property="userName" column="USER_NAME"></result>
+                <result property="userIcon" column="USER_ICON"></result>
+            </association>
+            <!--一对一关联关系-->
+            <association property="craft" javaType="com.paichi.modules.craft.entity.Craft">
+                <id property="craftId" column="CRAFT_ID"></id>
+                <result property="craftName" column="CRAFT_NAME"></result>
+            </association>
+            <association property="taste" javaType="com.paichi.modules.recipe.entity.Taste">
+                <id property="tasteId" column="TASTE_ID"></id>
+                <result property="tasteName" column="TASTE_NAME"></result>
+            </association>
+            <!--多对多关联关系-->
+            <collection property="effects" ofType="com.paichi.modules.effect.entity.Effect">
+                <id property="effectId" column="EFFECT_ID"></id>
+                <result property="effectName" column="EFFECT_NAME"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <!--获取用户菜单-->
+    <select id="getUserOrder" parameterType="String" resultType="UserOrders">
+        select USER_ORDERS_ID, USER_ID, USER_ORDERS_TITLE, USER_ORDERS_CONTENT,
+               POPULARITY, LIKES, LAST_UPDATE_DATE, CREATE_TIME
+        from USER_ORDERS
+        where USER_ID = #{userId}
+    </select>
+
+    <!--查看用户是否已经收藏过该食谱-->
+    <select id="getUserCollectionByRecipeId" resultType="OrdersRecipe">
+        select *
+        from ORDERS_RECIPE
+        where USER_ORDERS_ID = (select USER_ORDERS_ID from USER_ORDERS where USER_ID = #{userId})
+          and RECIPE_ID = #{recipeId}
+    </select>
+
+    <!--从食谱菜单中移除食谱(取消收藏)-->
+    <delete id="removeRecipeFromCollections" parameterType="Integer">
+        delete ORDERS_RECIPE
+        where ORDERS_RECIPE_ID = #{ordersRecipeId}
+    </delete>
+
+    <!--创建用户菜单-->
+    <insert id="insertUserOrder" parameterType="UserOrders">
+        insert into
+        USER_ORDERS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            USER_ORDERS_ID,
+            USER_ID,
+            <if test="userOrdersTitle != null and userOrdersTitle != ''">
+                USER_ORDERS_TITLE,
+            </if>
+            <if test="userOrdersContent != null and userOrdersContent != ''">
+                USER_ORDERS_CONTENT,
+            </if>
+            <if test="popularity != null">
+                POPULARITY,
+            </if>
+            <if test="likes != null">
+                LIKES,
+            </if>
+            LAST_UPDATE_DATE,
+            CREATE_TIME
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{userOrdersId},
+            #{userId},
+            <if test="userOrdersTitle != null and userOrdersTitle != ''">
+                #{userOrdersTitle},
+            </if>
+            <if test="userOrdersContent != null and userOrdersContent != ''">
+                #{userOrdersContent},
+            </if>
+            <if test="popularity != null">
+                #{popularity, jdbcType=NUMERIC},
+            </if>
+            <if test="likes != null">
+                #{likes, jdbcType=NUMERIC},
+            </if>
+            #{lastUpdateDate},
+            #{createTime}
+        </trim>
+    </insert>
+
+    <!--查询用户菜单详情信息，包括每个菜谱的口味、工艺、做法以及上传者等信息-->
+    <select id="getOrderDetailByUserId" resultMap="userOrderDetail">
+        select uo.USER_ORDERS_ID, uo.USER_ORDERS_TITLE, uo.USER_ORDERS_CONTENT, uo.LAST_UPDATE_DATE,
+           u.USER_ID, u.USER_ICON, u.USER_NAME,
+           r.RECIPE_ID, r.RECIPE_NAME, r.RECIPE_IMG, r.DIFFICULTY, r.PREPARATION_TIME, r.COOK_TIME,
+           r.POPULARITY,
+           (select us.USER_NAME from "USER" us where us.USER_ID = r.USER_ID) as USER_NAME,
+           (select TASTE_NAME from TASTE t where t.TASTE_ID = r.TASTE_ID) as TASTE_NAME,
+           (select CRAFT_NAME from CRAFT c where c.CRAFT_ID = r.CRAFT_ID) as CRAFT_NAME,
+           (select EFFECT_NAME from EFFECT e
+               left join RECIPE_EFFECT re on re.EFFECT_ID = e.EFFECT_ID
+               where re.RECIPE_ID = r.RECIPE_ID
+                 and ROWNUM = 1) as EFFECT_NAME
+        from USER_ORDERS uo
+            left join "USER" u on u.USER_ID = uo.USER_ID
+            left join ORDERS_RECIPE oe on oe.USER_ORDERS_ID = uo.USER_ORDERS_ID
+            left join RECIPE r on r.RECIPE_ID = oe.RECIPE_ID
+        where uo.USER_ID = #{userId}
+    </select>
+</mapper>

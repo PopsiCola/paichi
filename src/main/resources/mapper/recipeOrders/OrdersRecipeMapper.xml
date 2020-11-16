@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.recipeOrders.mapper.OrdersRecipeMapper">
+
+    <!--添加收藏-->
+    <insert id="addRecipeToOrder" parameterType="OrdersRecipe">
+        <selectKey  keyProperty="ordersRecipeId" resultType="Integer" order="BEFORE">
+            select orders_recipe_id.nextval from dual
+        </selectKey>
+        insert into ORDERS_RECIPE (ORDERS_RECIPE_ID, USER_ORDERS_ID, RECIPE_ID)
+        values (#{ordersRecipeId, jdbcType=NUMERIC}, #{userOrdersId}, #{recipeId})
+    </insert>
+</mapper>
