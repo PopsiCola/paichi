@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.user.mapper.UserMapper">
+
+    <!--保存用户信息-->
+    <insert id="saveUser" parameterType="User">
+        INSERT INTO "USER"
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">
+                USER_ID,
+            </if>
+            <if test="userName != null and userName != ''">
+                USER_NAME,
+            </if>
+            <if test="password != null and password != ''">
+                PASSWORD,
+            </if>
+            <if test="userIcon != null and userIcon != ''">
+                USER_ICON,
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                USER_EMAIL,
+            </if>
+            <if test="userSex != null">
+                USER_SEX,
+            </if>
+            <if test="userIntroduction != null and userIntroduction != ''">
+                USER_INTRODUCTION,
+            </if>
+            <if test="birth != null">
+                BIRTH,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">
+                #{userId},
+            </if>
+            <if test="userName != null and userName != ''">
+                #{userName},
+            </if>
+            <if test="password != null and password != ''">
+                #{password},
+            </if>
+            <if test="userIcon != null and userIcon != ''">
+                #{userIcon, jdbcType=VARCHAR},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                #{userEmail},
+            </if>
+            <if test="userSex != null">
+                #{userSex, jdbcType=NUMERIC},
+            </if>
+            <if test="userIntroduction != null and userIntroduction != ''">
+                #{userIntroduction, jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                #{birth, jdbcType=DATE},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!--根据id查询用户信息-->
+    <select id="getUserByUserId" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <!--根据邮箱查询用户信息-->
+    <select id="getUserByUserEmail" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+
+    <!--根据用户账号查询用户信息-->
+    <select id="getUserByUserName" parameterType="String" resultType="User">
+        SELECT *
+        FROM "USER"
+        WHERE USER_NAME = #{userName}
+    </select>
+
+    <!--根据用户账号、邮箱、id查询用户信息-->
+    <select id="getUserByUserNameOrEmailOrId" parameterType="String" resultType="List">
+        SELECT *
+        FROM "USER"
+        <where>
+            <if test="userId != null and userId != ''">
+                and USER_ID =  #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and USER_NAME = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and USER_EMAIL = #{userEmail}
+            </if>
+        </where>
+    </select>
+
+    <!--修改用户-->
+    <update id="updateUser">
+        update "USER"
+        <set>
+            <if test="userName != null and userName != ''">
+                USER_NAME = #{userName},
+            </if>
+            <if test="password != null and password != ''">
+                PASSWORD = #{password},
+            </if>
+            <if test="userIcon != null and userIcon != ''">
+                USER_ICON = #{userIcon},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                USER_EMAIL = #{userEmail},
+            </if>
+            <if test="userSex != null">
+                USER_SEX = #{userSex},
+            </if>
+            <if test="userIntroduction != null and userIntroduction != ''">
+                USER_INTRODUCTION = #{userIntroduction},
+            </if>
+            <if test="birth != null">
+                BIRTH = #{birth},
+            </if>
+        </set>
+        <where>
+            <if test="userId != null and userId != ''">
+                and USER_ID = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and USER_NAME = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and USER_EMAIL = #{userEmail}
+            </if>
+        </where>
+    </update>
+</mapper>

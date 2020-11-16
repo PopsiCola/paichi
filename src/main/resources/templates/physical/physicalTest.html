@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>体质测试–超准的中医体质测试 | 九种中医体质分类与判定 - 美食杰体质测试网</title>
+    <meta name="keywords"
+          content="体质测试,中医体质测试,超准的中医体质测试,中医体质分类与判定,九种体质测试,体质测试网,中医体质养生,美食杰体质测试网,平和体质测试,气虚体质测试,阳虚体质测试,阴虚体质测试,痰湿体质测试,湿热体质测试,血瘀体质测试,气郁体质测试,特秉体质测试,中医九种体质体质测试">
+    <meta name="description"
+          content="美食杰中医体质测试网为你提供超准的中医体质测试,根据中医体质分类与判定标准中医体质测试结果为九种中医体质：平和质,气虚质,阳虚质,阴虚质,痰湿质,湿热质,血瘀质,气郁质,特秉质的中医体质养生方法,食疗药膳,饮食及生活注意事项。美食杰体质测试网祝你身体永远健康。">
+    <meta content="www.meishij.net" name="author">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script>var _hmt = _hmt || [];</script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/physical/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/physical/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/physical/css/user.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/physical/css/zytz.css}">
+    <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
+    <script type="text/javascript" th:src="@{/js/physical/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/physical/js/user.js}"></script>
+    <script type="text/javascript" th:src="@{/js/physical/js/zytz.js}"></script>
+    <script th:src="@{/js/physical/js/ds.js}"></script>
+    <script>var _czc = _czc || [];
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?01dd6a7c493607e115255b7e72de5f40";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>
+</head>
+<body style>
+<div class="header">
+    <div class="header_c">
+        <a href="/" class="logo pngFix"></a>
+        <div class="main_search_top_w">
+            <div class="suggestionsBox" id="suggestions" style="display:none;">
+                <ul class="suggestionList" id="autoSuggestionsList"></ul>
+            </div>
+            <form class="search" action="https://so.meishi.cc/">
+                <input type="text" class="text" name="q" defaultval="请输入菜谱/食材/菜单/作者" x-webkit-speech
+                       value="请输入菜谱/食材/菜单/作者" autocomplete="off"
+                       onfocus="if(this.value=='请输入菜谱/食材/菜单/作者'){this.value='';}$(this).css('color','#333');"
+                       onblur="if(this.value==''){this.value='请输入菜谱/食材/菜单/作者';$(this).css('color','#999');}"
+                       href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
+            </form>
+        </div>
+        <div class="loginitem_h">
+            <script th:src="@{/js/physical/js/loginheader_n2.js}"></script>
+        </div>
+    </div>
+</div>
+<div class="nav">
+    <ul id="main_nav">
+        <li><a href="/" class="link pngFix"><strong>首页</strong></a></li>
+        <li class="hasmore">
+            <a href="https://www.meishij.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_cpdq">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/chufang/diy/">家常菜谱</a></dt>
+                            <dd><a href="https://www.meishij.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/langcaipu/">凉菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/sushi/">素食</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/wancan/">晚餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/sijiacai/">私家菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/recaipu/">热菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/haixian/">海鲜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/zaocan/">早餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/wucan/">午餐</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/weibolucaipu/">微波炉</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/china-food/caixi/">中华菜系</a></dt>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/chuancai/">川菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/yuecai/">粤菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/dongbeicai/">东北菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/xiangcai/">湘菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/lucai/">鲁菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/zhecai/">浙菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/hubeicai/">湖北菜</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/caixi/qingzhencai/">清真菜</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/china-food/xiaochi/">各地小吃</a></dt>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/sichuan/">四川小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/guangdong/">广东小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/beijing/">北京小吃</a></dd>
+                            <dd><a href="https://www.meishij.net/china-food/xiaochi/shanxii/">陕西小吃</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/">外国菜谱</a></dt>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/japan/">日本料理</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/faguo/">法国菜</a></dd>
+                            <dd><a href="https://www.meishij.net/chufang/diy/guowaicaipu1/yidali/">意大利餐</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/hongpei/">烘焙</a></dt>
+                            <dd><a href="https://www.meishij.net/hongpei/dangaomianbao/">蛋糕面包</a></dd>
+                            <dd><a href="https://www.meishij.net/hongpei/bingganpeifang/">饼干配方</a></dd>
+                            <dd><a href="https://www.meishij.net/hongpei/tianpindianxin/">甜品点心</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/pengren/">厨房百科</a></dt>
+                            <dd><a href="https://www.meishij.net/pengren/baipanzhoubian/">摆盘围边</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/jiqiao/">烹饪技巧</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/chufangmiaozhao/">生活妙招</a></dd>
+                            <dd><a href="https://www.meishij.net/pengren/chufang/">美食专题</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/shicai/">食材百科</a></dt>
+                            <dd><a href="https://www.meishij.net/shicai/shucai_list">蔬菜</a></dd>
+                            <dd><a href="https://www.meishij.net/shicai/shuiguo_list">水果</a></dd>
+                            <dd><a href="https://www.meishij.net/shicai/gulei_list">谷类</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li class="hasmore"><a href="https://www.meishij.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_ysjk">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/jiankang/">饮食健康</a></dt>
+                            <dd><a href="https://www.meishij.net/jiankang/changshi/">饮食小常识</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/meirong/">美容瘦身</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/shipinanquan/">食品安全</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/yangsheng/">养生妙方</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/jinji/">饮食禁忌</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/zhongyi/">中医保健</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/muying/">母婴健康饮食</a></dd>
+                            <dd><a href="https://www.meishij.net/jiankang/yinshixinwen/">饮食新闻</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a>
+                            </dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.meishij.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd>
+                            <dd><a href="https://www.meishij.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li><a href="https://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a></li>
+        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
+                                                      class="link pngFix"><strong>家居馆</strong>
+        </a></li>
+        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+                src="images/20160909164810_443.png"
+                style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
+        <li><a href="https://www.meishij.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
+        <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
+    </ul>
+</div>
+<div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
+    <div class="main_search_w">
+        <div class="searchform_div">
+            <form action="https://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q"
+                                                                        x-webkit-speech autocomplete="off"
+                                                                        id="inputString" placeholder="输入菜谱、食材、作者"><input
+                    type="submit" class="submit" value="搜 索"></form>
+        </div>
+        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
+    </div>
+</div>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#"
+                                                                                         class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+    <div class="main clearfix">
+        <h1 class="bbtitles">体质测试</h1>
+        <div class="tzcs_w">
+            <div class="user_inner_tab">
+                <a href="https://i.meishi.cc/app.php" class="user_backbtn1" title="返回我的测试" alt="返回我的测试"></a>
+                <ul class="user_inner_tab_ul">
+                    <li>体质测试</li>
+                </ul>
+            </div>
+            <div id="zytz_wrapper">
+                <div class="zytz_test_wrapper" style="display: block;width:912px;margin:0px auto;">
+                    <h1>体质测试</h1>
+                    <p class="zytz_tit_tip">
+                        请根据最近三个月你身体的情况和感觉，回答以下问题：
+                        <span>注：本测试不适用于孕妇</span>
+                    </p>
+                    <form id="lifestyle_form" action method="post">
+                        <input type="hidden" value="save" name="action">
+                        <input type="hidden" name="invite_id" value>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td id="gender" class="test_current">
+                                    <p class="test_q">请选择你的性别<span>男性<small></small></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1" class>男性</span>
+                                        <span data-value="2" class>女性</span>
+                                    </div>
+                                    <input type="hidden" value name="user_sex">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>望诊</h2>
+                        <p style="font-size:12px;" class="test_tip">观察病人形体、面色、舌体、舌苔，根据形色变化确定病位、病性，称为望诊。
+                            小提示：可以拿面镜子对着判断会更准确哦。</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p class="test_q">1、您皮肤或口唇干吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_9">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">2、您口唇的颜色比一般人红吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_10">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">3、您面部两颧潮红或偏红吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_12">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">4、您有额部油脂分泌多的现象吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_23">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">5、您上眼睑比别人肿（上眼睑有轻微隆起的现象）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_24">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">6、您平时痰多，特别是咽喉部总感到有痰堵着吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_26">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">7、您舌苔厚腻或有舌苔厚厚的感觉吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_27">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">8、您面部或鼻部有油腻感或者油亮发光吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_28">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">9、您两颧部有细微红丝吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_36">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">10、您面色晦黯或容易出现褐斑吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_38">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">11、您容易有黑眼圈吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_39">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">12、您口唇颜色偏黯吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_40">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>闻诊</h2>
+                        <p style="font-size:12px;" class="test_tip">
+                            运用听觉和嗅觉，通过对病人发出的声音和体内排泄物发出的各种气味的诊察来推断疾病称为闻诊。闻诊同望诊、问诊、切诊相结合，才能全面系统地了解病情。</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p class="test_q">13、您嘴里有黏黏的感觉吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_25">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">14、您感到口苦或嘴里有异味吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">15、您有因季节变化、温度变化或异味等原因而咳喘的现象吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_43">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">16、您容易过敏（对药物、食物、气味、花粉或在季节交替、气候变化时）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_44">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">17、您说话声音低弱无力吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_57">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>问诊</h2>
+                        <p style="font-size:12px;" class="test_tip">问询疾病的发生、发展情况和现在症状、治疗经过等，以诊断疾病的方法称为问诊。</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p class="test_q">18、您手脚发凉吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">19、您胃脘部、背部或腰膝部怕冷吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">20、您感到怕冷、衣服比别人穿得多吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">21、您比别人容易患感冒吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_4">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">22、您吃（喝）凉的东西会感到不舒服或者怕吃（喝）凉东西吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_5">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">23、你受凉或吃（喝）凉的东西后，容易腹泻（拉肚子）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_6">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">24、您容易便秘或大便干燥吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_11">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">25、您感到眼睛干涩吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_13">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">26、您活动量稍大就容易出虚汗吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_14">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">27、您容易气短（呼吸急促，接不上气）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_15">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">28、您容易心慌吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_16">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">29、您容易头晕或站起时眩晕吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_17">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">30、您喜欢安静、懒得说话吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_18">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">31、您感到胸闷或腹部胀满吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_20">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">32、您感到身体沉重不轻松或不爽快吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_21">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">33、您脸上容易生痤疮或皮肤容易生疮疖吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_29">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">34、您大便黏滞不爽、有解不尽的感觉吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_31">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">35、您小便时尿道有发热感、尿色浓（深）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_32">
+                                </td>
+                            </tr>
+                            <tr class="for_girl">
+                                <td>
+                                    <p class="test_q">36、您带下色黄（白带颜色发黄）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_33">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">37、您的皮肤在不知不觉中会出现青紫瘀斑（皮下出血）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_35">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">38、您身体上有哪里疼痛吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_37">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">39、您没有感冒时也会打喷嚏吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_41">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">40、您感到闷闷不乐，情绪低沉吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_48">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">41、您容易精神紧张、焦虑不安吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_49">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">42、您多愁善感、感情脆弱吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_50">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">43、您容易感到害怕或受到惊吓吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_51">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">44、您无缘无故叹气吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_53">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">45、您咽喉部有异物感，且吐之不出、咽之不下吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_54">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">46、您精力充沛吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_55">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">47、您容易疲乏吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_56">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">48、您比一般人耐受不了寒冷（冬天的寒冷，夏天的冷空调、电扇等）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_58">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">49、您能适应外界自然和社会环境的变化吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_59">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">50、您容易失眠吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_60">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">51、您容易忘事（健忘）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_61">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">52、您没有感冒时也会鼻塞、流鼻涕吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_42">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">53、您感到口舌干燥总想喝水吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_19">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2>切诊</h2>
+                        <p style="font-size:12px;" class="test_tip">医者运用手和指端的感觉,对病人体表某些部位进行触摸按压的检查方法称为切诊</p>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p class="test_q">54、您感到手脚心发热吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_7">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">55、您感觉身体、脸上发热吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_8">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">56、您腹部肥满松软吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_22">
+                                </td>
+                            </tr>
+                            <tr class="for_boy">
+                                <td>
+                                    <p class="test_q">57、您的阴囊部位潮湿吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_34">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">58、您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_45">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">59、您的皮肤因过敏出现过紫癜（紫红色瘀点、瘀斑）吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_46">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">60、您的皮肤一抓就红，并出现抓痕吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_47">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="test_q">61、您胁肋部或乳房胀痛吗？<span></span></p>
+                                    <div class="test_a">
+                                        <span data-value="1">没有<small>(根本不)</small></span>
+                                        <span data-value="2">很少<small>(有一点)</small></span>
+                                        <span data-value="3">有时<small>(有些)</small></span>
+                                        <span data-value="4">经常<small>(相当)</small></span>
+                                        <span data-value="5">总是<small>(总是)</small></span>
+                                    </div>
+                                    <input type="hidden" value name="param_52">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a title href="javascript:void(0);" class="zytz_btn" style="display:none;">测完了！查看结果</a>
+                        <p id="question_lost">你未完成测试题目，无法查看测试结果。</p>
+                        <p id="check_error"></p>
+                        <div style="display: none;" id="zytz_loading">
+                            <img alt="载入中..." th:src="@{/js/physical/images/loading_lh.gif}"><br>正在对你的测试结果进行评测，请稍候...
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main_footer pngFix">
+    <div class="footer_con1 clearfix">
+        <!--<p class="text pngFix"><a href="https://www.meishij.net/" class="footer_homelink"></a></p>-->
+        <div class="logobottom"
+             style="height:196px;width:600px;background: url(images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+            <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
+        </div>
+        <div class="links">
+            <ul class="cleearfix">
+                <li class="sina"><a class="img" target="_blank"
+                                    href="https://e.weibo.com/meishij"><span>关注：49万</span></a>
+                    <p><a target="_blank" href="https://e.weibo.com/meishij">点击进入<br>美食杰官方微博</a></p></li>
+                <li class="tengxun"><a class="img" target="_blank" href="https://user.qzone.qq.com/613171717"><span>关注：10.9万</span></a>
+                    <p><a target="_blank" href="https://user.qzone.qq.com/613171717">点击进入<br>美食杰QQ空间</a></p></li>
+                <li class="weixin"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码添加<br>美食杰为微信好友</a></p></li>
+                <li class="download"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码下载<br>美食杰手机客户端</a></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_con3">
+        <ul class="clearfix">
+            <li><a target="_blank" href="https://j.meishi.cc/" title="公司简介">公司简介</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/aboutus.html" title="关于我们">关于我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/download.html" title="产品下载">产品下载</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/joinus.html" title="加入我们">加入我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="联系我们">联系我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="商务合作">商务合作</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/user_agreement.php" title="用户协议">用户协议</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/privacy.php" title="用户协议">隐私政策</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+            <li><a target="_blank" href="https://www.meishij.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+        </ul>
+        <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备150335号</a>/<a target="_blank"
+                                                                                                    href="https://beian.gov.cn/"
+                                                                                                    class="gray_a"><img
+                src="images/20180208111357_93713.png">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
+    </div>
+</div>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

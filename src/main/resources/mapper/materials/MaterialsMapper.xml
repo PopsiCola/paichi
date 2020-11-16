@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.materials.mapper.MaterialsMapper">
+
+    <insert id="saveMaterial" parameterType="Materials">
+        insert into MATERIALS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                MATERIALS_ID,
+                RECIPE_ID,
+            <if test="mainMaterials != null and mainMaterials != ''">
+                MAIN_MATERIALS,
+            </if>
+            <if test="mainNumber != null and mainNumber != ''">
+                MAIN_NUMBER,
+            </if>
+            <if test="materialsFlag != null">
+                MATERIALS_FLAG,
+            </if>
+            <if test="materialsImg != null and materialsImg != ''">
+                MATERIALSIMG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                #{materialsId},
+                #{recipeId},
+            <if test="mainMaterials != null and mainMaterials != ''">
+                #{mainMaterials},
+            </if>
+            <if test="mainNumber != null and mainNumber != ''">
+                #{mainNumber},
+            </if>
+            <if test="materialsFlag != null">
+                #{materialsFlag, jdbcType=NUMERIC},
+            </if>
+            <if test="materialsImg != null and materialsImg != ''">
+                #{materialsImg},
+            </if>
+        </trim>
+    </insert>
+
+    <!--食材筛选 食材列表-->
+    <select id="queryMainMaterial" resultType="map">
+        select *
+        from (select count(MAIN_MATERIALS) as materialsNumber, MAIN_MATERIALS as mainMaterials
+              from MATERIALS
+              where MATERIALS_FLAG = 1
+              group by MAIN_MATERIALS
+              order by count(MAIN_MATERIALS) DESC) m
+        where materialsNumber &gt;= 10  -- 过滤掉出现次数小于10次的
+    </select>
+</mapper>
