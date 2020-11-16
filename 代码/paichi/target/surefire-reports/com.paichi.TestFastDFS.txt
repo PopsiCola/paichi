@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.paichi.TestFastDFS
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 14.794 s <<< FAILURE! - in com.paichi.TestFastDFS
+testUpload  Time elapsed: 2.909 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.paichi.TestFastDFS.testUpload(TestFastDFS.java:57)
+

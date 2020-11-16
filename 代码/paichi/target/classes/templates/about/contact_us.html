@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>联系我们</title>
+    <meta name="keywords" content="PaiChi">
+    <meta name="description" content="PaiChi">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/about/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/about/css/about1.css}">
+    <script type="text/javascript" th:src="@{/js/about/css/about1.css}"></script>
+
+</head>
+<body>
+
+
+<style>
+    /* .c1{width:100%;position:relative;background:url(https://s1.st.meishij.net/p2/20190104/20190104112958_315.jpg) center no-repeat;background-size:100% 100%;overflow:hidden;padding-top:30.234%;}
+    .c2{width:100%;position:relative;background:url(https://s1.st.meishij.net/p2/20190104/20190104112958_188.jpg) center no-repeat;background-size:100% 100%;overflow:hidden;padding-top:60.015625%;}
+    .c3{width:100%;position:relative;background:url(https://s1.st.meishij.net/p2/20190104/20190104105711_122.png) center no-repeat;background-size:100% 100%;overflow:hidden;padding-top:24.6875%;}
+ */
+
+
+</style>
+
+
+<div class="topbar" id="topbar">
+    <div class="topbar_c">
+        <a href="/" class="logo"></a>
+
+        <ul class="nav">
+            <li><a href="/about/index.html"><strong>首页</strong></a></li>
+            <li><a href="/about/about_us.html"><strong>关于我们</strong></a></li>
+            <!--<li><a href="download.html"><strong>产品下载</strong></a></li>-->
+            <li><a href="/about/join_us.html"><strong>加入我们</strong></a></li>
+            <li class="active"><a href="contactus.html"><strong>联系我们</strong></a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="banner1" style="background:url(/js/about/images/20190104155757_792.jpeg) center no-repeat;background-size:cover;">
+    <div class="bigtitle">
+        <strong>让吃饭 更科学 更健康</strong>
+        <div class="line"></div>
+        <em>立志成为最有影响力的美食平台</em>
+    </div>
+</div>
+<div class="content">
+    <div class="title1">
+        <h1>联系我们</h1>
+    </div>
+    <div class="list1">
+
+        <dl class="contactus_dl">
+            <dt class="dt1">合作：</dt>
+            <dd>liulebinn@163.com</dd>
+            <dt class="dt2">投稿：</dt>
+            <dd>liulebinn@163.com</dd>
+            <dt class="dt3">发布原创菜谱：</dt>
+            <dd>liulebinn@163.com</dd>
+            <!--<dt class="dt4">投递简历：</dt>-->
+            <!--<dd>HR@meishi.cc</dd>-->
+            <dt class="dt4">官网：</dt>
+            <dd><a href="/">https://www.paichi.com</a></dd>
+            <dt class="dt5">广告投放：</dt>
+            <dd>liulebinn@163.com</dd>
+            <!--<dt class="dt7">联系电话：</dt>-->
+            <!--<dd>010-86468999</dd>-->
+            <!--<dt class="dt8">公司地址：</dt>-->
+            <!--<dd>北京市海淀区上地金隅嘉华B1010</dd>-->
+            <!--<dt class="dt9">公司名称：</dt>-->
+            <!--<dd>北京美时杰信息技术有限公司</dd>-->
+            <!--<dt class="dt10">统一社会信用代码：</dt>-->
+            <!--<dd>911101080854900522</dd>-->
+        </dl>
+
+    </div>
+
+</div>
+
+<div class="bottom"><p>京ICP备 150335号 / 京公网安备 11010802026928 Copyright © 2003-2018 MEISHIJ CO.,LTD.</p></div>
+<script>
+    $(function () {
+        $(window).scroll(function () {
+            var st = $(window).scrollTop();
+            if (st > 100) {
+                $("#topbar").addClass("show");
+            } else {
+                $("#topbar").removeClass("show");
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
+   
+    

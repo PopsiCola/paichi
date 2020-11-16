@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.recipe.mapper.RecipeStepMapper">
+
+    <!--保存食谱-->
+    <insert id="saveRecipeStep" parameterType="RecipeStep">
+        insert into RECIPE_STEP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            RECIPE_STEP_ID,
+            <if test="recipeId != null and recipeId != ''">
+                RECIPE_ID,
+            </if>
+            <if test="stepContent != null and stepContent != ''">
+                STEP_CONTENT,
+            </if>
+            <if test="stepImg != null and stepImg != ''">
+                STEP_IMG,
+            </if>
+            <if test="stepNumber != null">
+                STEP_NUMBER,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{recipeStepId},
+            <if test="recipeId != null and recipeId != ''">
+                #{recipeId},
+            </if>
+            <if test="stepContent != null and stepContent != ''">
+                #{stepContent},
+            </if>
+            <if test="stepImg != null and stepImg != ''">
+                #{stepImg},
+            </if>
+            <if test="stepNumber != null">
+                #{stepNumber, jdbcType=NUMERIC},
+            </if>
+        </trim>
+    </insert>
+</mapper>

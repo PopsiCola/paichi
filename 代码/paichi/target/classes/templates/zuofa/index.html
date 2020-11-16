@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>[[${recipe.recipeName}]]【步骤图】_菜谱_PaiChi</title>
+    <meta name="keywords"
+          th:content="${recipe.recipeName} + '的做法,' + ${recipe.recipeName} + ',' + ${recipe.recipeName} + '的家常做法,' + ${recipe.recipeName}+ '怎么做,' + ${recipe.recipeName} + '的做法,' + ${recipe.recipeName}+ '怎么做好吃,'+ ${recipe.recipeName} + '的做法大全,如何做' + ${recipe.recipeName} + ','+ ${recipe.recipeName} + '的菜谱,' + ${recipe.recipeName}+ '的制作方法'">
+    <meta name="description"
+          th:content="${recipe.recipeName} + '的做法 - ' + ${recipe.recipeName} + '的做法非常简单易学。如果'+ ${recipe.recipeName} + '怎么做好吃,' +${recipe.recipeName} + '的家常做法如何做一直困扰着你,PaiChi提供的图文' + ${recipe.recipeName} + '的家常做法大全,用最短的时间让你学会' + ${recipe.recipeName} + '的做法'">
+    <meta content="www.meishij.net" name="author">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="mobile-agent" content="format=html5; url=https://www.paichi.net/zuofa/heyejiaohuaji_6.html">
+    <meta name="mobile-agent" content="format=xhtml; url=https://www.paichi.net/zuofa/heyejiaohuaji_6.html">
+    <meta name="mobile-agent" content="format=wml; url=https://www.paichi.net/zuofa/heyejiaohuaji_6.html">
+    <script>var _hmt = _hmt || [];</script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/ss_base.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/main.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/list.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/content.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/tipswindown.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/zuofa/css/swiper.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/js/login/css/login.css}">
+    <script th:src="@{/layui/layui.all.js}"></script>
+    <script type="text/javascript" th:src="@{/js/j.m.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zuofa/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zuofa/js/list.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zuofa/js/lazyload.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zuofa/js/tipswindown.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zuofa/js/swiper.min.js}"></script>
+    <script th:src="@{/js/zuofa/js/ds.js}"></script>
+    <script>var _czc = _czc || [];
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?01dd6a7c493607e115255b7e72de5f40";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>
+    <script th:inline="javascript">
+        var ctx = [[@{/}]]
+    </script>
+</head>
+<body style>
+<div class="adinheader">
+    <div class="adinheader_w">
+        <script>
+            (function () {
+                var s = "_" + Math.random().toString(36).slice(2);
+                document.write('<div id="' + s + '"></div>');
+                (window.slotbydup = window.slotbydup || []).push({
+                    id: '206520',
+                    container: s,
+                    size: '990,40',
+                    display: 'inlay-fix'
+                });
+            })();
+        </script>
+    </div>
+</div>
+<div class="header">
+    <div class="header_c">
+        <a href="" class="logo pngFix"></a>
+        <div class="main_search_top_w">
+            <div class="suggestionsBox" id="suggestions" style="display:none;">
+                <ul class="suggestionList" id="autoSuggestionsList"></ul>
+            </div>
+            <form class="search" action="https://so.meishi.cc/">
+                <input type="text" class="text" name="q" defaultval="请输入菜谱/食材/菜单/作者" x-webkit-speech
+                       value="请输入菜谱/食材/菜单/作者" autocomplete="off"
+                       onfocus="if(this.value=='请输入菜谱/食材/菜单/作者'){this.value='';}$(this).css('color','#333');"
+                       onblur="if(this.value==''){this.value='请输入菜谱/食材/菜单/作者';$(this).css('color','#999');}"
+                       href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
+            </form>
+        </div>
+
+        <!--登录显示用户信息，未登录显示登录方式-->
+        <input id="recipeId" th:value="${recipe.recipeId}" hidden>
+        <div class="loginitem_h" id="loginitem_h">
+            <input id="id" th:value="${session.user != null ? session.user.userId : null}" hidden>
+            <script th:src="${session.user == null} ? @{/js/loginheader_n2.js} : ''"></script>
+
+            <div class="userinfo">
+                <div class="userinfo_w" id="userinfo_w">
+                    <a href="https://i.meishi.cc/cook.php?id=14791758" class="avatar">
+                        <img th:src="@{/image/icon/user_default_icon.png}">
+                    </a>
+                    <a href="https://i.meishi.cc/cook.php?id=14791758" class="outer">
+                        [[${session.user == null ? '' : session.user.userName}]]
+                    </a>
+                    <div class="top_userinfo_more">
+                        <div class="u">
+                            <a href="https://i.meishi.cc/cook.php?id=14791758" class="img">
+                                <img th:src="@{/image/icon/user_default_icon.png}">
+                            </a>
+                            <div class="n">
+                                <a href="https://i.meishi.cc/cook.php?id=14791758">
+                                    [[${session.user == null ? '' : session.user.userName}]]
+                                </a>
+                                <span class="l">
+						新人
+					</span>
+                            </div>
+                        </div>
+                        <ul class="clearfix">
+                            <li>
+                                <a href="https://i.meishi.cc/create.php" class="redbtn">
+                                    发布菜谱
+                                </a>
+                                <a class="greybtn free" onclick="show_info();">
+                                    发布图文（400积分）
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://i.meishi.cc/cook.php?id=14791758" class="linkk">
+                                    我的美食空间
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://i.meishi.cc/jifen/mingxi.php" class="linkk">
+                                    我的积分成长
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/login/loginOut}" class="linkk">
+                                    退出登录
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://i.meishi.cc/collected.php" class="outer">
+                    收藏
+                </a>
+                <div class="mes">
+                    <a href="https://i.meishi.cc/account/notification.php" class="outer">
+                        消息
+                    </a>
+                    <div class="topbar_mesbox" id="topbar_mesbox" style="display:none">
+                    </div>
+                </div>
+                <div class="dr_getmission_box1" id="dr_getmission_box1" style="display: none">
+                    <div class="dr_getmission_box_c1">
+                        <div class="topbar">
+                            发布图文
+                        </div>
+                        <div class="info">
+                            <strong class="t">
+                                任务标题：发布图文
+                            </strong>
+                            <span>
+					领取任务消耗积分：0
+				</span>
+                            <span>
+					您的现有积分：224
+				</span>
+                            <span>
+					完成任务奖励：400积分
+				</span>
+                        </div>
+                        <div class="addrbox">
+				<span class="t">
+					确认联系方式
+				</span>
+                            <div class="addrinputw1">
+					<span>
+						<em>
+							*
+						</em>
+						姓名：
+					</span>
+                                <input type="text" id="addr_info11" name="real_name" value="">
+                            </div>
+                            <div class="addrinputw1">
+					<span>
+						<em>
+							*
+						</em>
+						电话：
+					</span>
+                                <input type="text" id="addr_info22" name="mobile" value="">
+                            </div>
+                            <div class="addrinputw1">
+					<span>
+						<em>
+							*
+						</em>
+						QQ：
+					</span>
+                                <input type="text" id="addr_info33" name="qq" value="">
+                            </div>
+                            <div class="addrinputw1">
+					<span>
+						<em>
+							*
+						</em>
+						微信号：
+					</span>
+                                <input type="text" id="addr_info44" name="weixin" value="">
+                            </div>
+                            <div class="addrinputw1 addrinputw_l">
+					<span>
+						<em>
+							*
+						</em>
+						详细地址：
+					</span>
+                                <input type="text" id="addr_info55" name="address" value="">
+                            </div>
+                            <div class="addrsubmitw">
+                                <a href="javascript:void(0)" id="exitaddrbox1" class="exit">
+                                    取消
+                                </a>
+                                <a href="javascript:void(0)" id="submitaddrbox1" class="submit">
+                                    提交
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="qd qd_hover" id="qd_inindex">
+                    <a href="https://www.meishij.net/ajax/loginheader_n2.php?_=1600960183"
+                       class="outer">
+                        签到
+                    </a>
+                    <div class="qdbox">
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                var id = $("#id").val();
+
+                if(id == 'true') {
+                    // 隐藏用户信息，显示登录方式
+                    $(".userinfo").hide();
+                } else {
+                    $(".userinfo").show();
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+<div class="nav">
+    <ul id="main_nav">
+        <li class="current">
+            <a href="" class="link pngFix"><strong>首页</strong></a>
+        </li>
+        <li class="hasmore">
+            <a href="https://www.paichi.net/chufang/diy/" class="link pngFix"><strong>菜谱大全</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_cpdq">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/chufang/diy/">家常菜谱</a></dt>
+                            <dd><a href="https://www.paichi.net/chufang/diy/jiangchangcaipu/">家常菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/langcaipu/">凉菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/sushi/">素食</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/wancan/">晚餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/sijiacai/">私家菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/recaipu/">热菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/haixian/">海鲜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/zaocan/">早餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/wucan/">午餐</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/tianpindianxin/">甜品点心</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/tangbaocaipu/">汤粥</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/baobaocaipu/">宝宝食谱-婴儿食谱</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/gaodianxiaochi/">糕点主食</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/weibolucaipu/">微波炉</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/china-food/caixi/">中华菜系</a></dt>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/chuancai/">川菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/yuecai/">粤菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/dongbeicai/">东北菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/xiangcai/">湘菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/lucai/">鲁菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/zhecai/">浙菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/hubeicai/">湖北菜</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/caixi/qingzhencai/">清真菜</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/china-food/xiaochi/">各地小吃</a></dt>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/sichuan/">四川小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/guangdong/">广东小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/beijing/">北京小吃</a></dd>
+                            <dd><a href="https://www.paichi.net/china-food/xiaochi/shanxii/">陕西小吃</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/">外国菜谱</a></dt>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/japan/">日本料理</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/faguo/">法国菜</a></dd>
+                            <dd><a href="https://www.paichi.net/chufang/diy/guowaicaipu1/yidali/">意大利餐</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/hongpei/">烘焙</a></dt>
+                            <dd><a href="https://www.paichi.net/hongpei/dangaomianbao/">蛋糕面包</a></dd>
+                            <dd><a href="https://www.paichi.net/hongpei/bingganpeifang/">饼干配方</a></dd>
+                            <dd><a href="https://www.paichi.net/hongpei/tianpindianxin/">甜品点心</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/pengren/">厨房百科</a></dt>
+                            <dd><a href="https://www.paichi.net/pengren/baipanzhoubian/">摆盘围边</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/jiqiao/">烹饪技巧</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/chufangmiaozhao/">生活妙招</a></dd>
+                            <dd><a href="https://www.paichi.net/pengren/chufang/">美食专题</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/shicai/">食材百科</a></dt>
+                            <dd><a href="https://www.paichi.net/shicai/shucai_list">蔬菜</a></dd>
+                            <dd><a href="https://www.paichi.net/shicai/shuiguo_list">水果</a></dd>
+                            <dd><a href="https://www.paichi.net/shicai/gulei_list">谷类</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li class="hasmore"><a href="https://www.paichi.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
+            <div class="dw clearfix">
+                <div class="dww clearfix dww_ysjk">
+                    <div class="dwitem clearfix pngFix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/jiankang/">饮食健康</a></dt>
+                            <dd><a href="https://www.paichi.net/jiankang/changshi/">饮食小常识</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/meirong/">美容瘦身</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/shipinanquan/">食品安全</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/yangsheng/">养生妙方</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/jinji/">饮食禁忌</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/zhongyi/">中医保健</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/muying/">母婴健康饮食</a></dd>
+                            <dd><a href="https://www.paichi.net/jiankang/yinshixinwen/">饮食新闻</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a>
+                            </dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a>
+                            </dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd>
+                        </dl>
+                    </div>
+                    <div class="dwitem dwitem_half clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd>
+                        </dl>
+                    </div>
+                    <br>
+                    <div class="dwitem clearfix">
+                        <dl class="clearfix">
+                            <dt><a href="https://www.paichi.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd>
+                            <dd><a href="https://www.paichi.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd>
+                        </dl>
+                    </div>
+                    <div class="bgitem"></div>
+                </div>
+            </div>
+        </li>
+        <li><a href="https://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a></li>
+        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="https://i.meishi.cc/jiajuguan/"
+                                                      class="link pngFix"><strong>家居馆</strong>
+        </a></li>
+        <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+                th:src="@{/image/vip_hat.png}"
+                style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
+        <li><a href="https://www.paichi.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
+        <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
+    </ul>
+</div>
+<div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
+    <div class="main_search_w">
+        <div class="searchform_div">
+            <form action="https://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q"
+                                                                        x-webkit-speech autocomplete="off"
+                                                                        id="inputString" placeholder="荷叶叫花鸡的做法"><input
+                    type="submit" class="submit" value="搜 索"></form>
+        </div>
+        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
+    </div>
+</div>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+    <a href="#" th:title="'返回' + ${recipe.recipeName} + '的顶部'"
+       class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+    <div class="main clearfix">
+        <ul class="pathstlye1">
+            <li><a id="tongji_shouye" href="/">首页</a></li>
+            <li> ></li>
+            <li><a id="tongji_caipudaquan" href="/chufang/diy/">菜谱大全</a></li>
+            <li> ></li>
+            <li>[[${recipe.recipeName}]]</li>
+        </ul>
+        <div class="cp_header clearfix">
+            <div class="cp_headerimg_w">
+                <img th:alt="${recipe.recipeName}" th:src="${recipe.recipeImg}"></div>
+            <div class="cp_main_info_w">
+                <div class="info1">
+                    <h1 class="title" style="font-size: 18px; line-height: 22px;">
+                        <a id="tongji_title" th:title="${recipe.recipeName} + '的做法'"
+                                         th:href="@{/recipe/zuofa?recipeId=} + ${recipe.recipeId}">[[${recipe.recipeName}]]</a></h1>
+                    <div class="erweima_t" id="erweima_t"></div>
+                    <div class="ewmbox" id="ewmbox">
+                        <div class="c"><strong>用手机查看这篇菜谱</strong>
+                            <p>手机扫描右侧二维码，<br>将这篇菜谱带进厨房，让您边做边看！<br><br>您也可以
+                                <a target="_blank" href="http://sj.meishi.cc/">下载PaiChi手机客户端 ></a>
+                                <br>随时随地看菜谱!
+                            </p>
+                        </div>
+                        <img th:src="@{/js/zuofa/images/qrcode_wap.png}" class="ewmimg">
+                    </div>
+                    <span class="favbtns">
+                        <a th:href="|javascript:add_fav('${recipe.recipeId}',  '${session.user != null ? session.user.userId : null}')|"
+                           th:title="${recipe.recipeName} + '的做法'" class="addToFav_con" id="addToFav_con">收藏
+                            <span id="f_num">
+                            </span>
+                        </a>
+                        <div id="bdshare" class="bdshare_b">
+                            <div class="bdsharebuttonbox" data-tag="share_1" style="height:50px;width:168px;background:#f5f5f5;position:relative;float:left;line-height:50px;">
+                                <a class="bds_more" data-cmd="more" style="display:block;position:absolute;left:0px;top:0px;height:48px;width:167px;text-indent:-9999px;background:none;margin:0px;padding:0px;border:1px solid #e5e5e5;border-left:0px;">更多</a>
+                                <span style="display:block;height:50px;font-size:14px;font-weight:bold;color:#999;width:78px;text-align:right;float:left;">分享到：</span>
+                                <a class="bds_sqq" data-cmd="sqq" style="margin-top:17px;position:relative;"></a>
+                                <a class="bds_qzone" data-cmd="qzone" href="#" style="margin-top:17px;position:relative;"></a>
+                                <a class="bds_tsina" data-cmd="tsina" style="margin-top:17px;position:relative;"></a>
+                            </div>
+                        </div>
+                    </span>
+                    <!--功效-->
+                    <dl class="yj_tags clearfix">
+                        <dt th:each="effect : ${recipe.effects}">
+                            <a href="javascript:;">[[${effect.effectName}]]</a>
+                        </dt>
+                        <!--没有功效标签时显示 暂无-->
+                        <dt th:if="${#arrays.isEmpty(recipe.effects)}">
+                            <a>暂无</a>
+                        </dt>
+                    </dl>
+                </div>
+
+                <div class="info2">
+                    <ul class="clearfix">
+                        <li class="w127"><strong>工艺</strong>
+                            <a id="tongji_gy" href="javascript:;" th:title="${recipe.recipeName} + '荷叶叫花鸡的工艺'" class="big">[[${recipe.craft.craftName}]]</a>
+                        </li>
+                        <!--
+                            困难程度： 0-18，三级一个档次
+                            档次：0-3：新手尝试、4-6：初级入门、7-9：初级水平、10-12：中级掌勺、13-15：高级厨师、16-18：厨神级
+                        -->
+
+                        <li class="w270"><strong>难度</strong>
+                            <div class="processing_w">
+                                <span class="icon icon_nd"></span>
+                                <span th:class="'processing processing_nd' + ${recipe.difficulty}"></span>
+
+                                <a id="tongji_nd" href="javascript:;" th:title="${recipe.recipeName} + '的难度'"
+                                   class="small">
+                                    [[${recipe.difficulty > 15 ? '厨神级'
+                                    : recipe.difficulty > 12 ? '高级厨师'
+                                    : recipe.difficulty > 9 ? '中级掌勺'
+                                    : recipe.difficulty > 6 ? '初级水平'
+                                    : recipe.difficulty > 3 ? '初级入门'
+                                    : '新手尝试'}]]
+                                </a>
+                            </div>
+                        </li>
+                        <li class="w270 br0"><strong>人数</strong>
+                            <div class="processing_w">
+                                <span class="icon icon_rs"></span>
+                                <span th:class="'processing processing_nd' + ${recipe.peopleNumber == null ? 0 : recipe.peopleNumber * 4}"></span>
+                                <a id="tongji_rsh" href="javascript:;" th:title="${recipe.recipeName == null ? '未知' : recipe.peopleNumber}" class="small">
+                                    [[${recipe.peopleNumber == null ? '未知' : recipe.peopleNumber + '人份'}]]
+                                </a>
+                            </div>
+                        </li>
+                        <li class="w127 bb0"><strong>口味</strong>
+                            <a id="tongji_kw" href="javascript:;"
+                               th:title="${recipe.recipeName} + '的口味'" class="big">
+                                [[${recipe.taste.tasteName}]]
+                            </a>
+                        </li>
+                        <li class="w270 bb0"><strong>准备时间</strong>
+                            <!--准备时间
+                                分类<10分钟  <30分钟 <60分钟 <90分钟 <2小时 <数小时 <一天 <数天
+                            -->
+                            <div class="processing_w"><span class="icon icon_zb"></span>
+                                <span th:class="'processing processing_nd' +
+                                    ${recipe.preparationTime >= 2880 ? '16'
+                                    : recipe.preparationTime >= 1440 ? '13'
+                                    : recipe.preparationTime > 120 ? '10'
+                                    : recipe.preparationTime > 60 ? '7'
+                                    : recipe.preparationTime > 0 ? '3'
+                                    : '0'}"></span>
+                                <a id="tongji_zbsj" href="javascript:;" th:title="${recipe.recipeName} +'的准备时间'" class="small">
+                                    [[${recipe.preparationTime >= 2880 ? '数天'
+                                    : recipe.preparationTime >= 1440 ? '两天'
+                                    : recipe.preparationTime > 120 ? '数小时'
+                                    : recipe.preparationTime > 60 ? '两小时'
+                                    : recipe.preparationTime > 0 ? recipe.preparationTime + '分钟'
+                                    : '未知'}]]
+                                </a>
+                            </div>
+                        </li>
+                        <li class="w270 bb0 br0"><strong>烹饪时间</strong>
+                            <div class="processing_w">
+                                <span class="icon icon_pr"></span>
+                                <span th:class="'processing processing_nd' +
+                                    ${recipe.cookTime >= 2880
+                                    ? '16'
+                                    : recipe.cookTime >= 1440
+                                    ? '13'
+                                    : recipe.cookTime > 120
+                                    ? '10'
+                                    : recipe.cookTime > 60
+                                    ? '7'
+                                    : recipe.cookTime > 0
+                                    ? '3'
+                                    : '0'}"></span>
+                                <a href="javascript:;" id="tongji_prsj" th:title="${recipe.recipeName} + '的烹饪时间'" class="small">
+                                    [[${recipe.cookTime >= 2880
+                                    ? '数天'
+                                    : recipe.cookTime >= 1440
+                                    ? '两天'
+                                    : recipe.cookTime > 120
+                                    ? '数小时'
+                                    : recipe.cookTime > 60
+                                    ? '两小时'
+                                    : recipe.cookTime > 0
+                                    ? recipe.cookTime + '分钟'
+                                    : '未知'}]]
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info3">
+                    <div class="user">
+                        <a target="_blank" id="tongji_author_img" href="" class="img">
+                            <img th:src="${recipe.user.userIcon}">
+                            <span class="masker pngFix"></span>
+                        </a>
+                        <div class="info">
+                            <h4>
+                                <a id="tongji_author" target="_blank" href="https://i.meishi.cc/cook.php?id=13666470">[[${recipe.user.userName}]]</a>
+                                <a target="_blank" class="v_small" href="https://i.meishi.cc/expert/" title="达人"
+                                   _hover-ignore="1"></a>
+                            </h4>
+                            <span>菜谱：144　/　关注：3　/　粉丝：63</span>
+                            <strong>[[${#dates.format(recipe.timestamp, 'yyyy-MM-dd HH:mm:ss')}]]　/　<em id="viewclicknum"></em>人看过</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cp_body clearfix">
+            <div class="cp_body_left">
+                <div class="materials">
+                    <p>
+                        <strong>“</strong>
+                            [[${recipe.introduction}]]
+                        <strong>”</strong>
+                    </p>
+                    <strong class="cpc_h2">用料</strong>
+                    <div class="materials_box">
+                        <!--主料-->
+                        <div class="yl zl clearfix">
+                            <h3><a href="javascript:;" th:title="${recipe.recipeName}+ '的主料'">主料</a></h3>
+                            <ul class="clearfix">
+                                <li class="" th:each="material, materialStat : ${recipe.materials}" th:if="${material.materialsFlag == 1}">
+                                    <a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/" class="img">
+                                        <img th:src="${material.materialsImg}">
+                                    </a>
+                                    <div class="c">
+                                        <h4>
+                                            <a target="_blank" href="https://www.paichi.net/shicaizuofa/ji/">[[${material.mainMaterials}]]</a>
+                                            <span>[[${material.mainNumber}]]</span>
+                                        </h4>
+                                        <!--购物车链接-->
+                                        <a href="#" class="fortb" data-type="2" th:biz-keyword="${material.mainMaterials} + ' 鲜'" biz-category="50016422"
+                                           data-style="1" data-tmpl="290x380" target="_blank">
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--辅料-->
+                        <div class="yl fuliao clearfix">
+                            <h3><a href="javascript:;" th:title="${recipe.recipeName} + '的辅料'">辅料</a></h3>
+                            <ul class="clearfix">
+                                <li th:class="${materialStat.index % 2 == 0 ? 'br0' : ''} " th:each="material, materialStat : ${recipe.materials}" th:if="${material.materialsFlag == 2}">
+                                    <h4>
+                                        <a target="_blank" href="https://www.paichi.net/海盐">[[${material.mainMaterials}]]</a>
+                                    </h4>
+                                    <span>[[${material.mainNumber}]]</span>
+                                    <a href="#" class="fortb" data-type="2" th:biz-keyword="${material.mainMaterials} + ' 鲜'"
+                                       biz-category="50016422" data-style="1" data-tmpl="290x380"
+                                                  target="_blank"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="measure">
+                    <h2 class="cpc_h2">[[${recipe.recipeName}]]的做法</h2>
+                    <div class="editnew edit">
+                        <div class="content clearfix" th:each="recipeStep: ${recipe.recipeSteps}">
+                            <em class="step" id="step_num1">[[${recipeStep.stepNumber}]].</em>
+                            <div class="c">
+                                <p>[[${recipeStep.stepContent}]]，</p>
+                                <p><img class="conimg" th:src="${recipeStep.stepImg}" alt></p></div>
+                        </div>
+                        <h2 class="cpc_h2">[[${recipe.recipeName}]]成品图</h2>
+                        <style>
+                            .swiper-container1 {
+                                margin: 20px 20px 20px 100px;
+                                width: 550px;
+                                height: 366px;
+                                overflow: hidden;
+                            }
+
+                            .swiper-container1 .swiper-slide {
+                                position: relative;
+                                overflow: hidden;
+                                background: #eee;
+                            }
+
+                            .swiper-container1 .swiper-slide img {
+                                display: block;
+                                width: 100%;
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                -webkit-transform: translate(-50%, -50%);
+                            }
+
+                            .swiper-pagination-bullet {
+                                opacity: .5;
+                                background: #fff;
+                            }
+
+                            .swiper-pagination-bullet-active {
+                                opacity: 1;
+                                background: #f42e2b;
+                            }
+                        </style>
+                        <div class="swiper-container swiper-container1 swiper-container-horizontal">
+                            <div class="swiper-wrapper swiper-wrapper1">
+                                <div class="swiper-slide">
+                                    <img th:src="${recipe.recipeImg}"
+                                                               th:alt="${recipe.recipeName}+ '成品图'">
+                                </div>
+                                <!--<div class="swiper-slide"><img th:src="@{/js/zuofa/images/n13666470_159635701089858.jpeg}"
+                                                               alt="荷叶叫花鸡成品图"></div>
+                                <div class="swiper-slide"><img th:src="@{/js/zuofa/images/n13666470_159635701484610.jpeg}"
+                                                               alt="荷叶叫花鸡成品图"></div>-->
+                            </div>
+                            <div class="swiper-pagination swiper-pagination1"></div>
+                        </div>
+                        <script>var mySwiper = new Swiper('.swiper-container1', {
+                            pagination: '.swiper-pagination1',
+                            loop: true,
+                            autoplay: 3500,
+                            paginationClickable: true
+                        });</script>
+                        <input type="hidden" value="温度和时间的设定，具体还要参考各家烤箱。">
+                        <h2 class="cpc_h2">烹饪技巧</h2>
+                        <p style="padding-left:100px;">
+                            [[${recipe.cookingSkill == null ? '暂无' : recipe.cookingSkill}]]
+                        </p>
+                    </div>
+                    <span class="authors_copy_right">
+                        <em>[[${recipe.recipeName}]]版权归作者所有，没有作者本人的书面许可任何人不得转载或使用其中整体或任何部分内容。</em>
+                        <!--<a target="_blank" title="打印" href="">打印菜谱</a>-->
+					</span>
+                    <div style="width:640px;padding:0px 15px 20px;background:#f5f5f5;overflow:hidden;">
+                        <script type="text/javascript" th:src="@{/js/zuofa/js/idvmejlzc.js}"></script>
+                        <script type="text/javascript" th:src="@{/js/zuofa/js/gbtkchjyt.js}"></script>
+                    </div>
+                </div>
+                <div class="cp_comment">
+                    <h2 class="cpc_h2">[[${recipe.recipeName}]]</h2>
+                    <a name="pl"></a>
+                    <div class="cp_comments_list">
+                        <div class="cp_com_form_w clearfix">
+                            <a href="javascript:;" class="useravatar"><img th:src="@{/js/zuofa/images/q_default.png}"></a>
+                            <div class="form_w">
+                                <div class="cp_pl_tag" id="cp_com_mask">
+                                    <em>给内容一个标签：</em><span class="current" type="3">随意吐槽</span><span
+                                        type="1">提问求解</span>
+                                </div>
+                                <form>
+                                    <input name="id" type="hidden" id="news_id" value="1969698">
+                                    <input name="news_title" type="hidden" id="news_title" th:value="${recipe.recipeName}">
+                                    <input name="from_search" type="hidden" id="from_search" value="0">
+                                    <textarea id="cp_com_textarea" placeholder="想说点什么..."></textarea>
+                                    <input type="submit" id="cp_com_submit" value="提交" onclick="submit_comment()"
+                                           class="submit">
+                                    <input type="hidden" id="cp_com_type">
+                                </form>
+                                <a id="tongji_shangchuancgt" href="https://reply.meishij.net/create_dish.php?id=1969698"
+                                   target="_blank" th:title="'上传' + ${recipe.recipeName} + '的图片'" class="upload_zp_btn">上传成果作品</a>
+                            </div>
+                        </div>
+                        <div id="newspls">
+                            <div class="cp_comlist_w">
+                                <script type="text/javascript" th:src="@{/js/zuofa/js/dyqhzquez.js}"></script>
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cp_body_right" style="background-color: #fff;">
+                <style>
+                    .iphonestyle_new {
+                        width: 300px;
+                        height: 609px;
+                        background: #fff url(/js/zuofa/images/20190522174006_590.png) center top no-repeat;
+                        border-top: 20px solid #fae8c8;
+                        border-bottom: 20px solid #fae8c8;
+                        padding-top: 136px;
+                    }
+
+                    .iphonestyle_new .imgsetw {
+                        width: 300px;
+                        height: 569px;
+                        position: relative;
+                    }
+
+                    .iphonestyle_new .imgsetw .mask {
+                        width: 300px;
+                        height: 569px;
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        background: url(/js/zuofa/images/20190522163304_680.png) center no-repeat;
+                        z-index: 10;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw {
+                        width: 248px;
+                        height: 537px;
+                        margin: 0px 26px 0px;
+                        overflow: hidden;
+                        position: relative;
+                        top: 16px;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw .imgs {
+                        width: 744px;
+                        height: 537px;
+                        transition: all ease 0.3s;
+                        font-size: 0px;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw1 .imgs {
+                        margin-left: 0px;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw2 .imgs {
+                        margin-left: -248px;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw3 .imgs {
+                        margin-left: -496px;
+                    }
+
+                    .iphonestyle_new .imgsetw .imgw .img {
+                        display: inline-block;
+                        vertical-align: top;
+                        height: 537px;
+                        width: 248px;
+                    }
+
+                    .side_qrcode {
+                        background: url(/js/zuofa/images/20190522172502_923.png) center no-repeat;
+                        width: 120px;
+                        height: 193px;
+                        position: fixed;
+                        left: 50%;
+                        margin-left: 515px;
+                        bottom: 100px;
+                    }
+                </style>
+
+                <div class="side_qrcode"></div>
+
+                <div class="iphonestyle_new" id="iphonestyle_new">
+
+                    <div class="imgsetw">
+
+                        <div class="imgw imgw1">
+                            <div class="imgs">
+                                <img th:src="@{/js/zuofa/images/20190522163304_786.jpeg}" class="img">
+                                <img th:src="@{/js/zuofa/images/20190522163304_709.jpeg}" class="img">
+                                <img th:src="@{/js/zuofa/images/20190522163304_345.jpeg}" class="img">
+                            </div>
+                        </div>
+                        <div class="mask"></div>
+
+
+                    </div>
+
+                </div>
+
+                <script>
+                    $(function () {
+                        var sti_iphonestyle_new = setInterval(function () {
+                            var _ele = $("#iphonestyle_new .imgw");
+                            if (_ele.hasClass("imgw1")) {
+                                _ele.removeClass("imgw1").addClass("imgw2");
+                            } else if (_ele.hasClass("imgw2")) {
+                                _ele.removeClass("imgw2").addClass("imgw3");
+                            } else if (_ele.hasClass("imgw3")) {
+                                _ele.removeClass("imgw3").addClass("imgw1");
+                            }
+                        }, 3000);
+
+                    });
+                </script>
+                <div class="geat_one4_2" id="right_736382">
+                    <script>
+                        (function () {
+                            var s = "_" + Math.random().toString(36).slice(2);
+                            document.write('<div id="' + s + '"></div>');
+                            (window.slotbydup = window.slotbydup || []).push({
+                                id: '736382',
+                                container: s,
+                                size: '300,170',
+                                display: 'inlay-fix'
+                            });
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!--div class="bbtitles" id="con_xscp2">看过荷叶叫花鸡的人还喜欢看...</div-->
+        <div id="dt_MRecVAV"></div>
+    </div>
+    <script type="text/javascript">
+        (function (win, doc) {
+            var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
+            if (!win.alimamatk_show) {
+                s.charset = "gbk";
+                s.async = true;
+                s.src = "http://a.alimama.cn/tkapi.js";
+                s.kslite = "";
+                h.insertBefore(s, h.firstChild);
+            }
+            var o = {
+                pid: "mm_10008787_2640448_11521435",
+                unid: "",
+                rd: 2,
+                appkey: "",
+                plugins: [{name: "keyword"}]
+            };
+            win.alimamatk_onload = win.alimamatk_onload || [];
+            win.alimamatk_onload.push(o);
+        })(window, document);
+    </script>
+    <script type="text/javascript">
+        _czc.push(﻿﻿['_trackEvent', 'pc', 'pc_news']
+        )
+        ;
+        _czc.push(﻿﻿['_trackEvent', 'pc', 'pc_news_class_0']
+        )
+        ;
+        window["_BFD"] = window["_BFD"] || {};
+        _BFD.BFD_INFO = {
+            "title": "荷叶叫花鸡",
+            "pic": "https://s1.st.meishij.net/r/220/165/13666470/a13666470_159635697189755.jpg",
+            "id": "1969698",
+            "url": "https://www.paichi.net/zuofa/heyejiaohuaji_6.html",
+            "category": [],
+            "tag": [],
+            "author": "小鱼哥的私房",
+            "pinglun": "0",
+            "renqi": "0",
+            "step": "15步",
+            "gongyi": "烤",
+            "nandu": "",
+            "renshu": "",
+            "kouwei": "家常味",
+            "zbshijian": "",
+            "prshijian": "<数小时",
+            "page_type": "detail"
+        };
+        window["_BFD"] = window["_BFD"] || {};
+        _BFD.client_id = "Cmeishijie";
+        _BFD.script = document.createElement("script");
+        _BFD.script.type = "text/javascript";
+        _BFD.script.async = true;
+        _BFD.script.charset = "utf-8";
+        _BFD.script.src = (('https:' == document.location.protocol ? 'https://ssl-static1' : 'http://static1') + '.baifendian.com/service/meishijie/meishijie.js');</script>
+    <script>window._bd_share_config = {
+        common: {
+            bdSnsKey: {"tsina": "3274300248"},
+            bdText: '推荐一道荷叶叫花鸡，做法真的很简单哦，我在家里试过了，很好吃。（分享自 @PaiChi网 ）',
+            bdDesc: '',
+            bdUrl: 'https://www.paichi.net/zuofa/heyejiaohuaji_6.html',
+            bdPic: 'https://s1.st.meishij.net/r/220/165/13666470/s13666470_159635697189755.jpg',
+            bdMiniList: ['mshare', 'qzone', 'tsina', 'tqq', 'huaban', 'renren', 'weixin', 'kaixin001', 'douban', 'tsohu', 'bdysc', 'sohu', 't163', 'meilishuo', 'mogujie', 'tfh', 'fx', 'youdao']
+        }, share: [{"bdSize": 16}], selectShare: [{"bdselectMiniList": ['qzone', 'tsina', 'douban', 'tqq', 'renren']}]
+    }
+</script>
+    <div style="display:none;"></div>
+    <script>
+        (function () {
+            var s = "_" + Math.random().toString(36).slice(2);
+            document.write('<div id="' + s + '"></div>');
+            (window.slotbydup = window.slotbydup || []).push({
+                id: '1026794',
+                container: s,
+                size: '120,270',
+                display: 'float'
+            });
+        })();
+    </script>
+    <script th:src="@{/js/zuofa/js/content170502.js}"></script>
+</div>
+<div style="margin:0 auto;padding-top:20px;width:990px;">
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/zuofa/js/fasjbsigw.js}"></script>
+    </div>
+    <div style="display:inline-block;vertical-align:top;">
+        <script type="text/javascript" th:src="@{/js/zuofa/js/idvmevlje.js}"></script>
+    </div>
+</div>
+<div class="main_footer pngFix">
+    <div class="footer_con1 clearfix">
+        <!--<p class="text pngFix"><a href="https://www.paichi.net/" class="footer_homelink"></a></p>-->
+        <div class="logobottom"
+             style="height:196px;width:600px;background: url(/js/zuofa/images/20190606113304_957.png) left center no-repeat;background-size:70% auto;">
+            <a href="http://www.meishi.cc" style="height:100%;width:200px;display:block;"></a>
+        </div>
+        <div class="links">
+            <ul class="cleearfix">
+                <li class="sina"><a class="img" target="_blank"
+                                    href="https://e.weibo.com/meishij"><span>关注：49万</span></a>
+                    <p><a target="_blank" href="https://e.weibo.com/meishij">点击进入<br>PaiChi官方微博</a></p></li>
+                <li class="tengxun"><a class="img" target="_blank" href="https://user.qzone.qq.com/613171717"><span>关注：10.9万</span></a>
+                    <p><a target="_blank" href="https://user.qzone.qq.com/613171717">点击进入<br>PaiChiQQ空间</a></p></li>
+                <li class="weixin"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码添加<br>PaiChi为微信好友</a></p></li>
+                <li class="download"><a target="_blank" href="https://sj.meishi.cc/" class="img"></a>
+                    <p><a target="_blank" href="https://sj.meishi.cc/">扫描二维码下载<br>PaiChi手机客户端</a></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_con3">
+        <ul class="clearfix">
+            <li><a target="_blank" href="https://j.meishi.cc/" title="公司简介">公司简介</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/aboutus.html" title="关于我们">关于我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/download.html" title="产品下载">产品下载</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/joinus.html" title="加入我们">加入我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="联系我们">联系我们</a></li>
+            <li><a target="_blank" href="https://j.meishi.cc/contactus.html" title="商务合作">商务合作</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/user_agreement.php" title="用户协议">用户协议</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/privacy.php" title="用户协议">隐私政策</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+            <li><a target="_blank" href="https://www.paichi.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+        </ul>
+        <p><a target="_blank" href="https://www.miibeian.gov.cn" class="gray_a">京ICP备14030359号</a>/<a target="_blank"
+                                                                                                      href="https://beian.gov.cn/"
+                                                                                                      class="gray_a"><img
+                th:src="@{/js/zuofa/images/20180208111357_93713.png}">京公网安备11010802026928</a> Copyright © 2003-2020 MEISHIJ CO.,LTD.</p>
+    </div>
+</div>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

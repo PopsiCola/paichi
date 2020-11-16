@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paichi.modules.recipe.mapper.TasteMapper">
+
+    <!--查询所有口味-->
+    <select id="queryTaste" parameterType="String" resultType="Taste">
+        select * from TASTE
+    </select>
+
+    <select id="getTaste" parameterType="String" resultType="Taste">
+        select * from TASTE where TASTE_NAME = #{tasteName}
+    </select>
+
+    <insert id="saveTaste" parameterType="Taste">
+        <selectKey  keyProperty="tasteId" resultType="Integer" order="BEFORE">
+            select taste_seq_id.nextval from dual
+        </selectKey>
+        insert into TASTE (TASTE_ID, TASTE_NAME) values(#{tasteId}, #{tasteName})
+    </insert>
+</mapper>
