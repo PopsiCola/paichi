@@ -3,7 +3,7 @@
 <mapper namespace="com.paichi.modules.materials.mapper.MaterialsMapper">
 
     <insert id="saveMaterial" parameterType="Materials">
-        insert into MATERIALS
+        insert into paichi.materials
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 MATERIALS_ID,
                 RECIPE_ID,
@@ -42,7 +42,7 @@
     <select id="queryMainMaterial" resultType="map">
         select *
         from (select count(MAIN_MATERIALS) as materialsNumber, MAIN_MATERIALS as mainMaterials
-              from MATERIALS
+              from paichi.materials
               where MATERIALS_FLAG = 1
               group by MAIN_MATERIALS
               order by count(MAIN_MATERIALS) DESC) m

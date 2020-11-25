@@ -4,17 +4,14 @@
 
     <!--查询所有口味-->
     <select id="queryTaste" parameterType="String" resultType="Taste">
-        select * from TASTE
+        select * from paichi.taste
     </select>
 
     <select id="getTaste" parameterType="String" resultType="Taste">
-        select * from TASTE where TASTE_NAME = #{tasteName}
+        select * from paichi.taste where TASTE_NAME = #{tasteName}
     </select>
 
-    <insert id="saveTaste" parameterType="Taste">
-        <selectKey  keyProperty="tasteId" resultType="Integer" order="BEFORE">
-            select taste_seq_id.nextval from dual
-        </selectKey>
-        insert into TASTE (TASTE_ID, TASTE_NAME) values(#{tasteId}, #{tasteName})
+    <insert id="saveTaste" parameterType="Taste" useGeneratedKeys="true" keyProperty="TASTE_ID">
+        insert into paichi.taste (TASTE_ID, TASTE_NAME) values(#{tasteId}, #{tasteName})
     </insert>
 </mapper>

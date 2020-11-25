@@ -85,28 +85,27 @@
     <select id="getUserOrder" parameterType="String" resultType="UserOrders">
         select USER_ORDERS_ID, USER_ID, USER_ORDERS_TITLE, USER_ORDERS_CONTENT,
                POPULARITY, LIKES, LAST_UPDATE_DATE, CREATE_TIME
-        from USER_ORDERS
+        from paichi.user_orders
         where USER_ID = #{userId}
     </select>
 
     <!--查看用户是否已经收藏过该食谱-->
     <select id="getUserCollectionByRecipeId" resultType="OrdersRecipe">
         select *
-        from ORDERS_RECIPE
+        from paichi.orders_recipe
         where USER_ORDERS_ID = (select USER_ORDERS_ID from USER_ORDERS where USER_ID = #{userId})
           and RECIPE_ID = #{recipeId}
     </select>
 
     <!--从食谱菜单中移除食谱(取消收藏)-->
     <delete id="removeRecipeFromCollections" parameterType="Integer">
-        delete ORDERS_RECIPE
+        delete paichi.orders_recipe
         where ORDERS_RECIPE_ID = #{ordersRecipeId}
     </delete>
 
     <!--创建用户菜单-->
     <insert id="insertUserOrder" parameterType="UserOrders">
-        insert into
-        USER_ORDERS
+        insert into paichi.user_orders
         <trim prefix="(" suffix=")" suffixOverrides=",">
             USER_ORDERS_ID,
             USER_ID,
@@ -151,17 +150,17 @@
            u.USER_ID, u.USER_ICON, u.USER_NAME,
            r.RECIPE_ID, r.RECIPE_NAME, r.RECIPE_IMG, r.DIFFICULTY, r.PREPARATION_TIME, r.COOK_TIME,
            r.POPULARITY,
-           (select us.USER_NAME from "USER" us where us.USER_ID = r.USER_ID) as USER_NAME,
-           (select TASTE_NAME from TASTE t where t.TASTE_ID = r.TASTE_ID) as TASTE_NAME,
-           (select CRAFT_NAME from CRAFT c where c.CRAFT_ID = r.CRAFT_ID) as CRAFT_NAME,
-           (select EFFECT_NAME from EFFECT e
-               left join RECIPE_EFFECT re on re.EFFECT_ID = e.EFFECT_ID
+           (select us.USER_NAME from paichi."user" us where us.USER_ID = r.USER_ID) as USER_NAME,
+           (select TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as TASTE_NAME,
+           (select CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as CRAFT_NAME,
+           (select EFFECT_NAME from paichi.effect e
+               left join paichi.recipe_effect re on re.EFFECT_ID = e.EFFECT_ID
                where re.RECIPE_ID = r.RECIPE_ID
                  and ROWNUM = 1) as EFFECT_NAME
-        from USER_ORDERS uo
-            left join "USER" u on u.USER_ID = uo.USER_ID
-            left join ORDERS_RECIPE oe on oe.USER_ORDERS_ID = uo.USER_ORDERS_ID
-            left join RECIPE r on r.RECIPE_ID = oe.RECIPE_ID
+        from paichi.user_orders uo
+            left join paichi."user" u on u.USER_ID = uo.USER_ID
+            left join paichi.orders_recipe oe on oe.USER_ORDERS_ID = uo.USER_ORDERS_ID
+            left join paichi.recipe r on r.RECIPE_ID = oe.RECIPE_ID
         where uo.USER_ID = #{userId}
     </select>
 </mapper>

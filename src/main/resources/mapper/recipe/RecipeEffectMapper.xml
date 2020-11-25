@@ -3,7 +3,7 @@
 <mapper namespace="com.paichi.modules.recipe.mapper.RecipeEffectMapper">
 
     <insert id="saveRecipeEffect" parameterType="RecipeEffect">
-        insert into RECIPE_EFFECT (RECIPE_EFFECT_ID, RECIPE_ID, EFFECT_ID)
+        insert into paichi.recipe_effect (RECIPE_EFFECT_ID, RECIPE_ID, EFFECT_ID)
         values(#{recipeEffectId}, #{recipeId}, #{effectId, jdbcType=NUMERIC})
     </insert>
 </mapper>

@@ -4,7 +4,7 @@
 
     <!--保存食谱-->
     <insert id="saveRecipeStep" parameterType="RecipeStep">
-        insert into RECIPE_STEP
+        insert into paichi.recipe_step
         <trim prefix="(" suffix=")" suffixOverrides=",">
             RECIPE_STEP_ID,
             <if test="recipeId != null and recipeId != ''">
