@@ -6,7 +6,7 @@
         select * from paichi.effect where EFFECT_NAME = #{effectName}
     </select>
 
-    <insert id="saveEffect" parameterType="Effect" useGeneratedKeys="true" keyProperty="EFFECT_ID">
+    <insert id="saveEffect" parameterType="Effect" useGeneratedKeys="true" keyProperty="effectId">
         insert into paichi.effect (EFFECT_ID, EFFECT_NAME) values(#{effectId}, #{effectName})
     </insert>
 </mapper>

@@ -805,13 +805,13 @@ if(pxarr[st] != undefined && pxarr[st] != null && pxarr[st] != " "){
 				let newsHtml = '';
 				for (let i = 0; i < data.recipeList.length; i++) {
 					newsHeadHtml += '<div class="listtyle1'+ (i%4 == 0?" ml0":"") +'">\n' +
-						'<a target="_blank" href="recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
-						'<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
+						'<a target="_blank" href="recipe/zuofa?recipeId='+ data.recipeList[i].recipeId +'" title="'+ data.recipeList[i].recipeName +'" class="big">\n' +
+						'<img class="img" alt="'+ data.recipeList[i].recipeName +'" src="'+ data.recipeList[i].recipeImg +'">\n' +
 						'<div class="i_w">\n' +
 						'<div class="i" style="margin-top: 0px;">\n' +
-						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / '+ (data.recipeList[i].COOK_TIME != null ? '大概'+ data.recipeList[i].COOK_TIME +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
-						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
+						'<div class="c1"><strong>'+ data.recipeList[i].recipeName +'</strong><span>0 评论  ' + data.recipeList[i].popularity + ' 人气</span><em>'+ data.recipeList[i].userName +'</em></div>\n' +
+						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].stepNumber +'步 / '+ (data.recipeList[i].cookTime != null ? '大概'+ data.recipeList[i].cookTime +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].craftName +' / '+ data.recipeList[i].tasteName +'</li></ul></div></div></div>\n' +
+						'<strong class="gx"><span>'+ (data.recipeList[i].effectName ==null ? "暂无" : data.recipeList[i].effectName) +'</span></strong>' +
 						'</a>\n' +
 						'</div>';
 				}
@@ -887,13 +887,13 @@ $(function(){
 				let newsHtml = '';
 				for (let i = 0; i < data.recipeList.length; i++) {
 					newsHeadHtml += '<div class="listtyle1'+ (i%4 == 0?" ml0":"") +'">\n' +
-						'<a target="_blank" href="/recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
-						'<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
+						'<a target="_blank" href="/recipe/zuofa?recipeId='+ data.recipeList[i].recipeId +'" title="'+ data.recipeList[i].recipeName +'" class="big">\n' +
+						'<img class="img" alt="'+ data.recipeList[i].recipeName +'" src="'+ data.recipeList[i].recipeImg +'">\n' +
 						'<div class="i_w">\n' +
 						'<div class="i" style="margin-top: 0px;">\n' +
-						'<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / '+ (data.recipeList[i].COOK_TIME != null ? '大概'+ data.recipeList[i].COOK_TIME +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
-						'<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
+						'<div class="c1"><strong>'+ data.recipeList[i].recipeName +'</strong><span>0 评论  ' + data.recipeList[i].popularity + ' 人气</span><em>'+ data.recipeList[i].userName +'</em></div>\n' +
+						'<div class="c2"><ul><li class="li1">'+ data.recipeList[i].stepNumber +'步 / '+ (data.recipeList[i].cookTime != null ? '大概'+ data.recipeList[i].cookTime +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].craftName +' / '+ data.recipeList[i].tasteName +'</li></ul></div></div></div>\n' +
+						'<strong class="gx"><span>'+ (data.recipeList[i].effectName ==null ? "暂无" : data.recipeList[i].effectName) +'</span></strong>' +
 						'</a>\n' +
 						'</div>';
 				}

@@ -3,7 +3,7 @@
 <mapper namespace="com.paichi.modules.recipeOrders.mapper.OrdersRecipeMapper">
 
     <!--添加收藏-->
-    <insert id="addRecipeToOrder" parameterType="OrdersRecipe" useGeneratedKeys="true" keyProperty="ORDERS_RECIPE_ID">
+    <insert id="addRecipeToOrder" parameterType="OrdersRecipe" useGeneratedKeys="true" keyProperty="ordersRecipeId">
         insert into paichi.orders_recipe (ORDERS_RECIPE_ID, USER_ORDERS_ID, RECIPE_ID)
         values (#{ordersRecipeId, jdbcType=NUMERIC}, #{userOrdersId}, #{recipeId})
     </insert>

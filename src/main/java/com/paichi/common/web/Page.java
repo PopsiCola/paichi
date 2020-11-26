@@ -22,6 +22,11 @@ public class Page implements Serializable {
     private Integer limit;
 
     /**
+     * 起始条数
+     */
+    private Integer currentNumber;
+
+    /**
      * 总页数
      */
     private Integer totalPage;
@@ -30,6 +35,10 @@ public class Page implements Serializable {
      * 总条数
      */
     private Integer totals;
+
+    public Integer getCurrentNumber() {
+        return (current - 1) * limit;
+    }
 
     public Integer getCurrent() {
         return current;

@@ -11,7 +11,7 @@
         select * from paichi.craft where CRAFT_NAME = #{craftName}
     </select>
 
-    <insert id="saveCraft" parameterType="Craft" useGeneratedKeys="true" keyProperty="CRAFT_ID">
+    <insert id="saveCraft" parameterType="Craft" useGeneratedKeys="true" keyProperty="craftId">
         insert into paichi.craft (CRAFT_ID, CRAFT_NAME) values(#{craftId}, #{craftName})
     </insert>
 </mapper>

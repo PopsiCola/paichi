@@ -43,18 +43,18 @@ function materialsList() {
             if (data.length > 10) {
                 for (let i = 0; i < 10; i++) {
                     materialsHtml +=
-                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[i].MAINMATERIALS +'">' +
+                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[i].mainMaterials +'">' +
                         '\t<span class="yjtip">火热</span>\n' +
-                        '\t<strong>'+ data[i].MAINMATERIALS +'</strong>\n' +
-                        '\t<em>'+ data[i].MATERIALSNUMBER +'</em>\n' +
+                        '\t<strong>'+ data[i].mainMaterials +'</strong>\n' +
+                        '\t<em>'+ data[i].materialsNumber +'</em>\n' +
                         '</a>\n';
                 }
 
                 for (let j = 10; j < data.length; j++) {
                     othersMaerialsHtml +=
-                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[j].MAINMATERIALS +'">' +
-                        '\t<strong>'+ data[j].MAINMATERIALS +'</strong>\n' +
-                        '\t<em>'+ data[j].MATERIALSNUMBER +'</em>\n' +
+                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[j].mainMaterials +'">' +
+                        '\t<strong>'+ data[j].mainMaterials +'</strong>\n' +
+                        '\t<em>'+ data[j].materialsNumber +'</em>\n' +
                         '</a>\n';
                 }
                 materialsHtml +=
@@ -64,10 +64,10 @@ function materialsList() {
             } else {
                 for (let i = 0; i < data.length; i++) {
                     materialsHtml +=
-                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[i].MAINMATERIALS +'">' +
+                        '<a onclick="chooseTerm(this.id, 1)" id="'+ data[i].mainMaterials +'">' +
                         '\t<span class="yjtip">火热</span>\n' +
-                        '\t<strong>'+ data[i].MAINMATERIALS +'</strong>\n' +
-                        '\t<em>'+ data[i].MATERIALSNUMBER +'</em>\n' +
+                        '\t<strong>'+ data[i].mainMaterials +'</strong>\n' +
+                        '\t<em>'+ data[i].materialsNumber +'</em>\n' +
                         '</a>\n';
                 }
             }
@@ -265,13 +265,13 @@ function recipePageList(data) {
     var newsHeadHtml = '';
     for (let i = 0; i < data.recipeList.length; i++) {
         newsHeadHtml += '<div class="listtyle1">\n' +
-            '<a target="_blank" href="/recipe/zuofa?recipeId='+ data.recipeList[i].RECIPE_ID +'" title="'+ data.recipeList[i].RECIPE_NAME +'" class="big">\n' +
-            '<img class="img" alt="'+ data.recipeList[i].RECIPE_NAME +'" src="'+ data.recipeList[i].RECIPE_IMG +'">\n' +
+            '<a target="_blank" href="/recipe/zuofa?recipeId='+ data.recipeList[i].recipeId +'" title="'+ data.recipeList[i].recipeName +'" class="big">\n' +
+            '<img class="img" alt="'+ data.recipeList[i].recipeName +'" src="'+ data.recipeList[i].recipeImg +'">\n' +
             '<div class="i_w">\n' +
             '<div class="i" style="margin-top: 0px;">\n' +
-            '<div class="c1"><strong>'+ data.recipeList[i].RECIPE_NAME +'</strong><span>0 评论  ' + data.recipeList[i].POPULARITY + ' 人气</span><em>'+ data.recipeList[i].USERNAME +'</em></div>\n' +
-            '<div class="c2"><ul><li class="li1">'+ data.recipeList[i].STEPNUMBER +'步 / '+ (data.recipeList[i].COOK_TIME != null ? '大概'+ data.recipeList[i].COOK_TIME +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].CRAFTNAME +' / '+ data.recipeList[i].TASTENAME +'</li></ul></div></div></div>\n' +
-            '<strong class="gx"><span>'+ (data.recipeList[i].EFFECTNAME ==null ? "暂无" : data.recipeList[i].EFFECTNAME) +'</span></strong>' +
+            '<div class="c1"><strong>'+ data.recipeList[i].recipeName +'</strong><span>0 评论  ' + data.recipeList[i].popularity + ' 人气</span><em>'+ data.recipeList[i].userName +'</em></div>\n' +
+            '<div class="c2"><ul><li class="li1">'+ data.recipeList[i].stepNumber +'步 / '+ (data.recipeList[i].cookTime != null ? '大概'+ data.recipeList[i].cookTime +'分钟' : '未知') + '</li><li class="li2">'+ data.recipeList[i].craftName +' / '+ data.recipeList[i].tasteName +'</li></ul></div></div></div>\n' +
+            '<strong class="gx"><span>'+ (data.recipeList[i].effectName ==null ? "暂无" : data.recipeList[i].effectName) +'</span></strong>' +
             '</a>\n' +
             '</div>';
     }

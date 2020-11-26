@@ -171,7 +171,7 @@
             left join paichi.recipe_effect re on r.RECIPE_ID = re.RECIPE_ID
             left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
             left join paichi.recipe_step rs on rs.RECIPE_ID = r.RECIPE_ID
-            left join paichi."user" u on u.USER_ID = r.USER_ID
+            left join paichi.user u on u.USER_ID = r.USER_ID
             left join paichi.craft c on c.CRAFT_ID = r.CRAFT_ID
             left join paichi.taste t on t.TASTE_ID = r.TASTE_ID
             left join paichi.materials m on m.RECIPE_ID = r.RECIPE_ID
@@ -181,23 +181,23 @@
 
     <!--搜索查询菜谱-->
     <select id="queryRecipeOfSearch" resultType="Map">
-        select *  from (
-            select t1.RECIPE_ID, RECIPE_NAME, RECIPE_IMG, POPULARITY, COOK_TIME, TIMESTAMP,
-                stepNumber, userName, craftName, tasteName, effectName, ROWNUM as rn
+        select t1.RECIPE_ID as recipeId, RECIPE_NAME as recipeName, RECIPE_IMG as recipeImg, POPULARITY as popularity, COOK_TIME as cookTime, TIMESTAMP as timestamp ,
+                stepNumber, userName, craftName, tasteName, effectName
                 from (
-                select r.RECIPE_ID, r.RECIPE_NAME, #{fastDFSPath} || r.RECIPE_IMG as RECIPE_IMG, r.POPULARITY,
+                select r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.POPULARITY,
                     r.COOK_TIME, r.TIMESTAMP,
                     (select max(rs.STEP_NUMBER) from paichi.recipe_step rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                    (select u.USER_NAME from paichi."user" u where u.USER_ID = r.USER_ID) as userName,
+                    (select u.USER_NAME from paichi.user u where u.USER_ID = r.USER_ID) as userName,
                     (select c.CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
                     (select t.TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                     -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
                     (select e.EFFECT_NAME
                         from paichi.recipe_effect re
-                        left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
-                        left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
-                    where r1.RECIPE_ID = r.RECIPE_ID and ROWNUM = 1) as effectName
-            from RECIPE r
+                        left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
+                        left join paichi.recipe r1 on r1.RECIPE_ID = re.RECIPE_ID
+                    where r1.RECIPE_ID = r.RECIPE_ID
+                    limit 1) as effectName
+            from paichi.recipe r
             <where>
                 <if test="term.diffcultTerm != null and term.diffcultTerm != ''">
                     <choose>
@@ -260,8 +260,8 @@
                 order by r.POPULARITY DESC
             </if>
             ) t1
-            where ROWNUM &lt;= #{page.current} * #{page.limit} ) t
-        where rn &gt; (#{page.current} - 1) * #{page.limit}
+        limit #{page.currentNumber}, #{page.limit}
+
     </select>
 
     <!--条件查询食谱数量-->
@@ -328,9 +328,9 @@
     <!--最新菜谱-->
     <select id="queryHotRecipeOfDay" resultType="Map">
         select *  from (
-            select r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.POPULARITY, r.COOK_TIME, r.TIMESTAMP,
+            select r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName, concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, r.POPULARITY as popularity, r.COOK_TIME as cookTime, r.TIMESTAMP as timestamp,
                 (select max(rs.STEP_NUMBER) from paichi.recipe_step rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                (select u.USER_NAME from paichi."user" u where u.USER_ID = r.USER_ID) as userName,
+                (select u.USER_NAME from paichi.user u where u.USER_ID = r.USER_ID) as userName,
                 (select c.CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
                 (select t.TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                 -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
@@ -339,18 +339,19 @@
                   left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
                   left join paichi.recipe r1 on r1.RECIPE_ID = re.RECIPE_ID
                  where r1.RECIPE_ID = r.RECIPE_ID
-                   and ROWNUM = 1) as effectName
-            from RECIPE r
-        ) t where ROWNUM &lt; 8
+                 limit 1) as effectName
+            from paichi.recipe r
+        ) t
         order by t.TIMESTAMP DESC
+        limit 8
     </select>
 
     <!--每周最热菜谱-->
     <select id="queryHotRecipeOfHour" resultType="Map">
         select *  from (
-            select r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.POPULARITY, r.COOK_TIME, r.TIMESTAMP,
+            select r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName, concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, r.POPULARITY as popularity, r.COOK_TIME as cookTime, r.TIMESTAMP as timestamp,
                 (select max(rs.STEP_NUMBER) from paichi.recipe_step rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                (select u.USER_NAME from paichi."user" u where u.USER_ID = r.USER_ID) as userName,
+                (select u.USER_NAME from paichi.user u where u.USER_ID = r.USER_ID) as userName,
                 (select c.CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
                 (select t.TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                 -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
@@ -359,18 +360,19 @@
                   left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
                   left join paichi.recipe r1 on r1.RECIPE_ID = re.RECIPE_ID
                  where r1.RECIPE_ID = r.RECIPE_ID
-                   and ROWNUM = 1) as effectName
-            from RECIPE r
-        ) t where ROWNUM &lt; 8
+                 limit 1) as effectName
+            from paichi.recipe r
+        ) t
         order by t.TIMESTAMP DESC
+        limit 8
     </select>
 
     <!--每小时最热菜谱-->
     <select id="queryHotRecipeOfWeek" resultType="Map">
         select *  from (
-            select r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.POPULARITY, r.COOK_TIME, r.TIMESTAMP,
+            select r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName, concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, r.POPULARITY as popularity, r.COOK_TIME as cookTime, r.TIMESTAMP as timestamp,
                 (select max(rs.STEP_NUMBER) from paichi.recipe_step rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                (select u.USER_NAME from paichi."user" u where u.USER_ID = r.USER_ID) as userName,
+                (select u.USER_NAME from paichi.user u where u.USER_ID = r.USER_ID) as userName,
                 (select c.CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
                 (select t.TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                 -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
@@ -379,30 +381,32 @@
                   left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
                   left join paichi.recipe r1 on r1.RECIPE_ID = re.RECIPE_ID
                  where r1.RECIPE_ID = r.RECIPE_ID
-                   and ROWNUM = 1) as effectName
-            from RECIPE r
-        ) t where ROWNUM &lt; 8
+                 limit 1) as effectName
+            from paichi.recipe r
+        ) t
         order by t.TIMESTAMP DESC
+        limit 8
     </select>
 
     <!--每日最热菜谱-->
     <select id="queryHotRecipeOfNow" resultType="Map">
         select *  from (
-            select r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.POPULARITY, r.COOK_TIME, r.TIMESTAMP,
-                (select max(rs.STEP_NUMBER) from RECIPE_STEP rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
-                (select u.USER_NAME from paichi."user" u where u.USER_ID = r.USER_ID) as userName,
+            select r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName, concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, r.POPULARITY as popularity, r.COOK_TIME as cookTime, r.TIMESTAMP as timestamp,
+                (select max(rs.STEP_NUMBER) from paichi.recipe_step rs where rs.RECIPE_ID = r.RECIPE_ID) as stepNumber,
+                (select u.USER_NAME from paichi.user u where u.USER_ID = r.USER_ID) as userName,
                 (select c.CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as craftName,
                 (select t.TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as tasteName,
                 -- 一个食谱有的对应很多功效，有的无对应功效，所以这里只取一个功效展示
                 (select e.EFFECT_NAME
                  from paichi.recipe_effect re
-                  left join EFFECT e on re.EFFECT_ID = e.EFFECT_ID
-                  left join RECIPE r1 on r1.RECIPE_ID = re.RECIPE_ID
+                  left join paichi.effect e on re.EFFECT_ID = e.EFFECT_ID
+                  left join paichi.recipe r1 on r1.RECIPE_ID = re.RECIPE_ID
                  where r1.RECIPE_ID = r.RECIPE_ID
-                   and ROWNUM = 1) as effectName
-            from RECIPE r
-        ) t where ROWNUM &lt; 8
+                 limit 1) as effectName
+            from paichi.recipe r
+        ) t
         order by t.TIMESTAMP DESC
+        limit 8
     </select>
 
     <!--菜谱总数 -->
@@ -413,28 +417,28 @@
     <!--美食菜单-->
     <select id="queryRecipeOrders" resultMap="recipeOrders">
         select *
-        from (select uo.USER_ID, u.USER_NAME, u.USER_ICON, r.RECIPE_ID, r.RECIPE_NAME,
-                concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, uo.LAST_UPDATE_DATE as TIMESTAMP,
+        from (select uo.USER_ID as userId, u.USER_NAME as userName, u.USER_ICON as userIcon, r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName,
+                concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, uo.LAST_UPDATE_DATE as timestamp ,
                 ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num,
                 -- 食谱菜单总数
-                (select count(uo.USER_ORDERS_ID) from paichi.orders_recipe rr where rr.USER_ORDERS_ID = uo.USER_ORDERS_ID) as ordersCount
+                (select count(rr.USER_ORDERS_ID) from paichi.orders_recipe rr where rr.USER_ORDERS_ID = uo.USER_ORDERS_ID) as ordersCount
             from paichi.user_orders uo
-                left join paichi."user" u on u.USER_ID = uo.USER_ID
+                left join paichi.user u on u.USER_ID = uo.USER_ID
                 left join paichi.orders_recipe oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
                 left join paichi.recipe r on oo.RECIPE_ID = r.RECIPE_ID
-                order by uo.LAST_UPDATE_DATE DESC)
-        where num &lt;= 5
+                order by uo.LAST_UPDATE_DATE DESC) uu
+        where uu.num &lt;= 5
     </select>
 
     <!--美食菜单总数-->
     <select id="recipeOrdersCount" resultMap="recipeOrders">
         select *
-        from (select uo.USER_ID,
-                ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num
+        from (select uo.USER_ID as userId,
+            ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num
             from paichi.user_orders uo
-                left join paichi."user" u on u.USER_ID = uo.USER_ID
-                left join paichi.orders_recipe oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
-                left join paichi.recipe r on oo.RECIPE_ID = r.RECIPE_ID)
-        where num &lt;= 1
+            left join paichi.user u on u.USER_ID = uo.USER_ID
+            left join paichi.orders_recipe oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
+            left join paichi.recipe r on oo.RECIPE_ID = r.RECIPE_ID) uu
+        where uu.num &lt;= 1
     </select>
 </mapper>
