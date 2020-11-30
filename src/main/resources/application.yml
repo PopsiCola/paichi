@@ -14,7 +14,8 @@ spring:
   application:
     name: paichi
   redis:
-    host: 39.98.65.221
+#    host: 39.98.65.221
+    host: 192.168.1.6
     port: 6379
     timeout: 60000
 #配置Oracle数据源
@@ -106,7 +107,8 @@ mybatis-plus:
 
 # 文件系统
 minio:
-  url: http://39.98.65.221:9000
+#  url: http://39.98.65.221:9000
+  url: http://192.168.1.6:9000
   accessKey: minio
   secretKey: qwerasdf1234
   bucketName: PaiChi
