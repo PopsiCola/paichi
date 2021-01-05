@@ -182,8 +182,9 @@ public class CrawUtil {
                     byte[] imagedata = new FileIOStreamUtil().getImageFromNetByUrl(recipeImg);
 
                     String extName = recipeImg.substring(recipeImg.lastIndexOf(".") + 1);
-                    String url = new FastDFSUtils().uploadFile(imagedata, extName);
+                    // String url = new FastDFSUtils().uploadFile(imagedata, extName);
 
+                    String url = "";
                     recipeImg = url;
 
                     FileRecord fileRecord = new FileRecord();
@@ -337,8 +338,8 @@ public class CrawUtil {
                         byte[] imagedata = new FileIOStreamUtil().getImageFromNetByUrl(img);
                         //扩展名
                         String extName = img.substring(img.lastIndexOf(".") + 1);
-                        String fileUrl = new FastDFSUtils().uploadFile(imagedata, extName);
-
+                        // String fileUrl = new FastDFSUtils().uploadFile(imagedata, extName);
+                        String fileUrl = "";
                         img = fileUrl;
 
                         FileRecord fileRecord = new FileRecord();
@@ -446,8 +447,8 @@ public class CrawUtil {
                         String extName = img.substring(img.lastIndexOf(".") + 1);
                         byte[] imagedata = new FileIOStreamUtil().getImageFromNetByUrl(img);
 
-                        String fileUrl = new FastDFSUtils().uploadFile(imagedata, extName);
-
+                        // String fileUrl = new FastDFSUtils().uploadFile(imagedata, extName);
+                        String fileUrl = "";
                         img = fileUrl;
 
                         FileRecord fileRecord = new FileRecord();

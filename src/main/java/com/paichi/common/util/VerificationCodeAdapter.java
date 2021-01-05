@@ -3,6 +3,7 @@ package com.paichi.common.util;
 import com.paichi.modules.record.entity.FileRecord;
 import com.paichi.modules.record.service.IFileRecordService;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -184,7 +185,9 @@ public class VerificationCodeAdapter {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(image,"png",bos);
         imagedata = bos.toByteArray();
-        String uploadFile = new FastDFSUtils().uploadFile(imagedata, "png");
+        // TODO 临时文件保存
+        // String uploadFile = new FastDFSUtils().uploadFile(imagedata, "png");
+        String uploadFile = "";
 
         //保存文件上传记录到数据库
         FileRecord fileRecord = new FileRecord();
