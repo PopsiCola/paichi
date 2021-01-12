@@ -15,25 +15,20 @@ spring:
     name: paichi
   redis:
 #    host: 39.98.65.221
-    host: 192.168.1.6
+    host: 121.5.9.16
     port: 6379
     timeout: 60000
 #配置Oracle数据源
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/paichi?characterEncoding=utf-8&serverTimezone=UTC
+      url: jdbc:mysql://121.5.9.16:3306/paichi?characterEncoding=utf-8&serverTimezone=UTC
       username: root
-      password: qwerasdf1234
+      password: nevergiveup?
       initial-size: 1
       min-idle: 1
       max-active: 20
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
-
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    url: jdbc:oracle:thin:@//39.98.198.83:1521/helowin
-#    username: PAICHI
-#    password: paichi
 
 #    driver-class-name: oracle.jdbc.driver.OracleDriver
 #    url: jdbc:oracle:thin:@//192.168.1.6:1521/helowin
@@ -107,11 +102,10 @@ mybatis-plus:
 
 # 文件系统
 minio:
-#  url: http://39.98.65.221:9000
-  url: http://192.168.1.6:9000
+  url: http://121.5.9.16:9000
   accessKey: minio
-  secretKey: qwerasdf1234
-  bucketName: PaiChi
+  secretKey: nevergiveup?
+  bucketName: paichi
 
 
 
