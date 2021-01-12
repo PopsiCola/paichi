@@ -118,18 +118,13 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
-    <!-- 添加oracle jdbc driver -->
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc14</artifactId>
-      <version>10.2.0.4.0</version>
-    </dependency>
+
+    <!--Mysql driver-->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.22</version>
     </dependency>
-    <!--Mysql driver-->
 
 
     <!--minio文件存储系统-->
@@ -156,11 +151,9 @@
       <artifactId>jsoup</artifactId>
       <version>1.13.1</version>
     </dependency>
-
   </dependencies>
 
   <build>
     <finalName>paichi</finalName>
-
   </build>
 </project>
