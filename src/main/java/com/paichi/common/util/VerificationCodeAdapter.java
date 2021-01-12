@@ -5,23 +5,27 @@ import com.paichi.modules.record.service.IFileRecordService;
 import com.paichi.modules.verifyImage.entity.VerificationCodePlace;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 @Component
 public class VerificationCodeAdapter {
 
     @Autowired
     private IFileRecordService fileRecordService;
+    @Autowired
+    private MinioUtils minioUtils;
+    @Value("${minio.bucketName}")
+    private String bucketName;
 
     /**
      * 源文件宽度
@@ -54,7 +58,7 @@ public class VerificationCodeAdapter {
 
 
     // 生成拼图样式
-    private static int[][] getBlockData(){
+    private static int[][] getBlockData() {
         int[][] data = new int[CUT_WIDTH][CUT_HEIGHT];
         Random random = new Random();
         //(x-a)²+(y-b)²=r²
@@ -108,7 +112,7 @@ public class VerificationCodeAdapter {
                     //左上、右上
                     if (i >= RECTANGLE_PADDING - k && i < RECTANGLE_PADDING
                             && ((j >= RECTANGLE_PADDING - k && j < RECTANGLE_PADDING)
-                            || (j >= CUT_HEIGHT - RECTANGLE_PADDING - k && j < CUT_HEIGHT - RECTANGLE_PADDING +1))) {
+                            || (j >= CUT_HEIGHT - RECTANGLE_PADDING - k && j < CUT_HEIGHT - RECTANGLE_PADDING + 1))) {
                         data[i][j] = 2;
                     }
 
@@ -116,7 +120,7 @@ public class VerificationCodeAdapter {
                     if (i >= CUT_WIDTH - RECTANGLE_PADDING + k - 1 && i < CUT_WIDTH - RECTANGLE_PADDING + 1) {
                         for (int n = 1; n <= SLIDER_IMG_OUT_PADDING; n++) {
                             if (((j >= RECTANGLE_PADDING - n && j < RECTANGLE_PADDING)
-                                    || (j >= CUT_HEIGHT - RECTANGLE_PADDING - n && j <= CUT_HEIGHT - RECTANGLE_PADDING ))) {
+                                    || (j >= CUT_HEIGHT - RECTANGLE_PADDING - n && j <= CUT_HEIGHT - RECTANGLE_PADDING))) {
                                 data[i][j] = 2;
                             }
                         }
@@ -151,13 +155,13 @@ public class VerificationCodeAdapter {
                 // 原图中对应位置变色处理
                 if (rgbFlg == 1) {
                     //抠图上复制对应颜色值
-                    targetImage.setRGB(i,j, rgb_ori);
+                    targetImage.setRGB(i, j, rgb_ori);
                     //原图对应位置颜色变化
                     oriImage.setRGB(_x, _y, Color.LIGHT_GRAY.getRGB());
                 } else if (rgbFlg == 2) {
                     targetImage.setRGB(i, j, Color.WHITE.getRGB());
                     oriImage.setRGB(_x, _y, Color.GRAY.getRGB());
-                }else if(rgbFlg == 0){
+                } else if (rgbFlg == 0) {
                     //int alpha = 0;
                     targetImage.setRGB(i, j, rgb_ori & 0x00ffffff);
                 }
@@ -167,9 +171,9 @@ public class VerificationCodeAdapter {
     }
 
     // 获取图片
-    private static BufferedImage getBufferedImage(String path) throws IOException{
+    private static BufferedImage getBufferedImage(String path) throws IOException {
         File file = new File(path);
-        if(file.isFile()){
+        if (file.isFile()) {
             return ImageIO.read(file);
         }
         return null;
@@ -183,30 +187,38 @@ public class VerificationCodeAdapter {
     private String writeImg(BufferedImage image) throws Exception {
         byte[] imagedata = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(image,"png",bos);
+        ImageIO.write(image, "png", bos);
         imagedata = bos.toByteArray();
-        // TODO 临时文件保存
-        // String uploadFile = new FastDFSUtils().uploadFile(imagedata, "png");
-        String uploadFile = "";
+        // 输入流
+        ByteArrayInputStream bis = new ByteArrayInputStream(imagedata);
+        String uploadFile = minioUtils.uploadPath(true, "", "png");
+        boolean upload = minioUtils.putObject(bucketName,
+                uploadFile,
+                bis,
+                "image/png");
 
-        //保存文件上传记录到数据库
-        FileRecord fileRecord = new FileRecord();
-        fileRecord.setPictureUrl(uploadFile);
-        fileRecord.setPictureType(2);
-        fileRecord.setUploadTime(new Date());
-        fileRecord.setDelFlag(1);
+        //文件访问路径
+        uploadFile = bucketName + "/" + uploadFile;
 
-        fileRecordService.saveFile(fileRecord);
+        if (upload) {
+            // 文件上传成功
+            //保存文件上传记录到数据库
+            FileRecord fileRecord = new FileRecord();
+            fileRecord.setPictureUrl(uploadFile);
+            fileRecord.setPictureType(2);
+            fileRecord.setDelFlag(1);
 
+            fileRecordService.saveFile(fileRecord);
+        }
         return uploadFile;
     }
 
     /**
      * 对图片进行裁剪切割，保存切割后的两个拼图图片
-     * @param imgName   图片名
-     * @param path      图片路径：static/image下的图片
-     * @param data      随机产生的拼图位置
-     * @return          返回拼图图片的地址、以及拼图的x、y位置
+     * @param imgName 图片名
+     * @param path    图片路径：static/image下的图片
+     * @param data    随机产生的拼图位置
+     * @return 返回拼图图片的地址、以及拼图的x、y位置
      * @throws Exception
      */
     private VerificationCodePlace cutAndSave(String imgName, String path, int[][] data) throws Exception {
@@ -215,7 +227,7 @@ public class VerificationCodeAdapter {
 
         // 进行图片处理
         BufferedImage originImage = getBufferedImage(path);
-        if(originImage!=null) {
+        if (originImage != null) {
             int locationX = CUT_WIDTH + new Random().nextInt(originImage.getWidth() - CUT_WIDTH * 3);
             int locationY = CUT_HEIGHT + new Random().nextInt(originImage.getHeight() - CUT_HEIGHT) / 2;
             BufferedImage markImage = new BufferedImage(CUT_WIDTH, CUT_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
@@ -224,9 +236,9 @@ public class VerificationCodeAdapter {
             String name = imgName.substring(0, imgName.indexOf('.'));
 
             // 考虑图片覆盖,简单设置四位随机数
-            int r = (int)Math.round(Math.random() * 8999) + 1000;
+            int r = (int) Math.round(Math.random() * 8999) + 1000;
 
-            //文件上传到FastDFS服务器
+            //文件上传到Minio服务器
             String afterName = this.writeImg(originImage);
             String markName = this.writeImg(markImage);
 
@@ -241,11 +253,11 @@ public class VerificationCodeAdapter {
      * @param dicPath 文件夹目录
      * @return
      */
-    private static ArrayList<String> getFileNamesFromDic(String dicPath){
+    private static ArrayList<String> getFileNamesFromDic(String dicPath) {
         File dic = new File(dicPath);
         ArrayList<String> imageFileNames = new ArrayList<String>();
         File[] dicFileList = dic.listFiles();
-        for(File f: dicFileList){
+        for (File f : dicFileList) {
             imageFileNames.add(f.getName());
         }
         return imageFileNames;
@@ -262,7 +274,7 @@ public class VerificationCodeAdapter {
         ArrayList<String> imageFileNames = getFileNamesFromDic(directoryPath);
 
         // 随机获取
-        int r = (int)Math.round(Math.random() * (imageFileNames.size() - 1));
+        int r = (int) Math.round(Math.random() * (imageFileNames.size() - 1));
         String imgName = imageFileNames.get(r);
         String path = "src/main/resources/static/image/puzzle/" + imgName;
         int[][] data = VerificationCodeAdapter.getBlockData();
@@ -280,36 +292,36 @@ public class VerificationCodeAdapter {
 
     /**
      * 删除保存的图片文件
-     * @TODO 由于空间限制，以及验证码的作用，将会设置定时任务来定时删除，节省内存空间
      * @param headPath
      * @return
+     * @TODO 由于空间限制，以及验证码的作用，将会设置定时任务来定时删除，节省内存空间
      */
-    public static String deleteAfterImage(String headPath){
+    public static String deleteAfterImage(String headPath) {
         boolean successDelete = true;
         int sum = 0;
         float fileSize = 0;
         String directoryPath = headPath;
         File dic = new File(directoryPath);
         File[] dicFileList = dic.listFiles();
-        if(dicFileList != null) {
+        if (dicFileList != null) {
             for (File f : dicFileList) {
                 if (!f.getName().equals("sample_after.png") && !f.getName().equals("sample_after_mark.png")) {
                     long fLength = f.length();
                     successDelete = f.delete();
-                    if(!successDelete)
+                    if (!successDelete)
                         break;
-                    sum ++;
+                    sum++;
                     fileSize += fLength;
 
                 }
             }
         }
         float fileSizeInMB = fileSize / 1024 / 1024;
-        if(!successDelete){
+        if (!successDelete) {
             String tip = "拼图文件删除中出现错误，请到" + directoryPath + "中进行查看";
             System.out.println(tip);
             return tip;
-        }else{
+        } else {
             String tip = "拼图文件删除成功，删除文件数量为" + sum + ",文件总大小为" + fileSizeInMB + "MB";
             System.out.println(tip);
             return tip;

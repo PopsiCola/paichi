@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -479,5 +480,22 @@ public class MinioUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取上传路径
+     * @param isTempFile 是否是临时文件，true：临时文件
+     * @param fileName 文件名称
+     * @param contentType 文件类型，例如：png、jpg
+     * @return
+     */
+    public String uploadPath(boolean isTempFile, String fileName, String contentType) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(new Date());
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        if (isTempFile) {
+            return "temp/" + date + "/" + uuid + "." + contentType;
+        }
+        return date + "/" + uuid + "." + contentType;
     }
 }

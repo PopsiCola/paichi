@@ -21,7 +21,7 @@
             <if test="pictureUrl != null">
                 #{pictureUrl},
             </if>
-                sysdate,
+                now(),
             <if test="pictureType != null">
                 #{pictureType, jdbcType=NUMERIC},
             </if>
