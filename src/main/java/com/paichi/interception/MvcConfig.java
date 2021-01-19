@@ -54,6 +54,8 @@ public class MvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/about/join_us.html").setViewName("/about/join_us");
                 //美食菜单
                 registry.addViewController("/order_list/order_list.html").setViewName("/order_list/order_list");
+                // 404找不到页面
+                registry.addViewController("/404.html").setViewName("/404");
             }
         };
     }

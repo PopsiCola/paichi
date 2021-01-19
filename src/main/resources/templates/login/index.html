@@ -53,21 +53,19 @@
             <div class="login_navw">
                 <a href="" class="logo"></a>
                 <ul>
-                    <li><a href="https://www.paichi.net/">首页</a></li>
-                    <li><a href="https://www.paichi.net/chufang/diy/">菜谱大全</a></li>
-                    <li><a href="https://www.paichi.net/jiankang/">饮食健康</a></li>
-                    <li><a href="https://i.meishi.cc/recipe_list/">美食菜单</a></li>
-                    <li><a href="https://i.meishi.cc/daren_task/daren.php">美食达人</a></li>
-                    <li><a href="https://www.paichi.net/video/">菜谱视频</a></li>
-                    <li><a href="https://i.meishi.cc/download_msj.php">产品下载</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a th:href="@{/chufang/diy/index.html}">菜谱大全</a></li>
+                    <li><a th:href="@{/404.html}">饮食健康</a></li>
+                    <li><a th:href="@{/order_list/order_list.html}">美食菜单</a></li>
+                    <li><a th:href="@{/404.html}">美食达人</a></li>
+                    <li><a th:href="@{/404.html}">菜谱视频</a></li>
+                    <li><a th:href="@{/404.html}">产品下载</a></li>
                 </ul>
             </div>
         </div>
         <div class="login_title">欢迎来到PaiChi</div>
 
         <div class="new_loginpage">
-
-
             <script type="text/javascript">
                 $(function () {
                     $(".login_false_tip").hide();
@@ -124,7 +122,7 @@
                             <div class="nl_loginitem" style="height:20px;line-height:20px;">
                                 <label class="label2"><input type="checkbox" checked="checked" class="checkbox"
                                                              name="cookietime"> 下次自动登录　　
-                                    <a href="/resetpwd.html" class="forgetpassword1">忘记密码？</a></label>
+                                    <a th:href="@{/resetpwd.html}" class="forgetpassword1">忘记密码？</a></label>
                             </div>
                             <div class="nl_loginitem" style="text-align:center;">
                                 <input type="button" class="submit" name="login_btn" value="登 录">
@@ -145,7 +143,7 @@
                             <div class="nl_loginitem" style="height:20px;line-height:20px;">
                                 <label class="label2">
                                     <input type="checkbox" checked="checked" class="checkbox" name="cookietime"> 下次自动登录　　
-                                        <a href="/resetpwd.html" class="forgetpassword1">忘记密码？</a>
+                                        <a th:href="@{/resetpwd.html}" class="forgetpassword1">忘记密码？</a>
                                 </label>
                             </div>
 
