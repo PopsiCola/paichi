@@ -100,6 +100,13 @@ mybatis-plus:
 #    允许返回字段值为null
     call-setters-on-nulls: true
 
+#日志配置
+logging:
+  level:
+    com.paichi: debug
+    org.springframework: WARN
+    org.spring.springboot.dao: error
+
 # 文件系统
 minio:
   url: http://121.5.9.16:9000

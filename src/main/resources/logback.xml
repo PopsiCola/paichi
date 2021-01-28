@@ -50,10 +50,8 @@
     </appender>
 	
 	<!-- 显示形成的sql、使用的参数、结果集 -->
-	<!--
 		<logger name="java.sql" level="debug" />
 		<logger name="org.springframework.jdbc" level="debug" />
-	-->
 
 	<logger name="com.paichi" level="info" />
 
