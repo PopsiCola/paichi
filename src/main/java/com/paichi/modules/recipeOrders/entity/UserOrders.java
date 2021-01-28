@@ -95,4 +95,9 @@ public class UserOrders implements Serializable {
      */
     private User userOrder;
 
+    /**
+     * 菜单中食谱的个数，循环获取recipes.size()即可
+     */
+    private Integer recipesCount;
+
 }

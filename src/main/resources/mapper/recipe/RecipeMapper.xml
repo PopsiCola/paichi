@@ -59,7 +59,7 @@
     </resultMap>
 
     <!--用户美食菜单-->
-    <resultMap id="recipeOrders" type="User">
+    <!--<resultMap id="recipeOrders" type="User">
         <id property="userId" column="USER_ID"></id>
         <result property="userName" column="USER_NAME"></result>
         <result property="userIcon" column="USER_ICON"></result>
@@ -69,6 +69,29 @@
             <result property="recipeName" column="RECIPE_NAME"></result>
             <result property="recipeImg" column="RECIPE_IMG"></result>
             <result property="timestamp" column="TIMESTAMP"></result>
+        </collection>
+    </resultMap>-->
+
+    <!--用户美食菜单-->
+    <resultMap id="recipeOrders" type="com.paichi.modules.recipeOrders.entity.UserOrders">
+        <id property="userOrdersId" column="USER_ORDERS_ID"></id>
+        <result property="userOrdersTitle" column="USER_ORDERS_TITLE"></result>
+        <result property="userOrdersContent" column="USER_ORDERS_CONTENT"></result>
+        <result property="popularity" column="POPULARITY"></result>
+        <result property="likes" column="LIKES"></result>
+        <result property="lastUpdateDate" column="LAST_UPDATE_DATE"></result>
+        <result property="createTime" column="CREATE_TIME"></result>
+        <!--用户：一对一关联关系-->
+        <association property="userOrder" javaType="com.paichi.modules.user.entity.User">
+            <id property="userId" column="USER_ID"></id>
+            <result property="userName" column="USER_NAME"></result>
+            <result property="userIcon" column="USER_ICON"></result>
+        </association>
+        <!--食谱：一对多关联关系-->
+        <collection property="recipes" ofType="com.paichi.modules.recipe.entity.Recipe">
+            <id property="recipeId" column="RECIPE_ID"></id>
+            <result property="recipeName" column="RECIPE_NAME"></result>
+            <result property="recipeImg" column="RECIPE_IMG"></result>
         </collection>
     </resultMap>
 
@@ -161,7 +184,7 @@
 
     <!--根据食谱表id获取食谱做法，包含步骤表等表信息-->
     <select id="getRecipeDetailByRecipeId" parameterType="String" resultMap="recipeZuoFa">
-        select r.recipe_id as recipeId, r.recipe_name, concat(#{fastDFSPath}, r.recipe_img) as recipe_img, r.recipe_video, r.CRAFT_ID, r.TASTE_ID,
+        select r.recipe_id , r.recipe_name, concat(#{fastDFSPath}, r.recipe_img) as recipe_img, r.recipe_video, r.CRAFT_ID, r.TASTE_ID,
            r.USER_ID, r.people_number, r.cook_time, r.preparation_time, r.popularity, r.timestamp, r.difficulty,
            r.cookingskill, r.introduction, e.EFFECT_ID, e.EFFECT_NAME, rs.RECIPE_STEP_ID, rs.RECIPE_ID, rs.STEP_CONTENT,
            concat(#{fastDFSPath}, rs.STEP_IMG) as STEP_IMG, rs.STEP_NUMBER, u.USER_ID, USER_NAME, PASSWORD, USER_ICON, USER_EMAIL,
@@ -416,18 +439,29 @@
 
     <!--美食菜单-->
     <select id="queryRecipeOrders" resultMap="recipeOrders">
-        select *
-        from (select uo.USER_ID as userId, u.USER_NAME as userName, u.USER_ICON as userIcon, r.RECIPE_ID as recipeId, r.RECIPE_NAME as recipeName,
-                concat(#{fastDFSPath}, r.RECIPE_IMG) as recipeImg, uo.LAST_UPDATE_DATE as timestamp ,
-                ROW_NUMBER() over (PARTITION BY uo.USER_ID order by uo.LAST_UPDATE_DATE DESC) as num,
-                -- 食谱菜单总数
-                (select count(rr.USER_ORDERS_ID) from paichi.orders_recipe rr where rr.USER_ORDERS_ID = uo.USER_ORDERS_ID) as ordersCount
-            from paichi.user_orders uo
-                left join paichi.user u on u.USER_ID = uo.USER_ID
-                left join paichi.orders_recipe oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
-                left join paichi.recipe r on oo.RECIPE_ID = r.RECIPE_ID
-                order by uo.LAST_UPDATE_DATE DESC) uu
-        where uu.num &lt;= 5
+        select uo.USER_ORDERS_ID      ,
+               uo.USER_ORDERS_TITLE   ,
+               uo.USER_ORDERS_CONTENT ,
+               uo.POPULARITY          ,
+               uo.LIKES               ,
+               uo.LAST_UPDATE_DATE    ,
+               uo.CREATE_TIME         ,
+               u.USER_ID              ,
+               u.USER_NAME            ,
+               u.USER_ICON            ,
+               r.RECIPE_ID            ,
+               r.RECIPE_NAME          ,
+               concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG
+        from paichi.user_orders uo
+                 left join paichi.user u on u.USER_ID = uo.USER_ID
+                 left join paichi.orders_recipe oo on uo.USER_ORDERS_ID = oo.USER_ORDERS_ID
+                 left join paichi.recipe r on oo.RECIPE_ID = r.RECIPE_ID
+        <if test="newOrHot == 1">
+            order by uo.LAST_UPDATE_DATE desc
+        </if>
+        <if test="newOrHot == 2">
+            order by uo.LIKES DESC
+        </if>
     </select>
 
     <!--美食菜单总数-->

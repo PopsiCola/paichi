@@ -6,6 +6,7 @@ import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.mapper.RecipeMapper;
 import com.paichi.modules.recipe.service.IRecipeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.paichi.modules.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -127,9 +128,9 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
      * @return
      */
     @Override
-    public List<User> queryRecipeOrders(int newOrHot, Page page) {
+    public List<UserOrders> queryRecipeOrders(int newOrHot, Page page) {
         // TODO:此处使用了一对多分组查询，没有想出如何在sql中分页，想到后修改
-        List<User> orders = recipeMapper.queryRecipeOrders(newOrHot, fastDFSPath);
+        List<UserOrders> orders = recipeMapper.queryRecipeOrders(newOrHot, fastDFSPath);
         // 模拟分页
         orders = orders.subList((page.getCurrent() - 1) * page.getLimit() < orders.size() ? (page.getCurrent() - 1) * page.getLimit() : orders.size() -1,
                 page.getCurrent() * page.getLimit() < orders.size() ? page.getCurrent() * page.getLimit() : orders.size());

@@ -1,12 +1,27 @@
 $(function(){
     // 美食菜单初始化
-    recipe_orders();
+    recipe_orders(1);
+
+    // 监听最热、最新点击
+    $("#zuixin").click(function (e) {
+        $("#zuire").removeClass('current');
+        $("#zuixin").addClass('current');
+        // 最新
+        recipe_orders(1);
+    });
+    $("#zuire").click(function (e) {
+
+        $("#zuixin").removeClass('current');
+        $("#zuire").addClass('current');
+        // 最热
+        recipe_orders(2);
+    });
 });
 
-// 美食菜单
-function recipe_orders() {
+// 美食菜单 recipeType：1:最新，2：最热
+function recipe_orders(recipeType) {
     let data = {};
-    data['recipeType'] = 1;
+    data['recipeType'] = recipeType;
     data['limit'] = 10;
     data['current'] = 1;
 
@@ -77,24 +92,27 @@ function recipe_orders() {
 function recipeOrdersHtml(data) {
 
     var ordersHtml = '';
-    for (let i = 0; i < data.recipeOrders.length; i++) {
+    for (let i = 0; i<data.recipeOrders.length; i++) {
+        let reciepOrders = data.recipeOrders[i];
         ordersHtml += '<div class="cdlist_item_style1 clearfix">\n' +
-            '        <h3><a href="ordersDetail">我的菜单</a></h3>\n' +
-            '    <span class="cpcount"><em>'+ data.recipeOrders[i].ordersCount +'</em>篇菜谱</span>\n' +
+            '        <h3><a href="/recipeOrders/recipeOrderDetail?uid='+ reciepOrders.userOrder.userId +'">'+ reciepOrders.userOrdersTitle +'</a></h3>\n' +
+            '    <span class="cpcount"><em>'+ reciepOrders.recipesCount +'</em>篇菜谱</span>\n' +
             '    <div class="info">\n' +
             '        <dl>\n' +
-            '        <dd><strong class="tag">'+ data.recipeOrders[i].recipes[0].timestamp +'</strong></dd>\n' +
+            '        <dd><strong class="tag">'+ reciepOrders.lastUpdateDate +'</strong></dd>\n' +
             '    </dl>\n' +
-            '    <a class="author" href="https://i.meishi.cc/cook.php?id=12947507">\n' +
-            '        <img src="'+ data.recipeOrders[i].userIcon +'">\n' +
-            '        <strong>'+ data.recipeOrders[i].userName +'</strong>\n' +
+            '    <a class="author" href="https://i.meishi.cc/cook.php?id='+ reciepOrders.userOrder.userId +'">\n' +
+            '        <img src="'+ reciepOrders.userOrder.userIcon +'">\n' +
+            '        <strong>'+ reciepOrders.userOrder.userName +'</strong>\n' +
             '        </a>\n' +
             '        </div>\n' +
             '        <ul class="cplist">\n';
 
-            for (let j=0; j<data.recipeOrders[i].recipes.length; j++) {
-                ordersHtml += '<li><a href="/recipeOrders/recipeOrderDetail?uid='+ data.recipeOrders[i].userId +'">\n' +
-                    '        <img src="'+ data.recipeOrders[i].recipes[j].recipeImg +'"><h4>'+ data.recipeOrders[i].recipes[j].recipeName +'</h4></a></li>\n';
+            // 每篇菜单最多只显示5中菜品
+            let count = reciepOrders.recipesCount > 5 ? 5 : reciepOrders.recipesCount;
+            for (let j=0; j<count; j++) {
+                ordersHtml += '<li><a href="/recipeOrders/recipeOrderDetail?uid='+ reciepOrders.userOrder.userId +'">\n' +
+                    '        <img src="'+ reciepOrders.recipes[j].recipeImg +'"><h4>'+ reciepOrders.recipes[j].recipeName +'</h4></a></li>\n';
             }
         ordersHtml += '    </ul>\n' +
             '    </div>';

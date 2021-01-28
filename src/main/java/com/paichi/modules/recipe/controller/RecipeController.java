@@ -1,10 +1,14 @@
 package com.paichi.modules.recipe.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.mysql.cj.xdevapi.JsonArray;
 import com.paichi.common.web.Message;
 import com.paichi.common.web.Page;
 import com.paichi.common.web.Term;
 import com.paichi.modules.recipe.entity.Recipe;
 import com.paichi.modules.recipe.service.IRecipeService;
+import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.paichi.modules.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -145,10 +149,15 @@ public class RecipeController {
         Message message = new Message();
         Map<String, Object> dataMap = new HashMap<>();
 
-        List<User> recipeOrders = recipeService.queryRecipeOrders(recipeType, page);
+        List<UserOrders> recipeOrders = recipeService.queryRecipeOrders(recipeType, page);
 
+        // 每个菜单中有多少食谱
+        recipeOrders.forEach(userOrders -> {
+            userOrders.setRecipesCount(userOrders.getRecipes().size());
+        });
         dataMap.put("recipeOrders", recipeOrders);
         dataMap.put("ordersCount", recipeService.recipeOrdersCount());
+
 
         message.setCode(1);
         message.setData(dataMap);
