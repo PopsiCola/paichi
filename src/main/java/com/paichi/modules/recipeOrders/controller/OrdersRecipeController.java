@@ -5,6 +5,9 @@ import com.paichi.common.web.Message;
 import com.paichi.modules.recipeOrders.entity.OrdersRecipe;
 import com.paichi.modules.recipeOrders.entity.UserOrders;
 import com.paichi.modules.recipeOrders.service.IUserOrdersService;
+import com.paichi.modules.recipeOrders.service.impl.UserOrdersServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("recipeOrders")
 public class OrdersRecipeController {
+
+    private static final Logger log = LoggerFactory.getLogger(OrdersRecipeController.class);
 
     @Autowired
     private IUserOrdersService userOrdersService;
@@ -54,23 +59,25 @@ public class OrdersRecipeController {
                     message.setCode(0);
                     message.setData(false);
                     message.setMsg("取消收藏成功");
+                    log.info("取消收藏成功", userId);
                 } else {
                     userOrdersService.addCollection(userId, recipeId);
                     message.setCode(0);
                     message.setData(true);
                     message.setMsg("收藏成功");
+                    log.info("取消收藏成功", userId);
                 }
 
             } catch (Exception e) {
                 message.setCode(1);
                 message.setMsg("操作失败：" + e);
+                log.info("取消收藏成功：{}", e);
                 return message;
             }
         } else {
             // 没有登录在线
             message.setCode(1);
             message.setMsg("没有登录，请先去登录");
-            return message;
         }
         return message;
     }

@@ -2,7 +2,7 @@
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>我的菜单_A佳9490的我的菜单菜单–美食菜单【PaiChi】</title>
+    <title>我的菜单_PaiChi的我的菜单菜单–美食菜单【PaiChi】</title>
     <meta name="keywords" content="我的菜单，我的菜单的做法，我的菜单大全，我的菜单菜单，美食菜单，PaiChi">
     <meta name="description" content="我的菜单的菜单包括我的菜单的做法由用户精心收集打造，美食杰美食菜单为你提供展示平台">
     <meta content="www.meishij.net" name="author">
@@ -241,7 +241,7 @@
                                                       class="link pngFix"><strong>家居馆</strong>
         </a></li>
         <li><a href="https://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
-                src="images/20160909164810_443.png"
+                th:src="@{/js/order_list/images/20160909164810_443.png}"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
         <li><a href="https://www.meishij.net/video/" class="link pngFix"><strong>菜谱视频</strong></a></li>
         <li><a href="https://i.meishi.cc/download_msj.php" class="link pngFix"><strong>产品下载</strong></a></li>
@@ -263,12 +263,11 @@
 </div>
 <div class="main_w clearfix">
     <div class="main">
-        <!--<input id="uid" th:value="${uid}" hidden>-->
         <div class="cd_showbox clearfix">
             <div class="infobox clearfix">
                 <div class="cdinfo">
-                    <h1>我的菜单</h1>
-                    <p id="order_title">没有简介</p>
+                    <h1 id="order_title">我的菜单</h1>
+                    <p id="order_content">没有简介</p>
                     <span id="last_update_time">最后修改：</span>
                 </div>
                 <div class="authorinfo">

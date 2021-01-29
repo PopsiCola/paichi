@@ -8,6 +8,7 @@ import com.paichi.modules.recipeOrders.mapper.UserOrdersMapper;
 import com.paichi.modules.recipeOrders.service.IUserOrdersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.paichi.modules.user.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,9 @@ import java.util.List;
  * @author liulebin
  * @since 2020-11-04
  */
+@Slf4j
 @Service
 public class UserOrdersServiceImpl extends ServiceImpl<UserOrdersMapper, UserOrders> implements IUserOrdersService {
-
-    private static final Logger log = LoggerFactory.getLogger(UserOrdersServiceImpl.class);
 
     @Autowired
     private UserOrdersMapper userOrdersMapper;
@@ -52,7 +52,13 @@ public class UserOrdersServiceImpl extends ServiceImpl<UserOrdersMapper, UserOrd
             ordersRecipe.setUserOrdersId(userOrder.getUserOrdersId());
             ordersRecipe.setRecipeId(recipeId);
 
-            Integer integer = ordersRecipeMapper.addRecipeToOrder(ordersRecipe);
+            try {
+                System.out.println(ordersRecipe);
+                ordersRecipeMapper.addRecipeToOrder(ordersRecipe);
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("添加收藏失败，数据回滚: {}", e);
+            }
         } else {
             // 没有该用户的菜单，首先创建菜单，再添加收藏
             // 补全数据

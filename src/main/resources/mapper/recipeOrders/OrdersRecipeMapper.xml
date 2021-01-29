@@ -4,7 +4,7 @@
 
     <!--添加收藏-->
     <insert id="addRecipeToOrder" parameterType="OrdersRecipe" useGeneratedKeys="true" keyProperty="ordersRecipeId">
-        insert into paichi.orders_recipe (ORDERS_RECIPE_ID, USER_ORDERS_ID, RECIPE_ID)
-        values (#{ordersRecipeId, jdbcType=NUMERIC}, #{userOrdersId}, #{recipeId})
+        insert into paichi.orders_recipe (USER_ORDERS_ID, RECIPE_ID)
+        values (#{userOrdersId}, #{recipeId})
     </insert>
 </mapper>

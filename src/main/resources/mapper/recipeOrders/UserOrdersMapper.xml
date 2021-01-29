@@ -93,13 +93,13 @@
     <select id="getUserCollectionByRecipeId" resultType="OrdersRecipe">
         select *
         from paichi.orders_recipe
-        where USER_ORDERS_ID = (select USER_ORDERS_ID from USER_ORDERS where USER_ID = #{userId})
+        where USER_ORDERS_ID = (select USER_ORDERS_ID from paichi.user_orders where USER_ID = #{userId})
           and RECIPE_ID = #{recipeId}
     </select>
 
     <!--从食谱菜单中移除食谱(取消收藏)-->
     <delete id="removeRecipeFromCollections" parameterType="Integer">
-        delete paichi.orders_recipe
+        delete from paichi.orders_recipe
         where ORDERS_RECIPE_ID = #{ordersRecipeId}
     </delete>
 
@@ -148,17 +148,17 @@
     <select id="getOrderDetailByUserId" resultMap="userOrderDetail">
         select uo.USER_ORDERS_ID, uo.USER_ORDERS_TITLE, uo.USER_ORDERS_CONTENT, uo.LAST_UPDATE_DATE,
            u.USER_ID, u.USER_ICON, u.USER_NAME,
-           r.RECIPE_ID, r.RECIPE_NAME, r.RECIPE_IMG, r.DIFFICULTY, r.PREPARATION_TIME, r.COOK_TIME,
+           r.RECIPE_ID, r.RECIPE_NAME, concat(#{fastDFSPath}, r.RECIPE_IMG) as RECIPE_IMG, r.DIFFICULTY, r.PREPARATION_TIME, r.COOK_TIME,
            r.POPULARITY,
-           (select us.USER_NAME from paichi."user" us where us.USER_ID = r.USER_ID) as USER_NAME,
+           (select us.USER_NAME from paichi.user us where us.USER_ID = r.USER_ID) as USER_NAME,
            (select TASTE_NAME from paichi.taste t where t.TASTE_ID = r.TASTE_ID) as TASTE_NAME,
            (select CRAFT_NAME from paichi.craft c where c.CRAFT_ID = r.CRAFT_ID) as CRAFT_NAME,
            (select EFFECT_NAME from paichi.effect e
                left join paichi.recipe_effect re on re.EFFECT_ID = e.EFFECT_ID
                where re.RECIPE_ID = r.RECIPE_ID
-                 and ROWNUM = 1) as EFFECT_NAME
+               limit 1) as EFFECT_NAME
         from paichi.user_orders uo
-            left join paichi."user" u on u.USER_ID = uo.USER_ID
+            left join paichi.user u on u.USER_ID = uo.USER_ID
             left join paichi.orders_recipe oe on oe.USER_ORDERS_ID = uo.USER_ORDERS_ID
             left join paichi.recipe r on r.RECIPE_ID = oe.RECIPE_ID
         where uo.USER_ID = #{userId}

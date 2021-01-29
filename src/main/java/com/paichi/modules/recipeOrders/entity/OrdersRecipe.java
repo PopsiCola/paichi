@@ -1,5 +1,6 @@
 package com.paichi.modules.recipeOrders.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -27,7 +28,7 @@ public class OrdersRecipe implements Serializable {
     /**
      * 菜单食谱表主键
      */
-    @TableId("ORDERS_RECIPE_ID")
+    @TableId(value = "ORDERS_RECIPE_ID", type = IdType.AUTO)
     private Integer ordersRecipeId;
 
     /**
