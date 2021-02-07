@@ -48,5 +48,6 @@ public interface UserOrdersMapper extends BaseMapper<UserOrders> {
      * @param userId
      * @return
      */
-    UserOrders getOrderDetailByUserId(String userId);
+    UserOrders getOrderDetailByUserId(@Param("userId") String userId,
+                                      @Param("fastDFSPath") String fastDFSPath);
 }

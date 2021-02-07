@@ -124,6 +124,7 @@ public class OrdersRecipeController {
     public Message userOrderDetail(String userId) {
         Message message = new Message();
         UserOrders userOrder = userOrdersService.getOrderDetailByUserId(userId);
+        userOrder.setRecipesCount(userOrder.getRecipes().size());
         if (userOrder != null) {
             message.setCode(0);
             message.setData(userOrder);
